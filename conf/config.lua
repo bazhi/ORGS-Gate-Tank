@@ -28,7 +28,8 @@ local config = {
     -- all apps
     apps = {
         welcome = "_GBC_CORE_ROOT_/apps/welcome",
-        tests   = "_GBC_CORE_ROOT_/apps/tests",
+        --tests   = "_GBC_CORE_ROOT_/apps/tests",
+        cbserver = "_GBC_CORE_ROOT_/apps/cbserver",
     },
 
     -- default app config
@@ -46,7 +47,7 @@ local config = {
         websocketsMaxPayloadLen    = 16 * 1024, -- 16KB
 
         jobMessageFormat           = "json",
-        numOfJobWorkers            = 2,
+        numOfJobWorkers            = 1,
 
         jobWorkerRequests          = 1000,
     },
@@ -71,6 +72,13 @@ local config = {
             host         = "127.0.0.1",
             port         = 11300,
         },
+
+        mysql = {
+            host = "127.0.0.1",
+            port = 3306,
+            username = "",
+            password = "",
+        }
     }
 }
 

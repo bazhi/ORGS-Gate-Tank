@@ -47,14 +47,15 @@ setmetatable(cc.exports, {
 })
 
 -- disable create unexpected global variable
-setmetatable(_g, {
-    __newindex = function(_, name, value)
-        local msg = string_format("USE \"cc.exports.%s = <value>\" INSTEAD OF SET GLOBAL VARIABLE", name)
-        print(debug.traceback(msg, 2))
-        if not ngx then print("") end
-    end
-})
-
+cc.disableGlobal = function()
+    setmetatable(_g, {
+        __newindex = function(_, name, value)
+            local msg = string_format("USE \"cc.exports.%s = <value>(%s)\" INSTEAD OF SET GLOBAL VARIABLE", name, value)
+            print(debug.traceback(msg, 4))
+            if not ngx then print("") end
+        end
+    })
+end
 --
 
 cc.DEBUG_ERROR   = 0

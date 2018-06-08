@@ -40,6 +40,9 @@ local _M = {
     WorkerBootstrap         = cc.import(".WorkerBootstrap", _CUR),
 
     Broadcast               = cc.import(".Broadcast", _CUR),
+
+    NginxWorkerBootstrap    = cc.import(".NginxWorkerBootstrap", _CUR),
+    NginxWorkerInstanceBase = cc.import(".NginxWorkerInstanceBase", _CUR),
 }
 
 if ngx then
