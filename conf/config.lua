@@ -52,8 +52,9 @@ local config = {
                 numOfWorkers = 1,
                 port = 8088,
                 apps = {
-                    welcome = "_GBC_CORE_ROOT_/apps/welcome",
+                    --welcome = "_GBC_CORE_ROOT_/apps/welcome",
                     --tests   = "_GBC_CORE_ROOT_/apps/tests",
+                    loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
                 },
             },
             {

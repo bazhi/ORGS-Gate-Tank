@@ -118,9 +118,9 @@ function HttpInstanceBase:getMysql()
         end
         semMysql:wait(1)
         local _mysql, _err = Mysql.create(config)
-        if not mysql then
+        if not _mysql then
             semMysql:post(1)
-            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:"..err)
+            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:".._err)
             return nil
         end
         mysql = _mysql
@@ -134,6 +134,7 @@ function HttpInstanceBase:onClose()
         self._mysql:set_keepalive()
         self._mysql = nil
         semMysql:post(1)
+        --cc.printwarn("HttpInstanceBase:onClose():"..semMysql:count())
     end
 end
 
@@ -142,7 +143,7 @@ function HttpInstanceBase:runEventLoop()
     local actionName = self._requestParameters.action or ""
     actionName = tostring(actionName)
     if cc.DEBUG > cc.DEBUG_WARN then
-        cc.printinfo("HTTP action: %s, data: %s", actionName, json.encode(self._requestParameters))
+        cc.printinfo("HTTP action: % s, data: % s", actionName, json.encode(self._requestParameters))
     end
     
     local err = nil
@@ -188,3 +189,4 @@ function HttpInstanceBase:_genOutput(result, err)
 end
 
 return HttpInstanceBase
+

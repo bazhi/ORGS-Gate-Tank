@@ -57,10 +57,15 @@ done
 echo -e "\033[33mStart GameBox Cloud Core $VERSION\033[0m"
 echo ""
 
+sleep 2s
+# ./clear_log
+
 updateConfigs
 
 startSupervisord
 sleep 3s
 
 checkStatus
+
+# ./show_log
 

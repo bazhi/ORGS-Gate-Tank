@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ROOT_DIR=$(cd "$(dirname $0)" && pwd)
+
+tail -f $ROOT_DIR/logs/nginx-error1.log
+tail -f $ROOT_DIR/logs/nginx-error2.log
+tail -f $ROOT_DIR/logs/nginx-error3.log
+tail -f $ROOT_DIR/logs/nginx-error4.log
