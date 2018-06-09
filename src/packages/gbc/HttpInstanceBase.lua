@@ -1,17 +1,17 @@
 --[[
-
+ 
 Copyright (c) 2015 gameboxcloud.com
-
+ 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
+ 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
+ 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,38 +19,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
+ 
 ]]
 
-local ngx               = ngx
-local ngx_say           = ngx.say
+local ngx = ngx
+local ngx_say = ngx.say
 local req_get_body_data = ngx.req.get_body_data
-local req_get_headers   = ngx.req.get_headers
-local req_get_method    = ngx.req.get_method
+local req_get_headers = ngx.req.get_headers
+local req_get_method = ngx.req.get_method
 local req_get_post_args = ngx.req.get_post_args
-local req_get_uri_args  = ngx.req.get_uri_args
-local req_read_body     = ngx.req.read_body
-local string_format     = string.format
-local string_gsub       = string.gsub
-local string_ltrim      = string.ltrim
-local table_merge       = table.merge
+local req_get_uri_args = ngx.req.get_uri_args
+local req_read_body = ngx.req.read_body
+local string_format = string.format
+local string_gsub = string.gsub
+local string_ltrim = string.ltrim
+local table_merge = table.merge
 
-local json      = cc.import("#json")
+local json = cc.import("#json")
 local Constants = cc.import(".Constants")
+local Redis = cc.import("#redis")
+local Mysql = cc.import("#mysql")
 
 local InstanceBase = cc.import(".InstanceBase")
 local HttpInstanceBase = cc.class("HttpInstanceBase", InstanceBase)
 
+local semaphore = require "ngx.semaphore"
+local semMysql = semaphore.new(50)
+
 function HttpInstanceBase:ctor(config)
     HttpInstanceBase.super.ctor(self, config, Constants.HTTP_REQUEST_TYPE)
-
+    
     if config.app.httpMessageFormat then
         self.config.app.messageFormat = config.app.httpMessageFormat
     end
-
-    self._requestMethod     = req_get_method()
+    
+    self._requestMethod = req_get_method()
     self._requestParameters = req_get_uri_args()
-
+    
     if self._requestMethod == "POST" then
         req_read_body()
         -- handle json body
@@ -59,25 +64,25 @@ function HttpInstanceBase:ctor(config)
             local body = req_get_body_data()
             --[[
             This function returns nil if
-
+ 
             - the request body has not been read,
             - the request body has been read into disk temporary files,
             - or the request body has zero size.
-
+ 
             If the request body has not been read yet, call ngx.req.read_body first
             (or turned on lua_need_request_body to force this module to read the
             request body. This is not recommended however).
-
+ 
             If the request body has been read into disk files, try calling
             the ngx.req.get_body_file function instead.
-
+ 
             To force in-memory request bodies, try setting client_body_buffer_size
             to the same size value in client_max_body_size.
             ]]
             if body then
                 local data, err = json.decode(body)
                 if err then
-                   cc.printwarn("HttpInstanceBase:ctor() - invalid JSON content, %s", err)
+                    cc.printwarn("HttpInstanceBase:ctor() - invalid JSON content, %s", err)
                 else
                     table_merge(self._requestParameters, data)
                 end
@@ -91,6 +96,7 @@ end
 function HttpInstanceBase:run()
     local result, err = self:runEventLoop()
     result, err = self:_genOutput(result, err)
+    self:onClose()
     if err then
         -- return an error page with custom contents
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
@@ -102,14 +108,43 @@ function HttpInstanceBase:run()
     end
 end
 
+function HttpInstanceBase:getMysql()
+    local mysql = self._mysql
+    if not mysql then
+        local config = self.config.app.mysql
+        if not config then
+            cc.printerror("HttpInstanceBase:mysql() - mysql is not set config")
+            return nil
+        end
+        semMysql:wait(1)
+        local _mysql, _err = Mysql.create(config)
+        if not mysql then
+            semMysql:post(1)
+            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:"..err)
+            return nil
+        end
+        mysql = _mysql
+        self._mysql = mysql
+    end
+    return mysql
+end
+
+function HttpInstanceBase:onClose()
+    if self._mysql then
+        self._mysql:set_keepalive()
+        self._mysql = nil
+        semMysql:post(1)
+    end
+end
+
 -- actually it is not a loop, since it is based on HTTP.
 function HttpInstanceBase:runEventLoop()
     local actionName = self._requestParameters.action or ""
     actionName = tostring(actionName)
     if cc.DEBUG > cc.DEBUG_WARN then
-       cc.printinfo("HTTP action: %s, data: %s", actionName, json.encode(self._requestParameters))
+        cc.printinfo("HTTP action: %s, data: %s", actionName, json.encode(self._requestParameters))
     end
-
+    
     local err = nil
     local ok, result = xpcall(function()
         return self:runAction(actionName, self._requestParameters)

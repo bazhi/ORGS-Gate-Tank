@@ -1,17 +1,17 @@
 --[[
-
+ 
 Copyright (c) 2015 gameboxcloud.com
-
+ 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
+ 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
+ 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,21 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
+ 
 ]]
 
-local pcall          = pcall
-local string_byte    = string.byte
-local string_find    = string.find
-local string_format  = string.format
-local string_gsub    = string.gsub
-local string_lower   = string.lower
-local string_sub     = string.sub
-local string_trim    = string.trim
+local pcall = pcall
+local string_byte = string.byte
+local string_find = string.find
+local string_format = string.format
+local string_gsub = string.gsub
+local string_lower = string.lower
+local string_sub = string.sub
+local string_trim = string.trim
 local string_ucfirst = string.ucfirst
-local table_concat   = table.concat
-local table_remove   = table.remove
-local type           = type
+local table_concat = table.concat
+local table_remove = table.remove
+local type = type
 
 local sleep
 
@@ -44,19 +44,19 @@ else
     sleep = socket.sleep
 end
 
-local Redis      = cc.import("#redis")
+local Redis = cc.import("#redis")
 local Beanstalkd = cc.import("#beanstalkd")
-local Jobs       = cc.import("#jobs")
-local Event      = cc.import("#event")
-local Constants  = cc.import(".Constants")
+local Jobs = cc.import("#jobs")
+local Event = cc.import("#event")
+local Constants = cc.import(".Constants")
 
 local InstanceBase = cc.class("InstanceBase")
 
-local _MODULE_SUFFIX       = 'Action'
-local _MEHTOD_SUFFIX       = 'Action'
-local _CLI_PACKAGE_NAME    = 'commands'
+local _MODULE_SUFFIX = 'Action'
+local _MEHTOD_SUFFIX = 'Action'
+local _CLI_PACKAGE_NAME = 'commands'
 local _WORKER_PACKAGE_NAME = 'jobs'
-local _HTTP_PACKAGE_NAME   = 'actions'
+local _HTTP_PACKAGE_NAME = 'actions'
 
 local _normalize, _getpath, _loadmodule, _checkreqtype
 
@@ -64,7 +64,7 @@ function InstanceBase:ctor(config, requestType)
     self.config = table.copy(cc.checktable(config))
     local appConfig = self.config.app
     appConfig.messageFormat = appConfig.messageFormat or Constants.MESSAGE_FORMAT
-
+    
     self._requestType = requestType
     self._package = appConfig.package
     if not self._package then
@@ -76,7 +76,7 @@ function InstanceBase:ctor(config, requestType)
             self._package = _HTTP_PACKAGE_NAME
         end
     end
-
+    
     self._requestParameters = nil
     self._modules = {}
     self._event = cc.addComponent(self, Event)
@@ -88,10 +88,10 @@ end
 
 function InstanceBase:runAction(actionName, args)
     local appConfig = self.config.app
-
+    
     local moduleName, methodName, folder = _normalize(actionName)
     methodName = methodName .. _MEHTOD_SUFFIX
-
+    
     local actionModulePath = _getpath(moduleName, folder, self._package)
     local action = self._modules[actionModulePath]
     if not action then
@@ -101,20 +101,20 @@ function InstanceBase:runAction(actionName, args)
         if not _checkreqtype(currentRequestType, acceptedRequestType) then
             cc.throw("can't access this action via request type \"%s\"", currentRequestType)
         end
-
+        
         action = actionModule:new(self)
         self._modules[actionModulePath] = action
     end
-
+    
     local method = action[methodName]
     if type(method) ~= "function" then
         cc.throw("invalid action method \"%s:%s()\"", moduleName, methodName)
     end
-
+    
     if not args then
         args = self._requestParameters or {}
     end
-
+    
     return method(action, args)
 end
 
@@ -123,7 +123,7 @@ function InstanceBase:getRedis()
     if not redis then
         local config = self.config.server.redis
         redis = Redis:new()
-
+        
         local ok, err
         if config.socket then
             ok, err = redis:connect(config.socket)
@@ -133,7 +133,7 @@ function InstanceBase:getRedis()
         if not ok then
             cc.throw("InstanceBase:getRedis() - %s", err)
         end
-
+        
         redis:select(self.config.app.appIndex)
         self._redis = redis
     end
@@ -143,9 +143,9 @@ end
 function InstanceBase:getJobs(opts)
     local jobs = self._jobs
     if not jobs then
-        local bean   = Beanstalkd:new()
+        local bean = Beanstalkd:new()
         local config = self.config.server.beanstalkd
-        local try    = 3
+        local try = 3
         while true do
             local ok, err = bean:connect(config.host, config.port)
             if ok then break end
@@ -156,12 +156,12 @@ function InstanceBase:getJobs(opts)
                 sleep(1.0)
             end
         end
-
+        
         local tube = string_format(Constants.BEANSTALKD_JOB_TUBE_PATTERN, tostring(self.config.app.appIndex))
         bean:use(tube)
         bean:watch(tube)
         bean:ignore("default")
-
+        
         jobs = Jobs:new(bean, self:getRedis())
         self._jobs = jobs
     end
@@ -174,7 +174,7 @@ _normalize = function(actionName)
     if not actionName or actionName == "" then
         actionName = "index.index"
     end
-
+    
     local folder = ""
     if string_byte(actionName) == 47 --[[ / ]] then
         local pos = 1
@@ -188,16 +188,16 @@ _normalize = function(actionName)
                 offset = offset + 1
             end
         end
-
+        
         folder = string_trim(string_sub(actionName, 1, pos), "/")
         actionName = string_sub(actionName, pos + 1)
     end
-
+    
     actionName = string_lower(actionName)
     actionName = string_gsub(actionName, "[^%a./]", "")
     actionName = string_gsub(actionName, "^[.]+", "")
     actionName = string_gsub(actionName, "[.]+$", "")
-
+    
     -- demo.hello.say --> {"demo", "hello", "say"]
     local parts = string.split(actionName, ".")
     local c = #parts
@@ -245,7 +245,7 @@ _checkreqtype = function(currentRequestType, acceptedRequestType)
     else
         cc.throw("invalid ACCEPTED_REQUEST_TYPE of the action.")
     end
-
+    
     return false
 end
 

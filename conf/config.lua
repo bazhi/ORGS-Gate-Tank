@@ -25,13 +25,6 @@ THE SOFTWARE.
 local config = {
     DEBUG = cc.DEBUG_VERBOSE,
     
-    -- all apps
-    apps = {
-        welcome = "_GBC_CORE_ROOT_/apps/welcome",
-        --tests   = "_GBC_CORE_ROOT_/apps/tests",
-        cbserver = "_GBC_CORE_ROOT_/apps/cbserver",
-    },
-    
     -- default app config
     app = {
         messageFormat = "json",
@@ -55,8 +48,21 @@ local config = {
     -- server config
     server = {
         nginx = {
-            numOfWorkers = 1,
-            port = 8088,
+            {
+                numOfWorkers = 1,
+                port = 8088,
+                apps = {
+                    welcome = "_GBC_CORE_ROOT_/apps/welcome",
+                    --tests   = "_GBC_CORE_ROOT_/apps/tests",
+                },
+            },
+            {
+                numOfWorkers = 1,
+                port = 8089,
+                apps = {
+                    cbserver = "_GBC_CORE_ROOT_/apps/cbserver",
+                },
+            },
         },
         
         -- internal memory database
@@ -78,8 +84,8 @@ local config = {
             port = 3306,
             username = "",
             password = "",
-        }}}
-        
-        return config
+        },
+    },
+}
+return config
 
-       

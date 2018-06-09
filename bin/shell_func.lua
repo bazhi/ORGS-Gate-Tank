@@ -54,9 +54,9 @@ local _updateRedisConfig, _updateSupervisordConfig
 
 function updateConfigs()
     _updateCoreConfig()
-    _updateNginxConfig()
+    _updateNginxConfig(0)
     _updateRedisConfig()
-    _updateSupervisordConfig()
+    _updateSupervisordConfig(1)
 end
 
 -- init
@@ -122,67 +122,77 @@ _checkAppKeys = function()
 end
 
 _updateCoreConfig = function()
+    index = index or 0
     local contents = io.readfile(CONF_PATH)
     contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
     io.writefile(VAR_CONF_PATH, contents)
     
     -- update all apps key and index
     local config = _checkVarConfig()
-    local apps = _getValue(config, "apps")
-    
-    local names = {}
-    for name, _ in pairs(apps) do
-        names[#names + 1] = name
-    end
-    table.sort(names)
+    print(string.format("[INFO] nginx server count: %s", #(config.server.nginx)))
+    local nginxs = config.server.nginx
     
     local contents = {"", "local keys = {}"}
-    for index, name in ipairs(names) do
-        local path = apps[name]
-        contents[#contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
+    local index = 1
+    for _, ngx in ipairs(nginxs) do
+        local apps = ngx.apps
+        
+        local names = {}
+        for name, _ in pairs(apps) do
+            names[#names + 1] = name
+        end
+        table.sort(names)
+        
+        for _, name in ipairs(names) do
+            local path = apps[name]
+            contents[#contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
+            index = index + 1
+        end
     end
     contents[#contents + 1] = "return keys"
     contents[#contents + 1] = ""
-    
     io.writefile(VAR_APP_KEYS_PATH, table.concat(contents, "\n"))
 end
 
 _updateNginxConfig = function()
     local config = _checkVarConfig()
+    local nginxs = config.server.nginx
     
-    local contents = io.readfile(NGINX_CONF_PATH)
-    contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
-    contents = string.gsub(contents, "listen[ \t]+[0-9]+", string.format("listen %d", _getValue(config, "server.nginx.port", 8088)))
-    contents = string.gsub(contents, "worker_processes[ \t]+[0-9]+", string.format("worker_processes %d", _getValue(config, "server.nginx.numOfWorkers", 4)))
-    
-    if DEBUG then
-        contents = string.gsub(contents, "cc.DEBUG = [%a_%.]+", "cc.DEBUG = cc.DEBUG_VERBOSE")
-        contents = string.gsub(contents, "error_log (.+%-error%.log)[ \t%a]*;", "error_log %1 debug;")
-        contents = string.gsub(contents, "lua_code_cache[ \t]+%a+;", "lua_code_cache on;")
-    else
-        contents = string.gsub(contents, "cc.DEBUG = [%a_%.]+", "cc.DEBUG = cc.DEBUG_ERROR")
-        contents = string.gsub(contents, "error_log (.+%-error%.log)[ \t%a]*;", "error_log %1;")
-        contents = string.gsub(contents, "lua_code_cache[ \t]+%a+;", "lua_code_cache on;")
-    end
-    
-    -- copy app_entry.conf to tmp/
-    local apps = _getValue(config, "apps")
-    local includes = {}
-    for name, path in pairs(apps) do
-        local entryPath = string.format("%s/conf/app_entry.conf", path)
-        local varEntryPath = string.format("%s/app_%s_entry.conf", TMP_DIR, name)
-        if io.exists(entryPath) then
-            local entry = io.readfile(entryPath)
-            entry = string.gsub(entry, "_GBC_CORE_ROOT_", ROOT_DIR)
-            entry = string.gsub(entry, "_APP_ROOT_", path)
-            io.writefile(varEntryPath, entry)
-            includes[#includes + 1] = string.format("        include %s;", varEntryPath)
+    for index, ngx in ipairs(nginxs) do
+        local contents = io.readfile(NGINX_CONF_PATH)
+        contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
+        contents = string.gsub(contents, "listen[ \t]+[0-9]+", string.format("listen %d", ngx.port or (8088 + index)))
+        contents = string.gsub(contents, "worker_processes[ \t]+[0-9]+", string.format("worker_processes %d", ngx.numOfWorkers or 4))
+        
+        if DEBUG then
+            contents = string.gsub(contents, "cc.DEBUG = [%a_%.]+", "cc.DEBUG = cc.DEBUG_VERBOSE")
+            contents = string.gsub(contents, "error_log (.+%-error%.log)[ \t%a]*;", "error_log %1 debug;")
+            contents = string.gsub(contents, "lua_code_cache[ \t]+%a+;", "lua_code_cache on;")
+        else
+            contents = string.gsub(contents, "cc.DEBUG = [%a_%.]+", "cc.DEBUG = cc.DEBUG_ERROR")
+            contents = string.gsub(contents, "error_log (.+%-error%.log)[ \t%a]*;", "error_log %1;")
+            contents = string.gsub(contents, "lua_code_cache[ \t]+%a+;", "lua_code_cache on;")
         end
+        
+        -- copy app_entry.conf to tmp/
+        local apps = ngx.apps
+        local includes = {}
+        for name, path in pairs(apps) do
+            local entryPath = string.format("%s/conf/app_entry.conf", path)
+            local varEntryPath = string.format("%s/app_%s_entry.conf", TMP_DIR, name)
+            if io.exists(entryPath) then
+                local entry = io.readfile(entryPath)
+                entry = string.gsub(entry, "_GBC_CORE_ROOT_", ROOT_DIR)
+                entry = string.gsub(entry, "_APP_ROOT_", path)
+                io.writefile(varEntryPath, entry)
+                includes[#includes + 1] = string.format("        include %s;", varEntryPath)
+            end
+        end
+        includes = "\n" .. table.concat(includes, "\n")
+        contents = string.gsub(contents, "\n[ \t]*#[ \t]*_INCLUDE_APPS_ENTRY_", includes)
+        contents = string.gsub(contents, "_NGX_INDEX_", index)
+        io.writefile(VAR_NGINX_CONF_PATH..index, contents)
     end
-    includes = "\n" .. table.concat(includes, "\n")
-    contents = string.gsub(contents, "\n[ \t]*#[ \t]*_INCLUDE_APPS_ENTRY_", includes)
-    
-    io.writefile(VAR_NGINX_CONF_PATH, contents)
 end
 
 _updateRedisConfig = function()
@@ -221,6 +231,11 @@ stdout_logfile=_GBC_CORE_ROOT_/logs/worker-_APP_NAME_.log
  
 ]]
 
+local _NGINX_PROG_TMPL = [[
+[program:nginx-_INDEX]
+command=_GBC_CORE_ROOT_/bin/openresty/nginx/sbin/nginx -c _GBC_CORE_ROOT_/tmp/nginx.conf_INDEX
+]]
+
 _updateSupervisordConfig = function()
     local config = _checkVarConfig()
     local appkeys = _checkAppKeys()
@@ -231,20 +246,30 @@ _updateSupervisordConfig = function()
     contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
     contents = string.gsub(contents, "_BEANSTALKD_PORT_", beanport)
     
-    local workers = {}
-    local apps = _getValue(config, "apps")
-    for name, path in pairs(apps) do
-        local prog = string.gsub(_SUPERVISOR_WORKER_PROG_TMPL, "_GBC_CORE_ROOT_", ROOT_DIR)
-        prog = string.gsub(prog, "_APP_ROOT_PATH_", path)
-        prog = string.gsub(prog, "_APP_NAME_", name)
-        
-        -- get numOfJobWorkers
-        local appConfig = appConfigs[path]
-        prog = string.gsub(prog, "_NUM_PROCESS_", appConfig.app.numOfJobWorkers)
-        
-        workers[#workers + 1] = prog
+    local nginxs = config.server.nginx
+    local ngxs = {}
+    for index, ngx in ipairs(nginxs) do
+        local prog = string.gsub(_NGINX_PROG_TMPL, "_GBC_CORE_ROOT_", ROOT_DIR)
+        local prog = string.gsub(prog, "_INDEX", index)
+        table.insert(ngxs, prog)
     end
+    contents = string.gsub(contents, ";_NGINX_", table.concat(ngxs, "\n"))
     
+    local workers = {}
+    for index, ngx in ipairs(nginxs) do
+        local apps = ngx.apps
+        for name, path in pairs(apps) do
+            local prog = string.gsub(_SUPERVISOR_WORKER_PROG_TMPL, "_GBC_CORE_ROOT_", ROOT_DIR)
+            prog = string.gsub(prog, "_APP_ROOT_PATH_", path)
+            prog = string.gsub(prog, "_APP_NAME_", name)
+            
+            -- get numOfJobWorkers
+            local appConfig = appConfigs[path]
+            prog = string.gsub(prog, "_NUM_PROCESS_", appConfig.app.numOfJobWorkers)
+            
+            workers[#workers + 1] = prog
+        end
+    end
     contents = string.gsub(contents, ";_WORKERS_", table.concat(workers, "\n"))
     
     io.writefile(VAR_SUPERVISORD_CONF_PATH, contents)
