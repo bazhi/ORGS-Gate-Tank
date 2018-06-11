@@ -8,6 +8,7 @@ end
 
 function NginxWorkerBootstrap:runapp(appRootPath)
     local appConfig = self._configs[appRootPath]
+    
     local worker = Factory.create(appConfig, "NginxWorkerInstance")
     return worker:run()
 end

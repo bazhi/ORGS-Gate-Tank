@@ -42,7 +42,7 @@ REDIS_CONF_PATH = CONF_DIR .. "/redis.conf"
 SUPERVISORD_CONF_PATH = CONF_DIR .. "/supervisord.conf"
 
 VAR_CONF_PATH = TMP_DIR .. "/config.lua"
-VAR_APP_KEYS_PATH = TMP_DIR .. "/app_keys.lua"
+VAR_APP_KEYS_PATH = TMP_DIR .. "/app_keys"
 VAR_NGINX_CONF_PATH = TMP_DIR .. "/nginx.conf"
 VAR_REDIS_CONF_PATH = TMP_DIR .. "/redis.conf"
 VAR_BEANS_LOG_PATH = TMP_DIR .. "/beanstalkd.log"
@@ -106,13 +106,14 @@ _checkVarConfig = function()
     return config
 end
 
-_checkAppKeys = function()
-    if not io.exists(VAR_APP_KEYS_PATH) then
+_checkAppKeys = function(index)
+    local key_path = VAR_APP_KEYS_PATH..index..".lua"
+    if not io.exists(key_path) then
         print(string.format("[ERR] Not found file: %s", VAR_APP_KEYS_PATH))
         os.exit(1)
     end
     
-    local appkeys = dofile(VAR_APP_KEYS_PATH)
+    local appkeys = dofile(key_path)
     if type(appkeys) ~= "table" then
         print(string.format("[ERR] Invalid app keys file: %s", VAR_APP_KEYS_PATH))
         os.exit(1)
@@ -131,10 +132,10 @@ _updateCoreConfig = function()
     local config = _checkVarConfig()
     print(string.format("[INFO] nginx server count: %s", #(config.server.nginx)))
     local nginxs = config.server.nginx
-    
-    local contents = {"", "local keys = {}"}
+    local CB_contents = {"", "local keys = {}"}
     local index = 1
-    for _, ngx in ipairs(nginxs) do
+    for nid, ngx in ipairs(nginxs) do
+        local contents = {"", "local keys = {}"}
         local apps = ngx.apps
         
         local names = {}
@@ -146,12 +147,19 @@ _updateCoreConfig = function()
         for _, name in ipairs(names) do
             local path = apps[name]
             contents[#contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
+            CB_contents[#CB_contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
             index = index + 1
         end
+        contents[#contents + 1] = "return keys"
+        contents[#contents + 1] = ""
+        local key_path = VAR_APP_KEYS_PATH..nid..".lua"
+        io.writefile(key_path, table.concat(contents, "\n"))
     end
-    contents[#contents + 1] = "return keys"
-    contents[#contents + 1] = ""
-    io.writefile(VAR_APP_KEYS_PATH, table.concat(contents, "\n"))
+    
+    CB_contents[#CB_contents + 1] = "return keys"
+    CB_contents[#CB_contents + 1] = ""
+    local key_path = VAR_APP_KEYS_PATH..".lua"
+    io.writefile(key_path, table.concat(CB_contents, "\n"))
 end
 
 _updateNginxConfig = function()
@@ -238,8 +246,6 @@ command=_GBC_CORE_ROOT_/bin/openresty/nginx/sbin/nginx -c _GBC_CORE_ROOT_/tmp/ng
 
 _updateSupervisordConfig = function()
     local config = _checkVarConfig()
-    local appkeys = _checkAppKeys()
-    local appConfigs = Factory.makeAppConfigs(appkeys, config, package.path)
     local beanport = _getValue(config, "server.beanstalkd.port")
     
     local contents = io.readfile(SUPERVISORD_CONF_PATH)
@@ -257,6 +263,8 @@ _updateSupervisordConfig = function()
     
     local workers = {}
     for index, ngx in ipairs(nginxs) do
+        local appkeys = _checkAppKeys(index)
+        local appConfigs = Factory.makeAppConfigs(appkeys, config, package.path)
         local apps = ngx.apps
         for name, path in pairs(apps) do
             local prog = string.gsub(_SUPERVISOR_WORKER_PROG_TMPL, "_GBC_CORE_ROOT_", ROOT_DIR)

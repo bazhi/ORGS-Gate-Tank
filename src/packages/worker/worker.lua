@@ -8,7 +8,7 @@ end
 
 function WorkerBootstrap:runapp()
     math.newrandomseed()
-    cc.printf("WorkerBootstrap runapp")
+    cc.printf("WorkerBootstrap runapp:"..ngx.worker.id())
     local nginxWorkerBootstrap = gbc.NginxWorkerBootstrap:new(cc.exports.GAppKeys, cc.exports.GConfig)
     for path, _ in pairs(cc.exports.GAppKeys) do
         nginxWorkerBootstrap:runapp(path)

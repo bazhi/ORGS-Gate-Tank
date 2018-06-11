@@ -22,23 +22,6 @@ THE SOFTWARE.
  
 ]]
 
--- local io_flush      = io.flush
--- local os_date       = os.date
--- local os_time       = os.time
--- local string_format = string.format
--- local string_lower  = string.lower
--- local tostring      = tostring
--- local type          = type
-
--- local json      = cc.import("#json")
--- local Constants = cc.import(".Constants")
-local Redis
-local Mysql
-if ngx then
-    Mysql = cc.import("#mysql")
-    Redis = cc.import("#redis")
-end
-
 local NginxWorkerInstanceBase = cc.class("NginxWorkerInstanceBase")
 
 function NginxWorkerInstanceBase:ctor(config, _args)
@@ -55,62 +38,15 @@ function NginxWorkerInstanceBase:runEventLoop()
     return 1
 end
 
-function NginxWorkerInstanceBase:getRedis()
-    if not Redis then
-        return nil
-    end
-    local redis = self._redis
-    if not redis then
-        local config = self.config.server.redis
-        redis = Redis:new()
-        
-        local ok, err
-        if config.socket then
-            ok, err = redis:connect(config.socket)
-        else
-            ok, err = redis:connect(config.host, config.port)
-        end
-        if not ok then
-            cc.throw("InstanceBase:getRedis() - %s", err)
-        end
-        
-        redis:select(0)
-        self._redis = redis
-    end
-    return redis
-end
-
-function NginxWorkerInstanceBase:getMysql()
-    if not Mysql then
-        return nil
-    end
-    local mysql = self._mysql
-    if not mysql then
-        local config = self.config.app.mysql
-        if not config then
-            cc.printerror("HttpInstanceBase:mysql() - mysql is not set config")
-            return nil
-        end
-        local _mysql, _err = Mysql.create(config)
-        if not _mysql then
-            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:".._err)
-            return nil
-        end
-        mysql = _mysql
-        self._mysql = mysql
-    end
-    return mysql
+function NginxWorkerInstanceBase:runTimer(delay, timer, param)
+    ngx.timer.at(delay, function(_, config)
+        local instance = timer:new(config)
+        instance:run()
+    end, param)
 end
 
 function NginxWorkerInstanceBase:onClose()
-    if self._mysql then
-        self._mysql:set_keepalive()
-        self._mysql = nil
-    end
-    if self._redis then
-        self._redis:setKeepAlive()
-        self._redis = nil
-    end
+    
 end
 
 return NginxWorkerInstanceBase

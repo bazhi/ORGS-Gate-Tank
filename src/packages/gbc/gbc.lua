@@ -42,13 +42,14 @@ local _M = {
     Broadcast = cc.import(".Broadcast", _CUR),
     
     NginxWorkerBootstrap = cc.import(".NginxWorkerBootstrap", _CUR),
-    NginxWorkerInstanceBase = cc.import(".NginxWorkerInstanceBase", _CUR),
 }
 
 if ngx then
     _M.HttpInstanceBase = cc.import(".HttpInstanceBase", _CUR)
     _M.WebSocketInstanceBase = cc.import(".WebSocketInstanceBase", _CUR)
     _M.NginxBootstrap = cc.import(".NginxBootstrap", _CUR)
+    _M.NgxTimerBase = cc.import(".NgxTimerBase", _CUR)
+    _M.NginxWorkerInstanceBase = cc.import(".NginxWorkerInstanceBase", _CUR)
 end
 
 return _M
