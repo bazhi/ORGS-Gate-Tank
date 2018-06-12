@@ -3,6 +3,7 @@ local OrmMysql = cc.class("OrmMysql")
 local string_format = string.format
 local table_concat = table.concat
 local ngx_quote_sql_str = ngx.quote_sql_str
+local sdDBEvent = ngx.shared.sdDBEvent
 
 function OrmMysql:ctor(tableName, define, defualt, keyinfo)
     self._TableName = tableName or ""
@@ -259,6 +260,15 @@ function OrmMysql:insertWithUpdate(db, params, upparams, addparams)
 end
 
 --------------------------------Insert Update------------------------------------------
+
+function OrmMysql:pushQuery(query, pid, action, key)
+    sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
+        query = query,
+        pid = pid,
+        action = action,
+        key = key
+    }))
+end
 
 return OrmMysql
 

@@ -1,7 +1,7 @@
 local _CUR = ...
 
 local _M = {
-    -- Account = cc.import(".Account", _CUR),
+    Role = cc.import(".Role", _CUR),
 }
 
 return _M

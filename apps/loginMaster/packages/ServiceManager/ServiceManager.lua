@@ -25,9 +25,18 @@ function ServiceManager.GetAll()
 end
 
 function ServiceManager.Get(name)
+    local list = {}
+    local collect = ServiceMap[name] or {}
+    for host, port in pairs(collect) do
+        table.insert(list, {
+            host = host,
+            port = port,
+        })
+    end
+    
     return {
         name = name,
-        addr = ServiceMap[name],
+        addr = list,
     }
 end
 

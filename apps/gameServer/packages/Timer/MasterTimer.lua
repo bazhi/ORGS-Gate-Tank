@@ -20,14 +20,14 @@ function MasterTimer:runEventLoop()
         if wb then
             local data, typ, _err = wb:recv_frame()
             if not data or typ == "close" then
-                wb:send_close()
+                wb:set_keepalive()
                 wb = nil
             end
         end
         cc.printf("runEventLoop")
     end
     if wb then
-        wb:send_close()
+        wb:set_keepalive()
     end
     return MasterTimer.super.runEventLoop(self)
 end
@@ -46,7 +46,7 @@ end
 function MasterTimer:ConnectMaster()
     local masterConfig = self:getMasterConfig()
     local ok, err, wb
-    local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.path)
+    local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.name)
     
     wb, err = client:new()
     if not wb then

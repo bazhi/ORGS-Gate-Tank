@@ -60,7 +60,7 @@ function NgxTimerBase:getRedis()
             cc.throw("InstanceBase:getRedis() - %s", err)
         end
         
-        redis:select(0)
+        redis:Select(0)
         self._redis = redis
     end
     return redis
@@ -89,10 +89,18 @@ function NgxTimerBase:getMysql()
 end
 
 function NgxTimerBase:onClose()
+    self:closeMysql()
+    self:closeRedis()
+end
+
+function NgxTimerBase:closeMysql()
     if self._mysql then
         self._mysql:set_keepalive()
         self._mysql = nil
     end
+end
+
+function NgxTimerBase:closeRedis()
     if self._redis then
         self._redis:setKeepAlive()
         self._redis = nil

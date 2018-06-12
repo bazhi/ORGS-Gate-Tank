@@ -1,17 +1,17 @@
 --[[
-
+ 
 Copyright (c) 2015 gameboxcloud.com
-
+ 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
+ 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
+ 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,21 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
+ 
 ]]
 
 local semaphore = require "ngx.semaphore"
 
-local ipairs             = ipairs
-local ngx_thread_kill    = ngx.thread.kill
-local ngx_thread_spawn   = ngx.thread.spawn
-local string_byte        = string.byte
-local string_split       = string.split
-local string_sub         = string.sub
-local table_concat       = table.concat
-local table_remove       = table.remove
-local tostring           = tostring
-local unpack             = unpack
+local ipairs = ipairs
+local ngx_thread_kill = ngx.thread.kill
+local ngx_thread_spawn = ngx.thread.spawn
+local string_byte = string.byte
+local string_split = string.split
+local string_sub = string.sub
+local table_concat = table.concat
+local table_remove = table.remove
+local tostring = tostring
+local unpack = unpack
 
 local NginxRedisLoop = cc.class("NginxRedisLoop")
 
@@ -44,7 +44,7 @@ function NginxRedisLoop:ctor(redis, subredis, id)
     self._subredis = subredis
     self._subredis:setTimeout(5) -- check client connect abort quickly
     self._sema = semaphore.new()
-
+    
     id = id or ""
     self._id = id .. "_" .. string_sub(tostring(self), 10)
 end
@@ -56,14 +56,20 @@ function NginxRedisLoop:start(onmessage, cmdchannel, ...)
     local onmessage = onmessage or _onmessage
     local onerror = _onerror
     self._cmdchannel = cmdchannel
-
+    
     local res, err = self._subredis:subscribe(cmdchannel, ...)
     if not res then
         return nil, err
     end
     cc.printinfo("[RedisSub:%s] <loop start> %s", self._id, table_concat(res, " "))
-
-    self._thread = ngx_thread_spawn(_loop, self, onmessage, onerror)
+    
+    self._thread = ngx_thread_spawn(_loop, self, function(priRedis, channel, msg, pchannel, id)
+        xpcall(function()
+            return onmessage(priRedis, channel, msg, pchannel, id)
+        end, function(err)
+            cc.printerror(debug.traceback(err, 5))
+        end)
+    end, onerror)
     return 1
 end
 
@@ -97,24 +103,25 @@ end
 -- private
 
 local _skipmsgtypes = {
-    subscribe    = true,
-    unsubscribe  = true,
-    psubscribe   = true,
+    subscribe = true,
+    unsubscribe = true,
+    psubscribe = true,
     punsubscribe = true,
 }
 
 _loop = function(self, onmessage, onerror)
     local cmdchannel = self._cmdchannel
-    local subredis   = self._subredis
-    local id         = self._id
-    local running    = true
-    local sema       = self._sema
+    local subredis = self._subredis
+    local priRedis = self._redis:Copy()
+    local id = self._id
+    local running = true
+    local sema = self._sema
     local DEBUG = cc.DEBUG > cc.DEBUG_WARN
-
+    
     local msgtype, channel, msg, pchannel
-
+    
     cc.printinfo("[RedisSub:%s] <loop ready>", id)
-
+    
     while running do
         -- cc.printinfo("[RedisSub:%s] <wait read reply>", id)
         local res, err = subredis:readReply()
@@ -125,41 +132,41 @@ _loop = function(self, onmessage, onerror)
                 break
             end
         end
-
+        
         while res do -- process message
             -- cc.printinfo("[RedisSub:%s] <read reply> %s", id, table_concat(res, " "))
-
+            
             msgtype = res[1]
             channel = res[2]
-            msg     = res[3]
-
+            msg = res[3]
+            
             if _skipmsgtypes[msgtype] then
                 -- cc.printinfo("[RedisSub:%s] <skip> %s", id, table_concat(res, " "))
                 break -- read reply
             end
-
+            
             if channel ~= cmdchannel then
                 -- general message
                 if msgtype == "message" then
                     -- msgtype, channel, msg
-                    onmessage(channel, msg, nil, id)
+                    onmessage(priRedis, channel, msg, nil, id)
                 elseif msgtype == "pmessage" then
                     pchannel = res[2]
-                    channel  = res[3]
-                    msg      = res[4]
-                    onmessage(channel, msg, pchannel, id)
+                    channel = res[3]
+                    msg = res[4]
+                    onmessage(priRedis, channel, msg, pchannel, id)
                 else
                     cc.printwarn("[RedisSub:%s] invalid message, %s", id, table_concat(res, " "))
                 end
                 break -- read reply
             end
-
+            
             if string_byte(msg) ~= 33 --[[ ! ]] then
                 -- forward control message
-                onmessage(channel, msg, nil, id)
+                onmessage(priRedis, channel, msg, nil, id)
                 break -- read reply
             end
-
+            
             -- control message
             local parts = string_split(msg, " ")
             local cmd = parts[1]
@@ -182,15 +189,15 @@ _loop = function(self, onmessage, onerror)
                 cc.printwarn("[RedisSub:%s] unknown control message, %s", id, msg)
                 break -- read reply
             end
-
+            
         end -- read reply
     end -- loop
-
+    
     cc.printinfo("[RedisSub:%s] <loop ended>", id)
-
+    
     subredis:unsubscribe()
     subredis:setKeepAlive()
-
+    priRedis:setKeepAlive()
     sema:post(1)
 end
 
@@ -202,7 +209,7 @@ _cleanup = function(self)
     self._id = nil
 end
 
-_onmessage = function(channel, msg, pchannel, id)
+_onmessage = function(_priRedis, channel, msg, pchannel, id)
     if pchannel then
         cc.printinfo("[RedisSub:%s] <%s> <%s> %s", id, pchannel, channel, msg)
     else

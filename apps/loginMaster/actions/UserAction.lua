@@ -28,13 +28,13 @@ local Session = cc.import("#session")
 local AccountManager = cc.import("#AccountManager")
 local ServiceManager = cc.import("#ServiceManager")
 
-local _opensession = function(instance, args)
+local _opensession = function(redis, args)
     local sid = args.sid
     if not sid then
         cc.throw("not set argsument: \"sid\"")
     end
     
-    local session = Session:new(instance:getRedis())
+    local session = Session:new(redis)
     if not session:start(sid) then
         cc.throw("session is expired, or invalid session id")
     end
@@ -43,7 +43,7 @@ local _opensession = function(instance, args)
 end
 
 --登录
-function UserAction:signinAction(args)
+function UserAction:signinAction(args, redis)
     local username = args.username
     local password = args.password
     local platform = args.platform or 0
@@ -54,17 +54,16 @@ function UserAction:signinAction(args)
         cc.throw("not set argsument: \"password\"")
     end
     local user = AccountManager.Get(username, platform)
-    local db = self:getInstance():getMysql()
     if not user then
+        local db = self:getInstance():getMysql()
         user = AccountManager.Load(db, username, platform)
     end
     
-    AccountManager.UpdateUser(db, user)
     if not user then
         cc.throw("can not find user")
     end
     
-    local session = Session:new(self:getInstance():getRedis())
+    local session = Session:new(redis)
     session:start()
     session:set("username", user.username)
     session:set("platform", user.platform)
@@ -75,7 +74,7 @@ function UserAction:signinAction(args)
 end
 
 --注册
-function UserAction:signupAction(args)
+function UserAction:signupAction(args, redis)
     local username = args.username
     local password = args.password
     local platform = args.platform or 0
@@ -91,12 +90,12 @@ function UserAction:signupAction(args)
         username = username,
         password = password,
         platform = platform,
-        logintime = ngx.now(),
+        createtime = ngx.now(),
     })
     if not user then
         cc.throw("create account failded")
     end
-    local session = Session:new(self:getInstance():getRedis())
+    local session = Session:new(redis)
     session:start()
     session:set("username", user.username)
     session:set("platform", user.platform)
@@ -105,7 +104,7 @@ function UserAction:signupAction(args)
     return {sid = session:getSid(), server = ServiceManager.Get("gameServer")}
 end
 
-function UserAction:verifyAction(args)
+function UserAction:verifyAction(args, redis)
     local sid = args.sid
     local authorization = args.authorization
     if not sid then
@@ -116,15 +115,11 @@ function UserAction:verifyAction(args)
         cc.throw("not Authority")
     end
     
-    local session = _opensession(self:getInstance(), sid)
+    local session = _opensession(redis, args)
     local username = session:get("username")
     local platform = session:get("platform")
     local user = AccountManager.Get(username, platform)
     return user
 end
-
--- function UserAction:serviceAction(args)
---     return ServiceManager.Get()
--- end
 
 return UserAction

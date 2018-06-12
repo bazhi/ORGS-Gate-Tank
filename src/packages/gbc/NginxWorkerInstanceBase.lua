@@ -39,7 +39,10 @@ function NginxWorkerInstanceBase:runEventLoop()
 end
 
 function NginxWorkerInstanceBase:runTimer(delay, timer, param)
-    ngx.timer.at(delay, function(_, config)
+    ngx.timer.at(delay, function(premature, config)
+        if premature then
+            return
+        end
         local instance = timer:new(config)
         instance:run()
     end, param)

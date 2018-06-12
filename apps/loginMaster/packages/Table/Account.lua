@@ -4,7 +4,7 @@ local Struct = {
     platform = 0,
     username = "",
     password = "",
-    logintime = 0,
+    createtime = 0,
 }
 
 local Define = {
@@ -12,7 +12,7 @@ local Define = {
     platform = "int",
     username = "varchar(255)",
     password = "varchar(255)",
-    logintime = "bigint",
+    createtime = "bigint",
 }
 
 local Indexes = {

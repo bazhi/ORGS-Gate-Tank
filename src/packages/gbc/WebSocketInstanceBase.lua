@@ -48,6 +48,7 @@ local _EVENT = table.readonly({
     CONNECTED = "CONNECTED",
     DISCONNECTED = "DISCONNECTED",
     CONTROL_MESSAGE = "CONTROL_MESSAGE",
+    USER_MESSAGE = "USER_MESSAGE",
 })
 
 WebSocketInstanceBase.EVENT = _EVENT
@@ -66,7 +67,7 @@ function WebSocketInstanceBase:ctor(config)
 end
 
 function WebSocketInstanceBase:run()
-    local ok, err = xpcall(function()
+    local _ok, _err = xpcall(function()
         self:runEventLoop()
         self:onClose()
         ngx.exit(ngx.OK)
@@ -85,7 +86,7 @@ end
 
 function WebSocketInstanceBase:authConnect()
     if ngx.headers_sent then
-        return nil, "response header already sent"
+        return nil, nil, "response header already sent"
     end
     
     req_read_body()
@@ -95,18 +96,18 @@ function WebSocketInstanceBase:authConnect()
         protocols = {protocols}
     end
     if #protocols == 0 then
-        return nil, "not set header: Sec-WebSocket-Protocol"
+        return nil, nil, "not set header: Sec-WebSocket-Protocol"
     end
     
     local pattern = Constants.WEBSOCKET_SUBPROTOCOL_PATTERN
     for _, protocol in ipairs(protocols) do
         local token = string.match(protocol, pattern)
         if token then
-            return token
+            return token, nil
         end
     end
     
-    return nil, "not found token in header: Sec-WebSocket-Protocol"
+    return nil, nil, "not found token in header: Sec-WebSocket-Protocol"
 end
 
 --回复消息
@@ -118,7 +119,7 @@ end
 
 function WebSocketInstanceBase:runEventLoop()
     -- auth client
-    local token, err = self:authConnect()
+    local token, connectId, err = self:authConnect()
     if not token then
         cc.printinfo(err)
         return false
@@ -127,7 +128,12 @@ function WebSocketInstanceBase:runEventLoop()
     
     -- generate connect id and channel
     local redis = self:getRedis()
-    local connectId = tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
+    --当没有取得链接ID时，使用自动生成的ID
+    if not connectId then
+        connectId = "CON_"..tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
+    else
+        connectId = "PID_"..connectId
+    end
     self._connectId = connectId
     
     local connectChannel = Constants.CONNECT_CHANNEL_PREFIX .. tostring(connectId)
@@ -150,18 +156,19 @@ function WebSocketInstanceBase:runEventLoop()
     local closeReason = ""
     
     -- create subscribe loop
-    local sub, err = self:getRedis():makeSubscribeLoop(connectId)
+    local sub, _err = self:getRedis():makeSubscribeLoop(connectId)
     if not sub then
         cc.throw(err)
     end
     
     local event = self._event
-    sub:start(function(channel, msg)
+    sub:start(function(subRedis, channel, msg)
         if channel == controlChannel then
             event:trigger({
                 name = _EVENT.CONTROL_MESSAGE,
                 channel = channel,
-                message = msg
+                message = msg,
+                redis = subRedis,
             })
             if msg == Constants.CLOSE_CONNECT then
                 closeReason = Constants.CLOSE_CONNECT
@@ -175,7 +182,13 @@ function WebSocketInstanceBase:runEventLoop()
     
     -- connected
     cc.printinfo("[websocket:%s] connected", connectId)
-    event:trigger(_EVENT.CONNECTED)
+    
+    local ok, err = pcall(function()
+        event:trigger(_EVENT.CONNECTED)
+    end)
+    if not ok then
+        cc.printerror(err)
+    end
     
     -- event loop
     local frames = {}
@@ -234,7 +247,7 @@ function WebSocketInstanceBase:runEventLoop()
             elseif ftype == "pong" then
                 -- client ponged
             elseif ftype == "text" or ftype == "binary" then
-                local ok, err = _processMessage(self, frame, ftype)
+                local _, err = _processMessage(self, frame, ftype)
                 if err then
                     cc.printerror("[websocket:%s] process %s message failed, %s", connectId, ftype, err)
                 end
@@ -249,7 +262,12 @@ function WebSocketInstanceBase:runEventLoop()
     self._socket = nil
     
     -- disconnected
-    event:trigger({name = _EVENT.DISCONNECTED, reason = reason})
+    local ok, err = pcall(function()
+        event:trigger({name = _EVENT.DISCONNECTED, reason = closeReason})
+    end)
+    if not ok then
+        cc.printerror(err)
+    end
     cc.printinfo("[websocket:%s] disconnected", connectId)
 end
 
@@ -294,7 +312,7 @@ _processMessage = function(self, rawMessage, messageType)
     local msgid = message.__id
     local actionName = message.action
     local err = nil
-    local ok, result = xpcall(function()
+    local _ok, result = xpcall(function()
         return self:runAction(actionName, message)
     end, function(_err)
         err = _err
@@ -330,7 +348,7 @@ _processMessage = function(self, rawMessage, messageType)
     
     result.__id = msgid
     local message = json_encode(result)
-    local bytes, err = self._socket:send_text(message)
+    local _bytes, err = self._socket:send_text(message)
     if err then
         return nil, string.format("send message to client failed, %s", err)
     end

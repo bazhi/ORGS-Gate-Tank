@@ -23,45 +23,69 @@ THE SOFTWARE.
 ]]
 
 local gbc = cc.import("#gbc")
+local http = cc.import("#http")
 local WebSocketInstance = cc.class("WebSocketInstance", gbc.WebSocketInstanceBase)
-local ServiceManager = cc.import("#ServiceManager")
+local Constants = gbc.Constants
+local json = cc.import("#json")
+--local json_encode = json.encode
+local json_decode = json.decode
 
 function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
     self._event:bind(WebSocketInstance.EVENT.CONNECTED, cc.handler(self, self.onConnected))
     self._event:bind(WebSocketInstance.EVENT.DISCONNECTED, cc.handler(self, self.onDisconnected))
+    self._event:bind(WebSocketInstance.EVENT.CONTROL_MESSAGE, cc.handler(self, self.onControlMessage))
 end
 
 function WebSocketInstance:authConnect()
-    local authorization = WebSocketInstance.super.authConnect(self)
-    if self:hasAuthority(authorization) then
-        return authorization, nil
-    else
-        return nil, nil, "authorization is error"
+    local master = self.config.server.master
+    local token, pid, err = WebSocketInstance.super.authConnect(self)
+    if not token then
+        return nil, pid, err
     end
+    --cc.printf("authConnect")
+    local ret = http.Post(master.host, master.port, master.name.."/?action=user.verify", {
+        sid = token,
+        authorization = self:GetAuthority(),
+    })
+    if ret and ret.id then
+        return token, ret.id
+    end
+    
+    return nil, nil, "authConnect failed"
 end
 
 function WebSocketInstance:onConnected()
-    cc.printf("ON CONNECTED:%s|%s", ngx.var.remote_addr, self:getConnectId())
+    cc.printf("onConnected:"..self:getConnectId())
+end
+
+function WebSocketInstance:onControlMessage(event)
+    local msg = event.message
+    local redis = event.redis
+    local _eventname = event.name
+    local _channel = event.channel
+    
+    if msg then
+        if msg ~= Constants.CLOSE_CONNECT then
+            local ok, err = pcall(function()
+                msg = json_decode(msg)
+                if msg.action then
+                    self:runAction(msg.action, msg.args, redis)
+                end
+            end)
+            if not ok then
+                cc.printerror(err)
+            end
+        end
+    end
+    
 end
 
 function WebSocketInstance:onDisconnected(event)
-    cc.printf("ON Disconnected:%s|%s", ngx.var.remote_addr, self:getConnectId())
-    if self._ServiceName then
-        ServiceManager.Remove(self._ServiceName, ngx.var.remote_addr)
-    end
-    
+    cc.printf("onDisconnected:"..self:getConnectId())
     if event.reason ~= gbc.Constants.CLOSE_CONNECT then
         
     end
-end
-
-function WebSocketInstance:setServiceName(name)
-    self._ServiceName = name
-end
-
-function WebSocketInstance:getServiceName()
-    return self._ServiceName
 end
 
 function WebSocketInstance:heartbeat()

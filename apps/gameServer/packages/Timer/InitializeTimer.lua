@@ -3,6 +3,7 @@ local InitializeTimer = cc.class("InitializeTimer", gbc.NgxTimerBase)
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
 local Table = cc.import("#Table")
+local Role = Table.Role
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)
@@ -14,7 +15,10 @@ function InitializeTimer:runEventLoop()
         cc.printerror("create db connect error")
         return InitializeTimer.super.runEventLoop(self)
     end
-    --cc.dump(self:getNginxConfig(), "config", 10)
+    
+    local ormRole = OrmMysql:new(Role.Name, Role.Define, Role.Struct, Role.Indexes)
+    ormRole:Create(db)
+    
     return InitializeTimer.super.runEventLoop(self)
 end
 

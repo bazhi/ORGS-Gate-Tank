@@ -45,10 +45,10 @@ function AccountManager.Load(db, username, platform)
     return users[1]
 end
 
-function AccountManager.UpdateUser(db, user)
-    user.logintime = ngx.now()
-    OrmAccount:update(db, {logintime = user.logintime}, {id = user.id})
-end
+-- function AccountManager.UpdateUser(db, user)
+--     user.logintime = ngx.now()
+--     OrmAccount:update(db, {logintime = user.logintime}, {id = user.id})
+-- end
 
 -- function AccountManager.Save(db, user)
 --     OrmAccount:update(db, {id = user.id})

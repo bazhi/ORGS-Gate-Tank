@@ -91,7 +91,12 @@ function InstanceBase:hasAuthority(authorization)
     return config.authorization == authorization
 end
 
-function InstanceBase:runAction(actionName, args)
+function InstanceBase:GetAuthority()
+    local config = self.config.server
+    return config.authorization
+end
+
+function InstanceBase:runAction(actionName, args, redis)
     local appConfig = self.config.app
     
     local moduleName, methodName, folder = _normalize(actionName)
@@ -120,7 +125,7 @@ function InstanceBase:runAction(actionName, args)
         args = self._requestParameters or {}
     end
     
-    return method(action, args)
+    return method(action, args, redis or self:getRedis())
 end
 
 function InstanceBase:onClose()
@@ -146,13 +151,13 @@ function InstanceBase:getRedis()
             cc.throw("InstanceBase:getRedis() - %s", err)
         end
         
-        redis:select(self.config.app.appIndex)
+        redis:Select(self.config.app.appIndex)
         self._redis = redis
     end
     return redis
 end
 
-function InstanceBase:getJobs(opts)
+function InstanceBase:getJobs(_opts)
     local jobs = self._jobs
     if not jobs then
         local bean = Beanstalkd:new()
@@ -189,7 +194,7 @@ _normalize = function(actionName)
     
     local folder = ""
     if string_byte(actionName) == 47 --[[ / ]] then
-        local pos = 1
+        local pos
         local offset = 2
         while true do
             pos = string_find(actionName, "/", offset)

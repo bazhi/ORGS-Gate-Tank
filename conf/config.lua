@@ -50,7 +50,7 @@ local config = {
         master = {
             host = "127.0.0.1",
             port = 8088,
-            path = "loginMaster",
+            name = "loginMaster",
         },
         authorization = "HqQHj9WGQMP3XaQzOJnD8DM17wBX67iD",
         nginx = {
