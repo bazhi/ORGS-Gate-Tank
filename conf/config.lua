@@ -47,13 +47,17 @@ local config = {
     
     -- server config
     server = {
+        master = {
+            host = "127.0.0.1",
+            port = 8088,
+            path = "loginMaster",
+        },
+        authorization = "HqQHj9WGQMP3XaQzOJnD8DM17wBX67iD",
         nginx = {
             {
                 numOfWorkers = 1,
                 port = 8088,
                 apps = {
-                    --welcome = "_GBC_CORE_ROOT_/apps/welcome",
-                    --tests   = "_GBC_CORE_ROOT_/apps/tests",
                     loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
                 },
             },
@@ -61,7 +65,7 @@ local config = {
                 numOfWorkers = 1,
                 port = 8089,
                 apps = {
-                    cbserver = "_GBC_CORE_ROOT_/apps/cbserver",
+                    gameServer = "_GBC_CORE_ROOT_/apps/gameServer",
                 },
             },
         },

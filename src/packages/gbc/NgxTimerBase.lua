@@ -99,4 +99,20 @@ function NgxTimerBase:onClose()
     end
 end
 
+function NgxTimerBase:getNginxConfig()
+    local config = self.config
+    local appName = config.app.appName
+    local ngxServers = config.server.nginx
+    for k, v in ipairs(ngxServers) do
+        if v.apps[appName] then
+            return v, appName
+        end
+    end
+    return nil, nil
+end
+
+function NgxTimerBase:getMasterConfig()
+    return self.config.server.master
+end
+
 return NgxTimerBase

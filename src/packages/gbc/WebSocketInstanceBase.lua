@@ -1,17 +1,17 @@
 --[[
-
+ 
 Copyright (c) 2015 gameboxcloud.com
-
+ 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
+ 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
-
+ 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,23 +19,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
+ 
 ]]
 
-local ngx              = ngx
-local ngx_log          = ngx.log
-local ngx_md5          = ngx.md5
+local ngx = ngx
+local ngx_log = ngx.log
+local ngx_md5 = ngx.md5
 local ngx_thread_spawn = ngx.thread.spawn
-local req_get_headers  = ngx.req.get_headers
-local req_read_body    = ngx.req.read_body
-local string_format    = string.format
-local string_sub       = string.sub
-local table_concat     = table.concat
-local table_insert     = table.insert
-local tostring         = tostring
-local type             = type
+local req_get_headers = ngx.req.get_headers
+local req_read_body = ngx.req.read_body
+local string_format = string.format
+local string_sub = string.sub
+local table_concat = table.concat
+local table_insert = table.insert
+local tostring = tostring
+local type = type
 
-local json      = cc.import("#json")
+local json = cc.import("#json")
 local Constants = cc.import(".Constants")
 
 local json_encode = json.encode
@@ -45,18 +45,18 @@ local InstanceBase = cc.import(".InstanceBase")
 local WebSocketInstanceBase = cc.class("WebSocketInstanceBase", InstanceBase)
 
 local _EVENT = table.readonly({
-    CONNECTED       = "CONNECTED",
-    DISCONNECTED    = "DISCONNECTED",
+    CONNECTED = "CONNECTED",
+    DISCONNECTED = "DISCONNECTED",
     CONTROL_MESSAGE = "CONTROL_MESSAGE",
 })
 
 WebSocketInstanceBase.EVENT = _EVENT
 
-local _processMessage, _parseMessage, _authConnect
+local _processMessage, _parseMessage
 
 function WebSocketInstanceBase:ctor(config)
     WebSocketInstanceBase.super.ctor(self, config, Constants.WEBSOCKET_REQUEST_TYPE)
-
+    
     local appConfig = self.config.app
     if config.app.websocketMessageFormat then
         appConfig.messageFormat = config.app.websocketMessageFormat
@@ -68,6 +68,7 @@ end
 function WebSocketInstanceBase:run()
     local ok, err = xpcall(function()
         self:runEventLoop()
+        self:onClose()
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)
@@ -76,54 +77,89 @@ function WebSocketInstanceBase:run()
         else
             ngx_log(ngx.ERR, err)
         end
+        self:onClose()
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
         ngx.exit(ngx.ERROR)
     end)
 end
 
+function WebSocketInstanceBase:authConnect()
+    if ngx.headers_sent then
+        return nil, "response header already sent"
+    end
+    
+    req_read_body()
+    local headers = ngx.req.get_headers()
+    local protocols = headers["sec-websocket-protocol"]
+    if type(protocols) ~= "table" then
+        protocols = {protocols}
+    end
+    if #protocols == 0 then
+        return nil, "not set header: Sec-WebSocket-Protocol"
+    end
+    
+    local pattern = Constants.WEBSOCKET_SUBPROTOCOL_PATTERN
+    for _, protocol in ipairs(protocols) do
+        local token = string.match(protocol, pattern)
+        if token then
+            return token
+        end
+    end
+    
+    return nil, "not found token in header: Sec-WebSocket-Protocol"
+end
+
+--回复消息
+function WebSocketInstanceBase:sendMessage(msg)
+    if self._socket then
+        self._socket:send_binary(tostring(msg))
+    end
+end
+
 function WebSocketInstanceBase:runEventLoop()
     -- auth client
-    local token, err = _authConnect()
+    local token, err = self:authConnect()
     if not token then
-        cc.throw(err)
+        cc.printinfo(err)
+        return false
     end
     self._connectToken = token
-
+    
     -- generate connect id and channel
     local redis = self:getRedis()
     local connectId = tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
     self._connectId = connectId
-
+    
     local connectChannel = Constants.CONNECT_CHANNEL_PREFIX .. tostring(connectId)
     self._connectChannel = connectChannel
     local controlChannel = Constants.CONTROL_CHANNEL_PREFIX .. tostring(connectId)
     self._controlChannel = controlChannel
-
+    
     -- create websocket server
     local server = require("resty.websocket.server")
     local socket, err = server:new({
-        timeout         = self.config.app.websocketsTimeout,
+        timeout = self.config.app.websocketsTimeout,
         max_payload_len = self.config.app.websocketsMaxPayloadLen,
     })
     if err then
         cc.throw("[websocket:%s] create websocket server failed, %s", connectId, err)
     end
     self._socket = socket
-
+    
     -- tracking socket close reason
     local closeReason = ""
-
+    
     -- create subscribe loop
     local sub, err = self:getRedis():makeSubscribeLoop(connectId)
     if not sub then
         cc.throw(err)
     end
-
+    
     local event = self._event
     sub:start(function(channel, msg)
         if channel == controlChannel then
             event:trigger({
-                name    = _EVENT.CONTROL_MESSAGE,
+                name = _EVENT.CONTROL_MESSAGE,
                 channel = channel,
                 message = msg
             })
@@ -136,34 +172,34 @@ function WebSocketInstanceBase:runEventLoop()
         end
     end, controlChannel, connectChannel, Constants.BROADCAST_ALL_CHANNEL)
     self._subloop = sub
-
+    
     -- connected
     cc.printinfo("[websocket:%s] connected", connectId)
     event:trigger(_EVENT.CONNECTED)
-
+    
     -- event loop
     local frames = {}
     local running = true
     while running do
         self:heartbeat()
-
+        
         while true do
             --[[
             Receives a WebSocket frame from the wire.
-
+ 
             In case of an error, returns two nil values and a string describing the error.
-
+ 
             The second return value is always the frame type, which could be
             one of continuation, text, binary, close, ping, pong, or nil (for unknown types).
-
+ 
             For close frames, returns 3 values: the extra status message
             (which could be an empty string), the string "close", and a Lua number for
             the status code (if any). For possible closing status codes, see
-
+ 
             http://tools.ietf.org/html/rfc6455#section-7.4.1
-
+ 
             For other types of frames, just returns the payload and the type.
-
+ 
             For fragmented frames, the err return value is the Lua string "again".
             ]]
             local frame, ftype, err = socket:recv_frame()
@@ -172,24 +208,24 @@ function WebSocketInstanceBase:runEventLoop()
                     frames[#frames + 1] = frame
                     break -- recv next message
                 end
-
+                
                 if string_sub(err, -7) == "timeout" then
                     break -- recv next message
                 end
-
+                
                 cc.printwarn("[websocket:%s] failed to receive frame, type \"%s\", %s", connectId, ftype, err)
                 closeReason = ftype
                 running = false -- stop loop
                 break
             end
-
+            
             if #frames > 0 then
                 -- merging fragmented frames
                 frames[#frames + 1] = frame
                 frame = table_concat(frames)
                 frames = {}
             end
-
+            
             if ftype == "close" then
                 running = false -- stop loop
                 break
@@ -207,11 +243,11 @@ function WebSocketInstanceBase:runEventLoop()
             end
         end -- rect next message
     end -- loop
-
+    
     sub:stop()
     self._subloop = nil
     self._socket = nil
-
+    
     -- disconnected
     event:trigger({name = _EVENT.DISCONNECTED, reason = reason})
     cc.printinfo("[websocket:%s] disconnected", connectId)
@@ -269,36 +305,36 @@ _processMessage = function(self, rawMessage, messageType)
     if err then
         return nil, err
     end
-
+    
     local rtype = type(result)
     if rtype == "nil" then
         return
     end
-
+    
     if rtype ~= "table" then
         if msgid then
-           cc.printwarn("action \"%s\" return invalid result for message [__id:\"%s\"]", actionName, msgid)
+            cc.printwarn("action \"%s\" return invalid result for message [__id:\"%s\"]", actionName, msgid)
         else
-           cc.printwarn("action \"%s\" return invalid result", actionName)
+            cc.printwarn("action \"%s\" return invalid result", actionName)
         end
     end
-
+    
     if not msgid then
-       cc.printwarn("action \"%s\" return unused result", actionName)
+        cc.printwarn("action \"%s\" return unused result", actionName)
         return true
     end
-
+    
     if not self._socket then
         return nil, string.format("socket removed, action \"%s\"", actionName)
     end
-
+    
     result.__id = msgid
     local message = json_encode(result)
     local bytes, err = self._socket:send_text(message)
     if err then
         return nil, string.format("send message to client failed, %s", err)
     end
-
+    
     return true
 end
 
@@ -307,7 +343,7 @@ _parseMessage = function(rawMessage, messageType, messageFormat)
     if messageType ~= Constants.WEBSOCKET_TEXT_MESSAGE_TYPE then
         cc.throw("not supported message type \"%s\"", messageType)
     end
-
+    
     -- TODO: support message format plugin
     if messageFormat == "json" then
         local message = json_decode(rawMessage)
@@ -319,32 +355,6 @@ _parseMessage = function(rawMessage, messageType, messageFormat)
     else
         cc.throw("not support message format \"%s\"", tostring(messageFormat))
     end
-end
-
-_authConnect = function()
-    if ngx.headers_sent then
-        return nil, "response header already sent"
-    end
-
-    req_read_body()
-    local headers = ngx.req.get_headers()
-    local protocols = headers["sec-websocket-protocol"]
-    if type(protocols) ~= "table" then
-        protocols = {protocols}
-    end
-    if #protocols == 0 then
-        return nil, "not set header: Sec-WebSocket-Protocol"
-    end
-
-    local pattern = Constants.WEBSOCKET_SUBPROTOCOL_PATTERN
-    for _, protocol in ipairs(protocols) do
-        local token = string.match(protocol, pattern)
-        if token then
-            return token
-        end
-    end
-
-    return nil, "not found token in header: Sec-WebSocket-Protocol"
 end
 
 return WebSocketInstanceBase

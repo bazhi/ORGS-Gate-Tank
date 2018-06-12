@@ -22,42 +22,27 @@ THE SOFTWARE.
  
 ]]
 
-local Session = cc.import("#session")
 local gbc = cc.import("#gbc")
 local UserAction = cc.class("UserAction", gbc.ActionBase)
+local Session = cc.import("#session")
 
-local index = 1
-
-function UserAction:signinAction(args)
-    local username = args.username
-    if not username then
-        cc.throw("not set argsument: \"username\"")
+local _opensession = function(instance, args)
+    local sid = args.sid
+    if not sid then
+        cc.throw("not set argsument: \"sid\"")
     end
     
-    -- start session
-    local session = Session:new(self:getInstance():getRedis())
-    session:start()
-    session:set("username", username)
-    session:set("count", 0)
-    session:save()
+    local session = Session:new(instance:getRedis())
+    if not session:start(sid) then
+        cc.throw("session is expired, or invalid session id")
+    end
     
-    -- return result
-    return {sid = session:getSid(), count = 0}
+    return session
 end
 
-function UserAction:signoutAction(args)
-    -- remove user from online list
-    local session = _opensession(self:getInstance(), args)
-    local online = Online:new(self:getInstance())
-    online:remove(session:get("username"))
-    -- delete session
-    session:destroy()
-    return {ok = "ok"}
-end
-
-function UserAction:testAction()
-    index = index + 1
-    return {ngx.worker.id(), index}
+--登录
+function UserAction:signinAction(args)
+    
 end
 
 return UserAction

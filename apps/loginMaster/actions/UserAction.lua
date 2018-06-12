@@ -22,43 +22,109 @@ THE SOFTWARE.
  
 ]]
 
-local Session = cc.import("#session")
 local gbc = cc.import("#gbc")
 local UserAction = cc.class("UserAction", gbc.ActionBase)
+local Session = cc.import("#session")
+local AccountManager = cc.import("#AccountManager")
+local ServiceManager = cc.import("#ServiceManager")
 
-local account = cc.import("#account")
+local _opensession = function(instance, args)
+    local sid = args.sid
+    if not sid then
+        cc.throw("not set argsument: \"sid\"")
+    end
+    
+    local session = Session:new(instance:getRedis())
+    if not session:start(sid) then
+        cc.throw("session is expired, or invalid session id")
+    end
+    
+    return session
+end
 
+--登录
 function UserAction:signinAction(args)
     local username = args.username
+    local password = args.password
+    local platform = args.platform or 0
     if not username then
         cc.throw("not set argsument: \"username\"")
     end
+    if not password then
+        cc.throw("not set argsument: \"password\"")
+    end
+    local user = AccountManager.Get(username, platform)
+    local db = self:getInstance():getMysql()
+    if not user then
+        user = AccountManager.Load(db, username, platform)
+    end
     
-    -- start session
+    AccountManager.UpdateUser(db, user)
+    if not user then
+        cc.throw("can not find user")
+    end
+    
     local session = Session:new(self:getInstance():getRedis())
     session:start()
-    session:set("username", username)
-    session:set("count", 0)
+    session:set("username", user.username)
+    session:set("platform", user.platform)
     session:save()
     
     -- return result
-    return {sid = session:getSid(), count = 0}
+    return {sid = session:getSid(), server = ServiceManager.Get("gameServer")}
 end
 
-function UserAction:signoutAction(args)
-    -- remove user from online list
-    local session = _opensession(self:getInstance(), args)
-    local online = Online:new(self:getInstance())
-    online:remove(session:get("username"))
-    -- delete session
-    session:destroy()
-    return {ok = "ok"}
+--注册
+function UserAction:signupAction(args)
+    local username = args.username
+    local password = args.password
+    local platform = args.platform or 0
+    if not username then
+        cc.throw("not set argsument: \"username\"")
+    end
+    if not password then
+        cc.throw("not set argsument: \"password\"")
+    end
+    
+    local db = self:getInstance():getMysql()
+    local user = AccountManager.Register(db, {
+        username = username,
+        password = password,
+        platform = platform,
+        logintime = ngx.now(),
+    })
+    if not user then
+        cc.throw("create account failded")
+    end
+    local session = Session:new(self:getInstance():getRedis())
+    session:start()
+    session:set("username", user.username)
+    session:set("platform", user.platform)
+    session:save()
+    
+    return {sid = session:getSid(), server = ServiceManager.Get("gameServer")}
 end
 
-function UserAction:testAction()
-    local mysql = self:getInstance():getMysql()
-    account.addLoginTimes()
-    return {ngx.worker.id(), account.getLoginTimes()}
+function UserAction:verifyAction(args)
+    local sid = args.sid
+    local authorization = args.authorization
+    if not sid then
+        cc.throw("not set argsument: \"sid\"")
+    end
+    
+    if not self:hasAuthority(authorization) then
+        cc.throw("not Authority")
+    end
+    
+    local session = _opensession(self:getInstance(), sid)
+    local username = session:get("username")
+    local platform = session:get("platform")
+    local user = AccountManager.Get(username, platform)
+    return user
 end
+
+-- function UserAction:serviceAction(args)
+--     return ServiceManager.Get()
+-- end
 
 return UserAction

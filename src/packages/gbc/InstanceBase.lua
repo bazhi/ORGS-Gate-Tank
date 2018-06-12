@@ -86,6 +86,11 @@ function InstanceBase:getRequestType()
     return self._requestType
 end
 
+function InstanceBase:hasAuthority(authorization)
+    local config = self.config.server
+    return config.authorization == authorization
+end
+
 function InstanceBase:runAction(actionName, args)
     local appConfig = self.config.app
     
@@ -116,6 +121,13 @@ function InstanceBase:runAction(actionName, args)
     end
     
     return method(action, args)
+end
+
+function InstanceBase:onClose()
+    if self._redis then
+        self._redis:setKeepAlive()
+        self._redis = nil
+    end
 end
 
 function InstanceBase:getRedis()
