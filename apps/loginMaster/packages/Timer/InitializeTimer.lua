@@ -4,6 +4,7 @@ local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
 local Table = cc.import("#Table")
 local Account = Table.Account
+local Constants = gbc.Constants
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)
@@ -18,6 +19,8 @@ function InitializeTimer:runEventLoop()
     local ormAccount = OrmMysql:new(Account.Name, Account.Define, Account.Struct, Account.Indexes)
     ormAccount:Create(db)
     
+    local redis = self:getRedis()
+    redis:set(Constants.NEXT_CONNECT_ID_KEY, 0)
     return InitializeTimer.super.runEventLoop(self)
 end
 

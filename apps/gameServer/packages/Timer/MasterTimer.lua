@@ -44,6 +44,7 @@ function MasterTimer:addToServer(wb)
         wb:send_text(json.encode({
             action = "service.add",
             port = serverConfig.port,
+            host = serverConfig.host,
             name = appName,
         }))
     end

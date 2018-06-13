@@ -59,8 +59,7 @@ function NgxTimerBase:getRedis()
         if not ok then
             cc.throw("InstanceBase:getRedis() - %s", err)
         end
-        
-        redis:Select(0)
+        redis:Select(self.config.app.appIndex)
         self._redis = redis
     end
     return redis
