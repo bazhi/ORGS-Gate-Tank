@@ -63,7 +63,7 @@ local config = {
                 },
             },
             {
-                numOfWorkers = 1,
+                numOfWorkers = 2,
                 port = 8089,
                 host = "127.0.0.1",
                 apps = {

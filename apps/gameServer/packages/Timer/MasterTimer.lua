@@ -11,7 +11,8 @@ end
 
 function MasterTimer:runEventLoop()
     local wb, err
-    while true do
+    local running = true
+    while running do
         if not wb then
             cc.printf("runEventLoop MasterTimer")
             wb, err = self:ConnectMaster()
@@ -24,18 +25,25 @@ function MasterTimer:runEventLoop()
         if wb then
             wb:send_ping()
             local _data, typ, err = wb:recv_frame()
-            if typ == "close" or err then
+            if typ == "close" then
+                
+            end
+            if err then
                 cc.printerror(err)
                 wb:set_keepalive()
                 wb = nil
+                
             elseif typ == "pong" then
-                --cc.printf("server pong")
+                
             end
         end
-        
         ngx.sleep(10)
     end
-    --return MasterTimer.super.runEventLoop(self)
+    if wb then
+        wb:set_keepalive()
+    end
+    MasterTimer.super.runEventLoop(self)
+    return false
 end
 
 function MasterTimer:addToServer(wb)

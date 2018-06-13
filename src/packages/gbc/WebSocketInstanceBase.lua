@@ -68,9 +68,13 @@ function WebSocketInstanceBase:ctor(config)
 end
 
 function WebSocketInstanceBase:run()
-    local _ok, _err = xpcall(function()
+    local _ok, errApp
+    _ok, errApp = xpcall(function()
         self:runEventLoop()
         self:onClose()
+        if errApp then
+            cc.printerror(errApp)
+        end
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)

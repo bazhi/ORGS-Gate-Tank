@@ -26,19 +26,27 @@ local Redis = cc.import("#redis")
 local Mysql = cc.import("#mysql")
 
 local NgxTimerBase = cc.class("NgxTimerBase")
+local sdSIG = ngx.shared.sdSIG
 
-function NgxTimerBase:ctor(config)
+function NgxTimerBase:ctor(config, bInit)
     self.config = config
+    self.bInit = bInit
 end
 
 function NgxTimerBase:run()
-    local ret = self:runEventLoop()
-    self:onClose()
-    return ret
+    local bClose = self:runEventLoop()
+    if bClose then
+        self:onClose()
+    end
+    return bClose
 end
 
 function NgxTimerBase:runEventLoop()
-    return 1
+    if self.bInit then
+        self:initOver()
+        self.bInit = false
+    end
+    return true
 end
 
 function NgxTimerBase:getRedis()
@@ -92,6 +100,12 @@ function NgxTimerBase:onClose()
     self:closeRedis()
 end
 
+function NgxTimerBase:initOver()
+    local redis = self:getRedis()
+    redis:set("_NEXT_CONNECT_ID", 0)
+    sdSIG:set("_SIGINIT", true)
+end
+
 function NgxTimerBase:closeMysql()
     if self._mysql then
         self._mysql:set_keepalive()
@@ -110,7 +124,7 @@ function NgxTimerBase:getNginxConfig()
     local config = self.config
     local appName = config.app.appName
     local ngxServers = config.server.nginx
-    for k, v in ipairs(ngxServers) do
+    for _k, v in ipairs(ngxServers) do
         if v.apps[appName] then
             return v, appName
         end

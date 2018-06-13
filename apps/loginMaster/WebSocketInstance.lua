@@ -25,6 +25,8 @@ THE SOFTWARE.
 local gbc = cc.import("#gbc")
 local WebSocketInstance = cc.class("WebSocketInstance", gbc.WebSocketInstanceBase)
 local ServiceManager = cc.import("#ServiceManager")
+local Constants = gbc.Constants
+local sdSIG = ngx.shared.sdSIG
 
 function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
@@ -33,12 +35,16 @@ function WebSocketInstance:ctor(config)
 end
 
 function WebSocketInstance:authConnect()
+    if not sdSIG:get(Constants.SIGINIT) then
+        return nil, nil, "SIGINIT is not set"
+    end
+    
     local authorization = WebSocketInstance.super.authConnect(self)
-    if self:hasAuthority(authorization) then
-        return authorization, nil
-    else
+    if not self:hasAuthority(authorization) then
         return nil, nil, "authorization is error"
     end
+    
+    return authorization
 end
 
 function WebSocketInstance:onConnected()
@@ -48,7 +54,7 @@ end
 function WebSocketInstance:onDisconnected(event)
     cc.printf("ON Disconnected:%s|%s", ngx.var.remote_addr, self:getConnectId())
     if self._ServiceName then
-        ServiceManager.Remove(self._ServiceName, ngx.var.remote_addr)
+        ServiceManager.Remove(self._ServiceName, self._Host or ngx.var.remote_addr)
     end
     
     if event.reason ~= gbc.Constants.CLOSE_CONNECT then
@@ -58,6 +64,10 @@ end
 
 function WebSocketInstance:setServiceName(name)
     self._ServiceName = name
+end
+
+function WebSocketInstance:setHost(host)
+    self._Host = host
 end
 
 function WebSocketInstance:getServiceName()

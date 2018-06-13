@@ -242,6 +242,7 @@ stdout_logfile=_GBC_CORE_ROOT_/logs/worker-_APP_NAME_.log
 local _NGINX_PROG_TMPL = [[
 [program:nginx-_INDEX]
 command=_GBC_CORE_ROOT_/bin/openresty/nginx/sbin/nginx -c _GBC_CORE_ROOT_/tmp/nginx.conf_INDEX
+;stopsignal=QUIT
 ]]
 
 _updateSupervisordConfig = function()

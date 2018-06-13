@@ -29,6 +29,7 @@ local Constants = gbc.Constants
 local json = cc.import("#json")
 --local json_encode = json.encode
 local json_decode = json.decode
+local sdSIG = ngx.shared.sdSIG
 
 function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
@@ -38,6 +39,9 @@ function WebSocketInstance:ctor(config)
 end
 
 function WebSocketInstance:authConnect()
+    if not sdSIG:get(Constants.SIGINIT) then
+        return nil, nil, "SIGINIT is not set"
+    end
     local master = self.config.server.master
     local token, pid, err = WebSocketInstance.super.authConnect(self)
     if not token then
@@ -56,8 +60,6 @@ function WebSocketInstance:authConnect()
 end
 
 function WebSocketInstance:afterAuth()
-    --self:sendMessage("afterAuth error")
-    cc.throw("afterAuth error")
     return WebSocketInstance.super.afterAuth(self)
 end
 

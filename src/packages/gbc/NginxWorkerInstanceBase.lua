@@ -35,15 +35,16 @@ function NginxWorkerInstanceBase:run()
 end
 
 function NginxWorkerInstanceBase:runEventLoop()
-    return 1
+    return true
 end
 
-function NginxWorkerInstanceBase:runTimer(delay, timer, param)
+function NginxWorkerInstanceBase:runTimer(delay, timer, param, isInit)
     ngx.timer.at(delay, function(premature, config)
         if premature then
+            cc.printf("premature")
             return
         end
-        local instance = timer:new(config)
+        local instance = timer:new(config, isInit)
         instance:run()
     end, param)
 end

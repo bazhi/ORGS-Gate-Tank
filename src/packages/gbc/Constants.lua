@@ -36,7 +36,9 @@ _M.CLOSE_CONNECT = "SEND_CLOSE"
 
 _M.MYSQL_EVENT = "_MYSQL_EVENT"
 
---系统控制
-_M.INIT_OVER = "INIT_OVER"
+--初始化信号
+_M.SIGINIT = "_SIGINIT"
+--退出信号
+_M.SIGQUIT = "_SIGQUIT"
 
 return table.readonly(_M)
