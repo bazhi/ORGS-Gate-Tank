@@ -55,6 +55,7 @@ local config = {
         authorization = "HqQHj9WGQMP3XaQzOJnD8DM17wBX67iD",
         nginx = {
             {
+                name = "Master",
                 numOfWorkers = 1,
                 port = 8088,
                 host = "127.0.0.1",
@@ -63,6 +64,7 @@ local config = {
                 },
             },
             {
+                name = "server",
                 numOfWorkers = 2,
                 port = 8089,
                 host = "127.0.0.1",

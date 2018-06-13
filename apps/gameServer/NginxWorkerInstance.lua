@@ -1,8 +1,10 @@
 local gbc = cc.import("#gbc")
 local NginxWorkerInstance = cc.class("NginxWorkerInstance", gbc.NginxWorkerInstanceBase)
 local Timer = cc.import("#Timer")
+local baseTimer = cc.import("#baseTimer")
 local InitializeTimer = Timer.InitializeTimer
 local MasterTimer = Timer.MasterTimer
+local DatabaseTimer = baseTimer.DatabaseTimer
 
 function NginxWorkerInstance:ctor(config, ...)
     NginxWorkerInstance.super.ctor(self, config, ...)
@@ -20,6 +22,7 @@ end
 function NginxWorkerInstance:onWorkerFirst()
     self:runTimer(1, InitializeTimer, self.config, true)
     self:runTimer(5, MasterTimer, self.config)
+    self:runEveryTimer(1 / 20, DatabaseTimer, self.config)
 end
 
 return NginxWorkerInstance

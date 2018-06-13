@@ -49,6 +49,17 @@ function NginxWorkerInstanceBase:runTimer(delay, timer, param, isInit)
     end, param)
 end
 
+function NginxWorkerInstanceBase:runEveryTimer(delay, timer, param, isInit)
+    ngx.timer.every(delay, function(premature, config)
+        if premature then
+            cc.printf("premature")
+            return
+        end
+        local instance = timer:new(config, isInit)
+        instance:run()
+    end, param)
+end
+
 function NginxWorkerInstanceBase:onClose()
     
 end

@@ -24,8 +24,10 @@ THE SOFTWARE.
 ]]
 local Redis = cc.import("#redis")
 local Mysql = cc.import("#mysql")
-
+local Constants = cc.import(".Constants")
 local NgxTimerBase = cc.class("NgxTimerBase")
+local json = cc.import("#json")
+local json_encode = json.encode
 local sdSIG = ngx.shared.sdSIG
 
 function NgxTimerBase:ctor(config, bInit)
@@ -34,17 +36,33 @@ function NgxTimerBase:ctor(config, bInit)
 end
 
 function NgxTimerBase:run()
-    local bClose = self:runEventLoop()
-    if bClose then
-        self:onClose()
-    end
-    return bClose
+    self:runEventLoop()
+    self:onClose()
 end
 
 function NgxTimerBase:runEventLoop()
     if self.bInit then
         self:initOver()
         self.bInit = false
+    end
+    return true
+end
+
+function NgxTimerBase:sendMessageToConnectID(connectId, message)
+    local redis = self._redis
+    if not redis then
+        return
+    end
+    
+    if type(message) == "table" then
+        message = json_encode(message)
+    end
+    
+    local connectChannel = Constants.CONNECT_CHANNEL_PREFIX .. connectId
+    local ok, err = redis:publish(connectChannel, message)
+    if not ok then
+        cc.printerror(err)
+        return nil, err
     end
     return true
 end
@@ -102,8 +120,8 @@ end
 
 function NgxTimerBase:initOver()
     local redis = self:getRedis()
-    redis:set("_NEXT_CONNECT_ID", 0)
-    sdSIG:set("_SIGINIT", true)
+    redis:set(Constants.NEXT_CONNECT_ID_KEY, 0)
+    sdSIG:set(Constants.SIGINIT, true)
 end
 
 function NgxTimerBase:closeMysql()

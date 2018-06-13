@@ -1,8 +1,6 @@
 
 local gbc = cc.import("#gbc")
 local DatabaseTimer = cc.class("DatabaseTimer", gbc.NgxTimerBase)
-local orm = cc.import("#orm")
-local OrmMysql = orm.OrmMysql
 
 local Constants = gbc.Constants
 local MYSQL_EVENT = Constants.MYSQL_EVENT
@@ -11,28 +9,27 @@ local json_decode = json.decode
 
 local sdDBEvent = ngx.shared.sdDBEvent
 local null = ngx.null
-local ngx_sleep = ngx.sleep
 local string_find = string.find
-
-local sleeptime = 1 / 30
 
 function DatabaseTimer:ctor(config, ...)
     DatabaseTimer.super.ctor(self, config, ...)
 end
 
 function DatabaseTimer:runEventLoop()
-    while true do
-        self:process(db)
+    local len = sdDBEvent:llen(MYSQL_EVENT)
+    for _ = 1, len do
+        self:process()
     end
-    
     return DatabaseTimer.super.runEventLoop(self)
 end
 
 function DatabaseTimer:process()
     local event = sdDBEvent:rpop(MYSQL_EVENT)
     if event and event ~= null then
-        event = json_decode(event)
-        self:processEvent(event)
+        local msg = json_decode(event)
+        if not self:processEvent(msg) then
+            sdDBEvent:lpush(event)
+        end
     end
 end
 
@@ -41,28 +38,29 @@ function DatabaseTimer:processEvent(event)
     local redis = self:getRedis()
     if not db then
         cc.printerror("create db connect error")
-        ngx_sleep(sleeptime)
         self:closeMysql()
-        self:processEvent(event)
-        return
+        return false
     end
     if not redis then
         cc.printerror("create redis connect error")
-        ngx_sleep(sleeptime)
         self:closeRedis()
-        self:processEvent(event)
-        return
+        return false
     end
     
     if event.query then
-        local ret, err = db:query(event.query)
-        if ret then
-            
+        local result, err = db:query(event.query)
+        if result then
+            if event.connectid and event.action then
+                --数据库处理完之后，是否需要发送到链接ID
+                self:sendMessageToConnectID(event.connectid, {
+                    action = event.action,
+                    args = result,
+                })
+            end
         else
             if string_find(err, "failed to send query:") then
                 self:closeMysql()
-            else
-                
+                return false
             end
         end
     end

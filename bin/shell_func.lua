@@ -123,7 +123,7 @@ _checkAppKeys = function(index)
 end
 
 _updateCoreConfig = function()
-    index = index or 0
+    local index = index or 0
     local contents = io.readfile(CONF_PATH)
     contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
     io.writefile(VAR_CONF_PATH, contents)
@@ -236,13 +236,13 @@ process_name=%%(process_num)02d
 numprocs=_NUM_PROCESS_
 redirect_stderr=true
 stdout_logfile=_GBC_CORE_ROOT_/logs/worker-_APP_NAME_.log
- 
 ]]
 
 local _NGINX_PROG_TMPL = [[
 [program:nginx-_INDEX]
 command=_GBC_CORE_ROOT_/bin/openresty/nginx/sbin/nginx -c _GBC_CORE_ROOT_/tmp/nginx.conf_INDEX
 ;stopsignal=QUIT
+stdout_logfile=_GBC_CORE_ROOT_/logs/nginx-error_INDEX.log ;
 ]]
 
 _updateSupervisordConfig = function()
