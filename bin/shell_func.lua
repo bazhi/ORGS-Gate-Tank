@@ -123,7 +123,6 @@ _checkAppKeys = function(index)
 end
 
 _updateCoreConfig = function()
-    local index = index or 0
     local contents = io.readfile(CONF_PATH)
     contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
     io.writefile(VAR_CONF_PATH, contents)
@@ -134,7 +133,7 @@ _updateCoreConfig = function()
     local nginxs = config.server.nginx
     local CB_contents = {"", "local keys = {}"}
     local index = 1
-    for nid, ngx in ipairs(nginxs) do
+    for _, ngx in ipairs(nginxs) do
         local contents = {"", "local keys = {}"}
         local apps = ngx.apps
         
@@ -152,7 +151,7 @@ _updateCoreConfig = function()
         end
         contents[#contents + 1] = "return keys"
         contents[#contents + 1] = ""
-        local key_path = VAR_APP_KEYS_PATH..nid..".lua"
+        local key_path = VAR_APP_KEYS_PATH..ngx.name..".lua"
         io.writefile(key_path, table.concat(contents, "\n"))
     end
     
@@ -198,8 +197,8 @@ _updateNginxConfig = function()
         end
         includes = "\n" .. table.concat(includes, "\n")
         contents = string.gsub(contents, "\n[ \t]*#[ \t]*_INCLUDE_APPS_ENTRY_", includes)
-        contents = string.gsub(contents, "_NGX_INDEX_", index)
-        io.writefile(VAR_NGINX_CONF_PATH..index, contents)
+        contents = string.gsub(contents, "_NGX_INDEX_", ngx.name)
+        io.writefile(VAR_NGINX_CONF_PATH..ngx.name, contents)
     end
 end
 
@@ -242,6 +241,7 @@ local _NGINX_PROG_TMPL = [[
 [program:nginx-_INDEX]
 command=_GBC_CORE_ROOT_/bin/openresty/nginx/sbin/nginx -c _GBC_CORE_ROOT_/tmp/nginx.conf_INDEX
 ;stopsignal=QUIT
+redirect_stderr=true
 stdout_logfile=_GBC_CORE_ROOT_/logs/nginx-error_INDEX.log ;
 ]]
 
@@ -257,14 +257,14 @@ _updateSupervisordConfig = function()
     local ngxs = {}
     for index, ngx in ipairs(nginxs) do
         local prog = string.gsub(_NGINX_PROG_TMPL, "_GBC_CORE_ROOT_", ROOT_DIR)
-        local prog = string.gsub(prog, "_INDEX", index)
+        local prog = string.gsub(prog, "_INDEX", ngx.name)
         table.insert(ngxs, prog)
     end
     contents = string.gsub(contents, ";_NGINX_", table.concat(ngxs, "\n"))
     
     local workers = {}
     for index, ngx in ipairs(nginxs) do
-        local appkeys = _checkAppKeys(index)
+        local appkeys = _checkAppKeys(ngx.name)
         local appConfigs = Factory.makeAppConfigs(appkeys, config, package.path)
         local apps = ngx.apps
         for name, path in pairs(apps) do
