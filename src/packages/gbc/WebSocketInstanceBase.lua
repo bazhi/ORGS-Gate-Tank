@@ -32,6 +32,7 @@ local string_format = string.format
 local string_sub = string.sub
 local table_concat = table.concat
 local table_insert = table.insert
+local ngx_say = ngx.say
 local tostring = tostring
 local type = type
 
@@ -110,6 +111,20 @@ function WebSocketInstanceBase:authConnect()
     return nil, nil, "not found token in header: Sec-WebSocket-Protocol"
 end
 
+function WebSocketInstanceBase:afterAuth()
+    --self:sendMessage("afterAuth error")
+    --cc.throw("afterAuth error")
+    return true
+end
+
+function WebSocketInstanceBase:onClose()
+    if self._socket then
+        self._socket:send_close()
+        self._socket = nil
+    end
+    return WebSocketInstanceBase.super.onClose(self)
+end
+
 --回复消息
 function WebSocketInstanceBase:sendMessage(msg)
     if self._socket then
@@ -151,6 +166,9 @@ function WebSocketInstanceBase:runEventLoop()
         cc.throw("[websocket:%s] create websocket server failed, %s", connectId, err)
     end
     self._socket = socket
+    if not self:afterAuth() then
+        return false
+    end
     
     -- tracking socket close reason
     local closeReason = ""

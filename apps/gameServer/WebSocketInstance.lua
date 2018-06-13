@@ -55,6 +55,12 @@ function WebSocketInstance:authConnect()
     return nil, nil, "authConnect failed"
 end
 
+function WebSocketInstance:afterAuth()
+    --self:sendMessage("afterAuth error")
+    cc.throw("afterAuth error")
+    return WebSocketInstance.super.afterAuth(self)
+end
+
 function WebSocketInstance:onConnected()
     cc.printf("onConnected:"..self:getConnectId())
 end
