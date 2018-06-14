@@ -1,7 +1,7 @@
 
 local config = {
     numOfJobWorkers = 1,
-    
+    websocketMessageFormat = "pbc",
     mysql = {
         --path = "/tmp/mysql.sock",
         --"/var/run/mysqld/mysqld.sock",

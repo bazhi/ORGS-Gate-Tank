@@ -42,6 +42,9 @@ local Constants = cc.import(".Constants")
 local json_encode = json.encode
 local json_decode = json.decode
 
+local pb = cc.import("#protos")
+local CmdToPB = pb.CmdToPB
+
 local InstanceBase = cc.import(".InstanceBase")
 local WebSocketInstanceBase = cc.class("WebSocketInstanceBase", InstanceBase)
 
@@ -54,7 +57,7 @@ local _EVENT = table.readonly({
 
 WebSocketInstanceBase.EVENT = _EVENT
 
-local _processMessage, _parseMessage
+local _processMessage
 
 function WebSocketInstanceBase:ctor(config)
     WebSocketInstanceBase.super.ctor(self, config, Constants.WEBSOCKET_REQUEST_TYPE)
@@ -133,6 +136,31 @@ end
 function WebSocketInstanceBase:sendMessage(msg)
     if self._socket then
         self._socket:send_binary(tostring(msg))
+    end
+end
+
+function WebSocketInstanceBase:sendPack(cmd, data)
+    local ok, result = xpcall(function()
+        local name = CmdToPB[cmd]
+        if name then
+            if data then
+                data = pb.encode("pb."..name, data)
+            end
+        else
+            cmd = 0
+            data = tostring(data)
+        end
+        
+        return pb.encode("pb.Pack", {
+            action = "",
+            ["type"] = cmd,
+            content = data,
+        })
+    end, function(err)
+        cc.printerror(err)
+    end)
+    if ok then
+        self:sendMessage(result)
     end
 end
 
@@ -330,8 +358,16 @@ end
 -- private
 
 _processMessage = function(self, rawMessage, messageType)
-    local message = _parseMessage(rawMessage, messageType, self.config.app.websocketMessageFormat)
-    local msgid = message.__id
+    local messageFormat = self.config.app.websocketMessageFormat
+    local ok, message = xpcall(function()
+        return self:parseMessage(rawMessage, messageType, messageFormat)
+    end, function(err)
+        cc.printerror(err)
+    end)
+    if not ok then
+        return nil, "parseMessage error"
+    end
+    --local msgid = message.__id
     local actionName = message.action
     local err = nil
     local _ok, result = xpcall(function()
@@ -352,23 +388,19 @@ _processMessage = function(self, rawMessage, messageType)
     end
     
     if rtype ~= "table" then
-        if msgid then
-            cc.printwarn("action \"%s\" return invalid result for message [__id:\"%s\"]", actionName, msgid)
-        else
-            cc.printwarn("action \"%s\" return invalid result", actionName)
-        end
+        cc.printwarn("action \"%s\" return invalid result", actionName)
     end
     
-    if not msgid then
-        cc.printwarn("action \"%s\" return unused result", actionName)
-        return true
-    end
+    -- if not msgid then
+    --     cc.printwarn("action \"%s\" return unused result", actionName)
+    --     return true
+    -- end
     
     if not self._socket then
         return nil, string.format("socket removed, action \"%s\"", actionName)
     end
     
-    result.__id = msgid
+    -- result.__id = msgid
     local message = json_encode(result)
     local _bytes, err = self._socket:send_text(message)
     if err then
@@ -378,8 +410,29 @@ _processMessage = function(self, rawMessage, messageType)
     return true
 end
 
-_parseMessage = function(rawMessage, messageType, messageFormat)
-    -- TODO: support message type plugin
+function WebSocketInstanceBase:parseMessage(rawMessage, messageType, messageFormat)
+    if messageType == Constants.WEBSOCKET_BINARY_MESSAGE_TYPE then
+        if messageFormat == "pbc" then
+            local message = pb.decode("pb.Pack", rawMessage)
+            if type(message) == "table" then
+                if message.type then
+                    local name = CmdToPB[messageType.type]
+                    if name then
+                        local content = pb.decode("pb."..name, message.content)
+                        return {
+                            action = message.action,
+                            ["type"] = name,
+                            content = content,
+                        }
+                    end
+                end
+                return message
+            else
+                cc.throw("not supported message format \"%s\"", type(message))
+            end
+        end
+    end
+    
     if messageType ~= Constants.WEBSOCKET_TEXT_MESSAGE_TYPE then
         cc.throw("not supported message type \"%s\"", messageType)
     end

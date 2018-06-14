@@ -1,9 +1,9 @@
 local sqlite3 = require("lsqlite3")
 local M = {}
 
-local db = sqlite3.open(cc.sqlite_database, sqlite3.SQLITE_OPEN_READONLY)
+local db = sqlite3.open(cc.sqlite_file, sqlite3.SQLITE_OPEN_READONLY)
 if not db then
-    cc.printerror("can not open sqlite_database:"..cc.sqlite_database)
+    cc.printerror("can not open sqlite_file:"..cc.sqlite_file)
 end
 
 local cacheAll = {}
