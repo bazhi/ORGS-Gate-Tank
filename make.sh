@@ -18,6 +18,8 @@ LUABSON_VER=20160519
 LUAPBC_VER=20180607
 # https://github.com/mah0x211/lua-process
 LUAPROCESS_VER=1.9.0
+# http://lua.sqlite.org/
+LUASQLITE3_VER=0.9.4
 
 function showHelp()
 {
@@ -302,6 +304,23 @@ cp -f protobuf.lua $DEST_BIN_DIR/openresty/lualib
 
 cp -f protobuf.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
 cp -f protobuf.lua $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
+
+#install luasqlite3
+echo ""
+echo -e "[\033[32mINSTALL\033[0m] luasqlite3"
+cd $BUILD_DIR
+tar zxf lsqlite3-$LUASQLITE3_VER.tar.gz
+cd lsqlite3-$LUASQLITE3_VER
+if [ $OSTYPE == "MACOS" ]; then
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1 -L$DEST_BIN_DIR/openresty/luajit/lib -lluajit-5.1#g" Makefile
+else
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1#g" Makefile
+fi
+make
+
+cp -f lsqlite3.so $DEST_BIN_DIR/openresty/lualib
+cp -f lsqlite3.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
+
 
 # install luaprocess
 echo ""

@@ -48,6 +48,25 @@ function NgxTimerBase:runEventLoop()
     return true
 end
 
+function NgxTimerBase:sendControlMessage(connectId, message)
+    local redis = self._redis
+    if not redis then
+        return
+    end
+    
+    if type(message) == "table" then
+        message = json_encode(message)
+    end
+    
+    local controlChannel = Constants.CONTROL_CHANNEL_PREFIX .. connectId
+    local ok, err = redis:publish(controlChannel, message)
+    if not ok then
+        cc.printerror(err)
+        return nil, err
+    end
+    return true
+end
+
 function NgxTimerBase:sendMessageToConnectID(connectId, message)
     local redis = self._redis
     if not redis then

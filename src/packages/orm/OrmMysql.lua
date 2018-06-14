@@ -4,6 +4,8 @@ local string_format = string.format
 local table_concat = table.concat
 local ngx_quote_sql_str = ngx.quote_sql_str
 local sdDBEvent = ngx.shared.sdDBEvent
+local json = cc.import("#json")
+local json_encode = json.encode
 
 function OrmMysql:ctor(tableName, define, defualt, keyinfo)
     self._TableName = tableName or ""
@@ -62,7 +64,7 @@ function OrmMysql:Migrate(db)
     
     --检查增加字段
     local toBeAdd = table.copy(self._Define)
-    for k, v in ipairs(fields) do
+    for _, v in ipairs(fields) do
         toBeAdd[v.Field] = nil
     end
     for k, v in pairs(toBeAdd) do
@@ -75,7 +77,7 @@ function OrmMysql:Migrate(db)
     end
     
     --设置key
-    for k, v in pairs(self._KeyInfo) do
+    for _, v in pairs(self._KeyInfo) do
         self:AlterIndex(db, v)
     end
 end
@@ -229,10 +231,9 @@ end
 
 --------------------------------Insert Update------------------------------------------
 
-function OrmMysql:insertWithUpdateQuery(params, upparams, addparams)
-    local tableName = self._TableName
+function OrmMysql:insertWithUpdateQuery(params, updateparams, addparams)
     local fields = {}
-    for name, value in pairs(upparams) do
+    for name, value in pairs(updateparams) do
         fields[#fields + 1] = _escapeName(name) .. "=" .. _escapeValue(value)
     end
     
@@ -261,12 +262,11 @@ end
 
 --------------------------------Insert Update------------------------------------------
 
-function OrmMysql:pushQuery(query, pid, action, key)
+function OrmMysql:pushQuery(query, connectid, action)
     sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
         query = query,
-        pid = pid,
+        connectid = connectid,
         action = action,
-        key = key
     }))
 end
 

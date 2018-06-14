@@ -28,7 +28,7 @@ function DatabaseTimer:process()
     if event and event ~= null then
         local msg = json_decode(event)
         if not self:processEvent(msg) then
-            sdDBEvent:lpush(event)
+            sdDBEvent:lpush(MYSQL_EVENT, event)
         end
     end
 end
@@ -49,21 +49,21 @@ function DatabaseTimer:processEvent(event)
     
     if event.query then
         local result, err = db:query(event.query)
-        if result then
-            if event.connectid and event.action then
-                --数据库处理完之后，是否需要发送到链接ID
-                self:sendMessageToConnectID(event.connectid, {
-                    action = event.action,
-                    args = result,
-                })
-            end
-        else
-            if string_find(err, "failed to send query:") then
-                self:closeMysql()
-                return false
-            end
+        if err and string_find(err, "failed to send query:") then
+            cc.printerror(err)
+            self:closeMysql()
+            return false
+        end
+        
+        if event.connectid and event.action then
+            --数据库处理完之后，是否需要发送到链接ID
+            self:sendControlMessage(event.connectid, {
+                action = event.action,
+                args = result or {err = err},
+            })
         end
     end
+    return true
 end
 
 return DatabaseTimer

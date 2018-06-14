@@ -7,6 +7,7 @@ local Struct = {
     gold = 0,
     diamond = 0,
     loginTime = 0,
+    createTime = 0,
 }
 
 local Define = {
@@ -17,6 +18,7 @@ local Define = {
     gold = "int",
     diamond = "int",
     loginTime = "bigint",
+    createTime = "bigint",
 }
 
 local Indexes = {

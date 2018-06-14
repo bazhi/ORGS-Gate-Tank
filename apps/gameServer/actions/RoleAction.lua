@@ -21,26 +21,46 @@ THE SOFTWARE.
 ]]
 
 local gbc = cc.import("#gbc")
-local UserAction = cc.class("UserAction", gbc.ActionBase)
-local Session = cc.import("#session")
+local RoleAction = cc.class("RoleAction", gbc.ActionBase)
 
-local _opensession = function(instance, args)
-    local sid = args.sid
-    if not sid then
-        cc.throw("not set argsument: \"sid\"")
-    end
-    
-    local session = Session:new(instance:getRedis())
-    if not session:start(sid) then
-        cc.throw("session is expired, or invalid session id")
-    end
-    
-    return session
-end
+RoleAction.ACCEPTED_REQUEST_TYPE = "websocket"
+
+local Data = cc.import("#Data")
+local Table = cc.import("#Table")
 
 --登录
-function UserAction:signinAction(args)
-    
+function RoleAction:createAction(args, _redis)
+    local pid = args.id
+    local nickname = args.nickname or pid
+    if not nickname then
+        return
+    end
+    local now = ngx.now()
+    local instance = self:getInstance()
+    local Role = Data.Role:new(Table.Role)
+    instance.Role = Role
+    local dt = instance.Role:get()
+    dt.pid = pid
+    dt.nickname = nickname
+    dt.loginTime = now
+    dt.createTime = now
+    local query = Role:insertWithUpdateQuery(dt, {
+        loginTime = now,
+    })
+    Role:pushQuery(query, instance:getConnectId(), "role.oncreate")
 end
 
-return UserAction
+function RoleAction:oncreateAction(args, _redis)
+    local instance = self:getInstance()
+    local Role = instance.Role
+    if args.insert_id then
+        local query = Role:selectQuery({id = args.insert_id})
+        Role:pushQuery(query, instance:getConnectId(), "role.onrole")
+    end
+end
+
+function RoleAction:onroleAction(args, _redis)
+    cc.dump(args)
+end
+
+return RoleAction

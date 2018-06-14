@@ -27,6 +27,7 @@ local UserAction = cc.class("UserAction", gbc.ActionBase)
 local Session = cc.import("#session")
 local AccountManager = cc.import("#AccountManager")
 local ServiceManager = cc.import("#ServiceManager")
+local dbConfig = cc.import("#dbConfig")
 
 local _opensession = function(redis, args)
     local sid = args.sid
@@ -120,6 +121,10 @@ function UserAction:verifyAction(args, redis)
     local platform = session:get("platform")
     local user = AccountManager.Get(username, platform)
     return user
+end
+
+function UserAction:testAction()
+    return dbConfig.get("cfg_bind", 10010)
 end
 
 return UserAction

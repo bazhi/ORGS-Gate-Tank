@@ -30,6 +30,7 @@ local json = cc.import("#json")
 --local json_encode = json.encode
 local json_decode = json.decode
 local sdSIG = ngx.shared.sdSIG
+local sdLogin = ngx.shared.sdLogin
 
 function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
@@ -48,23 +49,45 @@ function WebSocketInstance:authConnect()
         return nil, pid, err
     end
     --cc.printf("authConnect")
-    local ret = http.Post(master.host, master.port, master.name.."/?action=user.verify", {
+    local user = http.Post(master.host, master.port, master.name.."/?action=user.verify", {
         sid = token,
         authorization = self:GetAuthority(),
     })
-    if ret and ret.id then
-        return token, ret.id
+    self._User = user
+    if user and user.id then
+        return token, user.id
     end
     
     return nil, nil, "authConnect failed"
 end
 
 function WebSocketInstance:afterAuth()
+    local con_id = self:getConnectId()
+    if con_id then
+        local lgcnt = sdLogin:incr(con_id, 1, 0)
+        if lgcnt > 1 then
+            sdLogin:incr(con_id, -1, 0)
+            self:sendMessage({
+                err = "user have logged in",
+            })
+            return false
+        end
+        self._locked = true
+    end
     return WebSocketInstance.super.afterAuth(self)
+end
+
+function WebSocketInstance:onClose()
+    local con_id = self:getConnectId()
+    if self._locked and con_id then
+        sdLogin:incr(con_id, -1, 0)
+    end
+    return WebSocketInstance.super.onClose(self)
 end
 
 function WebSocketInstance:onConnected()
     cc.printf("onConnected:"..self:getConnectId())
+    self:runAction("role.create", {id = self._User.id})
 end
 
 function WebSocketInstance:onControlMessage(event)
