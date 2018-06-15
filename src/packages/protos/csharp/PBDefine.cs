@@ -6,7 +6,11 @@ namespace Pb{
 		Pack,
 		Error,
 		CreateRole,
-		Role
+		Role,
+		Prop,
+		Props,
+		Equipment,
+		Equipments
     }
 
 	public static class PBRegister
@@ -17,6 +21,10 @@ namespace Pb{
 			dict.Add(PBDefine.Error, Error.Parser);
 			dict.Add(PBDefine.CreateRole, CreateRole.Parser);
 			dict.Add(PBDefine.Role, Role.Parser);
+			dict.Add(PBDefine.Prop, Prop.Parser);
+			dict.Add(PBDefine.Props, Props.Parser);
+			dict.Add(PBDefine.Equipment, Equipment.Parser);
+			dict.Add(PBDefine.Equipments, Equipments.Parser);
 		}
 	}
 }

@@ -81,10 +81,39 @@ function RoleAction:onroleAction(args, _redis)
         --cc.dump(Role:get())
         Role:update(args[1])
         instance:sendPack("Role", Role:get())
+        self:loadothersAction(args, _redis)
     else
         instance:sendError("NoneRole")
     end
+end
+
+function RoleAction:loadothersAction(_args, _redis)
+    local instance = self:getInstance()
+    local Role = instance._Role
+    if not Role then
+        return
+    end
+    local rid = Role:getID()
+    local Equipment = Data.Equipment:new(Table.Equipment)
+    local Prop = Data.Prop:new(Table.Prop)
+    instance._Equipment = Equipment
+    instance._Prop = Prop
     
+    local query = Equipment:selectQuery({rid = rid})
+    Equipment:pushQuery(query, instance:getConnectId(), "role.onequipment")
+    
+    query = Prop:selectQuery({rid = rid})
+    Prop:pushQuery(query, instance:getConnectId(), "role.onprop")
+end
+
+function RoleAction:onequipmentAction(args, _redis)
+    local instance = self:getInstance()
+    instance:sendPack("Equipments", args)
+end
+
+function RoleAction:onpropAction(args, _redis)
+    local instance = self:getInstance()
+    instance:sendPack("Props", args)
 end
 
 return RoleAction

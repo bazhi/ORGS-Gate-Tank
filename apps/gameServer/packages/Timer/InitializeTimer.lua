@@ -4,6 +4,8 @@ local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
 local Table = cc.import("#Table")
 local Role = Table.Role
+local Equipment = Table.Equipment
+local Prop = Table.Prop
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)
@@ -16,10 +18,16 @@ function InitializeTimer:runEventLoop()
         return InitializeTimer.super.runEventLoop(self)
     end
     
-    local ormRole = OrmMysql:new(Role.Name, Role.Define, Role.Struct, Role.Indexes)
-    ormRole:Create(db)
+    self:createTable(db, Role)
+    self:createTable(db, Equipment)
+    self:createTable(db, Prop)
     
     return InitializeTimer.super.runEventLoop(self)
+end
+
+function InitializeTimer:createTable(db, type)
+    local ormdef = OrmMysql:new(type.Name, type.Define, type.Struct, type.Indexes)
+    ormdef:Create(db)
 end
 
 return InitializeTimer

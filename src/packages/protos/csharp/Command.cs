@@ -29,14 +29,23 @@ namespace Pb {
             "b2xlEhAKCG5pY2tuYW1lGAEgASgJIoYBCgRSb2xlEgoKAmlkGAEgASgFEgsK",
             "A3BpZBgCIAEoBRIQCghuaWNrbmFtZRgDIAEoCRINCgVsZXZlbBgEIAEoBRIM",
             "CgRnb2xkGAUgASgFEg8KB2RpYW1vbmQYBiABKAUSEQoJbG9naW5UaW1lGAcg",
-            "ASgFEhIKCmNyZWF0ZVRpbWUYCCABKAViBnByb3RvMw=="));
+            "ASgFEhIKCmNyZWF0ZVRpbWUYCCABKAUiOwoEUHJvcBIKCgJpZBgBIAEoBRIL",
+            "CgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEg0KBWNvdW50GAQgASgFIiEKBVBy",
+            "b3BzEhgKBnZhbHVlcxgBIAMoCzIILnBiLlByb3AiPwoJRXF1aXBtZW50EgoK",
+            "AmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSDAoEc3RhchgE",
+            "IAEoBSIrCgpFcXVpcG1lbnRzEh0KBnZhbHVlcxgBIAMoCzINLnBiLkVxdWlw",
+            "bWVudGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Pack), global::Pb.Pack.Parser, new[]{ "Type", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Error), global::Pb.Error.Parser, new[]{ "Code" }, null, new[]{ typeof(global::Pb.Error.Types.EType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CreateRole), global::Pb.CreateRole.Parser, new[]{ "Nickname" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipments), global::Pb.Equipments.Parser, new[]{ "Values" }, null, null, null)
           }));
     }
     #endregion
@@ -765,6 +774,626 @@ namespace Pb {
           }
           case 64: {
             CreateTime = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Prop : pb::IMessage<Prop> {
+    private static readonly pb::MessageParser<Prop> _parser = new pb::MessageParser<Prop>(() => new Prop());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Prop> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Prop() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Prop(Prop other) : this() {
+      id_ = other.id_;
+      rid_ = other.rid_;
+      cid_ = other.cid_;
+      count_ = other.count_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Prop Clone() {
+      return new Prop(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rid" field.</summary>
+    public const int RidFieldNumber = 2;
+    private int rid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Rid {
+      get { return rid_; }
+      set {
+        rid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 3;
+    private int cid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 4;
+    private int count_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Prop);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Prop other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Rid != other.Rid) return false;
+      if (Cid != other.Cid) return false;
+      if (Count != other.Count) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Rid != 0) hash ^= Rid.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Rid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Rid);
+      }
+      if (Cid != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Cid);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Count);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Rid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rid);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Prop other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Rid != 0) {
+        Rid = other.Rid;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Rid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Cid = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Count = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Props : pb::IMessage<Props> {
+    private static readonly pb::MessageParser<Props> _parser = new pb::MessageParser<Props>(() => new Props());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Props> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Props() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Props(Props other) : this() {
+      values_ = other.values_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Props Clone() {
+      return new Props(this);
+    }
+
+    /// <summary>Field number for the "values" field.</summary>
+    public const int ValuesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Prop> _repeated_values_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.Prop.Parser);
+    private readonly pbc::RepeatedField<global::Pb.Prop> values_ = new pbc::RepeatedField<global::Pb.Prop>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.Prop> Values {
+      get { return values_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Props);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Props other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!values_.Equals(other.values_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= values_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      values_.WriteTo(output, _repeated_values_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += values_.CalculateSize(_repeated_values_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Props other) {
+      if (other == null) {
+        return;
+      }
+      values_.Add(other.values_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            values_.AddEntriesFrom(input, _repeated_values_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Equipment : pb::IMessage<Equipment> {
+    private static readonly pb::MessageParser<Equipment> _parser = new pb::MessageParser<Equipment>(() => new Equipment());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Equipment> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipment() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipment(Equipment other) : this() {
+      id_ = other.id_;
+      rid_ = other.rid_;
+      cid_ = other.cid_;
+      star_ = other.star_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipment Clone() {
+      return new Equipment(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rid" field.</summary>
+    public const int RidFieldNumber = 2;
+    private int rid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Rid {
+      get { return rid_; }
+      set {
+        rid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 3;
+    private int cid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "star" field.</summary>
+    public const int StarFieldNumber = 4;
+    private int star_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Star {
+      get { return star_; }
+      set {
+        star_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Equipment);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Equipment other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Rid != other.Rid) return false;
+      if (Cid != other.Cid) return false;
+      if (Star != other.Star) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Rid != 0) hash ^= Rid.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
+      if (Star != 0) hash ^= Star.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Rid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Rid);
+      }
+      if (Cid != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Cid);
+      }
+      if (Star != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Star);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Rid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rid);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
+      }
+      if (Star != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Equipment other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Rid != 0) {
+        Rid = other.Rid;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
+      }
+      if (other.Star != 0) {
+        Star = other.Star;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Rid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Cid = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Star = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Equipments : pb::IMessage<Equipments> {
+    private static readonly pb::MessageParser<Equipments> _parser = new pb::MessageParser<Equipments>(() => new Equipments());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Equipments> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipments() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipments(Equipments other) : this() {
+      values_ = other.values_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Equipments Clone() {
+      return new Equipments(this);
+    }
+
+    /// <summary>Field number for the "values" field.</summary>
+    public const int ValuesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Equipment> _repeated_values_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.Equipment.Parser);
+    private readonly pbc::RepeatedField<global::Pb.Equipment> values_ = new pbc::RepeatedField<global::Pb.Equipment>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.Equipment> Values {
+      get { return values_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Equipments);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Equipments other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!values_.Equals(other.values_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= values_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      values_.WriteTo(output, _repeated_values_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += values_.CalculateSize(_repeated_values_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Equipments other) {
+      if (other == null) {
+        return;
+      }
+      values_.Add(other.values_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            values_.AddEntriesFrom(input, _repeated_values_codec);
             break;
           }
         }
