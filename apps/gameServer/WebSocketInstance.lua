@@ -67,9 +67,7 @@ function WebSocketInstance:afterAuth()
         local lgcnt = sdLogin:incr(con_id, 1, 0)
         if lgcnt > 1 then
             sdLogin:incr(con_id, -1, 0)
-            self:sendMessage({
-                err = "user have logged in",
-            })
+            self:sendError("UserLoggedIn")
             return false
         end
         self._locked = true
@@ -87,7 +85,7 @@ end
 
 function WebSocketInstance:onConnected()
     cc.printf("onConnected:"..self:getConnectId())
-    self:runAction("role.create", {id = self._User.id})
+    self:runAction("role.load", {})
 end
 
 function WebSocketInstance:onControlMessage(event)
@@ -121,6 +119,10 @@ end
 
 function WebSocketInstance:heartbeat()
     
+end
+
+function WebSocketInstance:getUser()
+    return self._User
 end
 
 return WebSocketInstance

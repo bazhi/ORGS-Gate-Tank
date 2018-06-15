@@ -30,37 +30,61 @@ local Table = cc.import("#Table")
 
 --登录
 function RoleAction:createAction(args, _redis)
-    local pid = args.id
-    local nickname = args.nickname or pid
-    if not nickname then
+    local instance = self:getInstance()
+    local user = instance:getUser()
+    local pid = user.id
+    local nickname = args.nickname
+    if not nickname or #nickname <= 5 then
+        instance:sendError("NoSetNickname")
         return
     end
     local now = ngx.now()
-    local instance = self:getInstance()
-    local Role = Data.Role:new(Table.Role)
-    instance.Role = Role
-    local dt = instance.Role:get()
+    local Role = instance._Role
+    if not Role then
+        return
+    end
+    local dt = Role:get()
     dt.pid = pid
     dt.nickname = nickname
     dt.loginTime = now
     dt.createTime = now
-    local query = Role:insertWithUpdateQuery(dt, {
-        loginTime = now,
-    })
+    local query = Role:insertQuery(dt)
     Role:pushQuery(query, instance:getConnectId(), "role.oncreate")
 end
 
 function RoleAction:oncreateAction(args, _redis)
     local instance = self:getInstance()
-    local Role = instance.Role
+    local Role = instance._Role
     if args.insert_id then
         local query = Role:selectQuery({id = args.insert_id})
         Role:pushQuery(query, instance:getConnectId(), "role.onrole")
     end
 end
 
+function RoleAction:loadAction(_args, _redis)
+    local instance = self:getInstance()
+    local user = instance:getUser()
+    local pid = user.id
+    local Role = Data.Role:new(Table.Role)
+    instance._Role = Role
+    local query = Role:selectQuery({pid = pid})
+    Role:pushQuery(query, instance:getConnectId(), "role.onrole")
+end
+
 function RoleAction:onroleAction(args, _redis)
-    cc.dump(args)
+    local instance = self:getInstance()
+    local Role = instance._Role
+    if not Role then
+        return
+    end
+    if #args > 0 then
+        --cc.dump(Role:get())
+        Role:update(args[1])
+        instance:sendPack("Role", Role:get())
+    else
+        instance:sendError("NoneRole")
+    end
+    
 end
 
 return RoleAction

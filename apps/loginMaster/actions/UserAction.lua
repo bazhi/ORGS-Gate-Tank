@@ -79,10 +79,10 @@ function UserAction:signupAction(args, redis)
     local username = args.username
     local password = args.password
     local platform = args.platform or 0
-    if not username then
+    if not username or #username < 5 then
         cc.throw("not set argsument: \"username\"")
     end
-    if not password then
+    if not password or #password < 5 then
         cc.throw("not set argsument: \"password\"")
     end
     
@@ -123,8 +123,8 @@ function UserAction:verifyAction(args, redis)
     return user
 end
 
-function UserAction:testAction()
-    return dbConfig.get("cfg_bind", 10010)
-end
+-- function UserAction:testAction()
+--     return dbConfig.get("cfg_bind", 10010)
+-- end
 
 return UserAction

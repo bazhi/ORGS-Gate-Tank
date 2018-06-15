@@ -17,8 +17,8 @@ local Define = {
     level = "int",
     gold = "int",
     diamond = "int",
-    loginTime = "bigint",
-    createTime = "bigint",
+    loginTime = "int",
+    createTime = "int",
 }
 
 local Indexes = {

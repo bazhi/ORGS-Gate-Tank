@@ -9,7 +9,7 @@ function Base:ctor(Tab)
 end
 
 function Base:update(data)
-    table.merge(self._data, data)
+    table.safeMerge(self._data, data)
 end
 
 function Base:get()

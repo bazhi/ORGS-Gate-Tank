@@ -44,6 +44,8 @@ local json_decode = json.decode
 
 local pb = cc.import("#protos")
 local CmdToPB = pb.CmdToPB
+local PBToCmd = pb.PBToCmd
+local ActionMap = pb.ActionMap
 
 local InstanceBase = cc.import(".InstanceBase")
 local WebSocketInstanceBase = cc.class("WebSocketInstanceBase", InstanceBase)
@@ -139,24 +141,37 @@ function WebSocketInstanceBase:sendMessage(msg)
     end
 end
 
-function WebSocketInstanceBase:sendPack(cmd, data)
+function WebSocketInstanceBase:sendError(erroname)
+    self:sendPack(PBToCmd.Error, {
+        code = erroname,
+    })
+end
+
+function WebSocketInstanceBase:sendPack(cmd, msg)
     local ok, result = xpcall(function()
-        local name = CmdToPB[cmd]
+        local name = cmd
+        if type(name) == "number" then
+            name = CmdToPB[cmd]
+        else
+            name = cmd
+            cmd = PBToCmd[cmd]
+        end
+        local data
         if name then
-            if data then
-                data = pb.encode("pb."..name, data)
+            if msg then
+                data = pb.encode("pb."..name, msg)
             end
         else
             cmd = 0
-            data = tostring(data)
+            data = tostring(msg)
         end
         
         return pb.encode("pb.Pack", {
-            action = "",
             ["type"] = cmd,
             content = data,
         })
     end, function(err)
+        cc.dump(msg)
         cc.printerror(err)
     end)
     if ok then
@@ -371,7 +386,7 @@ _processMessage = function(self, rawMessage, messageType)
     local actionName = message.action
     local err = nil
     local _ok, result = xpcall(function()
-        return self:runAction(actionName, message)
+        return self:runAction(actionName, message._args or message)
     end, function(_err)
         err = _err
         if cc.DEBUG > cc.DEBUG_WARN then
@@ -416,14 +431,20 @@ function WebSocketInstanceBase:parseMessage(rawMessage, messageType, messageForm
             local message = pb.decode("pb.Pack", rawMessage)
             if type(message) == "table" then
                 if message.type then
-                    local name = CmdToPB[messageType.type]
+                    local name = CmdToPB[message.type]
                     if name then
-                        local content = pb.decode("pb."..name, message.content)
-                        return {
-                            action = message.action,
-                            ["type"] = name,
-                            content = content,
-                        }
+                        local actionName = ActionMap[name]
+                        if actionName then
+                            local content = pb.decode("pb."..name, message.content)
+                            return {
+                                action = actionName,
+                                _args = content,
+                            }
+                        else
+                            cc.throw("can not supported pbc messagename:"..name)
+                        end
+                    else
+                        cc.throw("can not supported pbc messageindex:"..message.type)
                     end
                 end
                 return message
