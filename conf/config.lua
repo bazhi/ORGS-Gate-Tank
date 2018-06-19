@@ -58,7 +58,7 @@ local config = {
                 name = "Master",
                 numOfWorkers = 1,
                 port = 8088,
-                host = "192.168.0.108",
+                host = "192.168.0.106",
                 apps = {
                     loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
                 },
@@ -67,7 +67,7 @@ local config = {
                 name = "server",
                 numOfWorkers = 2,
                 port = 8089,
-                host = "192.168.0.108",
+                host = "192.168.0.106",
                 apps = {
                     gameServer = "_GBC_CORE_ROOT_/apps/gameServer",
                 },

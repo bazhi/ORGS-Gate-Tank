@@ -33,7 +33,7 @@ PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function PropAction:decomposeAction(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:getPorp(args.prop_id)
+    local prop = player:getProp(args.prop_id)
     if not prop or prop.count < 1 then
         instance:sendError("NoneProp")
         return
@@ -65,7 +65,7 @@ function PropAction:addProp(id, count)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
-    local prop = player:getPorp(id)
+    local prop = player:getProp(id)
     if prop then
         local prop_data = prop:get()
         prop_data.count = prop_data.count + count
@@ -73,7 +73,7 @@ function PropAction:addProp(id, count)
         prop:pushQuery(query, instance:getConnectId(), "prop.onProp")
         instance:sendPack("Prop", prop_data)
     else
-        prop = player:getPorp()
+        prop = player:getProp()
         local dt = prop:get()
         dt.rid = role:getID()
         dt.cid = id

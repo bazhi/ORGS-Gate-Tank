@@ -94,7 +94,7 @@ function RoleAction:loadOthersAction(_args, _redis)
     end
     local rid = role:getID()
     local Equipment = player:getEquipment()
-    local Prop = player:getPorp()
+    local Prop = player:getProp()
     
     local query = Equipment:selectQuery({rid = rid})
     Equipment:pushQuery(query, instance:getConnectId(), "role.onEquipment")

@@ -30,7 +30,7 @@ EquipAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function EquipAction:checkProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:getPorp(args.prop_id)
+    local prop = player:getProp(args.prop_id)
     if not prop or prop.count < 1 then
         instance:sendError("NoneProp")
         return nil

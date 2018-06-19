@@ -1,6 +1,6 @@
 local Player = cc.class("Player")
 local Equipment = cc.import(".Equipment")
-local Porp = cc.import(".Porp")
+local Prop = cc.import(".Prop")
 local Role = cc.import(".Role")
 local Table = cc.import("#Table")
 
@@ -93,9 +93,9 @@ end
 --更新所有道具
 function Player:updateProps(props)
     self._Props = {}
-    local TProp = Table.Porp
+    local TProp = Table.Prop
     for _, v in ipairs(props) do
-        local item = Porp:new(TProp)
+        local item = Prop:new(TProp)
         item.update(v)
         table.insert(self._Props, item)
     end
@@ -110,17 +110,17 @@ function Player:updateProp(prop)
             return v
         end
     end
-    local item = Porp:new(Table.Porp)
+    local item = Prop:new(Table.Prop)
     item.update(prop)
     table.insert(self._Props, item)
     return item
 end
 
-function Player:getPorp(id)
+function Player:getProp(id)
     if not id then
         local prop = self._Prop
         if not prop then
-            prop = Porp:new(Table.Porp)
+            prop = Prop:new(Table.Prop)
             self._Prop = prop
         end
         return prop
