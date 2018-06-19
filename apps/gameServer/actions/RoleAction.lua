@@ -24,14 +24,13 @@ local gbc = cc.import("#gbc")
 local RoleAction = cc.class("RoleAction", gbc.ActionBase)
 
 RoleAction.ACCEPTED_REQUEST_TYPE = "websocket"
-
 local Data = cc.import("#Data")
-local Table = cc.import("#Table")
 
 --登录
 function RoleAction:createAction(args, _redis)
     local instance = self:getInstance()
     local user = instance:getUser()
+    local player = instance:getPlayer()
     local pid = user.id
     local nickname = args.nickname
     if not nickname or #nickname <= 5 then
@@ -39,80 +38,82 @@ function RoleAction:createAction(args, _redis)
         return
     end
     local now = ngx.now()
-    local Role = instance._Role
-    if not Role then
+    
+    local role = player:getRole()
+    if not role then
         return
     end
-    local dt = Role:get()
+    local dt = role:get()
     dt.pid = pid
     dt.nickname = nickname
     dt.loginTime = now
     dt.createTime = now
-    local query = Role:insertQuery(dt)
-    Role:pushQuery(query, instance:getConnectId(), "role.oncreate")
+    local query = role:insertQuery(dt)
+    role:pushQuery(query, instance:getConnectId(), "role.onCreate")
 end
 
-function RoleAction:oncreateAction(args, _redis)
+function RoleAction:onCreate(args, _redis)
     local instance = self:getInstance()
-    local Role = instance._Role
+    local player = instance:getPlayer()
+    local role = player:getRole()
     if args.insert_id then
-        local query = Role:selectQuery({id = args.insert_id})
-        Role:pushQuery(query, instance:getConnectId(), "role.onrole")
+        local query = role:selectQuery({id = args.insert_id})
+        role:pushQuery(query, instance:getConnectId(), "role.onRole")
     end
 end
 
 function RoleAction:loadAction(_args, _redis)
     local instance = self:getInstance()
     local user = instance:getUser()
+    local player = Data.Player:new(user)
+    instance:setPlayer(player)
     local pid = user.id
-    local Role = Data.Role:new(Table.Role)
-    instance._Role = Role
-    local query = Role:selectQuery({pid = pid})
-    Role:pushQuery(query, instance:getConnectId(), "role.onrole")
+    local role = player:getRole()
+    local query = role:selectQuery({pid = pid})
+    role:pushQuery(query, instance:getConnectId(), "role.onRole")
 end
 
-function RoleAction:onroleAction(args, _redis)
+function RoleAction:onRole(args, _redis)
     local instance = self:getInstance()
-    local Role = instance._Role
-    if not Role then
-        return
-    end
+    local player = instance:getPlayer()
     if #args > 0 then
-        --cc.dump(Role:get())
-        Role:update(args[1])
-        instance:sendPack("Role", Role:get())
-        self:loadothersAction(args, _redis)
+        local role = player:updateRole(args[1])
+        instance:sendPack("Role", role:get())
+        self:loadOthersAction(args, _redis)
     else
         instance:sendError("NoneRole")
     end
 end
 
-function RoleAction:loadothersAction(_args, _redis)
+function RoleAction:loadOthersAction(_args, _redis)
     local instance = self:getInstance()
-    local Role = instance._Role
-    if not Role then
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    if not role then
         return
     end
-    local rid = Role:getID()
-    local Equipment = Data.Equipment:new(Table.Equipment)
-    local Prop = Data.Prop:new(Table.Prop)
-    instance._Equipment = Equipment
-    instance._Prop = Prop
+    local rid = role:getID()
+    local Equipment = player:getEquipment()
+    local Prop = player:getPorp()
     
     local query = Equipment:selectQuery({rid = rid})
-    Equipment:pushQuery(query, instance:getConnectId(), "role.onequipment")
+    Equipment:pushQuery(query, instance:getConnectId(), "role.onEquipment")
     
     query = Prop:selectQuery({rid = rid})
-    Prop:pushQuery(query, instance:getConnectId(), "role.onprop")
+    Prop:pushQuery(query, instance:getConnectId(), "role.onProp")
 end
 
-function RoleAction:onequipmentAction(args, _redis)
+function RoleAction:onEquipment(args, _redis)
     local instance = self:getInstance()
+    local player = instance:getPlayer()
+    player:updateEquipments(args)
     instance:sendPack("Equipments", args)
 end
 
-function RoleAction:onpropAction(args, _redis)
+function RoleAction:onProp(args, _redis)
     local instance = self:getInstance()
+    local player = instance:getPlayer()
+    player:updateProps(args)
     instance:sendPack("Props", args)
 end
 

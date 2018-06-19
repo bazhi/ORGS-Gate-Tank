@@ -96,11 +96,13 @@ function InstanceBase:GetAuthority()
     return config.authorization
 end
 
-function InstanceBase:runAction(actionName, args, redis)
+function InstanceBase:runAction(actionName, args, redis, noSuffix)
     local appConfig = self.config.app
     
     local moduleName, methodName, folder = _normalize(actionName)
-    methodName = methodName .. _MEHTOD_SUFFIX
+    if not noSuffix then
+        methodName = methodName .. _MEHTOD_SUFFIX
+    end
     
     local actionModulePath = _getpath(moduleName, folder, self._package)
     local action = self._modules[actionModulePath]
@@ -210,7 +212,7 @@ _normalize = function(actionName)
         actionName = string_sub(actionName, pos + 1)
     end
     
-    actionName = string_lower(actionName)
+    --actionName = string_lower(actionName)
     actionName = string_gsub(actionName, "[^%a./]", "")
     actionName = string_gsub(actionName, "^[.]+", "")
     actionName = string_gsub(actionName, "[.]+$", "")

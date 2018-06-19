@@ -12,6 +12,7 @@ PROJECT_PATH=/Users/funkii/projects/gitlab/CityBlockade25D/Assets/Game/GamePlugi
 rm -rf $PROJECT_PATH
 mkdir $PROJECT_PATH
 cp -rf csharp/ $PROJECT_PATH
+cp -rf command.proto $PROJECT_PATH
 
 lua createMD.lua
 # mv protos.md ../../../apps/web/public_html/

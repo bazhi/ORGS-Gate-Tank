@@ -4,6 +4,8 @@ local Struct = {
     rid = 0,
     cid = 0,
     star = 0,
+    exp = 0,
+    oid = 0,
 }
 
 local Define = {
@@ -11,10 +13,13 @@ local Define = {
     rid = "int",
     cid = "int",
     star = "int",
+    exp = "int",
+    oid = "int",
 }
 
 local Indexes = {
     "UNIQUE KEY `crid` (`cid`, `rid`)  USING HASH",
+    "UNIQUE KEY `coid` (`oid`, `rid`)  USING HASH",
 }
 
 return {

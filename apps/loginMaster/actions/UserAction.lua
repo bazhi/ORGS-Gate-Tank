@@ -27,7 +27,7 @@ local UserAction = cc.class("UserAction", gbc.ActionBase)
 local Session = cc.import("#session")
 local AccountManager = cc.import("#AccountManager")
 local ServiceManager = cc.import("#ServiceManager")
-local dbConfig = cc.import("#dbConfig")
+--local dbConfig = cc.import("#dbConfig")
 
 local _opensession = function(redis, args)
     local sid = args.sid

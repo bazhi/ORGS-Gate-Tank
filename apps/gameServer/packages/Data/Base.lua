@@ -12,7 +12,24 @@ function Base:update(data)
     table.safeMerge(self._data, data)
 end
 
-function Base:get()
+function Base:equal(item, key)
+    key = key or "id"
+    return self._data[key] == item[key]
+end
+
+function Base:equalID(id, key)
+    key = key or "id"
+    return self._data[key] == id
+end
+
+function Base:getID()
+    return self._data.id
+end
+
+function Base:get(key)
+    if key then
+        return self._data[key]
+    end
     return self._data
 end
 

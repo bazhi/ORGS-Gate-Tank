@@ -99,7 +99,7 @@ function WebSocketInstance:onControlMessage(event)
             local ok, err = pcall(function()
                 msg = json_decode(msg)
                 if msg.action then
-                    self:runAction(msg.action, msg.args, redis)
+                    self:runAction(msg.action, msg.args, redis, true)
                 end
             end)
             if not ok then
@@ -123,6 +123,14 @@ end
 
 function WebSocketInstance:getUser()
     return self._User
+end
+
+function WebSocketInstance:setPlayer(player)
+    self._Player = player
+end
+
+function WebSocketInstance:getPlayer()
+    return self._Player
 end
 
 return WebSocketInstance
