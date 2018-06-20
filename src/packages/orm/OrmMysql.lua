@@ -261,12 +261,16 @@ function OrmMysql:insertWithUpdate(db, params, upparams, addparams)
 end
 
 --------------------------------Insert Update------------------------------------------
-
-function OrmMysql:pushQuery(query, connectid, action)
+-- query, sql语句
+-- connectid, 链接id
+-- action, 回调action
+-- param, 回调参数
+function OrmMysql:pushQuery(query, connectid, action, params)
     sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
         query = query,
         connectid = connectid,
         action = action,
+        params = params,
     }))
 end
 

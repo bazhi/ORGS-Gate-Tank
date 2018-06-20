@@ -82,6 +82,13 @@ function InstanceBase:ctor(config, requestType)
     self._event = cc.addComponent(self, Event)
 end
 
+function InstanceBase:safeFunction(func)
+    return xpcall(func, function(err)
+        err = tostring(err)
+        cc.printerror(err .. debug.traceback("", 5))
+    end)
+end
+
 function InstanceBase:getRequestType()
     return self._requestType
 end
@@ -96,7 +103,7 @@ function InstanceBase:GetAuthority()
     return config.authorization
 end
 
-function InstanceBase:runAction(actionName, args, redis, noSuffix)
+function InstanceBase:runAction(actionName, args, redis, noSuffix, params)
     local appConfig = self.config.app
     
     local moduleName, methodName, folder = _normalize(actionName)
@@ -127,7 +134,7 @@ function InstanceBase:runAction(actionName, args, redis, noSuffix)
         args = self._requestParameters or {}
     end
     
-    return method(action, args, redis or self:getRedis())
+    return method(action, args, redis or self:getRedis(), params)
 end
 
 function InstanceBase:onClose()

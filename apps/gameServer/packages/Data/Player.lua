@@ -33,7 +33,7 @@ function Player:updateEquipments(equipments)
     local TEquip = Table.Equipment
     for _, v in ipairs(equipments) do
         local item = Equipment:new(TEquip)
-        item.update(v)
+        item:update(v)
         table.insert(self._Equipments, item)
     end
 end
@@ -43,6 +43,9 @@ function Player:updateEquipment(equipment)
     if not equipment.id then
         return
     end
+    if not self._Equipments then
+        self._Equipments = {}
+    end
     local equipments = self._Equipments
     for _, v in ipairs(equipments) do
         if v:equal(equipment) then
@@ -51,7 +54,7 @@ function Player:updateEquipment(equipment)
         end
     end
     local item = Equipment:new(Table.Equipment)
-    item.update(equipment)
+    item:update(equipment)
     table.insert(self._Equipments, item)
     return item
 end
@@ -66,7 +69,7 @@ function Player:getEquipment(id)
         return equipment
     end
     
-    local equipments = self._Equipments
+    local equipments = self._Equipments or {}
     for _, v in ipairs(equipments) do
         if v:equalID(id) then
             return v
@@ -96,13 +99,16 @@ function Player:updateProps(props)
     local TProp = Table.Prop
     for _, v in ipairs(props) do
         local item = Prop:new(TProp)
-        item.update(v)
+        item:update(v)
         table.insert(self._Props, item)
     end
 end
 
 --更新单个道具
 function Player:updateProp(prop)
+    if not self._Props then
+        self._Props = {}
+    end
     local props = self._Props
     for _, v in ipairs(props) do
         if v:equal(prop) then
@@ -111,7 +117,7 @@ function Player:updateProp(prop)
         end
     end
     local item = Prop:new(Table.Prop)
-    item.update(prop)
+    item:update(prop)
     table.insert(self._Props, item)
     return item
 end
@@ -126,7 +132,7 @@ function Player:getProp(id)
         return prop
     end
     
-    local props = self._Props
+    local props = self._Props or {}
     for _, v in ipairs(props) do
         if v:equalID(id) then
             return v

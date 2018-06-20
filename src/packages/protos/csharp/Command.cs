@@ -32,15 +32,15 @@ namespace Pb {
             "bGl0eRIKCgJpZBgBIAEoBRIPCgdwcm9wX2lkGAIgASgFIioKC1VwZ3JhZGVT",
             "dGFyEgoKAmlkGAEgASgFEg8KB3Byb3BfaWQYAiABKAUiKwoMVXBncmFkZUxl",
             "dmVsEgoKAmlkGAEgASgFEg8KB3Byb3BfaWQYAiABKAUiFwoJRGVjb21wb3Nl",
-            "EgoKAmlkGAEgASgFIoYBCgRSb2xlEgoKAmlkGAEgASgFEgsKA3BpZBgCIAEo",
-            "BRIQCghuaWNrbmFtZRgDIAEoCRINCgVsZXZlbBgEIAEoBRIMCgRnb2xkGAUg",
-            "ASgFEg8KB2RpYW1vbmQYBiABKAUSEQoJbG9naW5UaW1lGAcgASgFEhIKCmNy",
-            "ZWF0ZVRpbWUYCCABKAUiOwoEUHJvcBIKCgJpZBgBIAEoBRILCgNyaWQYAiAB",
-            "KAUSCwoDY2lkGAMgASgFEg0KBWNvdW50GAQgASgFIiEKBVByb3BzEhgKBnZh",
-            "bHVlcxgBIAMoCzIILnBiLlByb3AiTAoJRXF1aXBtZW50EgoKAmlkGAEgASgF",
-            "EgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSDAoEc3RhchgEIAEoBRILCgNv",
-            "aWQYBSABKAUiKwoKRXF1aXBtZW50cxIdCgZ2YWx1ZXMYASADKAsyDS5wYi5F",
-            "cXVpcG1lbnRiBnByb3RvMw=="));
+            "EgoKAmlkGAEgASgFIpMBCgRSb2xlEgoKAmlkGAEgASgFEgsKA3BpZBgCIAEo",
+            "BRILCgNjaWQYAyABKAUSEAoIbmlja25hbWUYBCABKAkSDQoFbGV2ZWwYBSAB",
+            "KAUSDAoEZ29sZBgGIAEoBRIPCgdkaWFtb25kGAcgASgFEhEKCWxvZ2luVGlt",
+            "ZRgIIAEoBRISCgpjcmVhdGVUaW1lGAkgASgFIjsKBFByb3ASCgoCaWQYASAB",
+            "KAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRINCgVjb3VudBgEIAEoBSIh",
+            "CgVQcm9wcxIYCgZ2YWx1ZXMYASADKAsyCC5wYi5Qcm9wIkwKCUVxdWlwbWVu",
+            "dBIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEgwKBHN0",
+            "YXIYBCABKAUSCwoDb2lkGAUgASgFIisKCkVxdWlwbWVudHMSHQoGdmFsdWVz",
+            "GAEgAygLMg0ucGIuRXF1aXBtZW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -51,7 +51,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeStar), global::Pb.UpgradeStar.Parser, new[]{ "Id", "PropId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeLevel), global::Pb.UpgradeLevel.Parser, new[]{ "Id", "PropId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Decompose), global::Pb.Decompose.Parser, new[]{ "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star", "Oid" }, null, null, null),
@@ -1110,6 +1110,7 @@ namespace Pb {
     public Role(Role other) : this() {
       id_ = other.id_;
       pid_ = other.pid_;
+      cid_ = other.cid_;
       nickname_ = other.nickname_;
       level_ = other.level_;
       gold_ = other.gold_;
@@ -1145,8 +1146,19 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 3;
+    private int cid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "nickname" field.</summary>
-    public const int NicknameFieldNumber = 3;
+    public const int NicknameFieldNumber = 4;
     private string nickname_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Nickname {
@@ -1157,7 +1169,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 4;
+    public const int LevelFieldNumber = 5;
     private int level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Level {
@@ -1168,7 +1180,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "gold" field.</summary>
-    public const int GoldFieldNumber = 5;
+    public const int GoldFieldNumber = 6;
     private int gold_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Gold {
@@ -1179,7 +1191,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "diamond" field.</summary>
-    public const int DiamondFieldNumber = 6;
+    public const int DiamondFieldNumber = 7;
     private int diamond_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Diamond {
@@ -1190,7 +1202,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "loginTime" field.</summary>
-    public const int LoginTimeFieldNumber = 7;
+    public const int LoginTimeFieldNumber = 8;
     private int loginTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int LoginTime {
@@ -1201,7 +1213,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "createTime" field.</summary>
-    public const int CreateTimeFieldNumber = 8;
+    public const int CreateTimeFieldNumber = 9;
     private int createTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CreateTime {
@@ -1226,6 +1238,7 @@ namespace Pb {
       }
       if (Id != other.Id) return false;
       if (Pid != other.Pid) return false;
+      if (Cid != other.Cid) return false;
       if (Nickname != other.Nickname) return false;
       if (Level != other.Level) return false;
       if (Gold != other.Gold) return false;
@@ -1240,6 +1253,7 @@ namespace Pb {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Pid != 0) hash ^= Pid.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
       if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Gold != 0) hash ^= Gold.GetHashCode();
@@ -1264,28 +1278,32 @@ namespace Pb {
         output.WriteRawTag(16);
         output.WriteInt32(Pid);
       }
+      if (Cid != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Cid);
+      }
       if (Nickname.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Nickname);
       }
       if (Level != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteInt32(Level);
       }
       if (Gold != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt32(Gold);
       }
       if (Diamond != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteInt32(Diamond);
       }
       if (LoginTime != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteInt32(LoginTime);
       }
       if (CreateTime != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteInt32(CreateTime);
       }
     }
@@ -1298,6 +1316,9 @@ namespace Pb {
       }
       if (Pid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Pid);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
       }
       if (Nickname.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
@@ -1330,6 +1351,9 @@ namespace Pb {
       }
       if (other.Pid != 0) {
         Pid = other.Pid;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
       }
       if (other.Nickname.Length != 0) {
         Nickname = other.Nickname;
@@ -1367,27 +1391,31 @@ namespace Pb {
             Pid = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 24: {
+            Cid = input.ReadInt32();
+            break;
+          }
+          case 34: {
             Nickname = input.ReadString();
             break;
           }
-          case 32: {
+          case 40: {
             Level = input.ReadInt32();
             break;
           }
-          case 40: {
+          case 48: {
             Gold = input.ReadInt32();
             break;
           }
-          case 48: {
+          case 56: {
             Diamond = input.ReadInt32();
             break;
           }
-          case 56: {
+          case 64: {
             LoginTime = input.ReadInt32();
             break;
           }
-          case 64: {
+          case 72: {
             CreateTime = input.ReadInt32();
             break;
           }

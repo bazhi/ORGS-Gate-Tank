@@ -65,12 +65,13 @@ message Decompose
 message Role{
 	int32 id = 1;
     int32 pid = 2;
-    string nickname = 3;
-    int32 level = 4;
-    int32 gold = 5;
-    int32 diamond = 6;
-    int32 loginTime = 7;
-    int32 createTime = 8;
+    int32 cid = 3;
+    string nickname = 4;
+    int32 level = 5;
+    int32 gold = 6;
+    int32 diamond = 7;
+    int32 loginTime = 8;
+    int32 createTime = 9;
 }
 
 message Prop{

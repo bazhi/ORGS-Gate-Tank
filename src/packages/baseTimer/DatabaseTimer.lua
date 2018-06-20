@@ -60,6 +60,7 @@ function DatabaseTimer:processEvent(event)
             self:sendControlMessage(event.connectid, {
                 action = event.action,
                 args = result or {err = err},
+                params = event.params,
             })
         end
     end

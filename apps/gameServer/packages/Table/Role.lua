@@ -2,6 +2,7 @@
 local Struct = {
     id = 0,
     pid = 0,
+    cid = 0,
     nickname = "",
     level = 1,
     gold = 0,
@@ -13,6 +14,7 @@ local Struct = {
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
     pid = "int",
+    cid = "int",
     nickname = "varchar(255)",
     level = "int",
     gold = "int",

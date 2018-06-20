@@ -26,9 +26,9 @@ local gbc = cc.import("#gbc")
 local http = cc.import("#http")
 local WebSocketInstance = cc.class("WebSocketInstance", gbc.WebSocketInstanceBase)
 local Constants = gbc.Constants
-local json = cc.import("#json")
+-- local json = cc.import("#json")
 --local json_encode = json.encode
-local json_decode = json.decode
+-- local json_decode = json.decode
 local sdSIG = ngx.shared.sdSIG
 local sdLogin = ngx.shared.sdLogin
 
@@ -36,7 +36,7 @@ function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
     self._event:bind(WebSocketInstance.EVENT.CONNECTED, cc.handler(self, self.onConnected))
     self._event:bind(WebSocketInstance.EVENT.DISCONNECTED, cc.handler(self, self.onDisconnected))
-    self._event:bind(WebSocketInstance.EVENT.CONTROL_MESSAGE, cc.handler(self, self.onControlMessage))
+    --self._event:bind(WebSocketInstance.EVENT.CONTROL_MESSAGE, cc.handler(self, self.onControlMessage))
 end
 
 function WebSocketInstance:authConnect()
@@ -86,28 +86,6 @@ end
 function WebSocketInstance:onConnected()
     cc.printf("onConnected:"..self:getConnectId())
     self:runAction("role.load", {})
-end
-
-function WebSocketInstance:onControlMessage(event)
-    local msg = event.message
-    local redis = event.redis
-    local _eventname = event.name
-    local _channel = event.channel
-    
-    if msg then
-        if msg ~= Constants.CLOSE_CONNECT then
-            local ok, err = pcall(function()
-                msg = json_decode(msg)
-                if msg.action then
-                    self:runAction(msg.action, msg.args, redis, true)
-                end
-            end)
-            if not ok then
-                cc.printerror(err)
-            end
-        end
-    end
-    
 end
 
 function WebSocketInstance:onDisconnected(event)

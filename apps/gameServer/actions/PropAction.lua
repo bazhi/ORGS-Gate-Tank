@@ -30,7 +30,7 @@ local ParseConfig = parse.ParseConfig
 PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
 --登录
-function PropAction:decomposeAction(args, _redis)
+function PropAction:decomposeAction(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local prop = player:getProp(args.prop_id)
@@ -51,11 +51,18 @@ function PropAction:decomposeAction(args, _redis)
     
     prop_data.count = prop_data.count - 1
     local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
-    prop:pushQuery(query, instance:getConnectId(), "prop.onProp")
+    prop:pushQuery(query, instance:getConnectId())
     instance:sendPack("Prop", prop_data)
     
-    --id_count|id_count
-    local items = ParseConfig.ParseDecompose(cfg_prop.decompose)
+    self:addProps({items = cfg_prop.decompose}, redis)
+end
+
+function PropAction:addProps(args, _redis)
+    if not args.items then
+        cc.printerror("PropAction:addProps args is not support")
+        return
+    end
+    local items = ParseConfig.ParseDecompose(args.items)
     for _, item in ipairs(items) do
         self:addProp(item.id, item.count)
     end
@@ -70,7 +77,7 @@ function PropAction:addProp(id, count)
         local prop_data = prop:get()
         prop_data.count = prop_data.count + count
         local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
-        prop:pushQuery(query, instance:getConnectId(), "prop.onProp")
+        prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Prop", prop_data)
     else
         prop = player:getProp()
@@ -79,22 +86,31 @@ function PropAction:addProp(id, count)
         dt.cid = id
         dt.count = count
         local query = prop:insertQuery(dt)
-        prop:updateQuery(query, instance:getConnectId(), "prop.onPropNew")
+        prop:pushQuery(query, instance:getConnectId(), "prop.onPropNew")
     end
 end
 
-function PropAction:onProp(args, _redis)
-    cc.dump(args)
+function PropAction:onProp(args, _redis, params)
+    --cc.dump(args)
+    if params and params.update then
+        local instance = self:getInstance()
+        local player = instance:getPlayer()
+        local prop = player:updateProp(args[1])
+        instance:sendPack("Prop", prop:get())
+    end
 end
 
 function PropAction:onPropNew(args, _redis)
-    if args.err or #(args) < 1 then
+    if args.err or not args.insert_id or args.insert_id <= 0 then
         return
     end
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:updateProp(args[1])
-    instance:sendPack("Prop", prop:get())
+    local prop = player:getProp()
+    local query = prop:selectQuery({id = args.insert_id})
+    prop:pushQuery(query, instance:getConnectId(), "prop.onProp", {
+        update = true,
+    })
 end
 
 return PropAction

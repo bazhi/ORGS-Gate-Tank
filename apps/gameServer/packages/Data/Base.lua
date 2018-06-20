@@ -57,8 +57,8 @@ function Base:insertWithUpdateQuery(params, updateparams, addparams)
     return self._orm:insertWithUpdateQuery(params, updateparams, addparams)
 end
 
-function Base:pushQuery(query, connectid, action)
-    self._orm:pushQuery(query, connectid, action)
+function Base:pushQuery(query, connectid, action, params)
+    self._orm:pushQuery(query, connectid, action, params)
 end
 
 return Base

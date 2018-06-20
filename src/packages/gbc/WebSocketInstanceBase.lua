@@ -83,11 +83,7 @@ function WebSocketInstanceBase:run()
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)
-        if cc.DEBUG > cc.DEBUG_WARN then
-            ngx_log(ngx.ERR, err .. debug.traceback("", 3))
-        else
-            ngx_log(ngx.ERR, err)
-        end
+        cc.printerror(err .. debug.traceback("", 3))
         self:onClose()
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
         ngx.exit(ngx.ERROR)
@@ -147,8 +143,27 @@ function WebSocketInstanceBase:sendError(erroname)
     })
 end
 
+function WebSocketInstanceBase:onControlMessage(event)
+    local msg = event.message
+    local redis = event.redis
+    local _eventname = event.name
+    local _channel = event.channel
+    local this = self
+    if msg then
+        if msg ~= Constants.CLOSE_CONNECT then
+            self:safeFunction(function()
+                msg = json_decode(msg)
+                if msg.action then
+                    this:runAction(msg.action, msg.args, redis, true, msg.params)
+                end
+            end)
+        end
+    end
+    
+end
+
 function WebSocketInstanceBase:sendPack(cmd, msg)
-    local ok, result = xpcall(function()
+    local ok, result = self:safeFunction(function()
         local name = cmd
         if type(name) == "number" then
             name = CmdToPB[cmd]
@@ -170,9 +185,6 @@ function WebSocketInstanceBase:sendPack(cmd, msg)
             ["type"] = cmd,
             content = data,
         })
-    end, function(err)
-        cc.dump(msg)
-        cc.printerror(err)
     end)
     if ok then
         self:sendMessage(result)
@@ -181,6 +193,7 @@ end
 
 function WebSocketInstanceBase:runEventLoop()
     -- auth client
+    local this = self
     local token, connectId, err = self:authConnect()
     if not token then
         cc.printinfo(err)
@@ -229,12 +242,14 @@ function WebSocketInstanceBase:runEventLoop()
     local event = self._event
     sub:start(function(subRedis, channel, msg)
         if channel == controlChannel then
-            event:trigger({
+            local evt = {
                 name = _EVENT.CONTROL_MESSAGE,
                 channel = channel,
                 message = msg,
                 redis = subRedis,
-            })
+            }
+            this:onControlMessage(evt)
+            event:trigger(evt)
             if msg == Constants.CLOSE_CONNECT then
                 closeReason = Constants.CLOSE_CONNECT
                 socket:send_close()
@@ -248,12 +263,9 @@ function WebSocketInstanceBase:runEventLoop()
     -- connected
     cc.printinfo("[websocket:%s] connected", connectId)
     
-    local ok, err = pcall(function()
+    self:safeFunction(function()
         event:trigger(_EVENT.CONNECTED)
     end)
-    if not ok then
-        cc.printerror(err)
-    end
     
     -- event loop
     local frames = {}
@@ -327,12 +339,9 @@ function WebSocketInstanceBase:runEventLoop()
     self._socket = nil
     
     -- disconnected
-    local ok, err = pcall(function()
+    self:safeFunction(function()
         event:trigger({name = _EVENT.DISCONNECTED, reason = closeReason})
     end)
-    if not ok then
-        cc.printerror(err)
-    end
     cc.printinfo("[websocket:%s] disconnected", connectId)
 end
 
@@ -374,10 +383,8 @@ end
 
 _processMessage = function(self, rawMessage, messageType)
     local messageFormat = self.config.app.websocketMessageFormat
-    local ok, message = xpcall(function()
+    local ok, message = self:safeFunction(function()
         return self:parseMessage(rawMessage, messageType, messageFormat)
-    end, function(err)
-        cc.printerror(err)
     end)
     if not ok then
         return nil, "parseMessage error"
@@ -389,9 +396,7 @@ _processMessage = function(self, rawMessage, messageType)
         return self:runAction(actionName, message._args or message)
     end, function(_err)
         err = _err
-        if cc.DEBUG > cc.DEBUG_WARN then
-            err = err .. debug.traceback("", 4)
-        end
+        err = err .. debug.traceback("", 4)
     end)
     if err then
         return nil, err

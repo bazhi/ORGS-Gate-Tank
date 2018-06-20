@@ -25,6 +25,9 @@ local RoleAction = cc.class("RoleAction", gbc.ActionBase)
 
 RoleAction.ACCEPTED_REQUEST_TYPE = "websocket"
 local Data = cc.import("#Data")
+local dbConfig = cc.import("#dbConfig")
+
+local default_role_cid = 100001
 
 --登录
 function RoleAction:createAction(args, _redis)
@@ -33,6 +36,7 @@ function RoleAction:createAction(args, _redis)
     local player = instance:getPlayer()
     local pid = user.id
     local nickname = args.nickname
+    local cid = default_role_cid
     if not nickname or #nickname <= 5 then
         instance:sendError("NoSetNickname")
         return
@@ -48,6 +52,7 @@ function RoleAction:createAction(args, _redis)
     dt.nickname = nickname
     dt.loginTime = now
     dt.createTime = now
+    dt.cid = cid
     local query = role:insertQuery(dt)
     role:pushQuery(query, instance:getConnectId(), "role.onCreate")
 end
@@ -58,7 +63,9 @@ function RoleAction:onCreate(args, _redis)
     local role = player:getRole()
     if args.insert_id then
         local query = role:selectQuery({id = args.insert_id})
-        role:pushQuery(query, instance:getConnectId(), "role.onRole")
+        role:pushQuery(query, instance:getConnectId(), "role.onRole", {
+            initRole = true
+        })
     end
 end
 
@@ -73,13 +80,25 @@ function RoleAction:loadAction(_args, _redis)
     role:pushQuery(query, instance:getConnectId(), "role.onRole")
 end
 
-function RoleAction:onRole(args, _redis)
+function RoleAction:onRole(args, redis, params)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     if #args > 0 then
         local role = player:updateRole(args[1])
-        instance:sendPack("Role", role:get())
+        local role_data = role:get()
+        instance:sendPack("Role", role_data)
         self:loadOthersAction(args, _redis)
+        if params then
+            --初始化数据
+            if params.initRole then
+                local cfg_role = dbConfig.get("cfg_role", role_data.cid)
+                if cfg_role then
+                    instance:runAction("prop.addProps", {
+                        items = cfg_role.initProps,
+                    }, redis, true)
+                end
+            end
+        end
     else
         instance:sendError("NoneRole")
     end
@@ -107,14 +126,18 @@ function RoleAction:onEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     player:updateEquipments(args)
-    instance:sendPack("Equipments", args)
+    instance:sendPack("Equipments", {
+        values = args,
+    })
 end
 
 function RoleAction:onProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     player:updateProps(args)
-    instance:sendPack("Props", args)
+    instance:sendPack("Props", {
+        values = args
+    })
 end
 
 return RoleAction
