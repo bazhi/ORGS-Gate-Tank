@@ -61,6 +61,7 @@ local config = {
                 host = "192.168.0.66",
                 apps = {
                     loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
+                    website = "_GBC_CORE_ROOT_/apps/website",
                 },
             },
             {

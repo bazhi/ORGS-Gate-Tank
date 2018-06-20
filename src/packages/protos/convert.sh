@@ -15,4 +15,6 @@ cp -rf csharp/ $PROJECT_PATH
 cp -rf command.proto $PROJECT_PATH
 
 lua createMD.lua
+
+echo -e "\033[33m Convert Success\033[0m"
 # mv protos.md ../../../apps/web/public_html/
