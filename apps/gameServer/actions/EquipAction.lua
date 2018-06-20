@@ -223,6 +223,12 @@ function EquipAction:upgradeStarAction(args, redis)
         return
     end
     
+    --类型不为武器书，错误
+    if cfg_prop.type ~= 2 then
+        instance:sendError("OperationNotPermit")
+        return
+    end
+    
     local cfg_star = dbConfig.get("cfg_star", equip_data.star)
     if not cfg_star then
         instance:sendError("ConfigError")
@@ -288,7 +294,7 @@ function EquipAction:upgradeLevelAction(args, redis)
         instance:sendError("ConfigError")
     end
     
-    --类型不为武器书，错误
+    --类型不为经验书，错误
     if cfg_prop.type ~= 1 then
         instance:sendError("OperationNotPermit")
         return
