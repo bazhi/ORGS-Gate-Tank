@@ -75,6 +75,7 @@ message Role{
     int32 diamond = 7;
     int32 loginTime = 8;
     int32 createTime = 9;
+    int32 guide = 10; //引导索引
 }
 
 message Prop{

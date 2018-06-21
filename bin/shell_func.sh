@@ -28,13 +28,15 @@ function getOsType()
 OS_TYPE=$(getOsType)
 if [ $OS_TYPE == "MACOS" ]; then
     SED_BIN='sed -i --'
+    SO_KEEPALIVE='so_keepalive=on'
 else
     SED_BIN='sed -i'
+    SO_KEEPALIVE='so_keepalive=1s:1s:5'
 fi
 
 function updateConfigs()
 {
-    $LUA_BIN -e "ROOT_DIR='$ROOT_DIR'; DEBUG=$DEBUG; dofile('$ROOT_DIR/bin/shell_func.lua'); updateConfigs()"
+    $LUA_BIN -e "ROOT_DIR='$ROOT_DIR'; DEBUG=$DEBUG; SO_KEEPALIVE='$SO_KEEPALIVE'; dofile('$ROOT_DIR/bin/shell_func.lua'); updateConfigs()"
 }
 
 function startSupervisord()

@@ -32,15 +32,15 @@ namespace Pb {
             "bGl0eRIKCgJpZBgBIAEoBRIPCgdwcm9wX2lkGAIgASgFIioKC1VwZ3JhZGVT",
             "dGFyEgoKAmlkGAEgASgFEg8KB3Byb3BfaWQYAiABKAUiKwoMVXBncmFkZUxl",
             "dmVsEgoKAmlkGAEgASgFEg8KB3Byb3BfaWQYAiABKAUiFwoJRGVjb21wb3Nl",
-            "EgoKAmlkGAEgASgFIpMBCgRSb2xlEgoKAmlkGAEgASgFEgsKA3BpZBgCIAEo",
+            "EgoKAmlkGAEgASgFIqIBCgRSb2xlEgoKAmlkGAEgASgFEgsKA3BpZBgCIAEo",
             "BRILCgNjaWQYAyABKAUSEAoIbmlja25hbWUYBCABKAkSDQoFbGV2ZWwYBSAB",
             "KAUSDAoEZ29sZBgGIAEoBRIPCgdkaWFtb25kGAcgASgFEhEKCWxvZ2luVGlt",
-            "ZRgIIAEoBRISCgpjcmVhdGVUaW1lGAkgASgFIjsKBFByb3ASCgoCaWQYASAB",
-            "KAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRINCgVjb3VudBgEIAEoBSIh",
-            "CgVQcm9wcxIYCgZ2YWx1ZXMYASADKAsyCC5wYi5Qcm9wIkwKCUVxdWlwbWVu",
-            "dBIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEgwKBHN0",
-            "YXIYBCABKAUSCwoDb2lkGAUgASgFIisKCkVxdWlwbWVudHMSHQoGdmFsdWVz",
-            "GAEgAygLMg0ucGIuRXF1aXBtZW50YgZwcm90bzM="));
+            "ZRgIIAEoBRISCgpjcmVhdGVUaW1lGAkgASgFEg0KBWd1aWRlGAogASgFIjsK",
+            "BFByb3ASCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRIN",
+            "CgVjb3VudBgEIAEoBSIhCgVQcm9wcxIYCgZ2YWx1ZXMYASADKAsyCC5wYi5Q",
+            "cm9wIkwKCUVxdWlwbWVudBIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUSCwoD",
+            "Y2lkGAMgASgFEgwKBHN0YXIYBCABKAUSCwoDb2lkGAUgASgFIisKCkVxdWlw",
+            "bWVudHMSHQoGdmFsdWVzGAEgAygLMg0ucGIuRXF1aXBtZW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -51,7 +51,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeStar), global::Pb.UpgradeStar.Parser, new[]{ "Id", "PropId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeLevel), global::Pb.UpgradeLevel.Parser, new[]{ "Id", "PropId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Decompose), global::Pb.Decompose.Parser, new[]{ "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime", "Guide" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star", "Oid" }, null, null, null),
@@ -1117,6 +1117,7 @@ namespace Pb {
       diamond_ = other.diamond_;
       loginTime_ = other.loginTime_;
       createTime_ = other.createTime_;
+      guide_ = other.guide_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1223,6 +1224,20 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "guide" field.</summary>
+    public const int GuideFieldNumber = 10;
+    private int guide_;
+    /// <summary>
+    /// 引导索引
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Guide {
+      get { return guide_; }
+      set {
+        guide_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Role);
@@ -1245,6 +1260,7 @@ namespace Pb {
       if (Diamond != other.Diamond) return false;
       if (LoginTime != other.LoginTime) return false;
       if (CreateTime != other.CreateTime) return false;
+      if (Guide != other.Guide) return false;
       return true;
     }
 
@@ -1260,6 +1276,7 @@ namespace Pb {
       if (Diamond != 0) hash ^= Diamond.GetHashCode();
       if (LoginTime != 0) hash ^= LoginTime.GetHashCode();
       if (CreateTime != 0) hash ^= CreateTime.GetHashCode();
+      if (Guide != 0) hash ^= Guide.GetHashCode();
       return hash;
     }
 
@@ -1306,6 +1323,10 @@ namespace Pb {
         output.WriteRawTag(72);
         output.WriteInt32(CreateTime);
       }
+      if (Guide != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(Guide);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1337,6 +1358,9 @@ namespace Pb {
       }
       if (CreateTime != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(CreateTime);
+      }
+      if (Guide != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Guide);
       }
       return size;
     }
@@ -1372,6 +1396,9 @@ namespace Pb {
       }
       if (other.CreateTime != 0) {
         CreateTime = other.CreateTime;
+      }
+      if (other.Guide != 0) {
+        Guide = other.Guide;
       }
     }
 
@@ -1417,6 +1444,10 @@ namespace Pb {
           }
           case 72: {
             CreateTime = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            Guide = input.ReadInt32();
             break;
           }
         }
