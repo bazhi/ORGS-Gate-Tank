@@ -95,8 +95,12 @@ function PropAction:onProp(args, _redis, params)
     if params and params.update then
         local instance = self:getInstance()
         local player = instance:getPlayer()
-        local prop = player:updateProp(args[1])
-        instance:sendPack("Prop", prop:get())
+        local bupdate = player:updateProp(args)
+        if bupdate then
+            instance:sendPack("Props", {
+                values = args,
+            })
+        end
     end
 end
 

@@ -28,7 +28,7 @@ end
 --装备API
 --------------------------------------------------------------------------------------------------------------------
 --更新所有装备
-function Player:updateEquipments(equipments)
+function Player:setEquipments(equipments)
     self._Equipments = {}
     local TEquip = Table.Equipment
     for _, v in ipairs(equipments) do
@@ -38,14 +38,21 @@ function Player:updateEquipments(equipments)
     end
 end
 
+function Player:updateEquipments(equipments)
+    local bupdate = false
+    for _, v in ipairs(equipments) do
+        bupdate = true
+        self:updateEquipment(v)
+    end
+    return bupdate
+end
+
 --更新单个装备
 function Player:updateEquipment(equipment)
     if not equipment.id then
         return
     end
-    if not self._Equipments then
-        self._Equipments = {}
-    end
+    self._Equipments = self._Equipments or {}
     local equipments = self._Equipments
     for _, v in ipairs(equipments) do
         if v:equal(equipment) then
@@ -94,7 +101,7 @@ end
 --------------------------------------------------------------------------------------------------------------------
 
 --更新所有道具
-function Player:updateProps(props)
+function Player:setProps(props)
     self._Props = {}
     local TProp = Table.Prop
     for _, v in ipairs(props) do
@@ -104,11 +111,18 @@ function Player:updateProps(props)
     end
 end
 
+function Player:updateProps(props)
+    local bupdate = false
+    for _, v in ipairs(props) do
+        bupdate = true
+        self:updateProp(v)
+    end
+    return bupdate
+end
+
 --更新单个道具
 function Player:updateProp(prop)
-    if not self._Props then
-        self._Props = {}
-    end
+    self._Props = self._Props or {}
     local props = self._Props
     for _, v in ipairs(props) do
         if v:equal(prop) then

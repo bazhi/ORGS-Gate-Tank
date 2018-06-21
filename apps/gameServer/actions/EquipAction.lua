@@ -65,8 +65,12 @@ function EquipAction:onNewEquip(args, _redis)
     if #args > 0 then
         local instance = self:getInstance()
         local player = instance:getPlayer()
-        local equip = player:updateEquipment(args[1])
-        instance:sendPack("Equipment", equip:get())
+        local bupdate = player:updateEquipments(args)
+        if bupdate then
+            instance:sendPack("Equipments", {
+                values = args,
+            })
+        end
     end
 end
 

@@ -1,6 +1,6 @@
 
 local config = {
-    numOfJobWorkers = 1,
+    numOfJobWorkers = 0,
     
     mysql = {
         --path = "/tmp/mysql.sock",

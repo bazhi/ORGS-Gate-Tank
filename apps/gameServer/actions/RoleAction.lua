@@ -125,7 +125,7 @@ end
 function RoleAction:onEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    player:updateEquipments(args)
+    player:setEquipments(args)
     instance:sendPack("Equipments", {
         values = args,
     })
@@ -134,7 +134,7 @@ end
 function RoleAction:onProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    player:updateProps(args)
+    player:setProps(args)
     instance:sendPack("Props", {
         values = args
     })

@@ -40,7 +40,7 @@ local config = {
         websocketsMaxPayloadLen = 16 * 1024, -- 16KB
         
         jobMessageFormat = "json",
-        numOfJobWorkers = 1,
+        numOfJobWorkers = 0,
         
         jobWorkerRequests = 1000,
     },

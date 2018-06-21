@@ -11,7 +11,36 @@ function FileAction:checkConfigAction(args, _redis)
         md5 = Umd5.file(cc.sqlite_file)
         cache.set("sqlite_file_md5", md5)
     end
-    return args.md5 == md5
+    return {
+        result = string.lower(args.md5) == string.lower(md5),
+    }
+end
+
+function FileAction:checkMD5(path, file, md5)
+    local key = "MD5_"..file
+    local md5_c = cache.get(key)
+    if not md5_c then
+        md5_c = Umd5.file(path..file)
+        cache.set(key, md5_c)
+    end
+    return string.lower(md5_c) == string.lower(md5)
+end
+
+function FileAction:checkUpdateAction(args, _redis)
+    local cfg = self:getInstanceConfig()
+    local path = cfg.app.rootPath .. "/public_html/download/"
+    local checklist = args.checklist or {}
+    local result = {}
+    
+    for _, item in ipairs(checklist) do
+        if item.file and item.md5 then
+            if not self:checkMD5(path, item.file, item.md5) then
+                table.insert(result, item.file)
+            end
+        end
+    end
+    
+    return {updates = result}
 end
 
 return FileAction
