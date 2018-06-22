@@ -41,41 +41,40 @@ message CreateRole{
 }
 
 //升级武器品质命令
-message UpgradeQuality
-{
+message UpgradeQuality{
 	int32 id = 1; //武器id
 	int32 prop_id = 2; //道具id
 }
 
 //升级星级
-message UpgradeStar
-{
+message UpgradeStar{
 	int32 id = 1; //武器id
 	int32 prop_id = 2; //道具id
 }
 
 //升级等级
-message UpgradeLevel
-{
+message UpgradeLevel{
 	int32 id = 1; //武器id
 	int32 prop_id = 2; //道具id
 }
 
 //分解物品
-message Decompose
-{
+message Decompose{
 	int32 id = 1; //分解的道具id
 }
 
 //进入章节
-message EnterChapter
-{
+message EnterChapter{
 	int32 cid = 1; //进入章节
 }
 
-message EnterSection
-{
+message EnterSection{
 	int32 cid = 1; //进入Section
+}
+
+message Delete{
+	int32 id = 1; //需要删除的类型
+	int32 type = 2; // 需要删除的ID
 }
 
 //数据

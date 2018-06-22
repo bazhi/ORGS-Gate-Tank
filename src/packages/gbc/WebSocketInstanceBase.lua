@@ -143,23 +143,14 @@ function WebSocketInstanceBase:sendError(erroname)
     })
 end
 
-function WebSocketInstanceBase:onControlMessage(event)
-    local msg = event.message
-    local redis = event.redis
-    local _eventname = event.name
-    local _channel = event.channel
-    local this = self
-    if msg then
-        if msg ~= Constants.CLOSE_CONNECT then
-            self:safeFunction(function()
-                msg = json_decode(msg)
-                if msg.action then
-                    this:runAction(msg.action, msg.args, redis, true, msg.params)
-                end
-            end)
-        end
+function WebSocketInstanceBase:sendDelete(cmd, id)
+    if type(cmd) == "string" then
+        cmd = PBToCmd[cmd]
     end
-    
+    self:sendPack("Delete", {
+        ["type"] = cmd,
+        id = id,
+    })
 end
 
 function WebSocketInstanceBase:sendPack(cmd, msg)
@@ -189,6 +180,25 @@ function WebSocketInstanceBase:sendPack(cmd, msg)
     if ok then
         self:sendMessage(result)
     end
+end
+
+function WebSocketInstanceBase:onControlMessage(event)
+    local msg = event.message
+    local redis = event.redis
+    local _eventname = event.name
+    local _channel = event.channel
+    local this = self
+    if msg then
+        if msg ~= Constants.CLOSE_CONNECT then
+            self:safeFunction(function()
+                msg = json_decode(msg)
+                if msg.action then
+                    this:runAction(msg.action, msg.args, redis, true, msg.params)
+                end
+            end)
+        end
+    end
+    
 end
 
 function WebSocketInstanceBase:runEventLoop()

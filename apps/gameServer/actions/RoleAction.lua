@@ -150,6 +150,8 @@ function RoleAction:loadOthersAction(_args, _redis)
     local box = boxes:getTemplate()
     query = box:selectQuery({rid = rid})
     box:pushQuery(query, instance:getConnectId(), "role.onBox")
+    
+    --instance:sendDelete("Mission", 1)
 end
 
 function RoleAction:onEquipment(args, _redis)
