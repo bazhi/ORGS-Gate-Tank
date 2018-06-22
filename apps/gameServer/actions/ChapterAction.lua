@@ -29,8 +29,8 @@ local ParseConfig = parse.ParseConfig
 
 ChapterAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
-function ChapterAction:openAction(args, redis)
-
+function ChapterAction:enterAction(args, redis)
+    
 end
 
 return ChapterAction

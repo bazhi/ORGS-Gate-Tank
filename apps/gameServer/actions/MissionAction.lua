@@ -66,7 +66,7 @@ function MissionAction:deleteMission(id)
     mission:pushQuery(query, instance:getConnectId())
 end
 
-function MissionAction:finshAction(args, redis)
+function MissionAction:finishAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     if not id then

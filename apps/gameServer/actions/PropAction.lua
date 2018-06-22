@@ -29,7 +29,7 @@ local ParseConfig = parse.ParseConfig
 
 PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
---登录
+--分解
 function PropAction:decomposeAction(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()

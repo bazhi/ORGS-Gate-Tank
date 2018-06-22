@@ -12,6 +12,8 @@ namespace Pb{
 		Decompose,
 		EnterChapter,
 		EnterSection,
+		FinishSection,
+		FinishMission,
 		Delete,
 		Role,
 		Prop,
@@ -41,6 +43,8 @@ namespace Pb{
 			dict.Add(PBDefine.Decompose, Decompose.Parser);
 			dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);
 			dict.Add(PBDefine.EnterSection, EnterSection.Parser);
+			dict.Add(PBDefine.FinishSection, FinishSection.Parser);
+			dict.Add(PBDefine.FinishMission, FinishMission.Parser);
 			dict.Add(PBDefine.Delete, Delete.Parser);
 			dict.Add(PBDefine.Role, Role.Parser);
 			dict.Add(PBDefine.Prop, Prop.Parser);

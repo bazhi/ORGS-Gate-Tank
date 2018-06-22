@@ -75,6 +75,15 @@ message EnterSection{
 	int32 cid = 1; //进入Section
 }
 
+message FinishSection{
+	int32 id = 1; //关卡等级
+	int32 star = 2; //关卡星级
+}
+
+message FinishMission{
+	int32 id = 1; //mission id
+}
+
 message Delete{
 	int32 id = 1; //需要删除的类型
 	int32 type = 2; // 需要删除的ID
