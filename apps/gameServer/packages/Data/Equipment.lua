@@ -1,8 +1,10 @@
 local Base = cc.import(".Base")
 local Equipment = cc.class("Equipment", Base)
 
-function Equipment:update(data)
-    Equipment.super.update(self, data)
+local Table = cc.import("#Table")
+
+function Equipment:ctor()
+    Equipment.super.ctor(self, Table.Equipment)
 end
 
 function Equipment:isOriginal(originalId)

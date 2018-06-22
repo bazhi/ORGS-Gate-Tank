@@ -33,7 +33,8 @@ PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function PropAction:decomposeAction(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:getProp(args.prop_id)
+    local props = player:getProps()
+    local prop = props:get(args.prop_id)
     if not prop or prop.count < 1 then
         instance:sendError("NoneProp")
         return
@@ -72,7 +73,8 @@ function PropAction:addProp(id, count)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
-    local prop = player:getProp(id)
+    local props = player:getProps()
+    local prop = props:get(id)
     if prop then
         local prop_data = prop:get()
         prop_data.count = prop_data.count + count
@@ -80,7 +82,7 @@ function PropAction:addProp(id, count)
         prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Prop", prop_data)
     else
-        prop = player:getProp()
+        prop = props:get()
         local dt = prop:get()
         dt.rid = role:getID()
         dt.cid = id
@@ -95,7 +97,8 @@ function PropAction:onProp(args, _redis, params)
     if params and params.update then
         local instance = self:getInstance()
         local player = instance:getPlayer()
-        local bupdate = player:updateProp(args)
+        local props = player:getProps()
+        local bupdate = props:updates(args)
         if bupdate then
             instance:sendPack("Props", {
                 values = args,
@@ -110,7 +113,8 @@ function PropAction:onPropNew(args, _redis)
     end
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:getProp()
+    local props = player:getProps()
+    local prop = props:get()
     local query = prop:selectQuery({id = args.insert_id})
     prop:pushQuery(query, instance:getConnectId(), "prop.onProp", {
         update = true,

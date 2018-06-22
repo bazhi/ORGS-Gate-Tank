@@ -82,25 +82,33 @@ end
 
 function RoleAction:onRole(args, redis, params)
     local instance = self:getInstance()
+    if #args == 0 then
+        instance:sendError("NoneRole")
+        return
+    end
+    
     local player = instance:getPlayer()
-    if #args > 0 then
-        local role = player:updateRole(args[1])
-        local role_data = role:get()
-        instance:sendPack("Role", role_data)
-        self:loadOthersAction(args, _redis)
-        if params then
-            --初始化数据
-            if params.initRole then
-                local cfg_role = dbConfig.get("cfg_role", role_data.cid)
-                if cfg_role then
+    local role = player:updateRole(args[1])
+    local role_data = role:get()
+    instance:sendPack("Role", role_data)
+    self:loadOthersAction(args, redis)
+    if params then
+        --初始化数据
+        if params.initRole then
+            local cfg_role = dbConfig.get("cfg_role", role_data.cid)
+            if cfg_role then
+                if cfg_role.initProps then
                     instance:runAction("prop.addProps", {
                         items = cfg_role.initProps,
                     }, redis, true)
                 end
+                if cfg_role.missionid then
+                    instance:runAction("mission.add", {
+                        cid = cfg_role.missionid,
+                    }, redis, true)
+                end
             end
         end
-    else
-        instance:sendError("NoneRole")
     end
 end
 
@@ -112,20 +120,43 @@ function RoleAction:loadOthersAction(_args, _redis)
         return
     end
     local rid = role:getID()
-    local Equipment = player:getEquipment()
-    local Prop = player:getProp()
     
+    local equipments = player:getEquipments()
+    local Equipment = equipments:getTemplate()
     local query = Equipment:selectQuery({rid = rid})
     Equipment:pushQuery(query, instance:getConnectId(), "role.onEquipment")
     
+    local props = player:getProps()
+    local Prop = props:getTemplate()
     query = Prop:selectQuery({rid = rid})
     Prop:pushQuery(query, instance:getConnectId(), "role.onProp")
+    
+    local chapters = player:getChapters()
+    local chapter = chapters:getTemplate()
+    query = chapter:selectQuery({rid = rid})
+    chapter:pushQuery(query, instance:getConnectId(), "role.onChapter")
+    
+    local sections = player:getSections()
+    local section = sections:getTemplate()
+    query = section:selectQuery({rid = rid})
+    section:pushQuery(query, instance:getConnectId(), "role.onSection")
+    
+    local missions = player:getMissions()
+    local mission = missions:getTemplate()
+    query = mission:selectQuery({rid = rid})
+    mission:pushQuery(query, instance:getConnectId(), "role.onMission")
+    
+    local boxes = player:getBoxes()
+    local box = boxes:getTemplate()
+    query = box:selectQuery({rid = rid})
+    box:pushQuery(query, instance:getConnectId(), "role.onBox")
 end
 
 function RoleAction:onEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    player:setEquipments(args)
+    local equipments = player:getEquipments()
+    equipments:set(args)
     instance:sendPack("Equipments", {
         values = args,
     })
@@ -134,8 +165,49 @@ end
 function RoleAction:onProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    player:setProps(args)
+    local props = player:getProps()
+    props:set(args)
     instance:sendPack("Props", {
+        values = args
+    })
+end
+
+function RoleAction:onChapter(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local chapters = player:getChapters()
+    chapters:set(args)
+    instance:sendPack("Chapters", {
+        values = args
+    })
+end
+
+function RoleAction:onSection(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local sections = player:getSections()
+    sections:set(args)
+    instance:sendPack("Sections", {
+        values = args
+    })
+end
+
+function RoleAction:onMission(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local missions = player:getMissions()
+    missions:set(args)
+    instance:sendPack("Missions", {
+        values = args
+    })
+end
+
+function RoleAction:onBox(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local boxes = player:getBoxes()
+    boxes:set(args)
+    instance:sendPack("Boxes", {
         values = args
     })
 end

@@ -11,11 +11,17 @@ message Error{
 		None = 0;
 		UserLoggedIn = 1; //用户已经登陆
 		NoSetNickname = 2; //没有设置好用户名
+		NoneConfigID = 3; //缺少Config ID
+		NoneID = 4; //缺少参数ID
+		NoneConfig = 5; //缺少配置文件
+		Unfinished = 6; //未完成
 		UnexpectedError = 10; //不期望的错误
 		ConfigError = 11; //配置表错误
 		NoneRole = 1001; //还没有创建角色
 		NoneProp = 1002; //道具不存在
 		NoneEquipment = 1003; //装备不存在
+
+		NoneMission = 1011; //找不到任务
 
 		OperationNotPermit = 2001; //操作不允许
 	}
@@ -61,6 +67,17 @@ message Decompose
 	int32 id = 1; //分解的道具id
 }
 
+//进入章节
+message EnterChapter
+{
+	int32 cid = 1; //进入章节
+}
+
+message EnterSection
+{
+	int32 cid = 1; //进入Section
+}
+
 //数据
 message Role{
 	int32 id = 1;
@@ -72,7 +89,6 @@ message Role{
     int32 diamond = 7;
     int32 loginTime = 8;
     int32 createTime = 9;
-    int32 guide = 10; //引导索引
 }
 
 message Prop{
@@ -97,3 +113,54 @@ message Equipment{
 message Equipments{
 	repeated Equipment values = 1;
 }
+
+message Chapter{
+	int32 id = 1;
+	int32 rid = 2;
+	int32 cid = 3;
+	int32 star = 4;
+}
+
+message Chapters{
+	repeated Chapter values = 1;
+}
+
+message Section{
+	int32 id = 1;
+	int32 rid = 2;
+	int32 cid = 3;
+	int32 star = 4;
+	int32 tryTimes = 5;
+	int32 finishTimes = 6;
+	int32 enterTime = 7;
+}
+
+message Sections{
+	repeated Section values = 1;
+}
+
+message Mission{
+	int32 id = 1;
+    int32 rid = 2;
+    int32 cid = 3;
+  	int32 progress = 4;
+}
+
+message Missions{
+	repeated Mission values = 1;
+}
+
+message Box{
+	int32 id = 1;
+   	int32 rid = 2;
+   	int32 cid = 3;
+   	int32 unlockTime = 4; //解锁时间，0为未解锁，否则为解锁结束时间
+}
+
+message Boxes{
+	repeated Box values = 1;
+}
+
+
+
+

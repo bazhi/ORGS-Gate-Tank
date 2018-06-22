@@ -7,5 +7,13 @@ local _M = {
     Props = 6,
     Equipment = 7,
     Equipments = 8,
+    Chapter = 9,
+    Chapters = 10,
+    Section = 11,
+    Sections = 12,
+    Mission = 13,
+    Missions = 14,
+    Box = 15,
+    Boxes = 16,
 }
 return _M

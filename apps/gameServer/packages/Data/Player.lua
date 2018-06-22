@@ -1,21 +1,22 @@
 local Player = cc.class("Player")
-local Equipment = cc.import(".Equipment")
-local Prop = cc.import(".Prop")
 local Role = cc.import(".Role")
-local Table = cc.import("#Table")
+
+local Equipments = cc.import(".Equipments")
+local Props = cc.import(".Props")
+local Chapters = cc.import(".Chapters")
+local Sections = cc.import(".Sections")
+local Missions = cc.import(".Missions")
+local Boxes = cc.import(".Boxes")
 
 --玩家所有数据的集合
 function Player:ctor(user)
     self._User = user
+    
+    self._Role = Role:new()
 end
 
 function Player:getRole()
-    local role = self._Role
-    if not role then
-        role = Role:new(Table.Role)
-        self._Role = role
-    end
-    return role
+    return self._Role
 end
 
 function Player:updateRole(data)
@@ -28,131 +29,66 @@ end
 --装备API
 --------------------------------------------------------------------------------------------------------------------
 --更新所有装备
-function Player:setEquipments(equipments)
-    self._Equipments = {}
-    local TEquip = Table.Equipment
-    for _, v in ipairs(equipments) do
-        local item = Equipment:new(TEquip)
-        item:update(v)
-        table.insert(self._Equipments, item)
-    end
-end
 
-function Player:updateEquipments(equipments)
-    local bupdate = false
-    for _, v in ipairs(equipments) do
-        bupdate = true
-        self:updateEquipment(v)
+function Player:getEquipments()
+    if not self._Equipments then
+        self._Equipments = Equipments:new()
     end
-    return bupdate
-end
-
---更新单个装备
-function Player:updateEquipment(equipment)
-    if not equipment.id then
-        return
-    end
-    self._Equipments = self._Equipments or {}
-    local equipments = self._Equipments
-    for _, v in ipairs(equipments) do
-        if v:equal(equipment) then
-            v:update(equipment)
-            return v
-        end
-    end
-    local item = Equipment:new(Table.Equipment)
-    item:update(equipment)
-    table.insert(self._Equipments, item)
-    return item
-end
-
-function Player:getEquipment(id)
-    if not id then
-        local equipment = self._Equipment
-        if not equipment then
-            equipment = Equipment:new(Table.Equipment)
-            self._Equipment = equipment
-        end
-        return equipment
-    end
-    
-    local equipments = self._Equipments or {}
-    for _, v in ipairs(equipments) do
-        if v:equalID(id) then
-            return v
-        end
-    end
-    return nil
-end
-
---获取唯一装备
-function Player:getEquipmentOriginal(originalId)
-    local equipments = self._Equipments
-    for _, v in ipairs(equipments) do
-        if v:isOriginal(originalId) then
-            return v
-        end
-    end
-    return nil
+    return self._Equipments
 end
 
 --------------------------------------------------------------------------------------------------------------------
 --道具API
 --------------------------------------------------------------------------------------------------------------------
 
---更新所有道具
-function Player:setProps(props)
-    self._Props = {}
-    local TProp = Table.Prop
-    for _, v in ipairs(props) do
-        local item = Prop:new(TProp)
-        item:update(v)
-        table.insert(self._Props, item)
+function Player:getProps()
+    if not self._Props then
+        self._Props = Props:new()
     end
+    return self._Props
 end
 
-function Player:updateProps(props)
-    local bupdate = false
-    for _, v in ipairs(props) do
-        bupdate = true
-        self:updateProp(v)
+--------------------------------------------------------------------------------------------------------------------
+--章节API
+--------------------------------------------------------------------------------------------------------------------
+
+function Player:getChapters()
+    if not self._Chapters then
+        self._Chapters = Chapters:new()
     end
-    return bupdate
+    return self._Chapters
 end
 
---更新单个道具
-function Player:updateProp(prop)
-    self._Props = self._Props or {}
-    local props = self._Props
-    for _, v in ipairs(props) do
-        if v:equal(prop) then
-            v:update(prop)
-            return v
-        end
+--------------------------------------------------------------------------------------------------------------------
+--小节API
+--------------------------------------------------------------------------------------------------------------------
+function Player:getSections()
+    if not self._Sections then
+        self._Sections = Sections:new()
     end
-    local item = Prop:new(Table.Prop)
-    item:update(prop)
-    table.insert(self._Props, item)
-    return item
+    return self._Sections
 end
 
-function Player:getProp(id)
-    if not id then
-        local prop = self._Prop
-        if not prop then
-            prop = Prop:new(Table.Prop)
-            self._Prop = prop
-        end
-        return prop
+--------------------------------------------------------------------------------------------------------------------
+--小节API
+--------------------------------------------------------------------------------------------------------------------
+
+function Player:getMissions()
+    if not self._Missions then
+        self._Missions = Missions:new()
     end
-    
-    local props = self._Props or {}
-    for _, v in ipairs(props) do
-        if v:equalID(id) then
-            return v
-        end
+    return self._Missions
+end
+
+--------------------------------------------------------------------------------------------------------------------
+--宝箱API
+--------------------------------------------------------------------------------------------------------------------
+
+function Player:getBoxes()
+    if not self._Boxes then
+        self._Boxes = Boxes:new()
     end
-    return nil
+    return self._Boxes
 end
 
 return Player

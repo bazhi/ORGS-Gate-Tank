@@ -30,7 +30,8 @@ EquipAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function EquipAction:checkProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = player:getProp(args.prop_id)
+    local props = player:getProps()
+    local prop = props:get(args.prop_id)
     if not prop or prop.count < 1 then
         instance:sendError("NoneProp")
         return nil
@@ -41,7 +42,8 @@ end
 function EquipAction:checkEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local equip = player:getEquipment(args.id)
+    local equipments = player:getEquipments()
+    local equip = equipments:get(args.id)
     if not equip then
         instance:sendError("NoneEquipment")
         return nil
@@ -62,29 +64,30 @@ function EquipAction:onNewEquip(args, _redis)
     if args.err then
         return
     end
-    if #args > 0 then
-        local instance = self:getInstance()
-        local player = instance:getPlayer()
-        local bupdate = player:updateEquipments(args)
-        if bupdate then
-            instance:sendPack("Equipments", {
-                values = args,
-            })
-        end
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local equipments = player:getEquipments()
+    local bupdate = equipments:updates(args)
+    if bupdate then
+        instance:sendPack("Equipments", {
+            values = args,
+        })
     end
 end
 
 --解锁新的装备成功
 function EquipAction:onUnlock(args, _redis)
     if not args.err then
-        local insert_id = args.insert_id
-        if insert_id then
-            local instance = self:getInstance()
-            local player = instance:getPlayer()
-            local equip = player:getEquipment()
-            local query = equip:selectQuery({id = insert_id})
-            equip:pushQuery(query, instance:getConnectId(), "onNewEquip")
-        end
+        return
+    end
+    local insert_id = args.insert_id
+    if insert_id then
+        local instance = self:getInstance()
+        local player = instance:getPlayer()
+        local equipments = player:getEquipments()
+        local equip = equipments:get()
+        local query = equip:selectQuery({id = insert_id})
+        equip:pushQuery(query, instance:getConnectId(), "onNewEquip")
     end
 end
 
@@ -115,7 +118,9 @@ function EquipAction:unlockEquipment(args, redis)
         return
     end
     
-    local equip = player:getEquipmentOriginal(cfg_equip.originalId)
+    local equipments = player:getEquipments()
+    
+    local equip = equipments:getOriginal(cfg_equip.originalId)
     --找到该装备，无法解锁该类型装备
     if equip then
         instance:sendError("OperationNotPermit")
@@ -127,7 +132,7 @@ function EquipAction:unlockEquipment(args, redis)
     prop:pushQuery(query, instance:getConnectId(), "equip.onProp")
     instance:sendPack("Prop", prop_data)
     
-    local equip = player:getEquipment()
+    local equip = equipments:get()
     local dt = equip:get()
     dt.rid = role:getID()
     dt.cid = cfg_prop.eid
@@ -145,8 +150,9 @@ function EquipAction:upgradeQualityAction(args, redis)
         return
     end
     local prop_data = prop:get()
+    local equipments = player:getEquipments()
     
-    local equip = player:getEquipment(args.id)
+    local equip = equipments:get(args.id)
     --当装备不存在是，则是检查是否添加新的武器
     if not equip then
         self:unlockEquipment(args, redis)

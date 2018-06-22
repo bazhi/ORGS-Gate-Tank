@@ -10,7 +10,15 @@ namespace Pb{
 		Prop,
 		Props,
 		Equipment,
-		Equipments
+		Equipments,
+		Chapter,
+		Chapters,
+		Section,
+		Sections,
+		Mission,
+		Missions,
+		Box,
+		Boxes
     }
 
 	public static class PBRegister
@@ -25,6 +33,14 @@ namespace Pb{
 			dict.Add(PBDefine.Props, Props.Parser);
 			dict.Add(PBDefine.Equipment, Equipment.Parser);
 			dict.Add(PBDefine.Equipments, Equipments.Parser);
+			dict.Add(PBDefine.Chapter, Chapter.Parser);
+			dict.Add(PBDefine.Chapters, Chapters.Parser);
+			dict.Add(PBDefine.Section, Section.Parser);
+			dict.Add(PBDefine.Sections, Sections.Parser);
+			dict.Add(PBDefine.Mission, Mission.Parser);
+			dict.Add(PBDefine.Missions, Missions.Parser);
+			dict.Add(PBDefine.Box, Box.Parser);
+			dict.Add(PBDefine.Boxes, Boxes.Parser);
 		}
 	}
 }

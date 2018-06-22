@@ -3,9 +3,6 @@ local InitializeTimer = cc.class("InitializeTimer", gbc.NgxTimerBase)
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
 local Table = cc.import("#Table")
-local Role = Table.Role
-local Equipment = Table.Equipment
-local Prop = Table.Prop
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)
@@ -18,9 +15,13 @@ function InitializeTimer:runEventLoop()
         return InitializeTimer.super.runEventLoop(self)
     end
     
-    self:createTable(db, Role)
-    self:createTable(db, Equipment)
-    self:createTable(db, Prop)
+    self:createTable(db, Table.Role)
+    self:createTable(db, Table.Equipment)
+    self:createTable(db, Table.Prop)
+    self:createTable(db, Table.Chapter)
+    self:createTable(db, Table.Section)
+    self:createTable(db, Table.Mission)
+    self:createTable(db, Table.Box)
     
     return InitializeTimer.super.runEventLoop(self)
 end
