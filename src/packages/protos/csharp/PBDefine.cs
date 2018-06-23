@@ -6,7 +6,6 @@ namespace Pb{
 		Pack,
 		Error,
 		CreateRole,
-		UpgradeQuality,
 		UpgradeStar,
 		UpgradeLevel,
 		Decompose,
@@ -23,6 +22,7 @@ namespace Pb{
 		Chapter,
 		Chapters,
 		Section,
+		SectionResult,
 		Sections,
 		Mission,
 		Missions,
@@ -37,7 +37,6 @@ namespace Pb{
 			dict.Add(PBDefine.Pack, Pack.Parser);
 			dict.Add(PBDefine.Error, Error.Parser);
 			dict.Add(PBDefine.CreateRole, CreateRole.Parser);
-			dict.Add(PBDefine.UpgradeQuality, UpgradeQuality.Parser);
 			dict.Add(PBDefine.UpgradeStar, UpgradeStar.Parser);
 			dict.Add(PBDefine.UpgradeLevel, UpgradeLevel.Parser);
 			dict.Add(PBDefine.Decompose, Decompose.Parser);
@@ -54,6 +53,7 @@ namespace Pb{
 			dict.Add(PBDefine.Chapter, Chapter.Parser);
 			dict.Add(PBDefine.Chapters, Chapters.Parser);
 			dict.Add(PBDefine.Section, Section.Parser);
+			dict.Add(PBDefine.SectionResult, SectionResult.Parser);
 			dict.Add(PBDefine.Sections, Sections.Parser);
 			dict.Add(PBDefine.Mission, Mission.Parser);
 			dict.Add(PBDefine.Missions, Missions.Parser);

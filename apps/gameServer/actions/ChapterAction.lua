@@ -24,13 +24,101 @@ THE SOFTWARE.
 local gbc = cc.import("#gbc")
 local ChapterAction = cc.class("ChapterAction", gbc.ActionBase)
 local dbConfig = cc.import("#dbConfig")
-local parse = cc.import("#parse")
-local ParseConfig = parse.ParseConfig
+--local parse = cc.import("#parse")
+--local ParseConfig = parse.ParseConfig
 
 ChapterAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
-function ChapterAction:enterAction(args, redis)
+--解锁关卡，判断是否能够解锁关卡
+function ChapterAction:enterAction(args, _redis)
+    local instance = self:getInstance()
+    local cid = args.cid
+    if not cid then
+        instance:sendError("NoneConfigID")
+        return
+    end
     
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local role_data = role:get()
+    local chapters = player:getChapters()
+    local chapter = chapters:getOriginal(cid)
+    if not chapter then
+        local cfg_chapter = dbConfig.get("cfg_chapter", cid)
+        if not cfg_chapter then
+            instance:sendError("NoneConfig")
+            return
+        end
+        --取到config之后，检查config是否解锁
+        --1.检查解锁等级
+        if cfg_chapter.unlockLevel > role_data.level then
+            instance:sendError("NoAccept")
+            return
+        end
+        --2.检查解锁星级
+        if cfg_chapter.preID > 0 then
+            local pre_chapter = chapters:getOriginal(cfg_chapter.preID)
+            if not pre_chapter then
+                --前置关卡未解锁
+                instance:sendError("NoAccept")
+                return
+            end
+            local sections = player:getSections()
+            local star, count = sections:getChapterStar(cfg_chapter.preID)
+            if star < cfg_chapter.unlockStar then
+                --没达到解锁星级
+                instance:sendError("NoAccept")
+                return
+            end
+            if count < cfg_chapter.unlockCount then
+                --没达到前置通关数量
+                instance:sendError("NoAccept")
+                return
+            end
+        end
+        
+        --3.是否需要购买
+        if cfg_chapter.price > 0 then
+            return
+        end
+        
+        --所有条件都满足，插入新的关卡
+        chapter = chapters:get()
+        local dt = chapter:get()
+        dt.rid = role_data.id
+        dt.cid = cid
+        local query = chapter:insertQuery(dt)
+        chapter:pushQuery(query, instance:getConnectId(), "chapter.onChapterNew")
+    end
+end
+
+function ChapterAction:onChapterNew(args, _redis)
+    if args.err or not args.insert_id or args.insert_id <= 0 then
+        return
+    end
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local chapters = player:getChapters()
+    local chapter = chapters:get()
+    local query = chapter:selectQuery({id = args.insert_id})
+    chapter:pushQuery(query, instance:getConnectId(), "chapter.onChapter", {
+        update = true,
+    })
+end
+
+function ChapterAction:onChapter(args, _redis, params)
+    if not params or not params.update then
+        return
+    end
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local chapters = player:getChapters()
+    local bupdate = chapters:updates(args)
+    if bupdate then
+        instance:sendPack("Chapters", {
+            values = args,
+        })
+    end
 end
 
 return ChapterAction

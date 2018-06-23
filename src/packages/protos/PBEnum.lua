@@ -8,6 +8,7 @@ local _M = {
 			Config = 4,
 			ID = 5,
 			Unfinished = 6,
+			NoAccept = 7,
 			UnexpectedError = 10,
 			ConfigError = 11,
 			NoneRole = 1001,

@@ -18,6 +18,7 @@ message Error{
 		NoneID = 4; //缺少参数ID
 		NoneConfig = 5; //缺少配置文件
 		Unfinished = 6; //未完成
+		NoAccept = 7; //没达到条件，不接受
 		UnexpectedError = 10; //不期望的错误
 		ConfigError = 11; //配置表错误
 		NoneRole = 1001; //还没有创建角色
@@ -43,16 +44,10 @@ message CreateRole{
 	string nickname = 1; //昵称
 }
 
-//升级武器品质命令
-message UpgradeQuality{
-	int32 id = 1; //武器id
-	int32 prop_id = 2; //道具id
-}
-
 //升级星级
 message UpgradeStar{
 	int32 id = 1; //武器id
-	int32 prop_id = 2; //道具id
+	repeated int32 prop_ids = 2; //道具id
 }
 
 //升级等级
@@ -140,10 +135,16 @@ message Section{
 	int32 id = 1;
 	int32 rid = 2;
 	int32 cid = 3;
-	int32 star = 4;
-	int32 tryTimes = 5;
-	int32 finishTimes = 6;
-	int32 enterTime = 7;
+	int32 chapter_cid = 4;
+	int32 star = 5;
+	int32 tryTimes = 6;
+	int32 finishTimes = 7;
+	int32 enterTime = 8;
+}
+
+message SectionResult{
+	int32 id = 1;
+	int32 star = 2;
 }
 
 message Sections{
