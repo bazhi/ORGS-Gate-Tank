@@ -29,6 +29,10 @@ EquipAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
 function EquipAction:checkProp(id)
     local instance = self:getInstance()
+    if not id then
+        instance:sendError("NoneProp")
+        return nil
+    end
     local player = instance:getPlayer()
     local props = player:getProps()
     local prop = props:get(id)

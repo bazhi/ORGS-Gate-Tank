@@ -406,7 +406,7 @@ _processMessage = function(self, rawMessage, messageType)
         return self:runAction(actionName, message._args or message)
     end, function(_err)
         err = _err
-        err = err .. debug.traceback("", 4)
+        err = err .. debug.traceback("", 10)
     end)
     if err then
         return nil, err
