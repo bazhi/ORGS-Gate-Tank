@@ -150,8 +150,6 @@ function RoleAction:loadOthersAction(_args, _redis)
     local box = boxes:getTemplate()
     query = box:selectQuery({rid = rid})
     box:pushQuery(query, instance:getConnectId(), "role.onBox")
-    
-    --instance:sendDelete("Mission", 1)
 end
 
 function RoleAction:onEquipment(args, _redis)
@@ -194,7 +192,7 @@ function RoleAction:onSection(args, _redis)
     })
 end
 
-function RoleAction:onMission(args, _redis)
+function RoleAction:onMission(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local missions = player:getMissions()
@@ -202,6 +200,8 @@ function RoleAction:onMission(args, _redis)
     instance:sendPack("Missions", {
         values = args
     })
+    
+    instance:runAction("mission.resetMission", {}, redis, true)
 end
 
 function RoleAction:onBox(args, _redis)

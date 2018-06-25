@@ -38,6 +38,15 @@ function BaseList:delete(id)
     end
 end
 
+function BaseList:getIDList()
+    local ids = {}
+    local values = self._Datas or {}
+    for _, v in ipairs(values) do
+        table.insert(ids, v:getID())
+    end
+    return ids
+end
+
 function BaseList:updates(values)
     local bupdate = false
     for _, v in ipairs(values) do

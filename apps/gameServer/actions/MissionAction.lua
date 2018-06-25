@@ -33,7 +33,6 @@ MissionAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function MissionAction:add(args, _redis)
     local instance = self:getInstance()
     if not args.cid or args.cid == 0 then
-        --cc.printerror("not Mission id set")
         instance:sendError("NoneConfigID")
         return
     end
@@ -54,6 +53,27 @@ function MissionAction:add(args, _redis)
     dt.cid = cid
     local query = mission:insertQuery(dt)
     mission:pushQuery(query, instance:getConnectId(), "mission.onMissionNew")
+end
+
+--重置任务
+function MissionAction:resetMission()
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local missions = player:getMissions()
+    local ids = missions:getIDList()
+    for _, id in ipairs(ids) do
+        local mission = missions:get(id)
+        if mission then
+            local mission_data = mission:get()
+            local cfg_mission = dbConfig.get("cfg_mission", mission_data.cid)
+            if cfg_mission then
+                if cfg_mission.restartID ~= id and cfg_mission.restartID ~= 0 then
+                    self:deleteMission(id)
+                    self:add({cid = cfg_mission.restartID})
+                end
+            end
+        end
+    end
 end
 
 function MissionAction:deleteMission(id)
