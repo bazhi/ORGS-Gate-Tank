@@ -45,7 +45,7 @@ function Base:countQuery(where)
     return self._orm:countQuery(where)
 end
 
-function Base:delQuery(where)
+function Base:deleteQuery(where)
     return self._orm:delQuery(where)
 end
 

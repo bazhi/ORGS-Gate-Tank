@@ -60,10 +60,14 @@ function MissionAction:deleteMission(id)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local missions = player:getMissions()
-    missions:delete(id)
+    
     local mission = missions:get(id)
-    local query = mission:deleteQuery({id = id})
-    mission:pushQuery(query, instance:getConnectId())
+    if mission then
+        local query = mission:deleteQuery({id = id})
+        mission:pushQuery(query, instance:getConnectId())
+    end
+    missions:delete(id)
+    instance:sendDelete("Mission", id)
 end
 
 function MissionAction:finishAction(args, redis)
