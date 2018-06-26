@@ -137,23 +137,24 @@ function WebSocketInstanceBase:sendMessage(msg)
     end
 end
 
-function WebSocketInstanceBase:sendError(erroname)
+function WebSocketInstanceBase:sendError(erroname, msgid)
     self:sendPack(PBToCmd.Error, {
         code = erroname,
-    })
+    }, msgid)
 end
 
-function WebSocketInstanceBase:sendDelete(cmd, id)
+function WebSocketInstanceBase:sendDelete(cmd, id, msgid)
     if type(cmd) == "string" then
         cmd = PBToCmd[cmd]
     end
     self:sendPack("Delete", {
         ["type"] = cmd,
         id = id,
-    })
+    }, msgid)
 end
 
-function WebSocketInstanceBase:sendPack(cmd, msg)
+function WebSocketInstanceBase:sendPack(cmd, msg, msgid)
+    msgid = msgid or 0
     local ok, result = self:safeFunction(function()
         local name = cmd
         if type(name) == "number" then
@@ -175,6 +176,7 @@ function WebSocketInstanceBase:sendPack(cmd, msg)
         return pb.encode("pb.Pack", {
             ["type"] = cmd,
             content = data,
+            msgid = msgid,
         })
     end)
     if ok then
@@ -399,7 +401,8 @@ _processMessage = function(self, rawMessage, messageType)
     if not ok then
         return nil, "parseMessage error"
     end
-    --local msgid = message.__id
+    
+    local msgid = message.msgid
     local actionName = message.action
     local err = nil
     local _ok, result = xpcall(function()
@@ -421,20 +424,24 @@ _processMessage = function(self, rawMessage, messageType)
         cc.printwarn("action \"%s\" return invalid result", actionName)
     end
     
-    -- if not msgid then
-    --     cc.printwarn("action \"%s\" return unused result", actionName)
-    --     return true
-    -- end
+    if not msgid then
+        cc.printwarn("action \"%s\" return unused result", actionName)
+        return true
+    end
     
     if not self._socket then
         return nil, string.format("socket removed, action \"%s\"", actionName)
     end
     
-    -- result.__id = msgid
-    local message = json_encode(result)
-    local _bytes, err = self._socket:send_text(message)
-    if err then
-        return nil, string.format("send message to client failed, %s", err)
+    if messageFormat == "pbc" then
+        self:sendPack("Operation", result, msgid)
+    else
+        result.msgid = msgid
+        local message = json_encode(result)
+        local _bytes, err = self._socket:send_text(message)
+        if err then
+            return nil, string.format("send message to client failed, %s", err)
+        end
     end
     
     return true
@@ -454,6 +461,7 @@ function WebSocketInstanceBase:parseMessage(rawMessage, messageType, messageForm
                             return {
                                 action = actionName,
                                 _args = content,
+                                msgid = message.msgid,
                             }
                         else
                             cc.throw("can not supported pbc messagename:"..name)

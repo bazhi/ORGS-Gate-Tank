@@ -72,8 +72,10 @@ end
 --得到了新的装备
 function EquipAction:onNewEquip(args, _redis)
     if args.err then
+        cc.printf("onNewEquip:"..args.err)
         return
     end
+    --cc.printf("onNewEquip")
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local equipments = player:getEquipments()
@@ -87,17 +89,19 @@ end
 
 --解锁新的装备成功
 function EquipAction:onUnlock(args, _redis)
-    if not args.err then
+    if args.err then
+        cc.printf("onUnlock:"..args.err)
         return
     end
     local insert_id = args.insert_id
     if insert_id then
+        --cc.printf("onUnlock")
         local instance = self:getInstance()
         local player = instance:getPlayer()
         local equipments = player:getEquipments()
-        local equip = equipments:get()
+        local equip = equipments:getTemplate()
         local query = equip:selectQuery({id = insert_id})
-        equip:pushQuery(query, instance:getConnectId(), "onNewEquip")
+        equip:pushQuery(query, instance:getConnectId(), "equip.onNewEquip")
     end
 end
 
@@ -156,8 +160,10 @@ function EquipAction:unlockEquipment(args, _redis)
     --好了，现在允许操作了，减少道具数量, 更新星级与品质
     prop_data.count = prop_data.count - 1
     local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
-    prop:pushQuery(query, instance:getConnectId(), "equip.onProp")
-    instance:sendPack("Prop", prop_data)
+    prop:pushQuery(query, instance:getConnectId())
+    instance:sendPack("Props", {
+        values = {prop_data},
+    })
     
     --解锁的装备,都是1星
     local equip = equipments:get()
@@ -172,6 +178,7 @@ function EquipAction:unlockEquipment(args, _redis)
 end
 
 function EquipAction:checkProps(ids)
+    --cc.dump(ids)
     local countMap = {}
     for _, id in ipairs(ids) do
         if not countMap[id] then
@@ -185,7 +192,14 @@ function EquipAction:checkProps(ids)
     local props = player:getProps()
     for id, count in pairs(countMap) do
         local prop = props:get(id)
-        if not prop or prop.count < count then
+        if not prop then
+            cc.printf("Prop is nil:"..id)
+            instance:sendError("NoneProp")
+            return nil
+        end
+        local prop_data = prop:get()
+        if prop_data.count < count then
+            cc.printf("Prop not enough")
             instance:sendError("NoneProp")
             return nil
         end
@@ -196,9 +210,11 @@ end
 
 function EquipAction:unlockAction(args, redis)
     self:unlockEquipment(args, redis)
+    return {result = true}
 end
 
 function EquipAction:upgradeStarAction(args, _redis)
+    --cc.dump(args)
     local instance = self:getInstance()
     local id = args.id
     local prop_ids = args.prop_ids
@@ -269,7 +285,9 @@ function EquipAction:upgradeStarAction(args, _redis)
         prop_data.count = prop_data.count - count
         local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
         prop:pushQuery(query, instance:getConnectId())
-        instance:sendPack("Prop", prop_data)
+        instance:sendPack("Props", {
+            values = {prop_data},
+        })
     end
     
     --判断是否可以升级
@@ -289,7 +307,10 @@ function EquipAction:upgradeStarAction(args, _redis)
         }, {id = equip_data.id})
         equip:pushQuery(query, instance:getConnectId())
     end
-    instance:sendPack("Equipment", equip_data)
+    instance:sendPack("Equipments", {
+        values = {equip_data},
+    })
+    return {result = bUpStar}
 end
 
 function EquipAction:upgradeLevelAction(args, _redis)
@@ -349,15 +370,20 @@ function EquipAction:upgradeLevelAction(args, _redis)
     
     local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
     prop:pushQuery(query, instance:getConnectId())
-    instance:sendPack("Prop", prop_data)
+    instance:sendPack("Props", {
+        values = {prop_data},
+    })
     
     query = equip:updateQuery({
         exp = equip_data.exp,
         cid = equip_data.cid,
     }, {id = equip_data.id})
-    equip:pushQuery(query, instance:getConnectId())
-    instance:sendPack("Equipment", equip_data)
     
+    equip:pushQuery(query, instance:getConnectId())
+    instance:sendPack("Equipments", {
+        values = {equip_data},
+    })
+    return {result = true}
 end
 
 return EquipAction

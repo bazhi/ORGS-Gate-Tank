@@ -4,6 +4,7 @@ package pb;
 message Pack{
 	int32 type = 1;
 	bytes content = 2; //actions的参数
+	int32 msgid = 3;
 }
 
 message Error{
@@ -29,6 +30,10 @@ message Error{
 	EType code = 1; //错误码
 }
 
+message Operation{
+	bool result = 1; //操作结果
+}
+
 //Server Command
 /*
 ID 名称说明
@@ -44,7 +49,7 @@ message CreateRole{
 //升级星级
 message UpgradeStar{
 	int32 id = 1; //武器id
-	repeated int32 prop_ids = 2; //道具id
+	repeated int32 prop_ids = 2 [packed=true]; //道具id
 }
 
 //升级星级
@@ -117,6 +122,7 @@ message Equipment{
 	int32 cid = 3;
 	int32 star = 4;
 	int32 oid = 5;
+	int32 exp = 6;
 }
 
 message Equipments{

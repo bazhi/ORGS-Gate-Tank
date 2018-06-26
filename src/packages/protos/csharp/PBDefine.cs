@@ -5,6 +5,7 @@ namespace Pb{
 		Unknow,
 		Pack,
 		Error,
+		Operation,
 		CreateRole,
 		UpgradeStar,
 		UnlockEquipment,
@@ -37,6 +38,7 @@ namespace Pb{
 		{
 			dict.Add(PBDefine.Pack, Pack.Parser);
 			dict.Add(PBDefine.Error, Error.Parser);
+			dict.Add(PBDefine.Operation, Operation.Parser);
 			dict.Add(PBDefine.CreateRole, CreateRole.Parser);
 			dict.Add(PBDefine.UpgradeStar, UpgradeStar.Parser);
 			dict.Add(PBDefine.UnlockEquipment, UnlockEquipment.Parser);
