@@ -36,10 +36,16 @@ function EquipAction:checkProp(id)
     local player = instance:getPlayer()
     local props = player:getProps()
     local prop = props:get(id)
-    if not prop or prop.count < 1 then
+    if not prop then
         instance:sendError("NoneProp")
         return nil
     end
+    local prop_data = prop:get()
+    if prop_data.count < 1 then
+        instance:sendError("NoneProp")
+        return nil
+    end
+    
     return prop
 end
 
@@ -98,21 +104,30 @@ end
 function EquipAction:unlockEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
-    local prop = self:checkProp(args.prop_id)
+    local cid = args.cid
+    local prop_id = args.prop_id
+    if not prop_id or not cid then
+        instance:sendError("NoneID")
+        return
+    end
+    --检查道具是否存在
+    local prop = self:checkProp(prop_id)
     if not prop then
         return
     end
     local role = player:getRole()
     
+    --获取道具配置
     local prop_data = prop:get()
     local cfg_prop = dbConfig.get("cfg_prop", prop_data.cid)
     if not cfg_prop then
         instance:sendError("ConfigError")
         return
     end
-    local cfg_equip = dbConfig.get("cfg_equip", cfg_prop.eid)
-    if not cfg_equip then
-        instance:sendError("ConfigError")
+    
+    --判断解锁的装备与道具对应的武器是否一致
+    if cid ~= cfg_prop.eid then
+        instance:sendError("OperationNotPermit")
         return
     end
     
@@ -122,12 +137,20 @@ function EquipAction:unlockEquipment(args, _redis)
         return
     end
     
+    --获取武器配置
+    local cfg_equip = dbConfig.get("cfg_equip", cfg_prop.eid)
+    if not cfg_equip or cfg_equip.level ~= 1 then
+        instance:sendError("ConfigError")
+        return
+    end
+    
     local equipments = player:getEquipments()
     
     local equip = equipments:getOriginal(cfg_equip.originalId)
-    --找到该装备，无法解锁该类型装备
+    --该装备已经存在，无法解锁该类型装备
     if equip then
         instance:sendError("OperationNotPermit")
+        return
     end
     
     --好了，现在允许操作了，减少道具数量, 更新星级与品质
@@ -136,6 +159,7 @@ function EquipAction:unlockEquipment(args, _redis)
     prop:pushQuery(query, instance:getConnectId(), "equip.onProp")
     instance:sendPack("Prop", prop_data)
     
+    --解锁的装备,都是1星
     local equip = equipments:get()
     local dt = equip:get()
     dt.rid = role:getID()
@@ -168,6 +192,10 @@ function EquipAction:checkProps(ids)
         propMap[prop] = count
     end
     return propMap
+end
+
+function EquipAction:unlockAction(args, redis)
+    self:unlockEquipment(args, redis)
 end
 
 function EquipAction:upgradeStarAction(args, _redis)
@@ -214,8 +242,6 @@ function EquipAction:upgradeStarAction(args, _redis)
         end
         power = power + count * cfg_prop.power
     end
-    
-    --检查是否可以更新武器品质
     
     --类型不为武器书，错误
     

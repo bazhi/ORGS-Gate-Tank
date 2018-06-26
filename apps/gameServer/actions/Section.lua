@@ -137,6 +137,8 @@ function SectionAction:finishAction(args, _redis)
         return
     end
     
+    local cfg_section = dbConfig.get("cfg_section", section_data.cid)
+    
     section_data.enterTime = 0
     section_data.finishTimes = section_data.finishTimes + 1
     section_data.star = star
@@ -149,6 +151,7 @@ function SectionAction:finishAction(args, _redis)
     instance:sendPack("SectionResult", {
         id = id,
         star = star,
+        exp = cfg_section.exp,
     })
 end
 

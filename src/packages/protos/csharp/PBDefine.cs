@@ -7,6 +7,7 @@ namespace Pb{
 		Error,
 		CreateRole,
 		UpgradeStar,
+		UnlockEquipment,
 		UpgradeLevel,
 		Decompose,
 		EnterChapter,
@@ -38,6 +39,7 @@ namespace Pb{
 			dict.Add(PBDefine.Error, Error.Parser);
 			dict.Add(PBDefine.CreateRole, CreateRole.Parser);
 			dict.Add(PBDefine.UpgradeStar, UpgradeStar.Parser);
+			dict.Add(PBDefine.UnlockEquipment, UnlockEquipment.Parser);
 			dict.Add(PBDefine.UpgradeLevel, UpgradeLevel.Parser);
 			dict.Add(PBDefine.Decompose, Decompose.Parser);
 			dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);

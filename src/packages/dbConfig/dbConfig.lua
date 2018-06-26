@@ -25,7 +25,7 @@ function M.getCache(tab, id)
     local result = cache[id]
     if not result and db then
         for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tab, id)) do
-            cache[row.id] = row
+            cache[row.id] = table.readonly(row, tab)
         end
     end
     return cache[id]
@@ -34,7 +34,7 @@ end
 function M.getNoCache(tab, id)
     for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tab, id)) do
         if row then
-            return row
+            return table.readonly(row, tab)
         end
     end
 end
