@@ -31,7 +31,7 @@ namespace Pb {
             "CgtDb25maWdFcnJvchALEg0KCE5vbmVSb2xlEOkHEg0KCE5vbmVQcm9wEOoH",
             "EhIKDU5vbmVFcXVpcG1lbnQQ6wcSEAoLTm9uZU1pc3Npb24Q8wcSFwoST3Bl",
             "cmF0aW9uTm90UGVybWl0ENEPIhsKCU9wZXJhdGlvbhIOCgZyZXN1bHQYASAB",
-            "KAgiHgoKQ3JlYXRlUm9sZRIQCghuaWNrbmFtZRgBIAEoCSIvCgtVcGdyYWRl",
+            "KAUiHgoKQ3JlYXRlUm9sZRIQCghuaWNrbmFtZRgBIAEoCSIvCgtVcGdyYWRl",
             "U3RhchIKCgJpZBgBIAEoBRIUCghwcm9wX2lkcxgCIAMoBUICEAEiLwoPVW5s",
             "b2NrRXF1aXBtZW50EgsKA2NpZBgBIAEoBRIPCgdwcm9wX2lkGAIgASgFIisK",
             "DFVwZ3JhZGVMZXZlbBIKCgJpZBgBIAEoBRIPCgdwcm9wX2lkGAIgASgFIhcK",
@@ -494,12 +494,12 @@ namespace Pb {
 
     /// <summary>Field number for the "result" field.</summary>
     public const int ResultFieldNumber = 1;
-    private bool result_;
+    private int result_;
     /// <summary>
-    /// 操作结果
+    /// -1:表示有错误吗，0:表示操作失败，1:表示操作成功
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Result {
+    public int Result {
       get { return result_; }
       set {
         result_ = value;
@@ -526,7 +526,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Result != false) hash ^= Result.GetHashCode();
+      if (Result != 0) hash ^= Result.GetHashCode();
       return hash;
     }
 
@@ -537,17 +537,17 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Result != false) {
+      if (Result != 0) {
         output.WriteRawTag(8);
-        output.WriteBool(Result);
+        output.WriteInt32(Result);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Result != false) {
-        size += 1 + 1;
+      if (Result != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
       return size;
     }
@@ -557,7 +557,7 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Result != false) {
+      if (other.Result != 0) {
         Result = other.Result;
       }
     }
@@ -571,7 +571,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            Result = input.ReadBool();
+            Result = input.ReadInt32();
             break;
           }
         }

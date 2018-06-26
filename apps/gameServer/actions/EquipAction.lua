@@ -210,7 +210,7 @@ end
 
 function EquipAction:unlockAction(args, redis)
     self:unlockEquipment(args, redis)
-    return {result = true}
+    return 1
 end
 
 function EquipAction:upgradeStarAction(args, _redis)
@@ -310,7 +310,11 @@ function EquipAction:upgradeStarAction(args, _redis)
     instance:sendPack("Equipments", {
         values = {equip_data},
     })
-    return {result = bUpStar}
+    if bUpStar then
+        return 1
+    else
+        return 0
+    end
 end
 
 function EquipAction:upgradeLevelAction(args, _redis)
@@ -383,7 +387,7 @@ function EquipAction:upgradeLevelAction(args, _redis)
     instance:sendPack("Equipments", {
         values = {equip_data},
     })
-    return {result = true}
+    return 1
 end
 
 return EquipAction

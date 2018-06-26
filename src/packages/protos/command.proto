@@ -31,7 +31,7 @@ message Error{
 }
 
 message Operation{
-	bool result = 1; //操作结果
+	int32 result = 1; //-1:表示有错误吗，0:表示操作失败，1:表示操作成功
 }
 
 //Server Command

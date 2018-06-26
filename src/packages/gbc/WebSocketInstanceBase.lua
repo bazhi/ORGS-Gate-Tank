@@ -415,15 +415,6 @@ _processMessage = function(self, rawMessage, messageType)
         return nil, err
     end
     
-    local rtype = type(result)
-    if rtype == "nil" then
-        return
-    end
-    
-    if rtype ~= "table" then
-        cc.printwarn("action \"%s\" return invalid result", actionName)
-    end
-    
     if not msgid then
         cc.printwarn("action \"%s\" return unused result", actionName)
         return true
@@ -434,8 +425,21 @@ _processMessage = function(self, rawMessage, messageType)
     end
     
     if messageFormat == "pbc" then
-        self:sendPack("Operation", result, msgid)
+        local rtype = type(result)
+        if rtype == "number" then
+            self:sendPack("Operation", {result = result}, msgid)
+        else
+            self:sendPack("Operation", result or {result = 1}, msgid)
+        end
     else
+        local rtype = type(result)
+        if rtype == "nil" then
+            return
+        end
+        
+        if rtype ~= "table" then
+            cc.printwarn("action \"%s\" return invalid result", actionName)
+        end
         result.msgid = msgid
         local message = json_encode(result)
         local _bytes, err = self._socket:send_text(message)
