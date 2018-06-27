@@ -119,9 +119,9 @@ function MissionAction:finishAction(args, redis)
     end
     
     --任务完成
-    --1.增加奖励
-    local rewardids = ParseConfig.ParseIDList(cfg_mission.rewardID)
-    cc.dump(rewardids)
+    --1.给予箱子
+    instance:runAction("box.add", {id = cfg_mission.boxID}, redis, true)
+    
     --删除当前任务
     self:deleteMission(mission_data.id)
     --2.解锁下一个任务

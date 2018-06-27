@@ -51,7 +51,7 @@ function PropAction:decomposeAction(args, redis)
     end
     
     prop_data.count = prop_data.count - 1
-    local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
+    local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
     prop:pushQuery(query, instance:getConnectId())
     instance:sendPack("Prop", prop_data)
     
@@ -69,6 +69,27 @@ function PropAction:addProps(args, _redis)
     end
 end
 
+function PropAction:addPropsWithList(args, _redis)
+    local instance = self:getInstance()
+    local ids = args.ids
+    if type(ids) ~= "table" then
+        instance:sendError("NoParam")
+        return - 1
+    end
+    local idMap = {}
+    
+    for _, id in ipairs(ids) do
+        if not idMap[id] then
+            idMap[id] = 0
+        end
+        idMap[id] = idMap[id] + 1
+    end
+    
+    for id, count in pairs(idMap) do
+        self:addProp(id, count)
+    end
+end
+
 function PropAction:addProp(id, count)
     local instance = self:getInstance()
     local player = instance:getPlayer()
@@ -78,7 +99,7 @@ function PropAction:addProp(id, count)
     if prop then
         local prop_data = prop:get()
         prop_data.count = prop_data.count + count
-        local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
+        local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
         prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Prop", prop_data)
     else
@@ -92,7 +113,7 @@ function PropAction:addProp(id, count)
     end
 end
 
-function PropAction:onProp(args, _redis, params)
+function PropAction:onProp(args, redis, params)
     --cc.dump(args)
     if params and params.update then
         local instance = self:getInstance()
@@ -107,7 +128,7 @@ function PropAction:onProp(args, _redis, params)
     end
 end
 
-function PropAction:onPropNew(args, _redis)
+function PropAction:onPropNew(args, redis)
     if args.err or not args.insert_id or args.insert_id <= 0 then
         return
     end

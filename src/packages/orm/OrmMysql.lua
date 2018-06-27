@@ -192,7 +192,7 @@ end
 
 --------------------------------Update------------------------------------------
 
-function OrmMysql:updateQuery(params, where, addparams)
+function OrmMysql:updateQuery(where, params, addparams)
     local tableName = self._TableName
     local fields = {}
     local whereFields = {}
@@ -223,8 +223,8 @@ end
 --     server_status = 2,
 --     warning_count = 0,
 -- },
-function OrmMysql:update(db, params, where, addparams)
-    return db:query(self:updateQuery(params, where, addparams))
+function OrmMysql:update(db, where, params, addparams)
+    return db:query(self:updateQuery(where, params, addparams))
 end
 
 --------------------------------Update------------------------------------------

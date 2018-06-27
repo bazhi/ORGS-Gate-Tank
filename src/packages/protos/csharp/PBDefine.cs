@@ -15,6 +15,8 @@ namespace Pb{
 		EnterSection,
 		FinishSection,
 		FinishMission,
+		OpenBox,
+		GainBox,
 		Delete,
 		Role,
 		Prop,
@@ -48,6 +50,8 @@ namespace Pb{
 			dict.Add(PBDefine.EnterSection, EnterSection.Parser);
 			dict.Add(PBDefine.FinishSection, FinishSection.Parser);
 			dict.Add(PBDefine.FinishMission, FinishMission.Parser);
+			dict.Add(PBDefine.OpenBox, OpenBox.Parser);
+			dict.Add(PBDefine.GainBox, GainBox.Parser);
 			dict.Add(PBDefine.Delete, Delete.Parser);
 			dict.Add(PBDefine.Role, Role.Parser);
 			dict.Add(PBDefine.Prop, Prop.Parser);

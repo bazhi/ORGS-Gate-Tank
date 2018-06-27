@@ -9,7 +9,8 @@ local ActionMap = {
     ["EnterChapter"] = "chapter.enter",
     ["EnterSection"] = "section.enter",
     ["FinishSection"] = "section.finish",
-    
+    ["OpenBox"] = "box.open",
+    ["GainBox"] = "box.gain",
 }
 
 return ActionMap

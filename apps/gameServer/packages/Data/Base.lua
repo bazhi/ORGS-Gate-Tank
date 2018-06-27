@@ -49,8 +49,8 @@ function Base:deleteQuery(where)
     return self._orm:delQuery(where)
 end
 
-function Base:updateQuery(params, where, addparams)
-    return self._orm:updateQuery(params, where, addparams)
+function Base:updateQuery(where, params, addparams)
+    return self._orm:updateQuery(where, params, addparams)
 end
 
 function Base:insertWithUpdateQuery(params, updateparams, addparams)

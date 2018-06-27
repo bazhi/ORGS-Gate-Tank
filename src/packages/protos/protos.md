@@ -20,11 +20,13 @@ message Error{
 		NoneConfig = 5; //缺少配置文件
 		Unfinished = 6; //未完成
 		NoAccept = 7; //没达到条件，不接受
+		NoParam = 8; //缺少参数
 		UnexpectedError = 10; //不期望的错误
 		ConfigError = 11; //配置表错误
 		NoneRole = 1001; //还没有创建角色
 		NoneProp = 1002; //道具不存在
 		NoneEquipment = 1003; //装备不存在
+		NoneBox = 1004; //箱子不存在
 
 		NoneMission = 1011; //找不到任务
 
@@ -88,6 +90,15 @@ message FinishSection{
 
 message FinishMission{
 	int32 id = 1; //mission id
+}
+
+//打开箱子
+message OpenBox{
+	int32 id = 1;
+}
+//收取箱子里的物品
+message GainBox{
+	int32 id = 1;
 }
 
 message Delete{

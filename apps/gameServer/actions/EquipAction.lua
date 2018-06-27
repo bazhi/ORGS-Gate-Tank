@@ -148,6 +148,13 @@ function EquipAction:unlockEquipment(args, _redis)
         return
     end
     
+    local role_data = role:get()
+    --装备解锁等级，大于角色等级，无法进行解锁
+    if cfg_equip.unlockLevel > role_data.level then
+        instance:sendError("OperationNotPermit")
+        return
+    end
+    
     local equipments = player:getEquipments()
     
     local equip = equipments:getOriginal(cfg_equip.originalId)
@@ -159,7 +166,7 @@ function EquipAction:unlockEquipment(args, _redis)
     
     --好了，现在允许操作了，减少道具数量, 更新星级与品质
     prop_data.count = prop_data.count - 1
-    local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
+    local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
     prop:pushQuery(query, instance:getConnectId())
     instance:sendPack("Props", {
         values = {prop_data},
@@ -283,7 +290,7 @@ function EquipAction:upgradeStarAction(args, _redis)
     for prop, count in pairs(propMap) do
         local prop_data = prop:get()
         prop_data.count = prop_data.count - count
-        local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
+        local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
         prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Props", {
             values = {prop_data},
@@ -302,9 +309,9 @@ function EquipAction:upgradeStarAction(args, _redis)
     
     if bUpStar then
         equip_data.star = equip_data.star + 1
-        local query = equip:updateQuery({
+        local query = equip:updateQuery({id = equip_data.id}, {
             star = equip_data.star,
-        }, {id = equip_data.id})
+        })
         equip:pushQuery(query, instance:getConnectId())
     end
     instance:sendPack("Equipments", {
@@ -321,7 +328,7 @@ function EquipAction:upgradeLevelAction(args, _redis)
     local instance = self:getInstance()
     local id = args.id
     local prop_id = args.prop_id
-    --local player = instance:getPlayer()
+    
     if not id or not prop_id then
         instance:sendError("NoneID")
         return
@@ -364,6 +371,15 @@ function EquipAction:upgradeLevelAction(args, _redis)
         return
     end
     
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local role_data = role:get()
+    --装备解锁等级，大于玩家的等级
+    if cfg_equip.unlockLevel > role_data.level then
+        instance:sendError("OperationNotPermit")
+        return
+    end
+    
     equip_data.exp = cfg_prop.exp + equip_data.exp
     if equip_data.exp >= cfg_equip.updradeExp then
         equip_data.exp = 0
@@ -372,16 +388,16 @@ function EquipAction:upgradeLevelAction(args, _redis)
     
     prop_data.count = prop_data.count - 1
     
-    local query = prop:updateQuery({count = prop_data.count}, {id = prop_data.id})
+    local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
     prop:pushQuery(query, instance:getConnectId())
     instance:sendPack("Props", {
         values = {prop_data},
     })
     
-    query = equip:updateQuery({
+    query = equip:updateQuery({id = equip_data.id}, {
         exp = equip_data.exp,
         cid = equip_data.cid,
-    }, {id = equip_data.id})
+    })
     
     equip:pushQuery(query, instance:getConnectId())
     instance:sendPack("Equipments", {

@@ -74,7 +74,7 @@ function SectionAction:enterAction(args, _redis)
     local dt = section:get()
     dt.enterTime = nowtime
     dt.tryTimes = dt.tryTimes + 1
-    local query = section:updateQuery(dt, {id = dt.id})
+    local query = section:updateQuery({id = dt.id}, dt)
     section:pushQuery(query, instance:getConnectId())
     instance:sendPack("EnterSection", {
         cid = cid
@@ -142,7 +142,7 @@ function SectionAction:finishAction(args, _redis)
     section_data.enterTime = 0
     section_data.finishTimes = section_data.finishTimes + 1
     section_data.star = star
-    local query = section:updateQuery(section_data, {id = section_data.id})
+    local query = section:updateQuery({id = section_data.id}, section_data)
     section:pushQuery(query, instance:getConnectId())
     instance:sendPack("Sections", {
         values = {section_data},
