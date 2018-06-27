@@ -87,6 +87,20 @@ function BaseList:get(id)
     return nil
 end
 
+function BaseList:getByCID(cid)
+    if not cid then
+        return nil
+    end
+    
+    local values = self._Datas or {}
+    for _, v in ipairs(values) do
+        if v:equalCID(cid) then
+            return v
+        end
+    end
+    return nil
+end
+
 function BaseList:getOriginal(cid)
     if not cid then
         return nil

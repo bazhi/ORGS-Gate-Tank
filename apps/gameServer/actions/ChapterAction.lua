@@ -33,7 +33,7 @@ ChapterAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function ChapterAction:enterAction(args, _redis)
     local instance = self:getInstance()
     local cid = args.cid
-    if not cid then
+    if type(cid) ~= "number" then
         instance:sendError("NoneConfigID")
         return - 1
     end
@@ -42,11 +42,13 @@ function ChapterAction:enterAction(args, _redis)
     local role = player:getRole()
     local role_data = role:get()
     local chapters = player:getChapters()
-    local chapter = chapters:getOriginal(cid)
+    local chapter = chapters:getByCID(cid)
+    --已经解锁该章节了, 不用理会
     if chapter then
         return 0
     end
     
+    --检查是否有该章节的配置
     local cfg_chapter = dbConfig.get("cfg_chapter", cid)
     if not cfg_chapter then
         instance:sendError("NoneConfig")
@@ -60,7 +62,7 @@ function ChapterAction:enterAction(args, _redis)
     end
     --2.检查解锁星级
     if cfg_chapter.preID > 0 then
-        local pre_chapter = chapters:getOriginal(cfg_chapter.preID)
+        local pre_chapter = chapters:getByCID(cfg_chapter.preID)
         if not pre_chapter then
             --前置关卡未解锁
             instance:sendError("NoAccept")

@@ -41,7 +41,7 @@ function MissionAction:add(args, _redis)
     local player = instance:getPlayer()
     local role = player:getRole()
     local missions = player:getMissions()
-    local mission = missions:getOriginal(cid)
+    local mission = missions:getByCID(cid)
     if mission then
         cc.printerror("mission is all ready added:"..cid)
         return

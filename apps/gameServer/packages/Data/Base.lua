@@ -17,9 +17,12 @@ function Base:equal(item, key)
     return self._data[key] == item[key]
 end
 
-function Base:equalID(id, key)
-    key = key or "id"
-    return self._data[key] == id
+function Base:equalID(id)
+    return self._data["id"] == id
+end
+
+function Base:equalCID(cid)
+    return self._data["cid"] == cid
 end
 
 function Base:getID()

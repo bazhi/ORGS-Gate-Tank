@@ -19,7 +19,7 @@ function SectionAction:enterAction(args, _redis)
     local player = instance:getPlayer()
     
     local sections = player:getSections()
-    local section = sections:getOriginal(cid)
+    local section = sections:getByCID(cid)
     local nowtime = ngx.now()
     if not section then
         local cfg_section = dbConfig.get("cfg_section", cid)
@@ -30,7 +30,7 @@ function SectionAction:enterAction(args, _redis)
         local role = player:getRole()
         local role_data = role:get()
         local chapters = player:getChapters()
-        local chapter = chapters:getOriginal(cfg_section.chapterID)
+        local chapter = chapters:getByCID(cfg_section.chapterID)
         if not chapter then
             --章节还没解锁，无法进入
             instance:sendError("NoAccept")
@@ -44,7 +44,7 @@ function SectionAction:enterAction(args, _redis)
         end
         
         --检查前置关卡是否通关
-        local pre_section = sections:getOriginal(cfg_section.preID)
+        local pre_section = sections:getByCID(cfg_section.preID)
         if not pre_section or pre_section.star <= 0 then
             --章节还没解锁，无法进入
             instance:sendError("NoAccept")
