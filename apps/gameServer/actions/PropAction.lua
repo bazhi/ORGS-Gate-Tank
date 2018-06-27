@@ -103,6 +103,12 @@ function PropAction:addProp(id, count)
         prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Prop", prop_data)
     else
+        local cfg_prop = dbConfig.get("cfg_prop", id)
+        if not cfg_prop then
+            instance:sendError("ConfigError")
+            return - 1
+        end
+        
         prop = props:get()
         local dt = prop:get()
         dt.rid = role:getID()
@@ -111,6 +117,7 @@ function PropAction:addProp(id, count)
         local query = prop:insertQuery(dt)
         prop:pushQuery(query, instance:getConnectId(), "prop.onPropNew")
     end
+    return 1
 end
 
 function PropAction:onProp(args, redis, params)

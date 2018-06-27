@@ -49,8 +49,10 @@ function DatabaseTimer:processEvent(event)
     
     if event.query then
         local result, err = db:query(event.query)
+        if err then
+            cc.printerror(err.."|_____|"..event.query)
+        end
         if err and string_find(err, "failed to send query:") then
-            cc.printerror(err)
             self:closeMysql()
             return false
         end

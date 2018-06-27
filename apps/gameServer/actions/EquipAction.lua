@@ -131,13 +131,13 @@ function EquipAction:unlockEquipment(args, _redis)
     
     --判断解锁的装备与道具对应的武器是否一致
     if cid ~= cfg_prop.eid then
-        instance:sendError("OperationNotPermit")
+        instance:sendError("OperationNotPermit", 1)
         return
     end
     
     --类型不为武器书，错误
     if cfg_prop.type ~= 2 then
-        instance:sendError("OperationNotPermit")
+        instance:sendError("OperationNotPermit", 2)
         return
     end
     
@@ -151,7 +151,7 @@ function EquipAction:unlockEquipment(args, _redis)
     local role_data = role:get()
     --装备解锁等级，大于角色等级，无法进行解锁
     if cfg_equip.unlockLevel > role_data.level then
-        instance:sendError("OperationNotPermit")
+        instance:sendError("OperationNotPermit", 3)
         return
     end
     
@@ -160,7 +160,7 @@ function EquipAction:unlockEquipment(args, _redis)
     local equip = equipments:getOriginal(cfg_equip.originalId)
     --该装备已经存在，无法解锁该类型装备
     if equip then
-        instance:sendError("OperationNotPermit")
+        instance:sendError("OperationNotPermit", 4)
         return
     end
     

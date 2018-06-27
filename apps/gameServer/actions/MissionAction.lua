@@ -120,7 +120,7 @@ function MissionAction:finishAction(args, redis)
     
     --任务完成
     --1.给予箱子
-    instance:runAction("box.add", {id = cfg_mission.boxID}, redis, true)
+    instance:runAction("box.addBoxes", {ids = cfg_mission.boxID}, redis, true)
     
     --删除当前任务
     self:deleteMission(mission_data.id)

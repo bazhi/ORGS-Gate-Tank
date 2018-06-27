@@ -14,7 +14,7 @@ local Define = {
 }
 
 local Indexes = {
-    "UNIQUE KEY `crid` (`cid`, `rid`)  USING HASH",
+    -- "UNIQUE KEY `crid` (`cid`, `rid`)  USING HASH",
 }
 
 return {

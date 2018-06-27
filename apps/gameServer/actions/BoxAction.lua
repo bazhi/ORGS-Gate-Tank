@@ -2,8 +2,8 @@
 local gbc = cc.import("#gbc")
 local BoxAction = cc.class("BoxAction", gbc.ActionBase)
 local dbConfig = cc.import("#dbConfig")
---local parse = cc.import("#parse")
---local ParseConfig = parse.ParseConfig
+local parse = cc.import("#parse")
+local ParseConfig = parse.ParseConfig
 
 BoxAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
@@ -16,6 +16,11 @@ function BoxAction:add(args, redis)
         return - 1
     end
     
+    return self:addBox(id)
+end
+
+function BoxAction:addBox(id)
+    local instance = self:getInstance()
     --检查是否在真的存在该box
     local cfg_box = dbConfig.get("cfg_box", id)
     if not cfg_box then
@@ -33,6 +38,21 @@ function BoxAction:add(args, redis)
     dt.cid = id
     local query = box:insertQuery(dt)
     box:pushQuery(query, instance:getConnectId(), "box.onBoxNew")
+    return 1
+end
+
+function BoxAction:addBoxes(args, redis)
+    local instance = self:getInstance()
+    local ids = args.ids
+    if type(ids) ~= "string" then
+        instance:sendError("NoParam")
+        return - 1
+    end
+    ids = ParseConfig.ParseIDList(ids)
+    for _, id in ipairs(ids) do
+        self:addBox(id)
+    end
+    return 1
 end
 
 function BoxAction:onBoxNew(args, redis, param)
@@ -106,6 +126,20 @@ function BoxAction:openAction(args, redis)
     })
 end
 
+function BoxAction:deleteBox(id)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local boxes = player:getBoxes()
+    
+    local box = boxes:get(id)
+    if box then
+        local query = box:deleteQuery({id = id})
+        box:pushQuery(query, instance:getConnectId())
+    end
+    boxes:delete(id)
+    instance:sendDelete("Box", id)
+end
+
 function BoxAction:gainAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
@@ -134,7 +168,9 @@ function BoxAction:gainAction(args, redis)
         instance:sendError("NoneConfig")
         return - 1
     end
-    
+    --删除箱子
+    self:deleteBox(id)
+    --处理物品
     return instance:runAction("reward.open", {id = cfg_box.rewardID}, redis, true)
 end
 
