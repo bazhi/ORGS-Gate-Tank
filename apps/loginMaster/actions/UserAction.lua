@@ -27,7 +27,8 @@ local UserAction = cc.class("UserAction", gbc.ActionBase)
 local Session = cc.import("#session")
 local AccountManager = cc.import("#AccountManager")
 local ServiceManager = cc.import("#ServiceManager")
---local dbConfig = cc.import("#dbConfig")
+local resty_md5 = require("resty.md5")
+local str = require ("resty.string")
 
 local _opensession = function(redis, args)
     local sid = args.sid
@@ -48,6 +49,7 @@ function UserAction:signinAction(args, redis)
     local username = args.username
     local password = args.password
     local platform = args.platform or 0
+    local logintime = args.logintime
     if not username then
         cc.throw("not set argsument: \"username\"")
     end
@@ -58,6 +60,26 @@ function UserAction:signinAction(args, redis)
     if not user then
         local db = self:getInstance():getMysql()
         user = AccountManager.Load(db, username, platform)
+    end
+    
+    if logintime then
+        logintime = tonumber(logintime)
+        local timegap = math.abs(logintime - ngx.now())
+        --cc.printf(timegap)
+        if timegap > 600 then
+            cc.throw("logintime is not correct")
+        end
+        local checkKey = logintime.."-"..user.password
+        local md5 = resty_md5:new()
+        md5:update(checkKey)
+        local md5key = str.to_hex(md5:final())
+        if string.lower(password) ~= string.lower(md5key) then
+            cc.throw("password is not correct")
+        end
+    else
+        if password ~= user.password then
+            cc.throw("password is not correct")
+        end
     end
     
     if not user then
