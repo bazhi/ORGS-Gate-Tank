@@ -49,19 +49,19 @@ namespace Pb {
             "KAsyCC5wYi5Qcm9wIlkKCUVxdWlwbWVudBIKCgJpZBgBIAEoBRILCgNyaWQY",
             "AiABKAUSCwoDY2lkGAMgASgFEgwKBHN0YXIYBCABKAUSCwoDb2lkGAUgASgF",
             "EgsKA2V4cBgGIAEoBSIrCgpFcXVpcG1lbnRzEh0KBnZhbHVlcxgBIAMoCzIN",
-            "LnBiLkVxdWlwbWVudCI9CgdDaGFwdGVyEgoKAmlkGAEgASgFEgsKA3JpZBgC",
-            "IAEoBRILCgNjaWQYAyABKAUSDAoEc3RhchgEIAEoBSInCghDaGFwdGVycxIb",
-            "CgZ2YWx1ZXMYASADKAsyCy5wYi5DaGFwdGVyIowBCgdTZWN0aW9uEgoKAmlk",
-            "GAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEwoLY2hhcHRlcl9j",
-            "aWQYBCABKAUSDAoEc3RhchgFIAEoBRIQCgh0cnlUaW1lcxgGIAEoBRITCgtm",
-            "aW5pc2hUaW1lcxgHIAEoBRIRCgllbnRlclRpbWUYCCABKAUiNgoNU2VjdGlv",
-            "blJlc3VsdBIKCgJpZBgBIAEoBRIMCgRzdGFyGAIgASgFEgsKA2V4cBgDIAEo",
-            "BSInCghTZWN0aW9ucxIbCgZ2YWx1ZXMYASADKAsyCy5wYi5TZWN0aW9uIkEK",
-            "B01pc3Npb24SCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEo",
-            "BRIQCghwcm9ncmVzcxgEIAEoBSInCghNaXNzaW9ucxIbCgZ2YWx1ZXMYASAD",
-            "KAsyCy5wYi5NaXNzaW9uIj8KA0JveBIKCgJpZBgBIAEoBRILCgNyaWQYAiAB",
-            "KAUSCwoDY2lkGAMgASgFEhIKCnVubG9ja1RpbWUYBCABKAUiIAoFQm94ZXMS",
-            "FwoGdmFsdWVzGAEgAygLMgcucGIuQm94YgZwcm90bzM="));
+            "LnBiLkVxdWlwbWVudCIvCgdDaGFwdGVyEgoKAmlkGAEgASgFEgsKA3JpZBgC",
+            "IAEoBRILCgNjaWQYAyABKAUiJwoIQ2hhcHRlcnMSGwoGdmFsdWVzGAEgAygL",
+            "MgsucGIuQ2hhcHRlciKMAQoHU2VjdGlvbhIKCgJpZBgBIAEoBRILCgNyaWQY",
+            "AiABKAUSCwoDY2lkGAMgASgFEhMKC2NoYXB0ZXJfY2lkGAQgASgFEgwKBHN0",
+            "YXIYBSABKAUSEAoIdHJ5VGltZXMYBiABKAUSEwoLZmluaXNoVGltZXMYByAB",
+            "KAUSEQoJZW50ZXJUaW1lGAggASgFIjYKDVNlY3Rpb25SZXN1bHQSCgoCaWQY",
+            "ASABKAUSDAoEc3RhchgCIAEoBRILCgNleHAYAyABKAUiJwoIU2VjdGlvbnMS",
+            "GwoGdmFsdWVzGAEgAygLMgsucGIuU2VjdGlvbiJBCgdNaXNzaW9uEgoKAmlk",
+            "GAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEAoIcHJvZ3Jlc3MY",
+            "BCABKAUiJwoITWlzc2lvbnMSGwoGdmFsdWVzGAEgAygLMgsucGIuTWlzc2lv",
+            "biI/CgNCb3gSCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEo",
+            "BRISCgp1bmxvY2tUaW1lGAQgASgFIiAKBUJveGVzEhcKBnZhbHVlcxgBIAMo",
+            "CzIHLnBiLkJveGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,7 +85,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star", "Oid", "Exp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipments), global::Pb.Equipments.Parser, new[]{ "Values" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapter), global::Pb.Chapter.Parser, new[]{ "Id", "Rid", "Cid", "Star" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapter), global::Pb.Chapter.Parser, new[]{ "Id", "Rid", "Cid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapters), global::Pb.Chapters.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Section), global::Pb.Section.Parser, new[]{ "Id", "Rid", "Cid", "ChapterCid", "Star", "TryTimes", "FinishTimes", "EnterTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SectionResult), global::Pb.SectionResult.Parser, new[]{ "Id", "Star", "Exp" }, null, null, null),
@@ -3244,7 +3244,6 @@ namespace Pb {
       id_ = other.id_;
       rid_ = other.rid_;
       cid_ = other.cid_;
-      star_ = other.star_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3277,22 +3276,14 @@ namespace Pb {
     /// <summary>Field number for the "cid" field.</summary>
     public const int CidFieldNumber = 3;
     private int cid_;
+    /// <summary>
+    /// int32 star = 4;
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Cid {
       get { return cid_; }
       set {
         cid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 4;
-    private int star_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Star {
-      get { return star_; }
-      set {
-        star_ = value;
       }
     }
 
@@ -3312,7 +3303,6 @@ namespace Pb {
       if (Id != other.Id) return false;
       if (Rid != other.Rid) return false;
       if (Cid != other.Cid) return false;
-      if (Star != other.Star) return false;
       return true;
     }
 
@@ -3322,7 +3312,6 @@ namespace Pb {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Rid != 0) hash ^= Rid.GetHashCode();
       if (Cid != 0) hash ^= Cid.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
       return hash;
     }
 
@@ -3345,10 +3334,6 @@ namespace Pb {
         output.WriteRawTag(24);
         output.WriteInt32(Cid);
       }
-      if (Star != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(Star);
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3362,9 +3347,6 @@ namespace Pb {
       }
       if (Cid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
-      }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
       }
       return size;
     }
@@ -3382,9 +3364,6 @@ namespace Pb {
       }
       if (other.Cid != 0) {
         Cid = other.Cid;
-      }
-      if (other.Star != 0) {
-        Star = other.Star;
       }
     }
 
@@ -3406,10 +3385,6 @@ namespace Pb {
           }
           case 24: {
             Cid = input.ReadInt32();
-            break;
-          }
-          case 32: {
-            Star = input.ReadInt32();
             break;
           }
         }

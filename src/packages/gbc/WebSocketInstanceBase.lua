@@ -73,17 +73,14 @@ function WebSocketInstanceBase:ctor(config)
 end
 
 function WebSocketInstanceBase:run()
-    local _ok, errApp
-    _ok, errApp = xpcall(function()
+    local _ok
+    _ok, _ = xpcall(function()
         self:runEventLoop()
         self:onClose()
-        if errApp then
-            cc.printerror(errApp)
-        end
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)
-        cc.printerror(err .. debug.traceback("", 3))
+        cc.printerror(err .. debug.traceback("", 10))
         self:onClose()
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
         ngx.exit(ngx.ERROR)
@@ -394,9 +391,10 @@ end
 -- private
 
 _processMessage = function(self, rawMessage, messageType)
+    local this = self
     local messageFormat = self.config.app.websocketMessageFormat
     local ok, message = self:safeFunction(function()
-        return self:parseMessage(rawMessage, messageType, messageFormat)
+        return this:parseMessage(rawMessage, messageType, messageFormat)
     end)
     if not ok then
         return nil, "parseMessage error"
@@ -404,15 +402,13 @@ _processMessage = function(self, rawMessage, messageType)
     
     local msgid = message.msgid
     local actionName = message.action
-    local err = nil
-    local _ok, result = xpcall(function()
-        return self:runAction(actionName, message._args or message)
-    end, function(_err)
-        err = _err
-        err = err .. debug.traceback("", 10)
+    
+    local _ok, result = self:safeFunction(function()
+        return this:runAction(actionName, message._args or message)
     end)
-    if err then
-        return nil, err
+    
+    if not _ok then
+        return nil, "runAction Error:"..actionName
     end
     
     if not msgid then

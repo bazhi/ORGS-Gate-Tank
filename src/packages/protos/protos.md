@@ -147,7 +147,7 @@ message Chapter{
 	int32 id = 1;
 	int32 rid = 2;
 	int32 cid = 3;
-	int32 star = 4;
+	//int32 star = 4;
 }
 
 message Chapters{

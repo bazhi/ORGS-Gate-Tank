@@ -44,14 +44,17 @@ function SectionAction:enterAction(args, _redis)
         end
         
         --检查前置关卡是否通关
-        local pre_section = sections:getByCID(cfg_section.preID)
-        if not pre_section or pre_section.star <= 0 then
-            --章节还没解锁，无法进入
-            instance:sendError("NoAccept")
-            return
+        if cfg_section.preID > 0 then
+            local pre_section = sections:getByCID(cfg_section.preID)
+            if not pre_section or pre_section.star <= 0 then
+                --章节还没解锁，无法进入
+                instance:sendError("NoAccept")
+                return
+            end
         end
+        
         --检查本章通关星级总数
-        local star, _ = chapters:getChapterStar(cfg_section.chapterID)
+        local star, _ = sections:getChapterStar(cfg_section.chapterID)
         if star < cfg_section.unlockStar then
             --星级条件不够，无法进入
             instance:sendError("NoAccept")
