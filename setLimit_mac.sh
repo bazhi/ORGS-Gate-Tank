@@ -20,7 +20,9 @@ if [ $OS_TYPE == "MACOS" ]; then
 	sudo sysctl net.inet.tcp.keepidle=1000
 	sudo sysctl net.inet.tcp.keepcnt=5
 else
-	ulimit -n 1048576
+	echo 1 > /proc/sys/vm/overcommit_memory
+	echo 511 > /proc/sys/net/core/somaxconn
+	#ulimit -n 1048576
 	ulimit -a
 fi
 
