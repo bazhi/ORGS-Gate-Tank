@@ -1,4 +1,13 @@
 #!/bin/bash
+function getOsType()
+{
+    if [ `uname -s` == "Darwin" ]; then
+        echo "MACOS"
+    else
+        echo "LINUX"
+    fi
+}
+
 OS_TYPE=$(getOsType)
 if [ $OS_TYPE == "MACOS" ]; then
 	sudo sysctl -w kern.maxfiles=1048600
