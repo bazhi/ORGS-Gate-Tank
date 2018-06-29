@@ -51,15 +51,21 @@ function UserAction:signinAction(args, redis)
     local platform = args.platform or 0
     local logintime = args.logintime
     if not username then
-        cc.throw("not set argsument: \"username\"")
+        --cc.throw("not set argsument: \"username\"")
+        return "no username"
     end
     if not password then
-        cc.throw("not set argsument: \"password\"")
+        --cc.throw("not set argsument: \"password\"")
+        return "no password"
     end
     local user = AccountManager.Get(username, platform)
     if not user then
         local db = self:getInstance():getMysql()
         user = AccountManager.Load(db, username, platform)
+    end
+    if not user then
+        --cc.throw("not user")
+        return "no account"
     end
     
     if logintime then
@@ -67,23 +73,19 @@ function UserAction:signinAction(args, redis)
         local timegap = math.abs(logintime - ngx.now())
         --cc.printf(timegap)
         if timegap > 600 then
-            cc.throw("logintime is not correct")
+            return "logintime is not correct"
         end
         local checkKey = logintime.."-"..user.password
         local md5 = resty_md5:new()
         md5:update(checkKey)
         local md5key = str.to_hex(md5:final())
         if string.lower(password) ~= string.lower(md5key) then
-            cc.throw("password is not correct")
+            return "password is not correct"
         end
     else
         if password ~= user.password then
-            cc.throw("password is not correct")
+            return "password is not correct"
         end
-    end
-    
-    if not user then
-        cc.throw("can not find user")
     end
     
     local session = Session:new(redis)
