@@ -40,6 +40,7 @@ CONF_PATH = CONF_DIR .. "/config.lua"
 NGINX_CONF_PATH = CONF_DIR .. "/nginx.conf"
 REDIS_CONF_PATH = CONF_DIR .. "/redis.conf"
 SUPERVISORD_CONF_PATH = CONF_DIR .. "/supervisord.conf"
+BACKUP_CONF_PATH = CONF_DIR .. "/backup.conf"
 
 VAR_CONF_PATH = TMP_DIR .. "/config.lua"
 VAR_APP_KEYS_PATH = TMP_DIR .. "/app_keys"
@@ -47,16 +48,19 @@ VAR_NGINX_CONF_PATH = TMP_DIR .. "/nginx.conf"
 VAR_REDIS_CONF_PATH = TMP_DIR .. "/redis.conf"
 VAR_BEANS_LOG_PATH = TMP_DIR .. "/beanstalkd.log"
 VAR_SUPERVISORD_CONF_PATH = TMP_DIR .. "/supervisord.conf"
+VAR_BACKUP_CONF_PATH = TMP_DIR .. "/backup.conf"
 
 local _getValue, _checkVarConfig, _checkAppKeys
 local _updateCoreConfig, _updateNginxConfig
 local _updateRedisConfig, _updateSupervisordConfig
+local _updateBackupConfig
 
 function updateConfigs()
     _updateCoreConfig()
     _updateNginxConfig(0)
     _updateRedisConfig()
     _updateSupervisordConfig(1)
+    _updateBackupConfig()
 end
 
 -- init
@@ -227,6 +231,12 @@ _updateRedisConfig = function()
     end
     
     io.writefile(VAR_REDIS_CONF_PATH, contents)
+end
+
+_updateBackupConfig = function()
+    local contents = io.readfile(BACKUP_CONF_PATH)
+    contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
+    io.writefile(VAR_BACKUP_CONF_PATH, contents)
 end
 
 local _SUPERVISOR_WORKER_PROG_TMPL = [[

@@ -7,6 +7,8 @@ if [ ! -x "$DUMP_DIR" ]; then
   mkdir "$DUMP_DIR"
 fi
 
+find $DUMP_DIR/ -mtime +3 -name "*.sql.gz" -exec rm -rf {} \;
+
 mysqldump -uroot -pqcfs_db20180628 gameServer | gzip > $DUMP_DIR/gameServer_$(date +%Y%m%d_%H%M%S).sql.gz
 
 mysqldump -uroot -pqcfs_db20180628 loginMaster | gzip > $DUMP_DIR/loginMaster_$(date +%Y%m%d_%H%M%S).sql.gz
