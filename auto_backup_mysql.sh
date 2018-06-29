@@ -3,7 +3,7 @@ ROOT_DIR=$(cd "$(dirname $0)" && pwd)
 
 DUMP_DIR=$ROOT_DIR/mysqldump
 
-if [ ! -x "$DUMP_DIR"]; then
+if [ ! -x "$DUMP_DIR" ]; then
   mkdir "$DUMP_DIR"
 fi
 
