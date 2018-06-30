@@ -118,7 +118,7 @@ function NgxTimerBase:getMysql()
     if not mysql then
         local config = self.config.app.mysql
         if not config then
-            cc.printerror("NgxTimerBase:getMysql() - mysql is not set config")
+            cc.printerror("NgxTimerBase:getMysql() - mysql is not set config:"..self.config.app.appName)
             return nil
         end
         local _mysql, _err = Mysql.create(config)

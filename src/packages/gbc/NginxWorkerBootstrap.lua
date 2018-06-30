@@ -7,7 +7,7 @@ function NginxWorkerBootstrap:ctor(appKeys, globalConfig)
 end
 
 function NginxWorkerBootstrap:runapp(appRootPath)
-    cc.dump(self._configs)
+    --cc.dump(self._configs)
     local appConfig = self._configs[appRootPath]
     
     local worker = Factory.create(appConfig, "NginxWorkerInstance")
