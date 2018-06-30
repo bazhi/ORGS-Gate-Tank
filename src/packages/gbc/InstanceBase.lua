@@ -190,7 +190,7 @@ function InstanceBase:getJobs(_opts)
         bean:watch(tube)
         bean:ignore("default")
         
-        jobs = Jobs:new(bean, self:getRedis())
+        jobs = Jobs:new(bean)
         self._jobs = jobs
     end
     return jobs
