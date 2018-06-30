@@ -61,7 +61,7 @@ local function _dump_value(v)
 end
 
 function cc.dump(value, desciption, nesting, _print)
-    if type(nesting) ~= "number" then nesting = 3 end
+    if type(nesting) ~= "number" then nesting = 10 end
     _print = _print or ngxprintf
     
     local lookup = {}
