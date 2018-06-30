@@ -37,12 +37,12 @@ function DatabaseTimer:processEvent(event)
     local db = self:getMysql()
     local redis = self:getRedis()
     if not db then
-        cc.printerror("create db connect error")
+        cc.printerror("DatabaseTimer:processEvent() create db connect error")
         self:closeMysql()
         return false
     end
     if not redis then
-        cc.printerror("create redis connect error")
+        cc.printerror("DatabaseTimer:processEvent() create redis connect error")
         self:closeRedis()
         return false
     end

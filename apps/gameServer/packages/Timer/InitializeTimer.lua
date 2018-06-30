@@ -11,7 +11,7 @@ end
 function InitializeTimer:runEventLoop()
     local db = self:getMysql()
     if not db then
-        cc.printerror("create db connect error")
+        cc.printerror("InitializeTimer:runEventLoop() create db connect error")
         return InitializeTimer.super.runEventLoop(self)
     end
     
