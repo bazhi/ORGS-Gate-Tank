@@ -9,9 +9,8 @@ end
 function NginxWorkerBootstrap:runapp(appRootPath)
     --cc.dump(self._configs)
     local appConfig = self._configs[appRootPath]
-    
-    local worker = Factory.create(appConfig, "NginxWorkerInstance")
-    return worker:run()
+    local workerInstance = Factory.create(appConfig, "NginxWorkerInstance")
+    return workerInstance:run()
 end
 
 return NginxWorkerBootstrap

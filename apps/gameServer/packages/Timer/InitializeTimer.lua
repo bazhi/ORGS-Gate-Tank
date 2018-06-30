@@ -2,7 +2,7 @@ local gbc = cc.import("#gbc")
 local InitializeTimer = cc.class("InitializeTimer", gbc.NgxTimerBase)
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
-local Table = cc.import("#Table")
+local Table = cc.import("#Table", ...)
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)

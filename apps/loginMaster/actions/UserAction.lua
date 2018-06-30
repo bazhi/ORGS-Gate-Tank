@@ -25,8 +25,8 @@ THE SOFTWARE.
 local gbc = cc.import("#gbc")
 local UserAction = cc.class("UserAction", gbc.ActionBase)
 local Session = cc.import("#session")
-local AccountManager = cc.import("#AccountManager")
-local ServiceManager = cc.import("#ServiceManager")
+local AccountManager = cc.import("#AccountManager", ...)
+local ServiceManager = cc.import("#ServiceManager", ...)
 local resty_md5 = require("resty.md5")
 local str = require ("resty.string")
 

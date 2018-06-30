@@ -24,7 +24,7 @@ local gbc = cc.import("#gbc")
 local RoleAction = cc.class("RoleAction", gbc.ActionBase)
 
 RoleAction.ACCEPTED_REQUEST_TYPE = "websocket"
-local Data = cc.import("#Data")
+local Data = cc.import("#Data", ...)
 local dbConfig = cc.import("#dbConfig")
 
 local default_role_cid = 100001

@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 local gbc = cc.import("#gbc")
 local WebSocketInstance = cc.class("WebSocketInstance", gbc.WebSocketInstanceBase)
-local ServiceManager = cc.import("#ServiceManager")
+local ServiceManager = cc.import("#ServiceManager", ...)
 local Constants = gbc.Constants
 local sdSIG = ngx.shared.sdSIG
 

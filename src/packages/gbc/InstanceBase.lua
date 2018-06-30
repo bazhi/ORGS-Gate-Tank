@@ -112,6 +112,8 @@ function InstanceBase:runAction(actionName, args, redis, noSuffix, params)
     end
     
     local actionModulePath = _getpath(moduleName, folder, self._package)
+    actionModulePath = appConfig.appName .. "."..actionModulePath
+    
     local action = self._modules[actionModulePath]
     if not action then
         local actionModule = _loadmodule(actionModulePath)

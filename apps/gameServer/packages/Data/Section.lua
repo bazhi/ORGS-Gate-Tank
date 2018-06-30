@@ -2,7 +2,7 @@
 local Base = cc.import(".Base")
 local Section = cc.class("Section", Base)
 
-local Table = cc.import("#Table")
+local Table = cc.import("#Table", ...)
 
 function Section:ctor()
     Section.super.ctor(self, Table.Section)

@@ -2,7 +2,7 @@
 local gbc = cc.import("#gbc")
 local ServiceAction = cc.class("ServiceAction", gbc.ActionBase)
 
-local ServiceManager = cc.import("#ServiceManager")
+local ServiceManager = cc.import("#ServiceManager", ...)
 
 ServiceAction.ACCEPTED_REQUEST_TYPE = "websocket"
 

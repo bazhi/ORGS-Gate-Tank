@@ -2,7 +2,7 @@ local gbc = cc.import("#gbc")
 local InitializeTimer = cc.class("InitializeTimer", gbc.NgxTimerBase)
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
-local Table = cc.import("#Table")
+local Table = cc.import("#Table", ...)
 local Account = Table.Account
 
 function InitializeTimer:ctor(config, ...)
@@ -10,6 +10,8 @@ function InitializeTimer:ctor(config, ...)
 end
 
 function InitializeTimer:runEventLoop()
+    cc.printf("loginMaster InitializeTimer:runEventLoop()")
+    --cc.printf(package.path)
     local db = self:getMysql()
     if not db then
         cc.printerror("InitializeTimer:runEventLoop() create db connect error")

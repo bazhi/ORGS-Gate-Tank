@@ -1,6 +1,6 @@
 local gbc = cc.import("#gbc")
 local NginxWorkerInstance = cc.class("NginxWorkerInstance", gbc.NginxWorkerInstanceBase)
-local Timer = cc.import("#Timer")
+local Timer = cc.import("#Timer", ...)
 local InitializeTimer = Timer.InitializeTimer
 
 function NginxWorkerInstance:ctor(config, ...)

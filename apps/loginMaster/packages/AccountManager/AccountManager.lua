@@ -1,6 +1,6 @@
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
-local Table = cc.import("#Table")
+local Table = cc.import("#Table", ...)
 local Account = Table.Account
 local OrmAccount = OrmMysql:new(Account.Name, Account.Define, Account.Struct, Account.Indexes)
 
