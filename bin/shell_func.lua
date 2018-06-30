@@ -173,6 +173,7 @@ _updateNginxConfig = function()
         local contents = io.readfile(NGINX_CONF_PATH)
         contents = string.gsub(contents, "_GBC_CORE_ROOT_", ROOT_DIR)
         contents = string.gsub(contents, "_SO_KEEPALIVE_", SO_KEEPALIVE)
+        contents = string.gsub(contents, "_EVENT_USE_TYPE_", EVENT_USE_TYPE)
         contents = string.gsub(contents, "listen[ \t]+[0-9]+", string.format("listen %d", ngx.port or (8088 + index)))
         contents = string.gsub(contents, "worker_processes[ \t]+[0-9]+", string.format("worker_processes %d", ngx.numOfWorkers or 1))
         

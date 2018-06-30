@@ -29,14 +29,16 @@ OS_TYPE=$(getOsType)
 if [ $OS_TYPE == "MACOS" ]; then
     SED_BIN='sed -i --'
     SO_KEEPALIVE='so_keepalive=on'
+    EVENT_USE_TYPE=""
 else
     SED_BIN='sed -i'
     SO_KEEPALIVE='so_keepalive=1s:1s:5'
+    EVENT_USE_TYPE="use epoll;"
 fi
 
 function updateConfigs()
 {
-    $LUA_BIN -e "ROOT_DIR='$ROOT_DIR'; DEBUG=$DEBUG; SO_KEEPALIVE='$SO_KEEPALIVE'; dofile('$ROOT_DIR/bin/shell_func.lua'); updateConfigs()"
+    $LUA_BIN -e "ROOT_DIR='$ROOT_DIR'; DEBUG=$DEBUG; EVENT_USE_TYPE='$EVENT_USE_TYPE'; SO_KEEPALIVE='$SO_KEEPALIVE'; dofile('$ROOT_DIR/bin/shell_func.lua'); updateConfigs()"
 }
 
 function startSupervisord()
