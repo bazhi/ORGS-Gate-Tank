@@ -22,6 +22,8 @@ if [ $OS_TYPE == "MACOS" ]; then
 else
 	echo 1 > /proc/sys/vm/overcommit_memory
 	echo 511 > /proc/sys/net/core/somaxconn
+	#禁用透明大页
+	echo never > /sys/kernel/mm/transparent_hugepage/enabled
 	#ulimit -n 1048576
 	ulimit -a
 fi
