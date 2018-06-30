@@ -17,7 +17,7 @@ function NginxWorkerInstance:runEventLoop()
 end
 
 function NginxWorkerInstance:onWorkerFirst()
-    cc.dump(self.config)
+    --cc.dump(self.config)
     self:runTimer(1, InitializeTimer, self.config, true)
 end
 
