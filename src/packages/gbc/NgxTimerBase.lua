@@ -118,12 +118,12 @@ function NgxTimerBase:getMysql()
     if not mysql then
         local config = self.config.app.mysql
         if not config then
-            cc.printerror("HttpInstanceBase:mysql() - mysql is not set config")
+            cc.printerror("NgxTimerBase:getMysql() - mysql is not set config")
             return nil
         end
         local _mysql, _err = Mysql.create(config)
         if not _mysql then
-            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:".._err)
+            cc.printerror("NgxTimerBase:getMysql() - can not create mysql:".._err)
             return nil
         end
         mysql = _mysql
