@@ -124,7 +124,9 @@ function cc.printlog(tag, fmt, ...)
         if tag == "ERR" and cc.DEBUG > cc.DEBUG_WARN then
             ngx_log(ngx.ERR, string_format(fmt, ...) .. "\n" .. debug_traceback("", 5))
         else
-            ngx_log(ngx[tag], string_format(fmt, ...))
+            if ngx[tag] then
+                ngx_log(ngx[tag], string_format(fmt, ...))
+            end
         end
         return
     end
@@ -166,11 +168,11 @@ end
 
 function cc.printf(fmt, ...)
     if ngx then
-        if cc.DEBUG >= cc.DEBUG_INFO then
-            _printlog("INFO", fmt, ...)
-        else
-            _printlog("ERR", fmt, ...)
-        end
+        -- if cc.DEBUG >= cc.DEBUG_INFO then
+        _printlog("INFO", fmt, ...)
+        -- else
+        --     _printlog("ERR", fmt, ...)
+        -- end
         
     else
         print(string_format(tostring(fmt), ...))
