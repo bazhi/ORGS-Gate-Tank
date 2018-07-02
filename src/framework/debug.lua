@@ -35,7 +35,8 @@ local print = print
 local string_format = string.format
 local string_rep = string.rep
 local string_upper = string.upper
-local table_concat = table.concat
+--local table_concat = table.concat
+local table_insert = table.insert
 local tostring = tostring
 local ngxprintf
 
@@ -121,7 +122,7 @@ function cc.printlog(tag, fmt, ...)
     fmt = tostring(fmt)
     if ngx_log then
         if tag == "ERR" and cc.DEBUG > cc.DEBUG_WARN then
-            ngx_log(ngx.ERR, string_format(fmt, ...) .. "\n" .. debug_traceback("", 3))
+            ngx_log(ngx.ERR, string_format(fmt, ...) .. "\n" .. debug_traceback("", 5))
         else
             ngx_log(ngx[tag], string_format(fmt, ...))
         end
@@ -134,7 +135,7 @@ function cc.printlog(tag, fmt, ...)
         "] ",
     string_format(fmt, ...)}
     if tag == "ERR" then
-        table_insert(t, debug_traceback("", 2))
+        table_insert(t, debug_traceback("", 5))
     end
     print(table.concat(t))
 end
@@ -165,11 +166,7 @@ end
 
 function cc.printf(fmt, ...)
     if ngx then
-        if cc.DEBUG >= cc.DEBUG_INFO then
-            _printlog("INFO", fmt, ...)
-        else
-            _printlog("ERR", fmt, ...)
-        end
+        _printlog("LOG", fmt, ...)
     else
         print(string_format(tostring(fmt), ...))
     end
