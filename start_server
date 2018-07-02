@@ -1,4 +1,5 @@
 #!/bin/bash
+./setLimit_mac.sh
 
 function showHelp()
 {
