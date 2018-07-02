@@ -169,7 +169,7 @@ end
 function cc.printf(fmt, ...)
     if ngx then
         -- if cc.DEBUG >= cc.DEBUG_INFO then
-        _printlog("INFO", fmt, ...)
+        _printlog("NOTICE", fmt, ...)
         -- else
         --     _printlog("ERR", fmt, ...)
         -- end
