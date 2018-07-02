@@ -166,7 +166,12 @@ end
 
 function cc.printf(fmt, ...)
     if ngx then
-        _printlog("INFO", fmt, ...)
+        if cc.DEBUG >= cc.DEBUG_INFO then
+            _printlog("INFO", fmt, ...)
+        else
+            _printlog("ERR", fmt, ...)
+        end
+        
     else
         print(string_format(tostring(fmt), ...))
     end
