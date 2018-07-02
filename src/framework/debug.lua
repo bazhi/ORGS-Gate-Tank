@@ -166,7 +166,7 @@ end
 
 function cc.printf(fmt, ...)
     if ngx then
-        _printlog("LOG", fmt, ...)
+        _printlog("INFO", fmt, ...)
     else
         print(string_format(tostring(fmt), ...))
     end
