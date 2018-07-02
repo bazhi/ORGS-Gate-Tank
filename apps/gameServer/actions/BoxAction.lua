@@ -135,9 +135,9 @@ function BoxAction:deleteBox(id)
     if box then
         local query = box:deleteQuery({id = id})
         box:pushQuery(query, instance:getConnectId())
+        boxes:delete(id)
+        instance:sendDelete("Box", id)
     end
-    boxes:delete(id)
-    instance:sendDelete("Box", id)
 end
 
 function BoxAction:gainAction(args, redis)
@@ -156,8 +156,8 @@ function BoxAction:gainAction(args, redis)
     end
     local box_data = box:get()
     
-    --箱子已经在打开过程中，不允许再次打开
-    if box_data.unlockTime < ngx.now() then
+    --箱子正在打开中, 或者没有打开
+    if box_data.unlockTime > ngx.now() or box_data.unlockTime <= 0 then
         instance:sendError("OperationNotPermit")
         return - 1
     end
