@@ -67,5 +67,6 @@ sleep 3s
 
 checkStatus
 
+crontab -l
 # ./show_log
 
