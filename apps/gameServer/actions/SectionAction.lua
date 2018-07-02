@@ -117,7 +117,7 @@ function SectionAction:onSection(args, _redis, params)
     end
 end
 
-function SectionAction:finishAction(args, _redis)
+function SectionAction:finishAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     local star = args.star
@@ -151,6 +151,7 @@ function SectionAction:finishAction(args, _redis)
         values = {section_data},
     })
     
+    self:runAction("role.add", {exp = cfg_section.exp}, redis)
     instance:sendPack("SectionResult", {
         id = id,
         star = star,

@@ -45,4 +45,8 @@ function ActionBase:hasAuthority(authorization)
     return config.authorization == authorization
 end
 
+function ActionBase:runAction(actionName, args, redis, params)
+    self._instance:runAction(actionName, args, redis, true, params)
+end
+
 return ActionBase

@@ -57,7 +57,7 @@ function RoleAction:createAction(args, _redis)
     role:pushQuery(query, instance:getConnectId(), "role.onCreate")
 end
 
-function RoleAction:onCreate(args, _redis)
+function RoleAction:onCreate(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -69,7 +69,7 @@ function RoleAction:onCreate(args, _redis)
     end
 end
 
-function RoleAction:loadAction(_args, _redis)
+function RoleAction:loadAction(args, redis)
     local instance = self:getInstance()
     local user = instance:getUser()
     local player = Data.Player:new(user)
@@ -78,6 +78,39 @@ function RoleAction:loadAction(_args, _redis)
     local role = player:getRole()
     local query = role:selectQuery({pid = pid})
     role:pushQuery(query, instance:getConnectId(), "role.onRole")
+end
+
+function RoleAction:add(args, redis)
+    local instance = self:getInstance()
+    local exp = args.exp or 0
+    local gold = args.gold or 0
+    
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local role_data = role:get()
+    
+    local nextLevel = role_data.level
+    --升级下一级的配置
+    local cfg = dbConfig.get("cfg_levelup", nextLevel)
+    if not cfg then
+        --找不到下一等级的配置，说明已经满级
+        return
+    end
+    role_data.exp = role_data.exp + exp
+    if role_data.exp >= cfg.exp then
+        --等级提升
+        role_data.level = nextLevel
+        role_data.exp = role_data.exp - cfg.exp
+    end
+    role_data.gold = role_data.gold + gold
+    
+    local query = role:updateQuery({id = role_data.id}, {
+        exp = exp,
+        level = role_data.level,
+        gold = role_data.gold,
+    })
+    role:pushQuery(query, instance:getConnectId())
+    instance:sendPack("Role", role_data)
 end
 
 function RoleAction:onRole(args, redis, params)
@@ -98,21 +131,21 @@ function RoleAction:onRole(args, redis, params)
             local cfg_role = dbConfig.get("cfg_role", role_data.cid)
             if cfg_role then
                 if cfg_role.initProps then
-                    instance:runAction("prop.addProps", {
+                    self:runAction("prop.addProps", {
                         items = cfg_role.initProps,
-                    }, redis, true)
+                    }, redis)
                 end
                 if cfg_role.missionid then
-                    instance:runAction("mission.add", {
+                    self:runAction("mission.add", {
                         cid = cfg_role.missionid,
-                    }, redis, true)
+                    }, redis)
                 end
             end
         end
     end
 end
 
-function RoleAction:loadOthersAction(_args, _redis)
+function RoleAction:loadOthersAction(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -152,7 +185,7 @@ function RoleAction:loadOthersAction(_args, _redis)
     box:pushQuery(query, instance:getConnectId(), "role.onBox")
 end
 
-function RoleAction:onEquipment(args, _redis)
+function RoleAction:onEquipment(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local equipments = player:getEquipments()
@@ -162,7 +195,7 @@ function RoleAction:onEquipment(args, _redis)
     })
 end
 
-function RoleAction:onProp(args, _redis)
+function RoleAction:onProp(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local props = player:getProps()
@@ -172,7 +205,7 @@ function RoleAction:onProp(args, _redis)
     })
 end
 
-function RoleAction:onChapter(args, _redis)
+function RoleAction:onChapter(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local chapters = player:getChapters()
@@ -182,7 +215,7 @@ function RoleAction:onChapter(args, _redis)
     })
 end
 
-function RoleAction:onSection(args, _redis)
+function RoleAction:onSection(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local sections = player:getSections()
@@ -201,10 +234,10 @@ function RoleAction:onMission(args, redis)
         values = args
     })
     
-    instance:runAction("mission.resetMission", {}, redis, true)
+    self:runAction("mission.resetMission", {}, redis)
 end
 
-function RoleAction:onBox(args, _redis)
+function RoleAction:onBox(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local boxes = player:getBoxes()

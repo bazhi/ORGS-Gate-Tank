@@ -38,7 +38,7 @@ function RewardAction:open(args, redis)
     end
     
     --
-    return instance:runAction("prop.addPropsWithList", {ids = addPropIDList}, redis, true)
+    return self:runAction("prop.addPropsWithList", {ids = addPropIDList}, redis)
 end
 
 return RewardAction

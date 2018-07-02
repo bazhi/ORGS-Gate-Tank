@@ -171,7 +171,7 @@ function BoxAction:gainAction(args, redis)
     --删除箱子
     self:deleteBox(id)
     --处理物品
-    return instance:runAction("reward.open", {id = cfg_box.rewardID}, redis, true)
+    return self:runAction("reward.open", {id = cfg_box.rewardID}, redis)
 end
 
 return BoxAction
