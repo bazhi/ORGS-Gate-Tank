@@ -67,6 +67,6 @@ sleep 3s
 
 checkStatus
 
-crontab -l
+./backup_timer.sh
 # ./show_log
 
