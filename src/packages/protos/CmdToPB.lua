@@ -28,5 +28,7 @@ local _M = {
     [27] = "Missions",
     [28] = "Box",
     [29] = "Boxes",
+    [30] = "Reward",
+    [31] = "Rewards",
 }
 return _M

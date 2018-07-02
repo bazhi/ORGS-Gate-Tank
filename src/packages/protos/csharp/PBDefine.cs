@@ -31,7 +31,9 @@ namespace Pb{
 		Mission,
 		Missions,
 		Box,
-		Boxes
+		Boxes,
+		Reward,
+		Rewards
     }
 
 	public static class PBRegister
@@ -67,6 +69,8 @@ namespace Pb{
 			dict.Add(PBDefine.Missions, Missions.Parser);
 			dict.Add(PBDefine.Box, Box.Parser);
 			dict.Add(PBDefine.Boxes, Boxes.Parser);
+			dict.Add(PBDefine.Reward, Reward.Parser);
+			dict.Add(PBDefine.Rewards, Rewards.Parser);
 		}
 	}
 }

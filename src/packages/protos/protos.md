@@ -197,6 +197,14 @@ message Boxes{
 	repeated Box values = 1;
 }
 
+message Reward{
+	int32 cid = 1;
+	int32 count = 2;
+}
+
+message Rewards{
+	repeated Reward values = 1;
+}
 
 
 

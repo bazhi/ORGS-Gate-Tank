@@ -28,5 +28,7 @@ local _M = {
     Missions = 27,
     Box = 28,
     Boxes = 29,
+    Reward = 30,
+    Rewards = 31,
 }
 return _M

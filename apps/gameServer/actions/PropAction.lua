@@ -56,19 +56,27 @@ function PropAction:decomposeAction(args, redis)
     instance:sendPack("Props", {
         values = {prop_data},
     })
-    
     self:addProps({items = cfg_prop.decompose}, redis)
 end
 
 function PropAction:addProps(args, _redis)
+    local instance = self:getInstance()
     if not args.items then
         cc.printerror("PropAction:addProps args is not support")
         return
     end
     local items = ParseConfig.ParseDecompose(args.items)
+    local rewardlist = {}
     for _, item in ipairs(items) do
         self:addProp(item.id, item.count)
+        table.insert(rewardlist, {
+            cid = item.id,
+            count = item.count,
+        })
     end
+    instance:sendPack("Rewards", {
+        values = rewardlist,
+    })
 end
 
 function PropAction:addPropsWithList(args, _redis)
@@ -86,10 +94,18 @@ function PropAction:addPropsWithList(args, _redis)
         end
         idMap[id] = idMap[id] + 1
     end
-    
-    for id, count in pairs(idMap) do
-        self:addProp(id, count)
+    local rewardlist = {}
+    for cid, count in pairs(idMap) do
+        self:addProp(cid, count)
+        table.insert(rewardlist, {
+            cid = cid,
+            count = count,
+        })
     end
+    instance:sendPack("Rewards", {
+        values = rewardlist,
+    })
+    return 1
 end
 
 function PropAction:addProp(cid, count)
