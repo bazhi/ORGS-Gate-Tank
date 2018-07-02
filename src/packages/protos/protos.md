@@ -117,6 +117,7 @@ message Role{
     int32 diamond = 7;
     int32 loginTime = 8;
     int32 createTime = 9;
+    int32 exp = 10;
 }
 
 message Prop{

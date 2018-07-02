@@ -40,30 +40,30 @@ namespace Pb {
             "dGlvbhILCgNjaWQYASABKAUiKQoNRmluaXNoU2VjdGlvbhIKCgJpZBgBIAEo",
             "BRIMCgRzdGFyGAIgASgFIhsKDUZpbmlzaE1pc3Npb24SCgoCaWQYASABKAUi",
             "FQoHT3BlbkJveBIKCgJpZBgBIAEoBSIVCgdHYWluQm94EgoKAmlkGAEgASgF",
-            "IiIKBkRlbGV0ZRIKCgJpZBgBIAEoBRIMCgR0eXBlGAIgASgFIpMBCgRSb2xl",
+            "IiIKBkRlbGV0ZRIKCgJpZBgBIAEoBRIMCgR0eXBlGAIgASgFIqABCgRSb2xl",
             "EgoKAmlkGAEgASgFEgsKA3BpZBgCIAEoBRILCgNjaWQYAyABKAUSEAoIbmlj",
             "a25hbWUYBCABKAkSDQoFbGV2ZWwYBSABKAUSDAoEZ29sZBgGIAEoBRIPCgdk",
             "aWFtb25kGAcgASgFEhEKCWxvZ2luVGltZRgIIAEoBRISCgpjcmVhdGVUaW1l",
-            "GAkgASgFIjsKBFByb3ASCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2Np",
-            "ZBgDIAEoBRINCgVjb3VudBgEIAEoBSIhCgVQcm9wcxIYCgZ2YWx1ZXMYASAD",
-            "KAsyCC5wYi5Qcm9wIlkKCUVxdWlwbWVudBIKCgJpZBgBIAEoBRILCgNyaWQY",
-            "AiABKAUSCwoDY2lkGAMgASgFEgwKBHN0YXIYBCABKAUSCwoDb2lkGAUgASgF",
-            "EgsKA2V4cBgGIAEoBSIrCgpFcXVpcG1lbnRzEh0KBnZhbHVlcxgBIAMoCzIN",
-            "LnBiLkVxdWlwbWVudCIvCgdDaGFwdGVyEgoKAmlkGAEgASgFEgsKA3JpZBgC",
-            "IAEoBRILCgNjaWQYAyABKAUiJwoIQ2hhcHRlcnMSGwoGdmFsdWVzGAEgAygL",
-            "MgsucGIuQ2hhcHRlciKMAQoHU2VjdGlvbhIKCgJpZBgBIAEoBRILCgNyaWQY",
-            "AiABKAUSCwoDY2lkGAMgASgFEhMKC2NoYXB0ZXJfY2lkGAQgASgFEgwKBHN0",
-            "YXIYBSABKAUSEAoIdHJ5VGltZXMYBiABKAUSEwoLZmluaXNoVGltZXMYByAB",
-            "KAUSEQoJZW50ZXJUaW1lGAggASgFIjYKDVNlY3Rpb25SZXN1bHQSCgoCaWQY",
-            "ASABKAUSDAoEc3RhchgCIAEoBRILCgNleHAYAyABKAUiJwoIU2VjdGlvbnMS",
-            "GwoGdmFsdWVzGAEgAygLMgsucGIuU2VjdGlvbiJBCgdNaXNzaW9uEgoKAmlk",
-            "GAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEAoIcHJvZ3Jlc3MY",
-            "BCABKAUiJwoITWlzc2lvbnMSGwoGdmFsdWVzGAEgAygLMgsucGIuTWlzc2lv",
-            "biI/CgNCb3gSCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEo",
-            "BRISCgp1bmxvY2tUaW1lGAQgASgFIiAKBUJveGVzEhcKBnZhbHVlcxgBIAMo",
-            "CzIHLnBiLkJveCIkCgZSZXdhcmQSCwoDY2lkGAEgASgFEg0KBWNvdW50GAIg",
-            "ASgFIiUKB1Jld2FyZHMSGgoGdmFsdWVzGAEgAygLMgoucGIuUmV3YXJkYgZw",
-            "cm90bzM="));
+            "GAkgASgFEgsKA2V4cBgKIAEoBSI7CgRQcm9wEgoKAmlkGAEgASgFEgsKA3Jp",
+            "ZBgCIAEoBRILCgNjaWQYAyABKAUSDQoFY291bnQYBCABKAUiIQoFUHJvcHMS",
+            "GAoGdmFsdWVzGAEgAygLMggucGIuUHJvcCJZCglFcXVpcG1lbnQSCgoCaWQY",
+            "ASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRIMCgRzdGFyGAQgASgF",
+            "EgsKA29pZBgFIAEoBRILCgNleHAYBiABKAUiKwoKRXF1aXBtZW50cxIdCgZ2",
+            "YWx1ZXMYASADKAsyDS5wYi5FcXVpcG1lbnQiLwoHQ2hhcHRlchIKCgJpZBgB",
+            "IAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFIicKCENoYXB0ZXJzEhsK",
+            "BnZhbHVlcxgBIAMoCzILLnBiLkNoYXB0ZXIijAEKB1NlY3Rpb24SCgoCaWQY",
+            "ASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRITCgtjaGFwdGVyX2Np",
+            "ZBgEIAEoBRIMCgRzdGFyGAUgASgFEhAKCHRyeVRpbWVzGAYgASgFEhMKC2Zp",
+            "bmlzaFRpbWVzGAcgASgFEhEKCWVudGVyVGltZRgIIAEoBSI2Cg1TZWN0aW9u",
+            "UmVzdWx0EgoKAmlkGAEgASgFEgwKBHN0YXIYAiABKAUSCwoDZXhwGAMgASgF",
+            "IicKCFNlY3Rpb25zEhsKBnZhbHVlcxgBIAMoCzILLnBiLlNlY3Rpb24iQQoH",
+            "TWlzc2lvbhIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgF",
+            "EhAKCHByb2dyZXNzGAQgASgFIicKCE1pc3Npb25zEhsKBnZhbHVlcxgBIAMo",
+            "CzILLnBiLk1pc3Npb24iPwoDQm94EgoKAmlkGAEgASgFEgsKA3JpZBgCIAEo",
+            "BRILCgNjaWQYAyABKAUSEgoKdW5sb2NrVGltZRgEIAEoBSIgCgVCb3hlcxIX",
+            "CgZ2YWx1ZXMYASADKAsyBy5wYi5Cb3giJAoGUmV3YXJkEgsKA2NpZBgBIAEo",
+            "BRINCgVjb3VudBgCIAEoBSIlCgdSZXdhcmRzEhoKBnZhbHVlcxgBIAMoCzIK",
+            "LnBiLlJld2FyZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -82,7 +82,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.OpenBox), global::Pb.OpenBox.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.GainBox), global::Pb.GainBox.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Delete), global::Pb.Delete.Parser, new[]{ "Id", "Type" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime", "Exp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star", "Oid", "Exp" }, null, null, null),
@@ -2237,6 +2237,7 @@ namespace Pb {
       diamond_ = other.diamond_;
       loginTime_ = other.loginTime_;
       createTime_ = other.createTime_;
+      exp_ = other.exp_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2343,6 +2344,17 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "exp" field.</summary>
+    public const int ExpFieldNumber = 10;
+    private int exp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Exp {
+      get { return exp_; }
+      set {
+        exp_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Role);
@@ -2365,6 +2377,7 @@ namespace Pb {
       if (Diamond != other.Diamond) return false;
       if (LoginTime != other.LoginTime) return false;
       if (CreateTime != other.CreateTime) return false;
+      if (Exp != other.Exp) return false;
       return true;
     }
 
@@ -2380,6 +2393,7 @@ namespace Pb {
       if (Diamond != 0) hash ^= Diamond.GetHashCode();
       if (LoginTime != 0) hash ^= LoginTime.GetHashCode();
       if (CreateTime != 0) hash ^= CreateTime.GetHashCode();
+      if (Exp != 0) hash ^= Exp.GetHashCode();
       return hash;
     }
 
@@ -2426,6 +2440,10 @@ namespace Pb {
         output.WriteRawTag(72);
         output.WriteInt32(CreateTime);
       }
+      if (Exp != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(Exp);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2457,6 +2475,9 @@ namespace Pb {
       }
       if (CreateTime != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(CreateTime);
+      }
+      if (Exp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
       }
       return size;
     }
@@ -2492,6 +2513,9 @@ namespace Pb {
       }
       if (other.CreateTime != 0) {
         CreateTime = other.CreateTime;
+      }
+      if (other.Exp != 0) {
+        Exp = other.Exp;
       }
     }
 
@@ -2537,6 +2561,10 @@ namespace Pb {
           }
           case 72: {
             CreateTime = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            Exp = input.ReadInt32();
             break;
           }
         }
