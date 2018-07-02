@@ -53,7 +53,9 @@ function PropAction:decomposeAction(args, redis)
     prop_data.count = prop_data.count - 1
     local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
     prop:pushQuery(query, instance:getConnectId())
-    instance:sendPack("Prop", prop_data)
+    instance:sendPack("Props", {
+        values = {prop_data},
+    })
     
     self:addProps({items = cfg_prop.decompose}, redis)
 end
@@ -101,7 +103,9 @@ function PropAction:addProp(cid, count)
         prop_data.count = prop_data.count + count
         local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
         prop:pushQuery(query, instance:getConnectId())
-        instance:sendPack("Prop", prop_data)
+        instance:sendPack("Props", {
+            values = {prop_data},
+        })
     else
         local cfg_prop = dbConfig.get("cfg_prop", cid)
         if not cfg_prop then
@@ -142,7 +146,7 @@ function PropAction:onPropNew(args, redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local props = player:getProps()
-    local prop = props:get()
+    local prop = props:getTemplate()
     local query = prop:selectQuery({id = args.insert_id})
     prop:pushQuery(query, instance:getConnectId(), "prop.onProp", {
         update = true,
