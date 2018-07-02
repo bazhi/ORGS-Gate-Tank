@@ -90,12 +90,12 @@ function PropAction:addPropsWithList(args, _redis)
     end
 end
 
-function PropAction:addProp(id, count)
+function PropAction:addProp(cid, count)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
     local props = player:getProps()
-    local prop = props:get(id)
+    local prop = props:getByCID(cid)
     if prop then
         local prop_data = prop:get()
         prop_data.count = prop_data.count + count
@@ -103,7 +103,7 @@ function PropAction:addProp(id, count)
         prop:pushQuery(query, instance:getConnectId())
         instance:sendPack("Prop", prop_data)
     else
-        local cfg_prop = dbConfig.get("cfg_prop", id)
+        local cfg_prop = dbConfig.get("cfg_prop", cid)
         if not cfg_prop then
             instance:sendError("ConfigError")
             return - 1
@@ -112,7 +112,7 @@ function PropAction:addProp(id, count)
         prop = props:get()
         local dt = prop:get()
         dt.rid = role:getID()
-        dt.cid = id
+        dt.cid = cid
         dt.count = count
         local query = prop:insertQuery(dt)
         prop:pushQuery(query, instance:getConnectId(), "prop.onPropNew")
