@@ -28,7 +28,7 @@ end
 
 function FileAction:checkUpdateAction(args, _redis)
     local cfg = self:getInstanceConfig()
-    local path = cfg.app.rootPath .. "/public_html/download/"
+    local path = cfg.app.rootPath .. "/public/download/"
     local checklist = args.checklist or {}
     local result = {}
     
