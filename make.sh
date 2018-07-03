@@ -226,6 +226,7 @@ mkdir -p $DEST_BIN_DIR/openresty
 echo ./configure $OPENRESETY_CONFIGURE_ARGS \
     --prefix=$DEST_BIN_DIR/openresty \
     --with-luajit \
+    --with-ipv6 \
     --with-http_stub_status_module \
     --with-cc-opt="-I/usr/local/include -I/usr/local/opt/openssl/include" \
     --with-ld-opt="-L/usr/local/lib -L/usr/local/opt/openssl/lib"
