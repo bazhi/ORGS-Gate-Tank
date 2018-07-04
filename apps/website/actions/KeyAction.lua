@@ -4,6 +4,10 @@ local KeyAction = cc.class("KeyAction", gbc.ActionBase)
 local cdkey = require 'resty.cdkey'
 local lfs = require "lfs"
 
+-- local json = cc.import("#json")
+--local json_encode = json.encode
+-- local json_decode = json.decode
+
 local CDKey_Prefix = "CD:"
 local RewardKey_Prefix = "Reward:"
 local NEXT_REWARD_ID_KEY = "_NEXT_REWARD_ID_KEY_"
@@ -78,7 +82,7 @@ function KeyAction:GenerateAction(args, redis)
         if tostring(redis:exists(redis_key)) == "0" then
             redis:set(redis_key, RewardID)
             redis:expire(redis_key, tonumber(expiration))
-            file:write(key..", ")
+            file:write(key.."\n")
             count = count - 1
         end
         if count == 0 then
@@ -116,9 +120,11 @@ function KeyAction:sizeAction(args, redis)
     return redis:dbsize()
 end
 
-function KeyAction:infoAction(args, redis)
-    return redis:info()
-end
+-- function KeyAction:infoAction(args, redis)
+--     local info = redis:info()
+--     cc.printf(info)
+--     return info
+-- end
 
 return KeyAction
 
