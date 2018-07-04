@@ -40,20 +40,22 @@ function KeyAction:GenerateAction(args, redis)
     
     local cdkeyPath = string.format("%s/public/cdkey", path)
     if not io.exists(cdkeyPath) then
-        if not lfs.mkdir(cdkeyPath) then
+        local ok, err = lfs.mkdir(cdkeyPath)
+        if not ok then
             return{
                 result = false,
-                err = "can not create dir:"..cdkeyPath,
+                err = "can not create dir:"..err,
             }
         end
     end
     
     local dirpath = string.format("%s/public/cdkey/%s", path, filedir)
     if not io.exists(dirpath) then
-        if not lfs.mkdir(dirpath) then
+        local ok, err = lfs.mkdir(dirpath)
+        if not ok then
             return{
                 result = false,
-                err = "can not create dir:"..dirpath,
+                err = "can not create dir:"..err,
             }
         end
     end
