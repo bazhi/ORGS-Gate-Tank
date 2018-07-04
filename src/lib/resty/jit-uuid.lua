@@ -7,24 +7,19 @@
 -- @license MIT
 -- @release 0.0.5
 
-
 local bit = require 'bit'
-
 
 local tohex = bit.tohex
 local band = bit.band
 local bor = bit.bor
 
-
 local _M = {
     _VERSION = '0.0.5'
 }
 
-
 ----------
 -- seeding
 ----------
-
 
 --- Seed the random number generator.
 -- Under the hood, this function calls `math.randomseed`.
@@ -52,33 +47,30 @@ function _M.seed(seed)
     if not seed then
         if ngx then
             seed = ngx.time() + ngx.worker.pid()
-
+            
         elseif package.loaded['socket'] and package.loaded['socket'].gettime then
-            seed = package.loaded['socket'].gettime()*10000
-
+            seed = package.loaded['socket'].gettime() * 10000
+            
         else
             seed = os.time()
         end
     end
-
+    
     math.randomseed(seed)
-
+    
     return seed
 end
-
 
 -------------
 -- validation
 -------------
 
-
 do
-    if ngx and string.find(ngx.config.nginx_configure(),'--with-pcre-jit',nil,true) then
+    if ngx and string.find(ngx.config.nginx_configure(), '--with-pcre-jit', nil, true) then
         local type = type
         local re_find = ngx.re.find
         local regex = '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
-
-
+        
         --- Validate a string as a UUID.
         -- To be considered valid, a UUID must be given in its canonical
         -- form (hexadecimal digits including the hyphen characters).
@@ -102,10 +94,10 @@ do
             if type(str) ~= 'string' or #str ~= 36 then
                 return false
             end
-
+            
             return re_find(str, regex, 'ioj') ~= nil
         end
-
+        
     else
         local match = string.match
         local d = '[0-9a-fA-F]'
@@ -114,31 +106,26 @@ do
             d:rep(4),
             d:rep(4),
             '[89ab]' .. d:rep(3),
-            d:rep(12)
-        }, '%-') .. '$'
-
-
+        d:rep(12)}, '%-') .. '$'
+        
         function _M.is_valid(str)
             if type(str) ~= 'string' or #str ~= 36 then
                 return false
             end
-
+            
             return match(str, p) ~= nil
         end
     end
 end
 
-
 ----------------
 -- v4 generation
 ----------------
 
-
 do
     local fmt = string.format
     local random = math.random
-
-
+    
     --- Generate a v4 UUID.
     -- v4 UUIDs are created from randomly generated numbers.
     --
@@ -150,86 +137,82 @@ do
     -- local u2 = uuid.generate_v4()
     function _M.generate_v4()
         return fmt('%s%s%s%s-%s%s-%s%s-%s%s-%s%s%s%s%s%s',
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-
-                    tohex(bor(band(random(0, 255), 0x0F), 0x40), 2),
-                    tohex(random(0, 255), 2),
-
-                    tohex(bor(band(random(0, 255), 0x3F), 0x80), 2),
-                    tohex(random(0, 255), 2),
-
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2),
-                    tohex(random(0, 255), 2))
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            
+            tohex(bor(band(random(0, 255), 0x0F), 0x40), 2),
+            tohex(random(0, 255), 2),
+            
+            tohex(bor(band(random(0, 255), 0x3F), 0x80), 2),
+            tohex(random(0, 255), 2),
+            
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+            tohex(random(0, 255), 2),
+        tohex(random(0, 255), 2))
     end
 end
-
 
 ----------------
 -- v3/v5 generation
 ----------------
 
-
 do
     if ngx then
         local tonumber = tonumber
-        local assert   = assert
-        local concat   = table.concat
-        local gmatch   = string.gmatch
-        local type     = type
-        local char     = string.char
-        local fmt      = string.format
-        local sub      = string.sub
-        local buf      = {}
-
-
+        local assert = assert
+        local concat = table.concat
+        local gmatch = string.gmatch
+        local type = type
+        local char = string.char
+        local fmt = string.format
+        local sub = string.sub
+        local buf = {}
+        
         local function factory(namespace, hash_fn)
             if not _M.is_valid(namespace) then
                 return nil, 'namespace must be a valid UUID'
             end
-
+            
             local i = 0
             local iter = gmatch(namespace, '([%a%d][%a%d])') -- pattern faster than PCRE without resty.core
-
+            
             while true do
                 local m = iter()
                 if not m then
                     break
                 end
-
+                
                 i = i + 1
                 buf[i] = char(tonumber(m, 16))
             end
-
+            
             assert(i == 16, "invalid binary namespace buffer length")
-
+            
             return function(name)
                 if type(name) ~= 'string' then
                     return nil, 'name must be a string'
                 end
-
+                
                 local hash, ver, var = hash_fn(concat(buf, ''), name)
-
+                
                 return fmt('%s-%s-%s%s-%s%s-%s', sub(hash, 1, 8),
-                                                sub(hash, 9, 12),
-                                                ver,
-                                                sub(hash, 15, 16),
-                                                var,
-                                                sub(hash, 19, 20),
-                                                sub(hash, 21, 32))
+                    sub(hash, 9, 12),
+                    ver,
+                    sub(hash, 15, 16),
+                    var,
+                    sub(hash, 19, 20),
+                sub(hash, 21, 32))
             end
         end
-
-
+        
         --- Instanciate a v3 UUID factory.
         -- @function factory_v3
         -- Creates a closure generating namespaced v3 UUIDs.
@@ -248,22 +231,19 @@ do
         -- ---> e8d3eeba-7723-3b72-bbc5-8f598afa6773
         do
             local md5 = ngx.md5
-
-
+            
             local function v3_hash(binary, name)
                 local hash = md5(binary .. name)
                 return hash,
-                        tohex(bor(band(tonumber(sub(hash, 13, 14), 16), 0x0F), 0x30), 2),
-                        tohex(bor(band(tonumber(sub(hash, 17, 18), 16), 0x3F), 0x80), 2)
+                tohex(bor(band(tonumber(sub(hash, 13, 14), 16), 0x0F), 0x30), 2),
+                tohex(bor(band(tonumber(sub(hash, 17, 18), 16), 0x3F), 0x80), 2)
             end
-
-
+            
             function _M.factory_v3(namespace)
                 return factory(namespace, v3_hash)
             end
         end
-
-
+        
         --- Instanciate a v5 UUID factory.
         -- @function factory_v5
         -- Creates a closure generating namespaced v5 UUIDs.
@@ -282,43 +262,38 @@ do
         -- ---> c9be99fc-326b-5066-bdba-dcd31a6d01ab
         do
             local ffi = require 'ffi'
-
-
+            
             local sha1_bin = ngx.sha1_bin
-            local C        = ffi.C
-            local ffi_new  = ffi.new
-            local ffi_str  = ffi.string
+            local C = ffi.C
+            local ffi_new = ffi.new
+            local ffi_str = ffi.string
             local str_type = ffi.typeof('uint8_t[?]')
-
+            
             ffi.cdef [[
                 typedef unsigned char u_char;
                 u_char * ngx_hex_dump(u_char *dst, const u_char *src, size_t len);
             ]]
-
-
+            
             local function bin_tohex(s)
                 local len = #s * 2
                 local buf = ffi_new(str_type, len)
                 C.ngx_hex_dump(buf, s, #s)
-
+                
                 return ffi_str(buf, len)
             end
-
-
+            
             local function v5_hash(binary, name)
                 local hash = bin_tohex(sha1_bin(binary .. name))
                 return hash,
-                        tohex(bor(band(tonumber(sub(hash, 13, 14), 16), 0x0F), 0x50), 2),
-                        tohex(bor(band(tonumber(sub(hash, 17, 18), 16), 0x3F), 0x80), 2)
+                tohex(bor(band(tonumber(sub(hash, 13, 14), 16), 0x0F), 0x50), 2),
+                tohex(bor(band(tonumber(sub(hash, 17, 18), 16), 0x3F), 0x80), 2)
             end
-
-
+            
             function _M.factory_v5(namespace)
                 return factory(namespace, v5_hash)
             end
         end
-
-
+        
         --- Generate a v3 UUID.
         -- v3 UUIDs are created from a namespace and a name (a UUID and a string).
         -- The same name and namespace result in the same UUID. The same name and
@@ -344,11 +319,10 @@ do
             if not fact then
                 return nil, err
             end
-
+            
             return fact(name)
         end
-
-
+        
         --- Generate a v5 UUID.
         -- v5 UUIDs are created from a namespace and a name (a UUID and a string).
         -- The same name and namespace result in the same UUID. The same name and
@@ -374,10 +348,10 @@ do
             if not fact then
                 return nil, err
             end
-
+            
             return fact(name)
         end
-
+        
     else
         function _M.factory_v3() error('v3 UUID generation only supported in ngx_lua', 2) end
         function _M.generate_v3() error('v3 UUID generation only supported in ngx_lua', 2) end
@@ -385,7 +359,6 @@ do
         function _M.generate_v5() error('v5 UUID generation only supported in ngx_lua', 2) end
     end
 end
-
 
 return setmetatable(_M, {
     __call = _M.generate_v4

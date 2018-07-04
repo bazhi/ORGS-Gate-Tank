@@ -1,8 +1,10 @@
 #!/bin/bash
 
-ROOT_DIR=$(cd "$(dirname $0)" && pwd)
+# ROOT_DIR=$(cd "$(dirname $0)" && pwd)
 
-echo "" > $ROOT_DIR/logs/nginx-error1.log
-echo "" > $ROOT_DIR/logs/nginx-error2.log
-echo "" > $ROOT_DIR/logs/nginx-error3.log
-echo "" > $ROOT_DIR/logs/nginx-error4.log
+# echo "" > $ROOT_DIR/logs/nginx-error1.log
+# echo "" > $ROOT_DIR/logs/nginx-error2.log
+# echo "" > $ROOT_DIR/logs/nginx-error3.log
+# echo "" > $ROOT_DIR/logs/nginx-error4.log
+
+rm -rf logs/*.log

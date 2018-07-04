@@ -20,6 +20,8 @@ LUAPBC_VER=20180607
 LUAPROCESS_VER=1.9.0
 # http://lua.sqlite.org/
 LUASQLITE3_VER=0.9.4
+#https://keplerproject.github.io/luafilesystem/
+LUAFILESYSTEM_VER=1.7.0.2
 
 function showHelp()
 {
@@ -322,6 +324,21 @@ make
 cp -f lsqlite3.so $DEST_BIN_DIR/openresty/lualib
 cp -f lsqlite3.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
 
+#install luafilesystem
+echo ""
+echo -e "[\033[32mINSTALL\033[0m] luafilesystem"
+cd $BUILD_DIR
+tar zxf luafilesystem-$LUAFILESYSTEM_VER.tar.gz
+cd luafilesystem-$LUAFILESYSTEM_VER
+if [ $OSTYPE == "MACOS" ]; then
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1 -L$DEST_BIN_DIR/openresty/luajit/lib -lluajit-5.1#g" Makefile
+else
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1#g" Makefile
+fi
+make
+
+cp -f lfs.so $DEST_BIN_DIR/openresty/lualib
+cp -f lfs.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
 
 # install luaprocess
 echo ""

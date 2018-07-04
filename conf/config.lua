@@ -78,8 +78,8 @@ local config = {
         -- internal memory database
         redis = {
             socket = "unix:_GBC_CORE_ROOT_/tmp/redis.sock",
-            -- host       = "127.0.0.1",
-            -- port       = 6379,
+            host = "127.0.0.1",
+            port = 6379,
             timeout = 10 * 1000, -- 10 seconds
         },
         
