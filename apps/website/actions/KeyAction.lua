@@ -38,7 +38,7 @@ function KeyAction:GenerateAction(args, redis)
     local filename = string.format("%s===%d===%s.txt", localtime, count, end_time)
     local filedir = string.sub(localtime, 1, 10)
     
-    local cdkeyPath = string.format("%s/public/cdkey/", path)
+    local cdkeyPath = string.format("%s/public/cdkey", path)
     if not io.exists(cdkeyPath) then
         lfs.mkdir(cdkeyPath)
     end
