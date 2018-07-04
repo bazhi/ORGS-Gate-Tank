@@ -62,6 +62,7 @@ local config = {
                 apps = {
                     loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
                     website = "_GBC_CORE_ROOT_/apps/website",
+                    update = "_GBC_CORE_ROOT_/apps/update",
                 },
             },
             {
