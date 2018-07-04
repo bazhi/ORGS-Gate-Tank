@@ -112,5 +112,13 @@ function KeyAction:GetAction(args, redis)
     }
 end
 
+function KeyAction:sizeAction(args, redis)
+    return redis:dbsize()
+end
+
+function KeyAction:infoAction(args, redis)
+    return redis:info()
+end
+
 return KeyAction
 
