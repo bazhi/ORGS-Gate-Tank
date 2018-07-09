@@ -34,7 +34,7 @@ function MissionAction:add(args, _redis)
     local instance = self:getInstance()
     if not args.cid or args.cid == 0 then
         instance:sendError("NoneConfigID")
-        return
+        return - 1
     end
     local cid = args.cid
     
@@ -44,7 +44,7 @@ function MissionAction:add(args, _redis)
     local mission = missions:getByCID(cid)
     if mission then
         cc.printerror("mission is all ready added:"..cid)
-        return
+        return - 1
     end
     
     mission = missions:get()
@@ -95,7 +95,7 @@ function MissionAction:finishAction(args, redis)
     local id = args.id
     if not id then
         instance:sendError("NoneID")
-        return
+        return - 1
     end
     
     local player = instance:getPlayer()
@@ -103,19 +103,19 @@ function MissionAction:finishAction(args, redis)
     local mission = missions:get(id)
     if not mission then
         instance:sendError("NoneMission")
-        return
+        return - 1
     end
     
     local mission_data = mission:get()
     local cfg_mission = dbConfig.get("cfg_mission", mission_data.cid)
     if not cfg_mission then
         instance:sendError("NoneConfig")
-        return
+        return - 1
     end
     
     if mission_data.progress < cfg_mission.count then
         instance:sendError("Unfinished")
-        return
+        return - 1
     end
     
     --任务完成
@@ -129,6 +129,8 @@ function MissionAction:finishAction(args, redis)
     for _, cid in ipairs(nextids) do
         self:add({cid = cid}, redis)
     end
+    
+    return 1
 end
 
 function MissionAction:onMissionNew(args, _redis)

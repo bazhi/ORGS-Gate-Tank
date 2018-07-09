@@ -227,17 +227,17 @@ function EquipAction:upgradeStarAction(args, _redis)
     local prop_ids = args.prop_ids
     if not prop_ids or not id then
         instance:sendError("NoneID")
-        return
+        return - 1
     end
     
     local propMap = self:checkProps(prop_ids)
     if not propMap then
-        return
+        return - 1
     end
     
     local equip = self:checkEquipment(id)
     if not equip then
-        return
+        return - 1
     end
     
     --检查武器是否存在
@@ -245,7 +245,7 @@ function EquipAction:upgradeStarAction(args, _redis)
     local cfg_equip = dbConfig.get("cfg_equip", equip_data.cid)
     if not cfg_equip then
         instance:sendError("ConfigError")
-        return
+        return - 1
     end
     
     --计算总的升星power
@@ -256,12 +256,12 @@ function EquipAction:upgradeStarAction(args, _redis)
         
         if not cfg_prop or cfg_prop.type ~= 2 then
             instance:sendError("ConfigError")
-            return
+            return - 1
         end
         local cfg_equip_prop = dbConfig.get("cfg_equip", cfg_prop.eid)
         if cfg_equip_prop.originalId ~= cfg_equip.originalId then
             instance:sendError("ConfigError")
-            return
+            return - 1
         end
         power = power + count * cfg_prop.power
     end
@@ -271,19 +271,19 @@ function EquipAction:upgradeStarAction(args, _redis)
     local cfg_star = dbConfig.get("cfg_star", equip_data.star)
     if not cfg_star then
         instance:sendError("ConfigError")
-        return
+        return - 1
     end
     
     local cfg_star_next = dbConfig.get("cfg_star", equip_data.star + 1)
     if not cfg_star_next then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     --等级是否已经满级
     if cfg_equip.level ~= cfg_star.maxLevel then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     --减掉需要减去的装备
@@ -331,17 +331,17 @@ function EquipAction:upgradeLevelAction(args, _redis)
     
     if not id or not prop_id then
         instance:sendError("NoneID")
-        return
+        return - 1
     end
     
     local prop = self:checkProp(prop_id)
     if not prop then
-        return
+        return - 1
     end
     
     local equip = self:checkEquipment(id)
     if not equip then
-        return
+        return - 1
     end
     
     local prop_data = prop:get()
@@ -352,7 +352,7 @@ function EquipAction:upgradeLevelAction(args, _redis)
     local cfg_equip = dbConfig.get("cfg_equip", equip_data.cid)
     if not cfg_prop or not cfg_equip then
         instance:sendError("ConfigError")
-        return
+        return - 1
     end
     local cfg_star = dbConfig.get("cfg_star", equip_data.star)
     if not cfg_star then
@@ -362,13 +362,13 @@ function EquipAction:upgradeLevelAction(args, _redis)
     --类型不为经验书，错误
     if cfg_prop.type ~= 1 then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     --等级已经升满，不需要进行升级了
     if cfg_equip.level >= cfg_star.maxLevel then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     local player = instance:getPlayer()
@@ -377,7 +377,7 @@ function EquipAction:upgradeLevelAction(args, _redis)
     --装备解锁等级，大于玩家的等级
     if cfg_equip.unlockLevel > role_data.level then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     equip_data.exp = cfg_prop.exp + equip_data.exp

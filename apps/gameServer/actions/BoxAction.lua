@@ -124,6 +124,8 @@ function BoxAction:openAction(args, redis)
             box_data
         },
     })
+    
+    return 1
 end
 
 function BoxAction:deleteBox(id)

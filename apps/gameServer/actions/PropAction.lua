@@ -32,22 +32,28 @@ PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 --分解
 function PropAction:decomposeAction(args, redis)
     local instance = self:getInstance()
+    local id = args.id
+    if type(id) ~= "number" then
+        instance:sendError("NoParam")
+        return - 1
+    end
+    
     local player = instance:getPlayer()
     local props = player:getProps()
-    local prop = props:get(args.prop_id)
+    local prop = props:get(id)
     if not prop or prop.count < 1 then
         instance:sendError("NoneProp")
-        return
+        return - 1
     end
     local prop_data = prop:get()
     local cfg_prop = dbConfig.get("cfg_prop", prop_data.cid)
     if not cfg_prop then
         instance:sendError("ConfigError")
-        return
+        return - 1
     end
     if not cfg_prop.decompose or cfg_prop.type ~= 2 or #(cfg_prop.decompose) <= 0 then
         instance:sendError("OperationNotPermit")
-        return
+        return - 1
     end
     
     prop_data.count = prop_data.count - 1
@@ -57,9 +63,11 @@ function PropAction:decomposeAction(args, redis)
         values = {prop_data},
     })
     self:addProps({items = cfg_prop.decompose}, redis)
+    
+    return 1
 end
 
-function PropAction:addProps(args, _redis)
+function PropAction:addProps(args, redis)
     local instance = self:getInstance()
     if not args.items then
         cc.printerror("PropAction:addProps args is not support")

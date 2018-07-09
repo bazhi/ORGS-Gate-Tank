@@ -55,6 +55,8 @@ function RoleAction:createAction(args, _redis)
     dt.cid = cid
     local query = role:insertQuery(dt)
     role:pushQuery(query, instance:getConnectId(), "role.onCreate")
+    
+    return 1
 end
 
 function RoleAction:onCreate(args, redis)
@@ -78,6 +80,7 @@ function RoleAction:loadAction(args, redis)
     local role = player:getRole()
     local query = role:selectQuery({pid = pid})
     role:pushQuery(query, instance:getConnectId(), "role.onRole")
+    return 1
 end
 
 function RoleAction:add(args, redis)
