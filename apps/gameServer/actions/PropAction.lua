@@ -41,11 +41,16 @@ function PropAction:decomposeAction(args, redis)
     local player = instance:getPlayer()
     local props = player:getProps()
     local prop = props:get(id)
-    if not prop or prop.count < 1 then
+    if not prop then
         instance:sendError("NoneProp")
         return - 1
     end
     local prop_data = prop:get()
+    if prop_data < 1 then
+        instance:sendError("NoneProp")
+        return - 1
+    end
+    
     local cfg_prop = dbConfig.get("cfg_prop", prop_data.cid)
     if not cfg_prop then
         instance:sendError("ConfigError")
