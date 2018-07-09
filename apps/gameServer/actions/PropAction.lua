@@ -46,7 +46,7 @@ function PropAction:decomposeAction(args, redis)
         return - 1
     end
     local prop_data = prop:get()
-    if prop_data < 1 then
+    if prop_data.count < 1 then
         instance:sendError("NoneProp")
         return - 1
     end
