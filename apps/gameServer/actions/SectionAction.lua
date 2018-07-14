@@ -13,7 +13,7 @@ function SectionAction:enterAction(args, _redis)
     local cid = args.cid
     if not cid then
         instance:sendError("NoneConfigID")
-        return
+        return - 1
     end
     
     local player = instance:getPlayer()
@@ -25,7 +25,7 @@ function SectionAction:enterAction(args, _redis)
         local cfg_section = dbConfig.get("cfg_section", cid)
         if not cfg_section then
             instance:sendError("NoneConfig")
-            return
+            return - 1
         end
         local role = player:getRole()
         local role_data = role:get()
@@ -34,13 +34,13 @@ function SectionAction:enterAction(args, _redis)
         if not chapter then
             --章节还没解锁，无法进入
             instance:sendError("NoAccept")
-            return
+            return - 1
         end
         
         --玩家等级不够，无法进入
         if cfg_section.unlockLevel > role_data.level then
             instance:sendError("NoAccept")
-            return
+            return - 1
         end
         
         --检查前置关卡是否通关
@@ -49,7 +49,7 @@ function SectionAction:enterAction(args, _redis)
             if not pre_section or pre_section.star <= 0 then
                 --章节还没解锁，无法进入
                 instance:sendError("NoAccept")
-                return
+                return - 1
             end
         end
         
@@ -58,7 +58,7 @@ function SectionAction:enterAction(args, _redis)
         if star < cfg_section.unlockStar then
             --星级条件不够，无法进入
             instance:sendError("NoAccept")
-            return
+            return - 1
         end
         
         --所有条件允许，插入小节数据库
@@ -123,7 +123,7 @@ function SectionAction:finishAction(args, redis)
     local star = args.star
     if not id or not star then
         instance:sendError("NoneID")
-        return
+        return - 1
     end
     
     local player = instance:getPlayer()
@@ -131,13 +131,13 @@ function SectionAction:finishAction(args, redis)
     local section = sections:get(id)
     if not section then
         instance:sendError("NoAccept")
-        return
+        return - 1
     end
     local section_data = section:get()
     local now = ngx.now()
     if now - section_data.enterTime < 20 or section_data.enterTime == 0 then
         instance:sendError("NoAccept")
-        return
+        return - 1
     end
     
     local cfg_section = dbConfig.get("cfg_section", section_data.cid)

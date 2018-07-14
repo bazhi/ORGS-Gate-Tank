@@ -112,7 +112,7 @@ function EquipAction:unlockEquipment(args, _redis)
     local prop_id = args.prop_id
     if not prop_id or not cid then
         instance:sendError("NoneID")
-        return
+        return - 1
     end
     --检查道具是否存在
     local prop = self:checkProp(prop_id)
@@ -216,8 +216,7 @@ function EquipAction:checkProps(ids)
 end
 
 function EquipAction:unlockAction(args, redis)
-    self:unlockEquipment(args, redis)
-    return 1
+    return self:unlockEquipment(args, redis)
 end
 
 function EquipAction:upgradeStarAction(args, _redis)
