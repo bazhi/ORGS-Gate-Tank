@@ -27,7 +27,7 @@ RoleAction.ACCEPTED_REQUEST_TYPE = "websocket"
 local Data = cc.import("#Data", ...)
 local dbConfig = cc.import("#dbConfig")
 
-local default_role_cid = 100001
+local default_role_cid = 100101
 
 --登录
 function RoleAction:createAction(args, _redis)
