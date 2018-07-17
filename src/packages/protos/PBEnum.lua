@@ -16,6 +16,8 @@ local _M = {
 			NoneProp = 1002,
 			NoneEquipment = 1003,
 			NoneBox = 1004,
+			NoneGold = 1005,
+			NonoDiamond = 1006,
 			NoneMission = 1011,
 			OperationNotPermit = 2001,
 		},

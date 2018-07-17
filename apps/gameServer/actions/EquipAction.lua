@@ -323,7 +323,44 @@ function EquipAction:upgradeStarAction(args, _redis)
     end
 end
 
-function EquipAction:upgradeLevelAction(args, _redis)
+function EquipAction:checkUpgradelevel(equip_data, role_data, exp)
+    local instance = self:getInstance()
+    local cfg_equip = dbConfig.get("cfg_equip", equip_data.cid)
+    local cfg_star = dbConfig.get("cfg_star", equip_data.star)
+    if not cfg_equip or not cfg_star then
+        instance:sendError("ConfigError")
+        return - 1
+    end
+    if cfg_equip.upgradeID == 0 then
+        instance:sendError("OperationNotPermit")
+        return - 1
+    end
+    
+    --等级已经升满，不需要进行升级了
+    if cfg_equip.level >= cfg_star.maxLevel then
+        instance:sendError("OperationNotPermit")
+        return - 1
+    end
+    
+    --装备解锁等级，大于玩家的等级
+    if cfg_equip.unlockLevel > role_data.level then
+        instance:sendError("OperationNotPermit")
+        return - 1
+    end
+    
+    --返回1，升级成功
+    if exp then
+        equip_data.exp = equip_data.exp + exp
+    end
+    if equip_data.exp >= cfg_equip.updradeExp then
+        equip_data.exp = equip_data.exp - cfg_equip.updradeExp
+        equip_data.cid = cfg_equip.upgradeID
+        return 1
+    end
+    return 0
+end
+
+function EquipAction:upgradeLevelAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     local prop_id = args.prop_id
@@ -348,14 +385,9 @@ function EquipAction:upgradeLevelAction(args, _redis)
     
     --检查是否可以更新武器品质
     local cfg_prop = dbConfig.get("cfg_prop", prop_data.cid)
-    local cfg_equip = dbConfig.get("cfg_equip", equip_data.cid)
-    if not cfg_prop or not cfg_equip then
+    if not cfg_prop then
         instance:sendError("ConfigError")
         return - 1
-    end
-    local cfg_star = dbConfig.get("cfg_star", equip_data.star)
-    if not cfg_star then
-        instance:sendError("ConfigError")
     end
     
     --类型不为经验书，错误
@@ -364,27 +396,30 @@ function EquipAction:upgradeLevelAction(args, _redis)
         return - 1
     end
     
-    --等级已经升满，不需要进行升级了
-    if cfg_equip.level >= cfg_star.maxLevel then
-        instance:sendError("OperationNotPermit")
-        return - 1
-    end
-    
     local player = instance:getPlayer()
     local role = player:getRole()
     local role_data = role:get()
-    --装备解锁等级，大于玩家的等级
-    if cfg_equip.unlockLevel > role_data.level then
-        instance:sendError("OperationNotPermit")
+    
+    --检查金币消耗
+    local exp = cfg_prop.exp
+    local gold = exp
+    if role_data.gold < gold then
+        instance:sendError("NoneGold")
         return - 1
     end
-    
-    equip_data.exp = cfg_prop.exp + equip_data.exp
-    if equip_data.exp >= cfg_equip.updradeExp then
-        equip_data.exp = 0
-        equip_data.cid = cfg_equip.upgradeID
+    --增加经验
+    local ret = self:checkUpgradelevel(equip_data, role_data, exp)
+    if - 1 == ret then
+        --升级失败
+        return ret
     end
     
+    --继续检查是否还可以升级
+    while ret == 1 do
+        ret = self:checkUpgradelevel(equip_data, role_data)
+    end
+    
+    --减少道具数量
     prop_data.count = prop_data.count - 1
     
     local query = prop:updateQuery({id = prop_data.id}, {count = prop_data.count})
@@ -392,6 +427,8 @@ function EquipAction:upgradeLevelAction(args, _redis)
     instance:sendPack("Props", {
         values = {prop_data},
     })
+    --减少金币
+    self:runAction("role.add", {gold = -gold}, redis)
     
     query = equip:updateQuery({id = equip_data.id}, {
         exp = equip_data.exp,

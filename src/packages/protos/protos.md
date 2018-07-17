@@ -27,6 +27,8 @@ message Error{
 		NoneProp = 1002; //道具不存在
 		NoneEquipment = 1003; //装备不存在
 		NoneBox = 1004; //箱子不存在
+		NoneGold = 1005; //金币不足
+		NonoDiamond = 1006; //钻石不足
 
 		NoneMission = 1011; //找不到任务
 
