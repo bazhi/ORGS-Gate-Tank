@@ -122,7 +122,7 @@ function SectionAction:finishAction(args, redis)
     local id = args.id
     local star = args.star
     if not id or not star then
-        instance:sendError("NoneID")
+        instance:sendError("NoneID", -1)
         return - 1
     end
     
@@ -130,13 +130,13 @@ function SectionAction:finishAction(args, redis)
     local sections = player:getSections()
     local section = sections:get(id)
     if not section then
-        instance:sendError("NoAccept")
+        instance:sendError("NoAccept", -2)
         return - 1
     end
     local section_data = section:get()
     local now = ngx.now()
     if now - section_data.enterTime < 20 or section_data.enterTime == 0 then
-        instance:sendError("NoAccept")
+        instance:sendError("NoAccept", -3)
         return - 1
     end
     
