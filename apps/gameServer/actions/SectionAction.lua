@@ -143,8 +143,12 @@ function SectionAction:finishAction(args, redis)
     local cfg_section = dbConfig.get("cfg_section", section_data.cid)
     
     section_data.enterTime = 0
-    section_data.finishTimes = section_data.finishTimes + 1
-    section_data.star = star
+    if star > 0 then
+        section_data.finishTimes = section_data.finishTimes + 1
+    end
+    if section_data.star < star then
+        section_data.star = star
+    end
     local query = section:updateQuery({id = section_data.id}, section_data)
     section:pushQuery(query, instance:getConnectId())
     instance:sendPack("Sections", {
