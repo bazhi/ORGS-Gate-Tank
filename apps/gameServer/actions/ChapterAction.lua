@@ -75,7 +75,7 @@ function ChapterAction:enterAction(args, _redis)
             instance:sendError("NoAccept")
             return - 1
         end
-        if count < cfg_chapter.unlockCount then
+        if count < cfg_chapter.unlockCount or cfg_chapter.unlockCount == 0 then
             --没达到前置通关数量
             instance:sendError("NoAccept")
             return - 1
