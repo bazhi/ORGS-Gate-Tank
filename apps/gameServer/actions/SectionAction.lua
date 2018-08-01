@@ -46,7 +46,7 @@ function SectionAction:enterAction(args, _redis)
         --检查前置关卡是否通关
         if cfg_section.preID > 0 then
             local pre_section = sections:getByCID(cfg_section.preID)
-            if not pre_section or pre_section.star <= 0 then
+            if not pre_section or pre_section:get().star <= 0 then
                 --章节还没解锁，无法进入
                 instance:sendError("NoAccept")
                 return - 1
