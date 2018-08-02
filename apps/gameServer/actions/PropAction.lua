@@ -90,7 +90,7 @@ function PropAction:addProps(args, redis)
         end
     end
     
-    for id, count in ipairs(itemList) do
+    for id, count in pairs(itemList) do
         self:addProp(id, count)
         table.insert(rewardlist, {
             cid = id,
