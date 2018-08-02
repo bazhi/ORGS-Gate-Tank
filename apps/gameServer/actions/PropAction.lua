@@ -80,11 +80,21 @@ function PropAction:addProps(args, redis)
     end
     local items = ParseConfig.ParseDecompose(args.items)
     local rewardlist = {}
+    --合并相同的数据
+    local itemList = {}
     for _, item in ipairs(items) do
-        self:addProp(item.id, item.count)
+        if not itemList[item.id] then
+            itemList[item.id] = item.count
+        else
+            itemList[item.id] = itemList[item.id] + item.count
+        end
+    end
+    
+    for id, count in ipairs(itemList) do
+        self:addProp(id, count)
         table.insert(rewardlist, {
-            cid = item.id,
-            count = item.count,
+            cid = id,
+            count = count,
         })
     end
     instance:sendPack("Rewards", {
