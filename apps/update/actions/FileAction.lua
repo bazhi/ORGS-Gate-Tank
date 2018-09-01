@@ -21,7 +21,7 @@ function FileAction:checkMD5(path, file, md5)
     local md5_c = cache.get(key)
     if not md5_c then
         md5_c = Umd5.file(path..file)
-        cache.set(key, md5_c)
+        cache.set(key, md5_c, 60)
     end
     return string.lower(md5_c) == string.lower(md5)
 end
