@@ -29,16 +29,16 @@ function _M.create(config)
         sqlstate = sqlstate or "nil"
         return nil, "failed to connect:"..err.." ecode: "..errcode .. " sqlstate:" .. sqlstate
     end
-
+    
     db:query("SET NAMES 'utf8'")
     return db
 end
 
 function _M.pushSql(sql, connectid, action, key)
     sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
-        sql = sql, 
-        connectid = connectid, 
-        action = action, 
+        sql = sql,
+        connectid = connectid,
+        action = action,
         key = key
     }))
 end
@@ -56,16 +56,16 @@ function _M.countSql(tableName, where)
     local sql
     if where then
         local whereFields = {}
-
+        
         for name, value in pairs(where) do
             whereFields[#whereFields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
         end
-
-        sql = string.format("SELECT COUNT(*) FROM %s WHERE %s", 
-            _M._escapeName(tableName), 
+        
+        sql = string.format("SELECT COUNT(*) FROM %s WHERE %s",
+            _M._escapeName(tableName),
         table.concat(whereFields, " AND "))
     else
-        sql = string.format("SELECT COUNT(*) FROM %s", 
+        sql = string.format("SELECT COUNT(*) FROM %s",
         _M._escapeName(tableName))
     end
     return sql
@@ -79,16 +79,16 @@ function _M.selectSql(tableName, where)
     local sql
     if where then
         local whereFields = {}
-
+        
         for name, value in pairs(where) do
             whereFields[#whereFields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
         end
-
-        sql = string.format("SELECT * FROM %s WHERE %s", 
-            _M._escapeName(tableName), 
+        
+        sql = string.format("SELECT * FROM %s WHERE %s",
+            _M._escapeName(tableName),
         table.concat(whereFields, " AND "))
     else
-        sql = string.format("SELECT * FROM %s", 
+        sql = string.format("SELECT * FROM %s",
         _M._escapeName(tableName))
     end
     return sql
@@ -101,15 +101,15 @@ end
 function _M.insertSql(tableName, params)
     local fieldNames = {}
     local fieldValues = {}
-
+    
     for name, value in pairs(params) do
         fieldNames[#fieldNames + 1] = _M._escapeName(name)
         fieldValues[#fieldValues + 1] = _M._escapeValue(value)
     end
-
-    local sql = string_format("INSERT INTO %s (%s) VALUES (%s)", 
-        _M._escapeName(tableName), 
-        table_concat(fieldNames, ","), 
+    
+    local sql = string_format("INSERT INTO %s (%s) VALUES (%s)",
+        _M._escapeName(tableName),
+        table_concat(fieldNames, ","),
     table_concat(fieldValues, ","))
     return sql
 end
@@ -121,25 +121,25 @@ end
 function _M.updateSql(tableName, params, where, addparams)
     local fields = {}
     local whereFields = {}
-
+    
     for name, value in pairs(params) do
         fields[#fields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
     end
-
+    
     if addparams then
         for name, value in pairs(addparams) do
             local escapename = _M._escapeName(name)
             fields[#fields + 1] = string_format("%s=%s+%s", escapename, escapename, _M._escapeValue(value))
         end
     end
-
+    
     for name, value in pairs(where) do
         whereFields[#whereFields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
     end
-
-    local sql = string_format("UPDATE %s SET %s WHERE %s", 
-        _M._escapeName(tableName), 
-        table_concat(fields, ","), 
+    
+    local sql = string_format("UPDATE %s SET %s WHERE %s",
+        _M._escapeName(tableName),
+        table_concat(fields, ","),
     table_concat(whereFields, " AND "))
     return sql
 end
@@ -153,14 +153,14 @@ function _M.insertWithUpdateSql(tableName, params, upparams, addparams)
     for name, value in pairs(upparams) do
         fields[#fields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
     end
-
+    
     if addparams then
         for name, value in pairs(addparams) do
             local escapename = _M._escapeName(name)
             fields[#fields + 1] = string_format("%s=%s+%s", escapename, escapename, _M._escapeValue(value))
         end
     end
-
+    
     local sql = _M.insertSql(tableName, params)
     sql = string_format("%s ON DUPLICATE KEY UPDATE %s", sql, table_concat(fields, ","))
     return sql
@@ -172,13 +172,13 @@ end
 
 function _M.delSql(tableName, where)
     local whereFields = {}
-
+    
     for name, value in pairs(where) do
         whereFields[#whereFields + 1] = _M._escapeName(name) .. "=" .. _M._escapeValue(value)
     end
-
-    local sql = string_format("DElETE FROM %s WHERE %s", 
-        _M._escapeName(tableName), 
+    
+    local sql = string_format("DElETE FROM %s WHERE %s",
+        _M._escapeName(tableName),
     table_concat(whereFields, " AND "))
     return sql
 end

@@ -59,7 +59,7 @@ function RoleAction:createAction(args, _redis)
     return 1
 end
 
-function RoleAction:onCreate(args, redis)
+function RoleAction:onCreate(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -71,7 +71,8 @@ function RoleAction:onCreate(args, redis)
     end
 end
 
-function RoleAction:loadAction(args, redis)
+--登陆游戏
+function RoleAction:loadAction(_args, _redis)
     local instance = self:getInstance()
     local user = instance:getUser()
     local player = Data.Player:new(user)
@@ -83,7 +84,20 @@ function RoleAction:loadAction(args, redis)
     return 1
 end
 
-function RoleAction:add(args, redis)
+function RoleAction:update(args, _redis)
+    local instance = self:getInstance()
+    local loginTime = args.loginTime
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local role_data = role:get()
+    local query = role:updateQuery({id = role_data.id}, {
+        loginTime = loginTime,
+    })
+    role_data.loginTime = loginTime
+    role:pushQuery(query, instance:getConnectId())
+end
+
+function RoleAction:add(args, _redis)
     local instance = self:getInstance()
     local exp = args.exp or 0
     local gold = args.gold or 0
@@ -126,6 +140,14 @@ function RoleAction:onRole(args, redis, params)
     local player = instance:getPlayer()
     local role = player:updateRole(args[1])
     local role_data = role:get()
+    local loginTime = ngx.now()
+    --加载角色数据成功
+    self:runAction("signin.login", {
+        lastTime = role_data.loginTime,
+        loginTime = loginTime,
+    }, redis)
+    --更新登陆时间
+    self:update({loginTime = loginTime}, redis)
     instance:sendPack("Role", role_data)
     self:loadOthersAction(args, redis)
     if params then
@@ -148,7 +170,7 @@ function RoleAction:onRole(args, redis, params)
     end
 end
 
-function RoleAction:loadOthersAction(args, redis)
+function RoleAction:loadOthersAction(_args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -188,7 +210,7 @@ function RoleAction:loadOthersAction(args, redis)
     box:pushQuery(query, instance:getConnectId(), "role.onBox")
 end
 
-function RoleAction:onEquipment(args, redis)
+function RoleAction:onEquipment(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local equipments = player:getEquipments()
@@ -198,7 +220,7 @@ function RoleAction:onEquipment(args, redis)
     })
 end
 
-function RoleAction:onProp(args, redis)
+function RoleAction:onProp(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local props = player:getProps()
@@ -208,7 +230,7 @@ function RoleAction:onProp(args, redis)
     })
 end
 
-function RoleAction:onChapter(args, redis)
+function RoleAction:onChapter(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local chapters = player:getChapters()
@@ -218,7 +240,7 @@ function RoleAction:onChapter(args, redis)
     })
 end
 
-function RoleAction:onSection(args, redis)
+function RoleAction:onSection(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local sections = player:getSections()
@@ -240,7 +262,7 @@ function RoleAction:onMission(args, redis)
     self:runAction("mission.resetMission", {}, redis)
 end
 
-function RoleAction:onBox(args, redis)
+function RoleAction:onBox(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local boxes = player:getBoxes()
