@@ -28,6 +28,19 @@ function M.ParseIDList(idstr)
     return result
 end
 
+function M.ParseNumberList(idstr)
+    local result = {}
+    if not idstr then
+        return result
+    end
+    
+    local items = string.split(idstr, "|")
+    for _, v in ipairs(items) do
+        table.insert(result, tonumber(v))
+    end
+    return result
+end
+
 function M.ParseProbability(idstr)
     local result = {}
     local items = string.split(idstr, "|")

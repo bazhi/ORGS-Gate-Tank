@@ -2,8 +2,8 @@
 local gbc = cc.import("#gbc")
 local SectionAction = cc.class("SectionAction", gbc.ActionBase)
 local dbConfig = cc.import("#dbConfig")
---local parse = cc.import("#parse")
---local ParseConfig = parse.ParseConfig
+local parse = cc.import("#parse")
+local ParseConfig = parse.ParseConfig
 
 SectionAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
@@ -155,7 +155,15 @@ function SectionAction:finishAction(args, redis)
         values = {section_data},
     })
     
-    self:runAction("role.add", {exp = cfg_section.exp}, redis)
+    local gold = 100
+    if cfg_section.gold ~= nil then
+        local gold_arr = ParseConfig.ParseNumberList(cfg_section.gold)
+        if 2 == #gold_arr then
+            gold = math.random(gold_arr[1], gold_arr[2])
+        end
+    end
+    
+    self:runAction("role.add", {exp = cfg_section.exp, gold = gold}, redis)
     instance:sendPack("SectionResult", {
         id = id,
         star = star,
