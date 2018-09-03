@@ -33,7 +33,8 @@ namespace Pb{
 		Box,
 		Boxes,
 		Reward,
-		Rewards
+		Rewards,
+		SigninRecord
     }
 
 	public static class PBRegister
@@ -71,6 +72,7 @@ namespace Pb{
 			dict.Add(PBDefine.Boxes, Boxes.Parser);
 			dict.Add(PBDefine.Reward, Reward.Parser);
 			dict.Add(PBDefine.Rewards, Rewards.Parser);
+			dict.Add(PBDefine.SigninRecord, SigninRecord.Parser);
 		}
 	}
 }

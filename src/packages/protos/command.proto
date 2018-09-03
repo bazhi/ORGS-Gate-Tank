@@ -204,7 +204,12 @@ message Reward{
 
 message Rewards{
 	repeated Reward values = 1;
+	int32 gold = 2; //金币
+	int32 diamond = 3; //钻石
 }
 
-
+message SigninRecord{
+	int32 times = 1;
+	repeated int32 record = 2 [packed=true]; //已经签到天
+}
 

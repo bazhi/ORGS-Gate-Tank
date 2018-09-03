@@ -63,8 +63,9 @@ namespace Pb {
             "b24iPwoDQm94EgoKAmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyAB",
             "KAUSEgoKdW5sb2NrVGltZRgEIAEoBSIgCgVCb3hlcxIXCgZ2YWx1ZXMYASAD",
             "KAsyBy5wYi5Cb3giJAoGUmV3YXJkEgsKA2NpZBgBIAEoBRINCgVjb3VudBgC",
-            "IAEoBSIlCgdSZXdhcmRzEhoKBnZhbHVlcxgBIAMoCzIKLnBiLlJld2FyZGIG",
-            "cHJvdG8z"));
+            "IAEoBSJECgdSZXdhcmRzEhoKBnZhbHVlcxgBIAMoCzIKLnBiLlJld2FyZBIM",
+            "CgRnb2xkGAIgASgFEg8KB2RpYW1vbmQYAyABKAUiMQoMU2lnbmluUmVjb3Jk",
+            "Eg0KBXRpbWVzGAEgASgFEhIKBnJlY29yZBgCIAMoBUICEAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,7 +99,8 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Box), global::Pb.Box.Parser, new[]{ "Id", "Rid", "Cid", "UnlockTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Boxes), global::Pb.Boxes.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Reward), global::Pb.Reward.Parser, new[]{ "Cid", "Count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Values" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Values", "Gold", "Diamond" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninRecord), global::Pb.SigninRecord.Parser, new[]{ "Times", "Record" }, null, null, null)
           }));
     }
     #endregion
@@ -4931,6 +4933,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Rewards(Rewards other) : this() {
       values_ = other.values_.Clone();
+      gold_ = other.gold_;
+      diamond_ = other.diamond_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4948,6 +4952,34 @@ namespace Pb {
       get { return values_; }
     }
 
+    /// <summary>Field number for the "gold" field.</summary>
+    public const int GoldFieldNumber = 2;
+    private int gold_;
+    /// <summary>
+    /// 金币
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Gold {
+      get { return gold_; }
+      set {
+        gold_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "diamond" field.</summary>
+    public const int DiamondFieldNumber = 3;
+    private int diamond_;
+    /// <summary>
+    /// 钻石
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Diamond {
+      get { return diamond_; }
+      set {
+        diamond_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Rewards);
@@ -4962,6 +4994,8 @@ namespace Pb {
         return true;
       }
       if(!values_.Equals(other.values_)) return false;
+      if (Gold != other.Gold) return false;
+      if (Diamond != other.Diamond) return false;
       return true;
     }
 
@@ -4969,6 +5003,8 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= values_.GetHashCode();
+      if (Gold != 0) hash ^= Gold.GetHashCode();
+      if (Diamond != 0) hash ^= Diamond.GetHashCode();
       return hash;
     }
 
@@ -4980,12 +5016,26 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       values_.WriteTo(output, _repeated_values_codec);
+      if (Gold != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Gold);
+      }
+      if (Diamond != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Diamond);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
       size += values_.CalculateSize(_repeated_values_codec);
+      if (Gold != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gold);
+      }
+      if (Diamond != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Diamond);
+      }
       return size;
     }
 
@@ -4995,6 +5045,12 @@ namespace Pb {
         return;
       }
       values_.Add(other.values_);
+      if (other.Gold != 0) {
+        Gold = other.Gold;
+      }
+      if (other.Diamond != 0) {
+        Diamond = other.Diamond;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5007,6 +5063,155 @@ namespace Pb {
             break;
           case 10: {
             values_.AddEntriesFrom(input, _repeated_values_codec);
+            break;
+          }
+          case 16: {
+            Gold = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Diamond = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SigninRecord : pb::IMessage<SigninRecord> {
+    private static readonly pb::MessageParser<SigninRecord> _parser = new pb::MessageParser<SigninRecord>(() => new SigninRecord());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SigninRecord> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[31]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SigninRecord() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SigninRecord(SigninRecord other) : this() {
+      times_ = other.times_;
+      record_ = other.record_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SigninRecord Clone() {
+      return new SigninRecord(this);
+    }
+
+    /// <summary>Field number for the "times" field.</summary>
+    public const int TimesFieldNumber = 1;
+    private int times_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Times {
+      get { return times_; }
+      set {
+        times_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "record" field.</summary>
+    public const int RecordFieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_record_codec
+        = pb::FieldCodec.ForInt32(18);
+    private readonly pbc::RepeatedField<int> record_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// 已经签到天
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Record {
+      get { return record_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SigninRecord);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SigninRecord other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Times != other.Times) return false;
+      if(!record_.Equals(other.record_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Times != 0) hash ^= Times.GetHashCode();
+      hash ^= record_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Times != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Times);
+      }
+      record_.WriteTo(output, _repeated_record_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Times != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Times);
+      }
+      size += record_.CalculateSize(_repeated_record_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SigninRecord other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Times != 0) {
+        Times = other.Times;
+      }
+      record_.Add(other.record_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Times = input.ReadInt32();
+            break;
+          }
+          case 18:
+          case 16: {
+            record_.AddEntriesFrom(input, _repeated_record_codec);
             break;
           }
         }

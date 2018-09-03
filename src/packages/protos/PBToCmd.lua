@@ -30,5 +30,6 @@ local _M = {
     Boxes = 29,
     Reward = 30,
     Rewards = 31,
+    SigninRecord = 32,
 }
 return _M

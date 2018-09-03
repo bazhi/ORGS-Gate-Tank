@@ -99,6 +99,8 @@ function PropAction:addProps(args, redis)
     end
     instance:sendPack("Rewards", {
         values = rewardlist,
+        gold = args.gold or 0,
+        diamond = args.diamond or 0,
     })
 end
 

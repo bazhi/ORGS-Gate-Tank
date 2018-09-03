@@ -8,6 +8,7 @@ local _M = {
     Section = cc.import(".Section", _CUR),
     Mission = cc.import(".Mission", _CUR),
     Box = cc.import(".Box", _CUR),
+    Signin = cc.import(".Signin", _CUR),
 }
 
 return _M
