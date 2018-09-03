@@ -117,6 +117,17 @@ function SectionAction:onSection(args, _redis, params)
     end
 end
 
+function SectionAction:addbox(str, redis)
+    if nil ~= str then
+        local id_arr = ParseConfig.ParseIDList(str)
+        if #id_arr > 0 then
+            local index = math.random(1, #id_arr)
+            local id = id_arr[index]
+            self:runAction("box.add", {id = id}, redis)
+        end
+    end
+end
+
 function SectionAction:finishAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
@@ -164,6 +175,8 @@ function SectionAction:finishAction(args, redis)
     end
     
     self:runAction("role.add", {exp = cfg_section.exp, gold = gold}, redis)
+    self:addbox(cfg_section.boxid1, redis)
+    self:addbox(cfg_section.boxid2, redis)
     instance:sendPack("SectionResult", {
         id = id,
         star = star,
