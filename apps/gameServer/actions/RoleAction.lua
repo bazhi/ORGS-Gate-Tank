@@ -131,6 +131,7 @@ function RoleAction:add(args, _redis)
         }, {
         diamond = diamond,
     })
+    role_data.diamond = role_data.diamond + diamond
     role:pushQuery(query, instance:getConnectId())
     instance:sendPack("Role", role_data)
 end
