@@ -23,8 +23,8 @@ function SigninAction:getAction(args, redis)
             record = {}
         end
         
-        for i, _ in ipairs(record) do
-            if i == day then
+        for _, d in ipairs(record) do
+            if d == day then
                 return
             end
         end
