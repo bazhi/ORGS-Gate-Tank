@@ -17,7 +17,7 @@ function SigninAction:getAction(args, redis)
     local player = instance:getPlayer()
     local signin = player:getSignin()
     local signin_Data = signin:get()
-    if day >= 1 or day <= signin_Data.times then
+    if day >= 1 and day <= signin_Data.times then
         local record = json_decode(signin_Data.record)
         if nil == record then
             record = {}
