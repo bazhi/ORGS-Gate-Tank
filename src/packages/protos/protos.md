@@ -216,4 +216,8 @@ message SigninRecord{
 	repeated int32 record = 2 [packed=true]; //已经签到天
 }
 
+message SigninGet{
+	int32 day = 1; //获取第几天的奖励
+}
+
 ```

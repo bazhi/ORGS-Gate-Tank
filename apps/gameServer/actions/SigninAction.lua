@@ -59,7 +59,7 @@ function SigninAction:onData(args, _redis)
     local signin_Data = signin:get()
     if #args > 0 then
         signin:update(args[1])
-        self:getAction({day = 2})
+        --self:getAction({day = 2})
         instance:sendPack("SigninRecord", {
             times = signin_Data.times,
             record = json_decode(signin_Data.record) or {},

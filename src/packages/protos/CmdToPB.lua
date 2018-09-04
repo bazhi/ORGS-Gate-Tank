@@ -31,5 +31,6 @@ local _M = {
     [30] = "Reward",
     [31] = "Rewards",
     [32] = "SigninRecord",
+    [33] = "SigninGet",
 }
 return _M

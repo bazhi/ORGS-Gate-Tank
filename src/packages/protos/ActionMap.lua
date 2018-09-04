@@ -11,6 +11,7 @@ local ActionMap = {
     ["FinishSection"] = "section.finish",
     ["OpenBox"] = "box.open",
     ["GainBox"] = "box.gain",
+    ["SigninGet"] = "signin.get",
 }
 
 return ActionMap
