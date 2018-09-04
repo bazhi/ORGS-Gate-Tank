@@ -101,6 +101,7 @@ function RoleAction:add(args, _redis)
     local instance = self:getInstance()
     local exp = args.exp or 0
     local gold = args.gold or 0
+    local diamond = args.diamond or 0
     
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -121,10 +122,14 @@ function RoleAction:add(args, _redis)
     end
     role_data.gold = role_data.gold + gold
     
-    local query = role:updateQuery({id = role_data.id}, {
+    local query = role:updateQuery({
+        id = role_data.id
+        }, {
         exp = exp,
         level = role_data.level,
         gold = role_data.gold,
+        }, {
+        diamond = diamond,
     })
     role:pushQuery(query, instance:getConnectId())
     instance:sendPack("Role", role_data)
