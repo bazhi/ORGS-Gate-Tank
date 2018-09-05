@@ -25,6 +25,7 @@ function SigninAction:getAction(args, redis)
         
         for _, d in ipairs(record) do
             if d == day then
+                instance:sendError("NoAccept")
                 return
             end
         end
@@ -86,13 +87,7 @@ function SigninAction:login(args, _redis)
     
     local lastTime = args.lastTime
     local loginTime = args.loginTime
-    -- cc.printf("now:"..ngx.now())
-    -- cc.printf("time:"..ngx.time())
-    -- cc.printf("today:"..ngx.today())
-    -- cc.printf("localtime:"..ngx.localtime())
-    -- cc.printf("utctime:"..ngx.utctime())
     
-    --cc.dump(os.date("*t", loginTime))
     local loginDate = os.date("*t", loginTime)
     local lastDate = os.date("*t", lastTime)
     if loginDate.year ~= lastDate.year or loginDate.month ~= lastDate.month then

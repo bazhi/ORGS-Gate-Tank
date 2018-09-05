@@ -9,6 +9,7 @@ local Missions = cc.import(".Missions")
 local Boxes = cc.import(".Boxes")
 
 local Signin = cc.import(".Signin")
+local Shop = cc.import(".Shop")
 
 --玩家所有数据的集合
 function Player:ctor(user)
@@ -26,6 +27,13 @@ function Player:getSignin()
         self._Signin = Signin:new()
     end
     return self._Signin
+end
+
+function Player:getShop()
+    if not self._Shop then
+        self._Shop = Shop:new()
+    end
+    return self._Shop
 end
 
 function Player:updateRole(data)

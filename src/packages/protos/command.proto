@@ -20,6 +20,10 @@ message Error{
 		NoParam = 8; //缺少参数
 		UnexpectedError = 10; //不期望的错误
 		ConfigError = 11; //配置表错误
+		OutOfDate = 12; //已经过期
+		LessGold = 13; //金币不够
+		LessDiamond = 14;//钻石不够
+		LessTimes = 15;//超出次数
 		NoneRole = 1001; //还没有创建角色
 		NoneProp = 1002; //道具不存在
 		NoneEquipment = 1003; //装备不存在
@@ -217,3 +221,11 @@ message SigninGet{
 	int32 day = 1; //获取第几天的奖励
 }
 
+message ShopGet{
+	int32 id = 1; //购买商店物品
+}
+
+message ShopRecord{
+	repeated int32 id = 1 [packed=true]; //已经签到天
+	repeated int32 times = 2 [packed=true]; //已经签到天
+}

@@ -32,5 +32,7 @@ local _M = {
     [31] = "Rewards",
     [32] = "SigninRecord",
     [33] = "SigninGet",
+    [34] = "ShopGet",
+    [35] = "ShopRecord",
 }
 return _M

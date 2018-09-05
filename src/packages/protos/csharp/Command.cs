@@ -23,50 +23,53 @@ namespace Pb {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1jb21tYW5kLnByb3RvEgJwYiI0CgRQYWNrEgwKBHR5cGUYASABKAUSDwoH",
-            "Y29udGVudBgCIAEoDBINCgVtc2dpZBgDIAEoBSLqAgoFRXJyb3ISHQoEY29k",
-            "ZRgBIAEoDjIPLnBiLkVycm9yLkVUeXBlIsECCgVFVHlwZRIICgROb25lEAAS",
+            "Y29udGVudBgCIAEoDBINCgVtc2dpZBgDIAEoBSKnAwoFRXJyb3ISHQoEY29k",
+            "ZRgBIAEoDjIPLnBiLkVycm9yLkVUeXBlIv4CCgVFVHlwZRIICgROb25lEAAS",
             "EAoMVXNlckxvZ2dlZEluEAESEQoNTm9TZXROaWNrbmFtZRACEhAKDE5vbmVD",
             "b25maWdJRBADEgoKBk5vbmVJRBAEEg4KCk5vbmVDb25maWcQBRIOCgpVbmZp",
             "bmlzaGVkEAYSDAoITm9BY2NlcHQQBxILCgdOb1BhcmFtEAgSEwoPVW5leHBl",
-            "Y3RlZEVycm9yEAoSDwoLQ29uZmlnRXJyb3IQCxINCghOb25lUm9sZRDpBxIN",
-            "CghOb25lUHJvcBDqBxISCg1Ob25lRXF1aXBtZW50EOsHEgwKB05vbmVCb3gQ",
-            "7AcSDQoITm9uZUdvbGQQ7QcSEAoLTm9ub0RpYW1vbmQQ7gcSEAoLTm9uZU1p",
-            "c3Npb24Q8wcSFwoST3BlcmF0aW9uTm90UGVybWl0ENEPIhsKCU9wZXJhdGlv",
-            "bhIOCgZyZXN1bHQYASABKAUiHgoKQ3JlYXRlUm9sZRIQCghuaWNrbmFtZRgB",
-            "IAEoCSIvCgtVcGdyYWRlU3RhchIKCgJpZBgBIAEoBRIUCghwcm9wX2lkcxgC",
-            "IAMoBUICEAEiLwoPVW5sb2NrRXF1aXBtZW50EgsKA2NpZBgBIAEoBRIPCgdw",
-            "cm9wX2lkGAIgASgFIisKDFVwZ3JhZGVMZXZlbBIKCgJpZBgBIAEoBRIPCgdw",
-            "cm9wX2lkGAIgASgFIhcKCURlY29tcG9zZRIKCgJpZBgBIAEoBSIbCgxFbnRl",
-            "ckNoYXB0ZXISCwoDY2lkGAEgASgFIhsKDEVudGVyU2VjdGlvbhILCgNjaWQY",
-            "ASABKAUiKQoNRmluaXNoU2VjdGlvbhIKCgJpZBgBIAEoBRIMCgRzdGFyGAIg",
-            "ASgFIhsKDUZpbmlzaE1pc3Npb24SCgoCaWQYASABKAUiFQoHT3BlbkJveBIK",
-            "CgJpZBgBIAEoBSIVCgdHYWluQm94EgoKAmlkGAEgASgFIiIKBkRlbGV0ZRIK",
-            "CgJpZBgBIAEoBRIMCgR0eXBlGAIgASgFIqABCgRSb2xlEgoKAmlkGAEgASgF",
-            "EgsKA3BpZBgCIAEoBRILCgNjaWQYAyABKAUSEAoIbmlja25hbWUYBCABKAkS",
-            "DQoFbGV2ZWwYBSABKAUSDAoEZ29sZBgGIAEoBRIPCgdkaWFtb25kGAcgASgF",
-            "EhEKCWxvZ2luVGltZRgIIAEoBRISCgpjcmVhdGVUaW1lGAkgASgFEgsKA2V4",
-            "cBgKIAEoBSI7CgRQcm9wEgoKAmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNj",
-            "aWQYAyABKAUSDQoFY291bnQYBCABKAUiIQoFUHJvcHMSGAoGdmFsdWVzGAEg",
-            "AygLMggucGIuUHJvcCJZCglFcXVpcG1lbnQSCgoCaWQYASABKAUSCwoDcmlk",
-            "GAIgASgFEgsKA2NpZBgDIAEoBRIMCgRzdGFyGAQgASgFEgsKA29pZBgFIAEo",
-            "BRILCgNleHAYBiABKAUiKwoKRXF1aXBtZW50cxIdCgZ2YWx1ZXMYASADKAsy",
-            "DS5wYi5FcXVpcG1lbnQiLwoHQ2hhcHRlchIKCgJpZBgBIAEoBRILCgNyaWQY",
-            "AiABKAUSCwoDY2lkGAMgASgFIicKCENoYXB0ZXJzEhsKBnZhbHVlcxgBIAMo",
-            "CzILLnBiLkNoYXB0ZXIijAEKB1NlY3Rpb24SCgoCaWQYASABKAUSCwoDcmlk",
-            "GAIgASgFEgsKA2NpZBgDIAEoBRITCgtjaGFwdGVyX2NpZBgEIAEoBRIMCgRz",
-            "dGFyGAUgASgFEhAKCHRyeVRpbWVzGAYgASgFEhMKC2ZpbmlzaFRpbWVzGAcg",
-            "ASgFEhEKCWVudGVyVGltZRgIIAEoBSI2Cg1TZWN0aW9uUmVzdWx0EgoKAmlk",
-            "GAEgASgFEgwKBHN0YXIYAiABKAUSCwoDZXhwGAMgASgFIicKCFNlY3Rpb25z",
-            "EhsKBnZhbHVlcxgBIAMoCzILLnBiLlNlY3Rpb24iQQoHTWlzc2lvbhIKCgJp",
-            "ZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEhAKCHByb2dyZXNz",
-            "GAQgASgFIicKCE1pc3Npb25zEhsKBnZhbHVlcxgBIAMoCzILLnBiLk1pc3Np",
-            "b24iPwoDQm94EgoKAmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyAB",
-            "KAUSEgoKdW5sb2NrVGltZRgEIAEoBSIgCgVCb3hlcxIXCgZ2YWx1ZXMYASAD",
-            "KAsyBy5wYi5Cb3giJAoGUmV3YXJkEgsKA2NpZBgBIAEoBRINCgVjb3VudBgC",
-            "IAEoBSJECgdSZXdhcmRzEhoKBnZhbHVlcxgBIAMoCzIKLnBiLlJld2FyZBIM",
-            "CgRnb2xkGAIgASgFEg8KB2RpYW1vbmQYAyABKAUiMQoMU2lnbmluUmVjb3Jk",
-            "Eg0KBXRpbWVzGAEgASgFEhIKBnJlY29yZBgCIAMoBUICEAEiGAoJU2lnbmlu",
-            "R2V0EgsKA2RheRgBIAEoBWIGcHJvdG8z"));
+            "Y3RlZEVycm9yEAoSDwoLQ29uZmlnRXJyb3IQCxINCglPdXRPZkRhdGUQDBIM",
+            "CghMZXNzR29sZBANEg8KC0xlc3NEaWFtb25kEA4SDQoJTGVzc1RpbWVzEA8S",
+            "DQoITm9uZVJvbGUQ6QcSDQoITm9uZVByb3AQ6gcSEgoNTm9uZUVxdWlwbWVu",
+            "dBDrBxIMCgdOb25lQm94EOwHEg0KCE5vbmVHb2xkEO0HEhAKC05vbm9EaWFt",
+            "b25kEO4HEhAKC05vbmVNaXNzaW9uEPMHEhcKEk9wZXJhdGlvbk5vdFBlcm1p",
+            "dBDRDyIbCglPcGVyYXRpb24SDgoGcmVzdWx0GAEgASgFIh4KCkNyZWF0ZVJv",
+            "bGUSEAoIbmlja25hbWUYASABKAkiLwoLVXBncmFkZVN0YXISCgoCaWQYASAB",
+            "KAUSFAoIcHJvcF9pZHMYAiADKAVCAhABIi8KD1VubG9ja0VxdWlwbWVudBIL",
+            "CgNjaWQYASABKAUSDwoHcHJvcF9pZBgCIAEoBSIrCgxVcGdyYWRlTGV2ZWwS",
+            "CgoCaWQYASABKAUSDwoHcHJvcF9pZBgCIAEoBSIXCglEZWNvbXBvc2USCgoC",
+            "aWQYASABKAUiGwoMRW50ZXJDaGFwdGVyEgsKA2NpZBgBIAEoBSIbCgxFbnRl",
+            "clNlY3Rpb24SCwoDY2lkGAEgASgFIikKDUZpbmlzaFNlY3Rpb24SCgoCaWQY",
+            "ASABKAUSDAoEc3RhchgCIAEoBSIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEg",
+            "ASgFIhUKB09wZW5Cb3gSCgoCaWQYASABKAUiFQoHR2FpbkJveBIKCgJpZBgB",
+            "IAEoBSIiCgZEZWxldGUSCgoCaWQYASABKAUSDAoEdHlwZRgCIAEoBSKgAQoE",
+            "Um9sZRIKCgJpZBgBIAEoBRILCgNwaWQYAiABKAUSCwoDY2lkGAMgASgFEhAK",
+            "CG5pY2tuYW1lGAQgASgJEg0KBWxldmVsGAUgASgFEgwKBGdvbGQYBiABKAUS",
+            "DwoHZGlhbW9uZBgHIAEoBRIRCglsb2dpblRpbWUYCCABKAUSEgoKY3JlYXRl",
+            "VGltZRgJIAEoBRILCgNleHAYCiABKAUiOwoEUHJvcBIKCgJpZBgBIAEoBRIL",
+            "CgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEg0KBWNvdW50GAQgASgFIiEKBVBy",
+            "b3BzEhgKBnZhbHVlcxgBIAMoCzIILnBiLlByb3AiWQoJRXF1aXBtZW50EgoK",
+            "AmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSDAoEc3RhchgE",
+            "IAEoBRILCgNvaWQYBSABKAUSCwoDZXhwGAYgASgFIisKCkVxdWlwbWVudHMS",
+            "HQoGdmFsdWVzGAEgAygLMg0ucGIuRXF1aXBtZW50Ii8KB0NoYXB0ZXISCgoC",
+            "aWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBSInCghDaGFwdGVy",
+            "cxIbCgZ2YWx1ZXMYASADKAsyCy5wYi5DaGFwdGVyIowBCgdTZWN0aW9uEgoK",
+            "AmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEwoLY2hhcHRl",
+            "cl9jaWQYBCABKAUSDAoEc3RhchgFIAEoBRIQCgh0cnlUaW1lcxgGIAEoBRIT",
+            "CgtmaW5pc2hUaW1lcxgHIAEoBRIRCgllbnRlclRpbWUYCCABKAUiNgoNU2Vj",
+            "dGlvblJlc3VsdBIKCgJpZBgBIAEoBRIMCgRzdGFyGAIgASgFEgsKA2V4cBgD",
+            "IAEoBSInCghTZWN0aW9ucxIbCgZ2YWx1ZXMYASADKAsyCy5wYi5TZWN0aW9u",
+            "IkEKB01pc3Npb24SCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgD",
+            "IAEoBRIQCghwcm9ncmVzcxgEIAEoBSInCghNaXNzaW9ucxIbCgZ2YWx1ZXMY",
+            "ASADKAsyCy5wYi5NaXNzaW9uIj8KA0JveBIKCgJpZBgBIAEoBRILCgNyaWQY",
+            "AiABKAUSCwoDY2lkGAMgASgFEhIKCnVubG9ja1RpbWUYBCABKAUiIAoFQm94",
+            "ZXMSFwoGdmFsdWVzGAEgAygLMgcucGIuQm94IiQKBlJld2FyZBILCgNjaWQY",
+            "ASABKAUSDQoFY291bnQYAiABKAUiRAoHUmV3YXJkcxIaCgZ2YWx1ZXMYASAD",
+            "KAsyCi5wYi5SZXdhcmQSDAoEZ29sZBgCIAEoBRIPCgdkaWFtb25kGAMgASgF",
+            "IjEKDFNpZ25pblJlY29yZBINCgV0aW1lcxgBIAEoBRISCgZyZWNvcmQYAiAD",
+            "KAVCAhABIhgKCVNpZ25pbkdldBILCgNkYXkYASABKAUiFQoHU2hvcEdldBIK",
+            "CgJpZBgBIAEoBSIvCgpTaG9wUmVjb3JkEg4KAmlkGAEgAygFQgIQARIRCgV0",
+            "aW1lcxgCIAMoBUICEAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -102,7 +105,9 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Reward), global::Pb.Reward.Parser, new[]{ "Cid", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Values", "Gold", "Diamond" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninRecord), global::Pb.SigninRecord.Parser, new[]{ "Times", "Record" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopGet), global::Pb.ShopGet.Parser, new[]{ "Id" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id", "Times" }, null, null, null)
           }));
     }
     #endregion
@@ -449,6 +454,22 @@ namespace Pb {
         /// 配置表错误
         /// </summary>
         [pbr::OriginalName("ConfigError")] ConfigError = 11,
+        /// <summary>
+        /// 已经过期
+        /// </summary>
+        [pbr::OriginalName("OutOfDate")] OutOfDate = 12,
+        /// <summary>
+        /// 金币不够
+        /// </summary>
+        [pbr::OriginalName("LessGold")] LessGold = 13,
+        /// <summary>
+        /// 钻石不够
+        /// </summary>
+        [pbr::OriginalName("LessDiamond")] LessDiamond = 14,
+        /// <summary>
+        /// 超出次数
+        /// </summary>
+        [pbr::OriginalName("LessTimes")] LessTimes = 15,
         /// <summary>
         /// 还没有创建角色
         /// </summary>
@@ -5334,6 +5355,263 @@ namespace Pb {
             break;
           case 8: {
             Day = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ShopGet : pb::IMessage<ShopGet> {
+    private static readonly pb::MessageParser<ShopGet> _parser = new pb::MessageParser<ShopGet>(() => new ShopGet());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ShopGet> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[33]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopGet() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopGet(ShopGet other) : this() {
+      id_ = other.id_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopGet Clone() {
+      return new ShopGet(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    /// <summary>
+    /// 购买商店物品
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ShopGet);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ShopGet other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ShopGet other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ShopRecord : pb::IMessage<ShopRecord> {
+    private static readonly pb::MessageParser<ShopRecord> _parser = new pb::MessageParser<ShopRecord>(() => new ShopRecord());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ShopRecord> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[34]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopRecord() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopRecord(ShopRecord other) : this() {
+      id_ = other.id_.Clone();
+      times_ = other.times_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShopRecord Clone() {
+      return new ShopRecord(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private static readonly pb::FieldCodec<int> _repeated_id_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> id_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// 已经签到天
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Id {
+      get { return id_; }
+    }
+
+    /// <summary>Field number for the "times" field.</summary>
+    public const int TimesFieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_times_codec
+        = pb::FieldCodec.ForInt32(18);
+    private readonly pbc::RepeatedField<int> times_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// 已经签到天
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Times {
+      get { return times_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ShopRecord);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ShopRecord other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!id_.Equals(other.id_)) return false;
+      if(!times_.Equals(other.times_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= id_.GetHashCode();
+      hash ^= times_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      id_.WriteTo(output, _repeated_id_codec);
+      times_.WriteTo(output, _repeated_times_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += id_.CalculateSize(_repeated_id_codec);
+      size += times_.CalculateSize(_repeated_times_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ShopRecord other) {
+      if (other == null) {
+        return;
+      }
+      id_.Add(other.id_);
+      times_.Add(other.times_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10:
+          case 8: {
+            id_.AddEntriesFrom(input, _repeated_id_codec);
+            break;
+          }
+          case 18:
+          case 16: {
+            times_.AddEntriesFrom(input, _repeated_times_codec);
             break;
           }
         }

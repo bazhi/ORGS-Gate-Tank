@@ -120,18 +120,18 @@ function RoleAction:add(args, _redis)
         role_data.level = nextLevel
         role_data.exp = role_data.exp - cfg.exp
     end
-    role_data.gold = role_data.gold + gold
     
     local query = role:updateQuery({
         id = role_data.id
         }, {
         exp = exp,
         level = role_data.level,
-        gold = role_data.gold,
         }, {
         diamond = diamond,
+        gold = gold,
     })
     role_data.diamond = role_data.diamond + diamond
+    role_data.gold = role_data.gold + gold
     role:pushQuery(query, instance:getConnectId())
     instance:sendPack("Role", role_data)
 end
@@ -152,6 +152,9 @@ function RoleAction:onRole(args, redis, params)
         lastTime = role_data.loginTime,
         loginTime = loginTime,
     }, redis)
+    self:runAction("shop.login", {
+    }, redis)
+    
     --更新登陆时间
     self:update({loginTime = loginTime}, redis)
     instance:sendPack("Role", role_data)
