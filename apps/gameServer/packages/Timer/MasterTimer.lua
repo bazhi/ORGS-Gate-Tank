@@ -32,7 +32,7 @@ function MasterTimer:runEventLoop()
             elseif typ == "pong" then
             end
         end
-        ngx.sleep(100)
+        ngx.sleep(10)
     end
     if wb then
         wb:set_keepalive()
@@ -60,7 +60,7 @@ function MasterTimer:ConnectMaster()
     
     wb, err = client:new()
     if not wb then
-        cc.printerror(err)
+        cc.printerror("client new:"..err)
         return nil
     end
     
@@ -70,7 +70,7 @@ function MasterTimer:ConnectMaster()
         },
     })
     if not ok then
-        cc.printerror(err)
+        cc.printerror("wb connect:"..err)
         return nil
     end
     
