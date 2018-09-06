@@ -13,7 +13,7 @@ function Sections:getChapterStar(chapter_cid)
     local count = 0
     local values = self._Datas or {}
     for _, v in ipairs(values) do
-        if v.chapter_cid == chapter_cid then
+        if v._data.chapter_cid == chapter_cid then
             star = star + v.star
             if v.star > 0 then
                 count = count + 1
