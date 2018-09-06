@@ -52,7 +52,7 @@ function ShopAction:getAction(args, redis)
         bInsert = true
         for i, oid in ipairs(idList) do
             if oid == id then
-                if timesList[i] > cfg_shop.buyTimes then
+                if timesList[i] >= cfg_shop.buyTimes then
                     instance:sendError("LessTimes")
                     return
                 else
