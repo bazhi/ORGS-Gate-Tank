@@ -57,7 +57,7 @@ function ChapterAction:enterAction(args, _redis)
     --取到config之后，检查config是否解锁
     --1.检查解锁等级
     if cfg_chapter.unlockLevel > role_data.level then
-        instance:sendError("NoAccept")
+        instance:sendError("NoAccept", 1)
         return - 1
     end
     --2.检查解锁星级
@@ -65,19 +65,19 @@ function ChapterAction:enterAction(args, _redis)
         local pre_chapter = chapters:getByCID(cfg_chapter.preID)
         if not pre_chapter then
             --前置关卡未解锁
-            instance:sendError("NoAccept")
+            instance:sendError("NoAccept", 2)
             return - 1
         end
         local sections = player:getSections()
         local star, count = sections:getChapterStar(cfg_chapter.preID)
         if star < cfg_chapter.unlockStar then
             --没达到解锁星级
-            instance:sendError("NoAccept")
+            instance:sendError("NoAccept", 3)
             return - 1
         end
         if count < cfg_chapter.unlockCount or cfg_chapter.unlockCount == 0 then
             --没达到前置通关数量
-            instance:sendError("NoAccept")
+            instance:sendError("NoAccept", 4)
             return - 1
         end
     end
