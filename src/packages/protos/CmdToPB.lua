@@ -34,5 +34,10 @@ local _M = {
     [33] = "SigninGet",
     [34] = "ShopGet",
     [35] = "ShopRecord",
+    [36] = "BuildData",
+    [37] = "CalendarData",
+    [38] = "BuildItem",
+    [39] = "MapRecord",
+    [40] = "MapGet",
 }
 return _M

@@ -37,7 +37,12 @@ namespace Pb{
 		SigninRecord,
 		SigninGet,
 		ShopGet,
-		ShopRecord
+		ShopRecord,
+		BuildData,
+		CalendarData,
+		BuildItem,
+		MapRecord,
+		MapGet
     }
 
 	public static class PBRegister
@@ -79,6 +84,11 @@ namespace Pb{
 			dict.Add(PBDefine.SigninGet, SigninGet.Parser);
 			dict.Add(PBDefine.ShopGet, ShopGet.Parser);
 			dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
+			dict.Add(PBDefine.BuildData, BuildData.Parser);
+			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
+			dict.Add(PBDefine.BuildItem, BuildItem.Parser);
+			dict.Add(PBDefine.MapRecord, MapRecord.Parser);
+			dict.Add(PBDefine.MapGet, MapGet.Parser);
 		}
 	}
 }

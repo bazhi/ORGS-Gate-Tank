@@ -229,3 +229,27 @@ message ShopRecord{
 	repeated int32 id = 1 [packed=true]; //已经签到天
 	repeated int32 times = 2 [packed=true]; //已经签到天
 }
+
+//建筑数据
+message BuildData{
+	int32 level = 1;
+	int32 health = 2;
+}
+//日历数据
+message CalendarData{
+	int32 minutes = 1;
+}
+//id对应的数据
+message BuildItem{
+	int32 id = 1;
+	bytes contents = 2;
+}
+//地图记录
+message MapRecord{
+	int32 id = 1;
+	repeated BuildItem items = 2;
+}
+//获取地图数据
+message MapGet{
+	int32 id = 1;
+}
