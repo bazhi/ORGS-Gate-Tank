@@ -253,6 +253,6 @@ message MapRecord{
 	repeated BuildItem items = 2;
 }
 //获取地图数据
-message MapGet{
+message MapRecordGet{
 	int32 id = 1;
 }```

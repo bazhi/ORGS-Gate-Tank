@@ -13,6 +13,7 @@ local ActionMap = {
     ["GainBox"] = "box.gain",
     ["SigninGet"] = "signin.get",
     ["ShopGet"] = "shop.get",
+    ["MapRecordGet"] = "maprecord.get",
 }
 
 return ActionMap

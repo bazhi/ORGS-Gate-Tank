@@ -73,7 +73,7 @@ namespace Pb {
             "BmhlYWx0aBgCIAEoBSIfCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEo",
             "BSIpCglCdWlsZEl0ZW0SCgoCaWQYASABKAUSEAoIY29udGVudHMYAiABKAwi",
             "NQoJTWFwUmVjb3JkEgoKAmlkGAEgASgFEhwKBWl0ZW1zGAIgAygLMg0ucGIu",
-            "QnVpbGRJdGVtIhQKBk1hcEdldBIKCgJpZBgBIAEoBWIGcHJvdG8z"));
+            "QnVpbGRJdGVtIhoKDE1hcFJlY29yZEdldBIKCgJpZBgBIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -116,7 +116,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildItem), global::Pb.BuildItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Id", "Items" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapGet), global::Pb.MapGet.Parser, new[]{ "Id" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordGet), global::Pb.MapRecordGet.Parser, new[]{ "Id" }, null, null, null)
           }));
     }
     #endregion
@@ -6188,10 +6188,10 @@ namespace Pb {
   /// <summary>
   /// 获取地图数据
   /// </summary>
-  public sealed partial class MapGet : pb::IMessage<MapGet> {
-    private static readonly pb::MessageParser<MapGet> _parser = new pb::MessageParser<MapGet>(() => new MapGet());
+  public sealed partial class MapRecordGet : pb::IMessage<MapRecordGet> {
+    private static readonly pb::MessageParser<MapRecordGet> _parser = new pb::MessageParser<MapRecordGet>(() => new MapRecordGet());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MapGet> Parser { get { return _parser; } }
+    public static pb::MessageParser<MapRecordGet> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -6204,20 +6204,20 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapGet() {
+    public MapRecordGet() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapGet(MapGet other) : this() {
+    public MapRecordGet(MapRecordGet other) : this() {
       id_ = other.id_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapGet Clone() {
-      return new MapGet(this);
+    public MapRecordGet Clone() {
+      return new MapRecordGet(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -6233,11 +6233,11 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as MapGet);
+      return Equals(other as MapRecordGet);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MapGet other) {
+    public bool Equals(MapRecordGet other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6278,7 +6278,7 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MapGet other) {
+    public void MergeFrom(MapRecordGet other) {
       if (other == null) {
         return;
       }
