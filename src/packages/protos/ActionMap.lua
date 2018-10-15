@@ -14,6 +14,7 @@ local ActionMap = {
     ["SigninGet"] = "signin.get",
     ["ShopGet"] = "shop.get",
     ["MapRecordGet"] = "maprecord.get",
+    ["MapRecord"] = "maprecord.save",
 }
 
 return ActionMap
