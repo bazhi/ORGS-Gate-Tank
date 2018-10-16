@@ -7,13 +7,14 @@ local Struct = {
     record1 = "",
     record2 = "",
     record3 = "",
+    test = 0,
 }
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    rid = "int",
-    cid = "int",
-    status = "int",
+    rid = "int NOT NULL",
+    cid = "int NOT NULL",
+    status = "int NOT NULL",
     record1 = "longblob",
     record2 = "longblob",
     record3 = "longblob",
