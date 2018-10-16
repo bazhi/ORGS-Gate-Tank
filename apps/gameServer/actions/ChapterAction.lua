@@ -68,16 +68,11 @@ function ChapterAction:enterAction(args, _redis)
             instance:sendError("NoAccept", 2)
             return - 1
         end
-        local sections = player:getSections()
-        local star, count = sections:getChapterStar(cfg_chapter.preID)
-        if star < cfg_chapter.unlockStar then
-            --没达到解锁星级
-            instance:sendError("NoAccept", 3)
-            return - 1
-        end
-        if count < cfg_chapter.unlockCount or cfg_chapter.unlockCount == 0 then
-            --没达到前置通关数量
-            instance:sendError("NoAccept", 4)
+        
+        local pre_chapter_data = pre_chapter:get()
+        if pre_chapter_data.status ~= 2 then
+            --前置关卡未完结
+            instance:sendError("NoAccept", 2)
             return - 1
         end
     end
@@ -92,6 +87,10 @@ function ChapterAction:enterAction(args, _redis)
     local dt = chapter:get()
     dt.rid = role_data.id
     dt.cid = cid
+    dt.status = 0
+    dt.record1 = ""
+    dt.record2 = ""
+    dt.record3 = ""
     local query = chapter:insertQuery(dt)
     chapter:pushQuery(query, instance:getConnectId(), "chapter.onChapterNew")
     return 1
@@ -124,6 +123,65 @@ function ChapterAction:onChapter(args, _redis, params)
             values = args,
         })
     end
+end
+
+-- function ChapterAction:getAction(args)
+--     local id = args.id
+--     local seq = args.seq
+--     if not id or not seq then
+--         return - 1
+--     end
+--     local recordKey = "record"..seq
+--     local instance = self:getInstance()
+--     local player = instance:getPlayer()
+--     local chapters = player:getChapters()
+--     local chapter = chapters:getByCID(id)
+--     if not chapter then
+--         return - 1
+--     end
+--     local chapter_data = chapter:get()
+--     if chapter_data[recordKey] ~= nil then
+--         instance:sendPack("MapRecordSave", {
+--             id = id,
+--             seq = seq,
+--             record = chapter_data[recordKey],
+--         })
+--         --instance:sendMessage(chapter_data[recordKey])
+--     end
+-- end
+
+function ChapterAction:saveAction(args)
+    local id = args.id
+    local seq = args.seq
+    if not id or not seq then
+        return - 1
+    end
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local chapters = player:getChapters()
+    local chapter = chapters:getByCID(id)
+    if not chapter then
+        return - 1
+    end
+    local chapter_data = chapter:get()
+    local query
+    
+    if seq == 1 then
+        query = chapter:updateQuery({id = chapter_data.id}, {record1 = args.record})
+        chapter_data.record1 = args.record
+    elseif seq == 2 then
+        query = chapter:updateQuery({id = chapter_data.id}, {record2 = args.record})
+        chapter_data.record2 = args.record
+    else
+        query = chapter:updateQuery({id = chapter_data.id}, {record3 = args.record})
+        chapter_data.record3 = args.record
+    end
+    chapter:pushQuery(query, instance:getConnectId())
+    instance:sendPack("MapRecordSave", {
+        id = id,
+        seq = seq,
+        record = args.record,
+    })
 end
 
 return ChapterAction

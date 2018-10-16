@@ -3,14 +3,20 @@ local Struct = {
     id = 0,
     rid = 0,
     cid = 0,
-    --star = 0, --星星总数
+    status = 0, --章节状态， 0未解锁，1已经解锁，2已经完成
+    record1 = "",
+    record2 = "",
+    record3 = "",
 }
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
     rid = "int",
     cid = "int",
-    --star = "int",
+    status = "int",
+    record1 = "longblob",
+    record2 = "longblob",
+    record3 = "longblob",
 }
 
 local Indexes = {

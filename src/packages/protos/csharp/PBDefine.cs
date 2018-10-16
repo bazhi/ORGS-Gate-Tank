@@ -42,7 +42,7 @@ namespace Pb{
 		CalendarData,
 		BuildItem,
 		MapRecord,
-		MapRecordGet
+		MapRecordSave
     }
 
 	public static class PBRegister
@@ -88,7 +88,7 @@ namespace Pb{
 			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
 			dict.Add(PBDefine.BuildItem, BuildItem.Parser);
 			dict.Add(PBDefine.MapRecord, MapRecord.Parser);
-			dict.Add(PBDefine.MapRecordGet, MapRecordGet.Parser);
+			dict.Add(PBDefine.MapRecordSave, MapRecordSave.Parser);
 		}
 	}
 }

@@ -151,7 +151,10 @@ message Chapter{
 	int32 id = 1;
 	int32 rid = 2;
 	int32 cid = 3;
-	//int32 star = 4;
+	int32 status = 4;
+	bytes record1 = 5;
+	bytes record2 = 6;
+	bytes record3 = 7;
 }
 
 message Chapters{
@@ -246,10 +249,12 @@ message BuildItem{
 }
 //地图记录
 message MapRecord{
-	int32 id = 1;
 	repeated BuildItem items = 2;
+	int32 time = 3;
 }
-//获取地图数据
-message MapRecordGet{
+
+message MapRecordSave{
 	int32 id = 1;
+	int32 seq = 2;
+	bytes record = 3;
 }

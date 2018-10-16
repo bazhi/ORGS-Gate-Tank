@@ -38,6 +38,6 @@ local _M = {
     CalendarData = 37,
     BuildItem = 38,
     MapRecord = 39,
-    MapRecordGet = 40,
+    MapRecordSave = 40,
 }
 return _M
