@@ -7,7 +7,6 @@ local Struct = {
     record1 = "",
     record2 = "",
     record3 = "",
-    test = 0,
 }
 
 local Define = {
