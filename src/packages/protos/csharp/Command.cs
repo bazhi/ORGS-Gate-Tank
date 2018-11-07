@@ -82,7 +82,7 @@ namespace Pb {
             "SXRlbURhdGEiHwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUiKQoJ",
             "QnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIjcKCU1h",
             "cFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBiLkJ1aWxkSXRlbRIMCgR0aW1l",
-            "GAMgASgFIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIg",
+            "GAMgASgDIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIg",
             "ASgFEg4KBnJlY29yZBgDIAEoDGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -6824,9 +6824,9 @@ namespace Pb {
 
     /// <summary>Field number for the "time" field.</summary>
     public const int TimeFieldNumber = 3;
-    private int time_;
+    private long time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Time {
+    public long Time {
       get { return time_; }
       set {
         time_ = value;
@@ -6855,7 +6855,7 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= items_.GetHashCode();
-      if (Time != 0) hash ^= Time.GetHashCode();
+      if (Time != 0L) hash ^= Time.GetHashCode();
       return hash;
     }
 
@@ -6867,9 +6867,9 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       items_.WriteTo(output, _repeated_items_codec);
-      if (Time != 0) {
+      if (Time != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(Time);
+        output.WriteInt64(Time);
       }
     }
 
@@ -6877,8 +6877,8 @@ namespace Pb {
     public int CalculateSize() {
       int size = 0;
       size += items_.CalculateSize(_repeated_items_codec);
-      if (Time != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Time);
+      if (Time != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
       return size;
     }
@@ -6889,7 +6889,7 @@ namespace Pb {
         return;
       }
       items_.Add(other.items_);
-      if (other.Time != 0) {
+      if (other.Time != 0L) {
         Time = other.Time;
       }
     }
@@ -6907,7 +6907,7 @@ namespace Pb {
             break;
           }
           case 24: {
-            Time = input.ReadInt32();
+            Time = input.ReadInt64();
             break;
           }
         }

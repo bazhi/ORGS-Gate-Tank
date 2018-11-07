@@ -277,7 +277,7 @@ message BuildItem{
 //地图记录
 message MapRecord{
 	repeated BuildItem items = 2;
-	int32 time = 3;
+	int64 time = 3;
 }
 
 message MapRecordSave{
