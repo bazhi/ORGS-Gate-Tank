@@ -34,10 +34,11 @@ local _M = {
     SigninGet = 33,
     ShopGet = 34,
     ShopRecord = 35,
-    BuildData = 36,
-    CalendarData = 37,
-    BuildItem = 38,
-    MapRecord = 39,
-    MapRecordSave = 40,
+    CompositeItem = 36,
+    BuildData = 37,
+    CalendarData = 38,
+    BuildItem = 39,
+    MapRecord = 40,
+    MapRecordSave = 41,
 }
 return _M

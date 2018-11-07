@@ -233,10 +233,18 @@ message ShopRecord{
 	repeated int32 times = 2 [packed=true]; //已经签到天
 }
 
+message CompositeItem{
+	int32 id = 1;
+	int32 timeend = 2;
+}
+
 //建筑数据
 message BuildData{
 	int32 level = 1;
 	int32 health = 2;
+	int32 upgradetime = 3;
+	int32 repairtime = 4;
+	repeated CompositeItem composites = 5;
 }
 //日历数据
 message CalendarData{

@@ -70,13 +70,15 @@ namespace Pb {
             "AiABKAUSDwoHZGlhbW9uZBgDIAEoBSIxCgxTaWduaW5SZWNvcmQSDQoFdGlt",
             "ZXMYASABKAUSEgoGcmVjb3JkGAIgAygFQgIQASIYCglTaWduaW5HZXQSCwoD",
             "ZGF5GAEgASgFIhUKB1Nob3BHZXQSCgoCaWQYASABKAUiLwoKU2hvcFJlY29y",
-            "ZBIOCgJpZBgBIAMoBUICEAESEQoFdGltZXMYAiADKAVCAhABIioKCUJ1aWxk",
-            "RGF0YRINCgVsZXZlbBgBIAEoBRIOCgZoZWFsdGgYAiABKAUiHwoMQ2FsZW5k",
-            "YXJEYXRhEg8KB21pbnV0ZXMYASABKAUiKQoJQnVpbGRJdGVtEgoKAmlkGAEg",
-            "ASgFEhAKCGNvbnRlbnRzGAIgASgMIjcKCU1hcFJlY29yZBIcCgVpdGVtcxgC",
-            "IAMoCzINLnBiLkJ1aWxkSXRlbRIMCgR0aW1lGAMgASgFIjgKDU1hcFJlY29y",
-            "ZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEo",
-            "DGIGcHJvdG8z"));
+            "ZBIOCgJpZBgBIAMoBUICEAESEQoFdGltZXMYAiADKAVCAhABIiwKDUNvbXBv",
+            "c2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZWVuZBgCIAEoBSJ6CglCdWls",
+            "ZERhdGESDQoFbGV2ZWwYASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3Jh",
+            "ZGV0aW1lGAMgASgFEhIKCnJlcGFpcnRpbWUYBCABKAUSJQoKY29tcG9zaXRl",
+            "cxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0iHwoMQ2FsZW5kYXJEYXRhEg8K",
+            "B21pbnV0ZXMYASABKAUiKQoJQnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNv",
+            "bnRlbnRzGAIgASgMIjcKCU1hcFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBi",
+            "LkJ1aWxkSXRlbRIMCgR0aW1lGAMgASgFIjgKDU1hcFJlY29yZFNhdmUSCgoC",
+            "aWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEoDGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -115,7 +117,8 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopGet), global::Pb.ShopGet.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id", "Times" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "Timeend" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "Upgradetime", "Repairtime", "Composites" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildItem), global::Pb.BuildItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Items", "Time" }, null, null, null),
@@ -5741,6 +5744,151 @@ namespace Pb {
 
   }
 
+  public sealed partial class CompositeItem : pb::IMessage<CompositeItem> {
+    private static readonly pb::MessageParser<CompositeItem> _parser = new pb::MessageParser<CompositeItem>(() => new CompositeItem());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CompositeItem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[35]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CompositeItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CompositeItem(CompositeItem other) : this() {
+      id_ = other.id_;
+      timeend_ = other.timeend_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CompositeItem Clone() {
+      return new CompositeItem(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "timeend" field.</summary>
+    public const int TimeendFieldNumber = 2;
+    private int timeend_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Timeend {
+      get { return timeend_; }
+      set {
+        timeend_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CompositeItem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CompositeItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Timeend != other.Timeend) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Timeend != 0) hash ^= Timeend.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Timeend != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Timeend);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Timeend != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Timeend);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CompositeItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Timeend != 0) {
+        Timeend = other.Timeend;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Timeend = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   /// 建筑数据
   /// </summary>
@@ -5751,7 +5899,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[35]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5770,6 +5918,9 @@ namespace Pb {
     public BuildData(BuildData other) : this() {
       level_ = other.level_;
       health_ = other.health_;
+      upgradetime_ = other.upgradetime_;
+      repairtime_ = other.repairtime_;
+      composites_ = other.composites_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5799,6 +5950,38 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "upgradetime" field.</summary>
+    public const int UpgradetimeFieldNumber = 3;
+    private int upgradetime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Upgradetime {
+      get { return upgradetime_; }
+      set {
+        upgradetime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "repairtime" field.</summary>
+    public const int RepairtimeFieldNumber = 4;
+    private int repairtime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Repairtime {
+      get { return repairtime_; }
+      set {
+        repairtime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "composites" field.</summary>
+    public const int CompositesFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::Pb.CompositeItem> _repeated_composites_codec
+        = pb::FieldCodec.ForMessage(42, global::Pb.CompositeItem.Parser);
+    private readonly pbc::RepeatedField<global::Pb.CompositeItem> composites_ = new pbc::RepeatedField<global::Pb.CompositeItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.CompositeItem> Composites {
+      get { return composites_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as BuildData);
@@ -5814,6 +5997,9 @@ namespace Pb {
       }
       if (Level != other.Level) return false;
       if (Health != other.Health) return false;
+      if (Upgradetime != other.Upgradetime) return false;
+      if (Repairtime != other.Repairtime) return false;
+      if(!composites_.Equals(other.composites_)) return false;
       return true;
     }
 
@@ -5822,6 +6008,9 @@ namespace Pb {
       int hash = 1;
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Health != 0) hash ^= Health.GetHashCode();
+      if (Upgradetime != 0) hash ^= Upgradetime.GetHashCode();
+      if (Repairtime != 0) hash ^= Repairtime.GetHashCode();
+      hash ^= composites_.GetHashCode();
       return hash;
     }
 
@@ -5840,6 +6029,15 @@ namespace Pb {
         output.WriteRawTag(16);
         output.WriteInt32(Health);
       }
+      if (Upgradetime != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Upgradetime);
+      }
+      if (Repairtime != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Repairtime);
+      }
+      composites_.WriteTo(output, _repeated_composites_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5851,6 +6049,13 @@ namespace Pb {
       if (Health != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
       }
+      if (Upgradetime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Upgradetime);
+      }
+      if (Repairtime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Repairtime);
+      }
+      size += composites_.CalculateSize(_repeated_composites_codec);
       return size;
     }
 
@@ -5865,6 +6070,13 @@ namespace Pb {
       if (other.Health != 0) {
         Health = other.Health;
       }
+      if (other.Upgradetime != 0) {
+        Upgradetime = other.Upgradetime;
+      }
+      if (other.Repairtime != 0) {
+        Repairtime = other.Repairtime;
+      }
+      composites_.Add(other.composites_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5883,6 +6095,18 @@ namespace Pb {
             Health = input.ReadInt32();
             break;
           }
+          case 24: {
+            Upgradetime = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Repairtime = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            composites_.AddEntriesFrom(input, _repeated_composites_codec);
+            break;
+          }
         }
       }
     }
@@ -5899,7 +6123,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6019,7 +6243,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6167,7 +6391,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6304,7 +6528,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

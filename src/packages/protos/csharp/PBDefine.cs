@@ -38,6 +38,7 @@ namespace Pb{
 		SigninGet,
 		ShopGet,
 		ShopRecord,
+		CompositeItem,
 		BuildData,
 		CalendarData,
 		BuildItem,
@@ -84,6 +85,7 @@ namespace Pb{
 			dict.Add(PBDefine.SigninGet, SigninGet.Parser);
 			dict.Add(PBDefine.ShopGet, ShopGet.Parser);
 			dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
+			dict.Add(PBDefine.CompositeItem, CompositeItem.Parser);
 			dict.Add(PBDefine.BuildData, BuildData.Parser);
 			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
 			dict.Add(PBDefine.BuildItem, BuildItem.Parser);
