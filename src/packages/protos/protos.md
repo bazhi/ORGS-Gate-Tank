@@ -238,15 +238,15 @@ message ShopRecord{
 
 message CompositeItem{
 	int32 id = 1;
-	int32 timeend = 2;
+	int32 timeEnd = 2;
 }
 
 //建筑数据
 message BuildData{
 	int32 level = 1;
 	int32 health = 2;
-	int32 upgradetime = 3;
-	int32 repairtime = 4;
+	int32 upgradeTime = 3;
+	int32 repairTime = 4;
 	repeated CompositeItem composites = 5;
 }
 //日历数据

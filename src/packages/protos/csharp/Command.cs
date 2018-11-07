@@ -71,9 +71,9 @@ namespace Pb {
             "ZXMYASABKAUSEgoGcmVjb3JkGAIgAygFQgIQASIYCglTaWduaW5HZXQSCwoD",
             "ZGF5GAEgASgFIhUKB1Nob3BHZXQSCgoCaWQYASABKAUiLwoKU2hvcFJlY29y",
             "ZBIOCgJpZBgBIAMoBUICEAESEQoFdGltZXMYAiADKAVCAhABIiwKDUNvbXBv",
-            "c2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZWVuZBgCIAEoBSJ6CglCdWls",
+            "c2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSJ6CglCdWls",
             "ZERhdGESDQoFbGV2ZWwYASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3Jh",
-            "ZGV0aW1lGAMgASgFEhIKCnJlcGFpcnRpbWUYBCABKAUSJQoKY29tcG9zaXRl",
+            "ZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSJQoKY29tcG9zaXRl",
             "cxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0iHwoMQ2FsZW5kYXJEYXRhEg8K",
             "B21pbnV0ZXMYASABKAUiKQoJQnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNv",
             "bnRlbnRzGAIgASgMIjcKCU1hcFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBi",
@@ -117,8 +117,8 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopGet), global::Pb.ShopGet.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id", "Times" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "Timeend" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "Upgradetime", "Repairtime", "Composites" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "UpgradeTime", "RepairTime", "Composites" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildItem), global::Pb.BuildItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Items", "Time" }, null, null, null),
@@ -5769,7 +5769,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CompositeItem(CompositeItem other) : this() {
       id_ = other.id_;
-      timeend_ = other.timeend_;
+      timeEnd_ = other.timeEnd_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5788,14 +5788,14 @@ namespace Pb {
       }
     }
 
-    /// <summary>Field number for the "timeend" field.</summary>
-    public const int TimeendFieldNumber = 2;
-    private int timeend_;
+    /// <summary>Field number for the "timeEnd" field.</summary>
+    public const int TimeEndFieldNumber = 2;
+    private int timeEnd_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Timeend {
-      get { return timeend_; }
+    public int TimeEnd {
+      get { return timeEnd_; }
       set {
-        timeend_ = value;
+        timeEnd_ = value;
       }
     }
 
@@ -5813,7 +5813,7 @@ namespace Pb {
         return true;
       }
       if (Id != other.Id) return false;
-      if (Timeend != other.Timeend) return false;
+      if (TimeEnd != other.TimeEnd) return false;
       return true;
     }
 
@@ -5821,7 +5821,7 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Timeend != 0) hash ^= Timeend.GetHashCode();
+      if (TimeEnd != 0) hash ^= TimeEnd.GetHashCode();
       return hash;
     }
 
@@ -5836,9 +5836,9 @@ namespace Pb {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (Timeend != 0) {
+      if (TimeEnd != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Timeend);
+        output.WriteInt32(TimeEnd);
       }
     }
 
@@ -5848,8 +5848,8 @@ namespace Pb {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (Timeend != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Timeend);
+      if (TimeEnd != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TimeEnd);
       }
       return size;
     }
@@ -5862,8 +5862,8 @@ namespace Pb {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Timeend != 0) {
-        Timeend = other.Timeend;
+      if (other.TimeEnd != 0) {
+        TimeEnd = other.TimeEnd;
       }
     }
 
@@ -5880,7 +5880,7 @@ namespace Pb {
             break;
           }
           case 16: {
-            Timeend = input.ReadInt32();
+            TimeEnd = input.ReadInt32();
             break;
           }
         }
@@ -5918,8 +5918,8 @@ namespace Pb {
     public BuildData(BuildData other) : this() {
       level_ = other.level_;
       health_ = other.health_;
-      upgradetime_ = other.upgradetime_;
-      repairtime_ = other.repairtime_;
+      upgradeTime_ = other.upgradeTime_;
+      repairTime_ = other.repairTime_;
       composites_ = other.composites_.Clone();
     }
 
@@ -5950,25 +5950,25 @@ namespace Pb {
       }
     }
 
-    /// <summary>Field number for the "upgradetime" field.</summary>
-    public const int UpgradetimeFieldNumber = 3;
-    private int upgradetime_;
+    /// <summary>Field number for the "upgradeTime" field.</summary>
+    public const int UpgradeTimeFieldNumber = 3;
+    private int upgradeTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Upgradetime {
-      get { return upgradetime_; }
+    public int UpgradeTime {
+      get { return upgradeTime_; }
       set {
-        upgradetime_ = value;
+        upgradeTime_ = value;
       }
     }
 
-    /// <summary>Field number for the "repairtime" field.</summary>
-    public const int RepairtimeFieldNumber = 4;
-    private int repairtime_;
+    /// <summary>Field number for the "repairTime" field.</summary>
+    public const int RepairTimeFieldNumber = 4;
+    private int repairTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Repairtime {
-      get { return repairtime_; }
+    public int RepairTime {
+      get { return repairTime_; }
       set {
-        repairtime_ = value;
+        repairTime_ = value;
       }
     }
 
@@ -5997,8 +5997,8 @@ namespace Pb {
       }
       if (Level != other.Level) return false;
       if (Health != other.Health) return false;
-      if (Upgradetime != other.Upgradetime) return false;
-      if (Repairtime != other.Repairtime) return false;
+      if (UpgradeTime != other.UpgradeTime) return false;
+      if (RepairTime != other.RepairTime) return false;
       if(!composites_.Equals(other.composites_)) return false;
       return true;
     }
@@ -6008,8 +6008,8 @@ namespace Pb {
       int hash = 1;
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Health != 0) hash ^= Health.GetHashCode();
-      if (Upgradetime != 0) hash ^= Upgradetime.GetHashCode();
-      if (Repairtime != 0) hash ^= Repairtime.GetHashCode();
+      if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
+      if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
       hash ^= composites_.GetHashCode();
       return hash;
     }
@@ -6029,13 +6029,13 @@ namespace Pb {
         output.WriteRawTag(16);
         output.WriteInt32(Health);
       }
-      if (Upgradetime != 0) {
+      if (UpgradeTime != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Upgradetime);
+        output.WriteInt32(UpgradeTime);
       }
-      if (Repairtime != 0) {
+      if (RepairTime != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(Repairtime);
+        output.WriteInt32(RepairTime);
       }
       composites_.WriteTo(output, _repeated_composites_codec);
     }
@@ -6049,11 +6049,11 @@ namespace Pb {
       if (Health != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
       }
-      if (Upgradetime != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Upgradetime);
+      if (UpgradeTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UpgradeTime);
       }
-      if (Repairtime != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Repairtime);
+      if (RepairTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RepairTime);
       }
       size += composites_.CalculateSize(_repeated_composites_codec);
       return size;
@@ -6070,11 +6070,11 @@ namespace Pb {
       if (other.Health != 0) {
         Health = other.Health;
       }
-      if (other.Upgradetime != 0) {
-        Upgradetime = other.Upgradetime;
+      if (other.UpgradeTime != 0) {
+        UpgradeTime = other.UpgradeTime;
       }
-      if (other.Repairtime != 0) {
-        Repairtime = other.Repairtime;
+      if (other.RepairTime != 0) {
+        RepairTime = other.RepairTime;
       }
       composites_.Add(other.composites_);
     }
@@ -6096,11 +6096,11 @@ namespace Pb {
             break;
           }
           case 24: {
-            Upgradetime = input.ReadInt32();
+            UpgradeTime = input.ReadInt32();
             break;
           }
           case 32: {
-            Repairtime = input.ReadInt32();
+            RepairTime = input.ReadInt32();
             break;
           }
           case 42: {
