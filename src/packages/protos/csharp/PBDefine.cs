@@ -39,6 +39,8 @@ namespace Pb{
 		ShopGet,
 		ShopRecord,
 		CompositeItem,
+		ItemData,
+		PlayerData,
 		BuildData,
 		CalendarData,
 		BuildItem,
@@ -86,6 +88,8 @@ namespace Pb{
 			dict.Add(PBDefine.ShopGet, ShopGet.Parser);
 			dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
 			dict.Add(PBDefine.CompositeItem, CompositeItem.Parser);
+			dict.Add(PBDefine.ItemData, ItemData.Parser);
+			dict.Add(PBDefine.PlayerData, PlayerData.Parser);
 			dict.Add(PBDefine.BuildData, BuildData.Parser);
 			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
 			dict.Add(PBDefine.BuildItem, BuildItem.Parser);

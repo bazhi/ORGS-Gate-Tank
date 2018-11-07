@@ -241,6 +241,20 @@ message CompositeItem{
 	int32 timeEnd = 2;
 }
 
+//武器或者道具
+message ItemData{
+	int32 id = 1; //id
+	int32 count = 2; //道具数量或者武器的子弹装载数量
+}
+
+//角色数据
+message PlayerData{
+	int32 health = 1;
+	int32 stamina = 2;
+	repeated ItemData props = 3;
+	repeated ItemData weapons = 4;
+}
+
 //建筑数据
 message BuildData{
 	int32 level = 1;
@@ -248,6 +262,8 @@ message BuildData{
 	int32 upgradeTime = 3;
 	int32 repairTime = 4;
 	repeated CompositeItem composites = 5;
+	repeated ItemData props = 6; //仓库中才使用
+	repeated ItemData weapons = 7; //仓库中才使用
 }
 //日历数据
 message CalendarData{

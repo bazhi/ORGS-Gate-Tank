@@ -35,10 +35,12 @@ local _M = {
     [34] = "ShopGet",
     [35] = "ShopRecord",
     [36] = "CompositeItem",
-    [37] = "BuildData",
-    [38] = "CalendarData",
-    [39] = "BuildItem",
-    [40] = "MapRecord",
-    [41] = "MapRecordSave",
+    [37] = "ItemData",
+    [38] = "PlayerData",
+    [39] = "BuildData",
+    [40] = "CalendarData",
+    [41] = "BuildItem",
+    [42] = "MapRecord",
+    [43] = "MapRecordSave",
 }
 return _M

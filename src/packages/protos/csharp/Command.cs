@@ -71,14 +71,19 @@ namespace Pb {
             "ZXMYASABKAUSEgoGcmVjb3JkGAIgAygFQgIQASIYCglTaWduaW5HZXQSCwoD",
             "ZGF5GAEgASgFIhUKB1Nob3BHZXQSCgoCaWQYASABKAUiLwoKU2hvcFJlY29y",
             "ZBIOCgJpZBgBIAMoBUICEAESEQoFdGltZXMYAiADKAVCAhABIiwKDUNvbXBv",
-            "c2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSJ6CglCdWls",
-            "ZERhdGESDQoFbGV2ZWwYASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3Jh",
-            "ZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSJQoKY29tcG9zaXRl",
-            "cxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0iHwoMQ2FsZW5kYXJEYXRhEg8K",
-            "B21pbnV0ZXMYASABKAUiKQoJQnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNv",
-            "bnRlbnRzGAIgASgMIjcKCU1hcFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBi",
-            "LkJ1aWxkSXRlbRIMCgR0aW1lGAMgASgFIjgKDU1hcFJlY29yZFNhdmUSCgoC",
-            "aWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEoDGIGcHJvdG8z"));
+            "c2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSIlCghJdGVt",
+            "RGF0YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBSJpCgpQbGF5ZXJEYXRh",
+            "Eg4KBmhlYWx0aBgBIAEoBRIPCgdzdGFtaW5hGAIgASgFEhsKBXByb3BzGAMg",
+            "AygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgEIAMoCzIMLnBiLkl0ZW1E",
+            "YXRhIrYBCglCdWlsZERhdGESDQoFbGV2ZWwYASABKAUSDgoGaGVhbHRoGAIg",
+            "ASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUS",
+            "JQoKY29tcG9zaXRlcxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0SGwoFcHJv",
+            "cHMYBiADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAcgAygLMgwucGIu",
+            "SXRlbURhdGEiHwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUiKQoJ",
+            "QnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIjcKCU1h",
+            "cFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBiLkJ1aWxkSXRlbRIMCgR0aW1l",
+            "GAMgASgFIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIg",
+            "ASgFEg4KBnJlY29yZBgDIAEoDGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -118,7 +123,9 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopGet), global::Pb.ShopGet.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id", "Times" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "UpgradeTime", "RepairTime", "Composites" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildItem), global::Pb.BuildItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Items", "Time" }, null, null, null),
@@ -5890,6 +5897,348 @@ namespace Pb {
   }
 
   /// <summary>
+  /// 武器或者道具
+  /// </summary>
+  public sealed partial class ItemData : pb::IMessage<ItemData> {
+    private static readonly pb::MessageParser<ItemData> _parser = new pb::MessageParser<ItemData>(() => new ItemData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ItemData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemData(ItemData other) : this() {
+      id_ = other.id_;
+      count_ = other.count_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemData Clone() {
+      return new ItemData(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    /// <summary>
+    /// id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 2;
+    private int count_;
+    /// <summary>
+    /// 道具数量或者武器的子弹装载数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ItemData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ItemData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Count != other.Count) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Count);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ItemData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Count = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 角色数据
+  /// </summary>
+  public sealed partial class PlayerData : pb::IMessage<PlayerData> {
+    private static readonly pb::MessageParser<PlayerData> _parser = new pb::MessageParser<PlayerData>(() => new PlayerData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PlayerData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[37]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PlayerData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PlayerData(PlayerData other) : this() {
+      health_ = other.health_;
+      stamina_ = other.stamina_;
+      props_ = other.props_.Clone();
+      weapons_ = other.weapons_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PlayerData Clone() {
+      return new PlayerData(this);
+    }
+
+    /// <summary>Field number for the "health" field.</summary>
+    public const int HealthFieldNumber = 1;
+    private int health_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Health {
+      get { return health_; }
+      set {
+        health_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stamina" field.</summary>
+    public const int StaminaFieldNumber = 2;
+    private int stamina_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Stamina {
+      get { return stamina_; }
+      set {
+        stamina_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "props" field.</summary>
+    public const int PropsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_props_codec
+        = pb::FieldCodec.ForMessage(26, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> props_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> Props {
+      get { return props_; }
+    }
+
+    /// <summary>Field number for the "weapons" field.</summary>
+    public const int WeaponsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_weapons_codec
+        = pb::FieldCodec.ForMessage(34, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> weapons_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> Weapons {
+      get { return weapons_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PlayerData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PlayerData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Health != other.Health) return false;
+      if (Stamina != other.Stamina) return false;
+      if(!props_.Equals(other.props_)) return false;
+      if(!weapons_.Equals(other.weapons_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Health != 0) hash ^= Health.GetHashCode();
+      if (Stamina != 0) hash ^= Stamina.GetHashCode();
+      hash ^= props_.GetHashCode();
+      hash ^= weapons_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Health != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Health);
+      }
+      if (Stamina != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Stamina);
+      }
+      props_.WriteTo(output, _repeated_props_codec);
+      weapons_.WriteTo(output, _repeated_weapons_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Health != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
+      }
+      if (Stamina != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Stamina);
+      }
+      size += props_.CalculateSize(_repeated_props_codec);
+      size += weapons_.CalculateSize(_repeated_weapons_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PlayerData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Health != 0) {
+        Health = other.Health;
+      }
+      if (other.Stamina != 0) {
+        Stamina = other.Stamina;
+      }
+      props_.Add(other.props_);
+      weapons_.Add(other.weapons_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Health = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Stamina = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            props_.AddEntriesFrom(input, _repeated_props_codec);
+            break;
+          }
+          case 34: {
+            weapons_.AddEntriesFrom(input, _repeated_weapons_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
   /// 建筑数据
   /// </summary>
   public sealed partial class BuildData : pb::IMessage<BuildData> {
@@ -5899,7 +6248,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5921,6 +6270,8 @@ namespace Pb {
       upgradeTime_ = other.upgradeTime_;
       repairTime_ = other.repairTime_;
       composites_ = other.composites_.Clone();
+      props_ = other.props_.Clone();
+      weapons_ = other.weapons_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5982,6 +6333,32 @@ namespace Pb {
       get { return composites_; }
     }
 
+    /// <summary>Field number for the "props" field.</summary>
+    public const int PropsFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_props_codec
+        = pb::FieldCodec.ForMessage(50, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> props_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    /// <summary>
+    /// 仓库中才使用
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> Props {
+      get { return props_; }
+    }
+
+    /// <summary>Field number for the "weapons" field.</summary>
+    public const int WeaponsFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_weapons_codec
+        = pb::FieldCodec.ForMessage(58, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> weapons_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    /// <summary>
+    /// 仓库中才使用
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> Weapons {
+      get { return weapons_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as BuildData);
@@ -6000,6 +6377,8 @@ namespace Pb {
       if (UpgradeTime != other.UpgradeTime) return false;
       if (RepairTime != other.RepairTime) return false;
       if(!composites_.Equals(other.composites_)) return false;
+      if(!props_.Equals(other.props_)) return false;
+      if(!weapons_.Equals(other.weapons_)) return false;
       return true;
     }
 
@@ -6011,6 +6390,8 @@ namespace Pb {
       if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
       if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
       hash ^= composites_.GetHashCode();
+      hash ^= props_.GetHashCode();
+      hash ^= weapons_.GetHashCode();
       return hash;
     }
 
@@ -6038,6 +6419,8 @@ namespace Pb {
         output.WriteInt32(RepairTime);
       }
       composites_.WriteTo(output, _repeated_composites_codec);
+      props_.WriteTo(output, _repeated_props_codec);
+      weapons_.WriteTo(output, _repeated_weapons_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6056,6 +6439,8 @@ namespace Pb {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(RepairTime);
       }
       size += composites_.CalculateSize(_repeated_composites_codec);
+      size += props_.CalculateSize(_repeated_props_codec);
+      size += weapons_.CalculateSize(_repeated_weapons_codec);
       return size;
     }
 
@@ -6077,6 +6462,8 @@ namespace Pb {
         RepairTime = other.RepairTime;
       }
       composites_.Add(other.composites_);
+      props_.Add(other.props_);
+      weapons_.Add(other.weapons_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6107,6 +6494,14 @@ namespace Pb {
             composites_.AddEntriesFrom(input, _repeated_composites_codec);
             break;
           }
+          case 50: {
+            props_.AddEntriesFrom(input, _repeated_props_codec);
+            break;
+          }
+          case 58: {
+            weapons_.AddEntriesFrom(input, _repeated_weapons_codec);
+            break;
+          }
         }
       }
     }
@@ -6123,7 +6518,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6243,7 +6638,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6391,7 +6786,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6528,7 +6923,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
