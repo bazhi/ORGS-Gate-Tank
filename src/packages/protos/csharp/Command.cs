@@ -79,11 +79,15 @@ namespace Pb {
             "ASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUS",
             "JQoKY29tcG9zaXRlcxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0SGwoFcHJv",
             "cHMYBiADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAcgAygLMgwucGIu",
-            "SXRlbURhdGEiHwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUiKQoJ",
-            "QnVpbGRJdGVtEgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIjcKCU1h",
-            "cFJlY29yZBIcCgVpdGVtcxgCIAMoCzINLnBiLkJ1aWxkSXRlbRIMCgR0aW1l",
-            "GAMgASgDIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIg",
-            "ASgFEg4KBnJlY29yZBgDIAEoDGIGcHJvdG8z"));
+            "SXRlbURhdGEiHwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUiKgoK",
+            "UmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250ZW50cxgCIAEoDCIuCg9N",
+            "aXNzaW9uSXRlbURhdGESCgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJR",
+            "CgtNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIhCgRsaXN0GAIgAygLMhMucGIu",
+            "TWlzc2lvbkl0ZW1EYXRhEhMKC3JlZnJlc2hUaW1lGAMgASgFIiwKC01pc3Np",
+            "b25MaXN0Eh0KBGxpc3QYASADKAsyDy5wYi5NaXNzaW9uRGF0YSI4CglNYXBS",
+            "ZWNvcmQSHQoFaXRlbXMYAiADKAsyDi5wYi5SZWNvcmRJdGVtEgwKBHRpbWUY",
+            "AyABKAMiOAoNTWFwUmVjb3JkU2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiAB",
+            "KAUSDgoGcmVjb3JkGAMgASgMYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -127,7 +131,10 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildItem), global::Pb.BuildItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionItemData), global::Pb.MissionItemData.Parser, new[]{ "Id", "Process" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionData), global::Pb.MissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionList), global::Pb.MissionList.Parser, new[]{ "List" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Items", "Time" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null)
           }));
@@ -6631,10 +6638,10 @@ namespace Pb {
   /// <summary>
   /// id对应的数据
   /// </summary>
-  public sealed partial class BuildItem : pb::IMessage<BuildItem> {
-    private static readonly pb::MessageParser<BuildItem> _parser = new pb::MessageParser<BuildItem>(() => new BuildItem());
+  public sealed partial class RecordItem : pb::IMessage<RecordItem> {
+    private static readonly pb::MessageParser<RecordItem> _parser = new pb::MessageParser<RecordItem>(() => new RecordItem());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<BuildItem> Parser { get { return _parser; } }
+    public static pb::MessageParser<RecordItem> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -6647,21 +6654,21 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BuildItem() {
+    public RecordItem() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BuildItem(BuildItem other) : this() {
+    public RecordItem(RecordItem other) : this() {
       id_ = other.id_;
       contents_ = other.contents_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BuildItem Clone() {
-      return new BuildItem(this);
+    public RecordItem Clone() {
+      return new RecordItem(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -6688,11 +6695,11 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as BuildItem);
+      return Equals(other as RecordItem);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(BuildItem other) {
+    public bool Equals(RecordItem other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6742,7 +6749,7 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(BuildItem other) {
+    public void MergeFrom(RecordItem other) {
       if (other == null) {
         return;
       }
@@ -6776,6 +6783,428 @@ namespace Pb {
 
   }
 
+  public sealed partial class MissionItemData : pb::IMessage<MissionItemData> {
+    private static readonly pb::MessageParser<MissionItemData> _parser = new pb::MessageParser<MissionItemData>(() => new MissionItemData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MissionItemData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionItemData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionItemData(MissionItemData other) : this() {
+      id_ = other.id_;
+      process_ = other.process_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionItemData Clone() {
+      return new MissionItemData(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "process" field.</summary>
+    public const int ProcessFieldNumber = 2;
+    private int process_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Process {
+      get { return process_; }
+      set {
+        process_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MissionItemData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MissionItemData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Process != other.Process) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Process != 0) hash ^= Process.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Process != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Process);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Process != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Process);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MissionItemData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Process != 0) {
+        Process = other.Process;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Process = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 任务信息
+  /// </summary>
+  public sealed partial class MissionData : pb::IMessage<MissionData> {
+    private static readonly pb::MessageParser<MissionData> _parser = new pb::MessageParser<MissionData>(() => new MissionData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MissionData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionData(MissionData other) : this() {
+      id_ = other.id_;
+      list_ = other.list_.Clone();
+      refreshTime_ = other.refreshTime_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionData Clone() {
+      return new MissionData(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "list" field.</summary>
+    public const int ListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Pb.MissionItemData> _repeated_list_codec
+        = pb::FieldCodec.ForMessage(18, global::Pb.MissionItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.MissionItemData> list_ = new pbc::RepeatedField<global::Pb.MissionItemData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.MissionItemData> List {
+      get { return list_; }
+    }
+
+    /// <summary>Field number for the "refreshTime" field.</summary>
+    public const int RefreshTimeFieldNumber = 3;
+    private int refreshTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RefreshTime {
+      get { return refreshTime_; }
+      set {
+        refreshTime_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MissionData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MissionData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if(!list_.Equals(other.list_)) return false;
+      if (RefreshTime != other.RefreshTime) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      hash ^= list_.GetHashCode();
+      if (RefreshTime != 0) hash ^= RefreshTime.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      list_.WriteTo(output, _repeated_list_codec);
+      if (RefreshTime != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(RefreshTime);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      size += list_.CalculateSize(_repeated_list_codec);
+      if (RefreshTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RefreshTime);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MissionData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      list_.Add(other.list_);
+      if (other.RefreshTime != 0) {
+        RefreshTime = other.RefreshTime;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            list_.AddEntriesFrom(input, _repeated_list_codec);
+            break;
+          }
+          case 24: {
+            RefreshTime = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MissionList : pb::IMessage<MissionList> {
+    private static readonly pb::MessageParser<MissionList> _parser = new pb::MessageParser<MissionList>(() => new MissionList());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MissionList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionList(MissionList other) : this() {
+      list_ = other.list_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MissionList Clone() {
+      return new MissionList(this);
+    }
+
+    /// <summary>Field number for the "list" field.</summary>
+    public const int ListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.MissionData> _repeated_list_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.MissionData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.MissionData> list_ = new pbc::RepeatedField<global::Pb.MissionData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.MissionData> List {
+      get { return list_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MissionList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MissionList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!list_.Equals(other.list_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= list_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      list_.WriteTo(output, _repeated_list_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += list_.CalculateSize(_repeated_list_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MissionList other) {
+      if (other == null) {
+        return;
+      }
+      list_.Add(other.list_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            list_.AddEntriesFrom(input, _repeated_list_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   /// 地图记录
   /// </summary>
@@ -6786,7 +7215,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[44]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6814,11 +7243,11 @@ namespace Pb {
 
     /// <summary>Field number for the "items" field.</summary>
     public const int ItemsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Pb.BuildItem> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(18, global::Pb.BuildItem.Parser);
-    private readonly pbc::RepeatedField<global::Pb.BuildItem> items_ = new pbc::RepeatedField<global::Pb.BuildItem>();
+    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(18, global::Pb.RecordItem.Parser);
+    private readonly pbc::RepeatedField<global::Pb.RecordItem> items_ = new pbc::RepeatedField<global::Pb.RecordItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.BuildItem> Items {
+    public pbc::RepeatedField<global::Pb.RecordItem> Items {
       get { return items_; }
     }
 
@@ -6923,7 +7352,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[45]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

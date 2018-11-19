@@ -43,7 +43,10 @@ namespace Pb{
 		PlayerData,
 		BuildData,
 		CalendarData,
-		BuildItem,
+		RecordItem,
+		MissionItemData,
+		MissionData,
+		MissionList,
 		MapRecord,
 		MapRecordSave
     }
@@ -92,7 +95,10 @@ namespace Pb{
 			dict.Add(PBDefine.PlayerData, PlayerData.Parser);
 			dict.Add(PBDefine.BuildData, BuildData.Parser);
 			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
-			dict.Add(PBDefine.BuildItem, BuildItem.Parser);
+			dict.Add(PBDefine.RecordItem, RecordItem.Parser);
+			dict.Add(PBDefine.MissionItemData, MissionItemData.Parser);
+			dict.Add(PBDefine.MissionData, MissionData.Parser);
+			dict.Add(PBDefine.MissionList, MissionList.Parser);
 			dict.Add(PBDefine.MapRecord, MapRecord.Parser);
 			dict.Add(PBDefine.MapRecordSave, MapRecordSave.Parser);
 		}

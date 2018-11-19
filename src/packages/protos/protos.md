@@ -270,13 +270,30 @@ message CalendarData{
 	int32 minutes = 1;
 }
 //id对应的数据
-message BuildItem{
+message RecordItem{
 	int32 id = 1;
 	bytes contents = 2;
 }
+
+message MissionItemData{
+	int32 id = 1;
+	int32 process = 2;
+}
+
+//任务信息
+message MissionData{
+	int32 id = 1;
+	repeated MissionItemData list = 2;
+	int32 refreshTime = 3;
+}
+
+message MissionList{
+	repeated MissionData list = 1;
+}
+
 //地图记录
 message MapRecord{
-	repeated BuildItem items = 2;
+	repeated RecordItem items = 2;
 	int64 time = 3;
 }
 

@@ -39,8 +39,11 @@ local _M = {
     [38] = "PlayerData",
     [39] = "BuildData",
     [40] = "CalendarData",
-    [41] = "BuildItem",
-    [42] = "MapRecord",
-    [43] = "MapRecordSave",
+    [41] = "RecordItem",
+    [42] = "MissionItemData",
+    [43] = "MissionData",
+    [44] = "MissionList",
+    [45] = "MapRecord",
+    [46] = "MapRecordSave",
 }
 return _M
