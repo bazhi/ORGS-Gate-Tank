@@ -109,6 +109,12 @@ message Delete{
 	int32 type = 2; // 需要删除的ID
 }
 
+message Vector{
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
 //数据
 message Role{
 	int32 id = 1;
@@ -250,6 +256,7 @@ message PlayerData{
 	int32 stamina = 2;
 	repeated ItemData props = 3;
 	repeated ItemData weapons = 4;
+	Vector Position = 5;
 }
 
 //建筑数据

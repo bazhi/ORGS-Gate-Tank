@@ -18,6 +18,7 @@ namespace Pb{
 		OpenBox,
 		GainBox,
 		Delete,
+		Vector,
 		Role,
 		Prop,
 		Props,
@@ -70,6 +71,7 @@ namespace Pb{
 			dict.Add(PBDefine.OpenBox, OpenBox.Parser);
 			dict.Add(PBDefine.GainBox, GainBox.Parser);
 			dict.Add(PBDefine.Delete, Delete.Parser);
+			dict.Add(PBDefine.Vector, Vector.Parser);
 			dict.Add(PBDefine.Role, Role.Parser);
 			dict.Add(PBDefine.Prop, Prop.Parser);
 			dict.Add(PBDefine.Props, Props.Parser);
