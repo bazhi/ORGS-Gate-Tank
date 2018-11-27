@@ -264,7 +264,7 @@ message PlayerData{
 
 //建筑数据
 message BuildData{
-	int32 level = 1;
+	int32 actualID = 1;
 	int32 health = 2;
 	int32 upgradeTime = 3;
 	int32 repairTime = 4;

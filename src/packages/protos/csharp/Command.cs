@@ -76,20 +76,20 @@ namespace Pb {
             "dGESCgoCaWQYASABKAUSDQoFY291bnQYAiABKAUihwEKClBsYXllckRhdGES",
             "DgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUSGwoFcHJvcHMYAyAD",
             "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURh",
-            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IitgEKCUJ1aWxkRGF0",
-            "YRINCgVsZXZlbBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoLdXBncmFkZVRp",
-            "bWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIlCgpjb21wb3NpdGVzGAUg",
-            "AygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9wcxgGIAMoCzIMLnBiLkl0",
-            "ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5JdGVtRGF0YSIfCgxDYWxl",
-            "bmRhckRhdGESDwoHbWludXRlcxgBIAEoBSIqCgpSZWNvcmRJdGVtEgoKAmlk",
-            "GAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIi4KD01pc3Npb25JdGVtRGF0YRIK",
-            "CgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIlEKC01pc3Npb25EYXRhEgoK",
-            "AmlkGAEgASgFEiEKBGxpc3QYAiADKAsyEy5wYi5NaXNzaW9uSXRlbURhdGES",
-            "EwoLcmVmcmVzaFRpbWUYAyABKAUiLAoLTWlzc2lvbkxpc3QSHQoEbGlzdBgB",
-            "IAMoCzIPLnBiLk1pc3Npb25EYXRhIjgKCU1hcFJlY29yZBIdCgVpdGVtcxgC",
-            "IAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBSZWNv",
-            "cmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQYAyAB",
-            "KAxiBnByb3RvMw=="));
+            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiuQEKCUJ1aWxkRGF0",
+            "YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoLdXBncmFk",
+            "ZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIlCgpjb21wb3NpdGVz",
+            "GAUgAygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9wcxgGIAMoCzIMLnBi",
+            "Lkl0ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5JdGVtRGF0YSIfCgxD",
+            "YWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBSIqCgpSZWNvcmRJdGVtEgoK",
+            "AmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIi4KD01pc3Npb25JdGVtRGF0",
+            "YRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIlEKC01pc3Npb25EYXRh",
+            "EgoKAmlkGAEgASgFEiEKBGxpc3QYAiADKAsyEy5wYi5NaXNzaW9uSXRlbURh",
+            "dGESEwoLcmVmcmVzaFRpbWUYAyABKAUiLAoLTWlzc2lvbkxpc3QSHQoEbGlz",
+            "dBgBIAMoCzIPLnBiLk1pc3Npb25EYXRhIjgKCU1hcFJlY29yZBIdCgVpdGVt",
+            "cxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBS",
+            "ZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQY",
+            "AyABKAxiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -132,7 +132,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Level", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionItemData), global::Pb.MissionItemData.Parser, new[]{ "Id", "Process" }, null, null, null),
@@ -6482,7 +6482,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public BuildData(BuildData other) : this() {
-      level_ = other.level_;
+      actualID_ = other.actualID_;
       health_ = other.health_;
       upgradeTime_ = other.upgradeTime_;
       repairTime_ = other.repairTime_;
@@ -6496,14 +6496,14 @@ namespace Pb {
       return new BuildData(this);
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 1;
-    private int level_;
+    /// <summary>Field number for the "actualID" field.</summary>
+    public const int ActualIDFieldNumber = 1;
+    private int actualID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Level {
-      get { return level_; }
+    public int ActualID {
+      get { return actualID_; }
       set {
-        level_ = value;
+        actualID_ = value;
       }
     }
 
@@ -6589,7 +6589,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Level != other.Level) return false;
+      if (ActualID != other.ActualID) return false;
       if (Health != other.Health) return false;
       if (UpgradeTime != other.UpgradeTime) return false;
       if (RepairTime != other.RepairTime) return false;
@@ -6602,7 +6602,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Level != 0) hash ^= Level.GetHashCode();
+      if (ActualID != 0) hash ^= ActualID.GetHashCode();
       if (Health != 0) hash ^= Health.GetHashCode();
       if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
       if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
@@ -6619,9 +6619,9 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Level != 0) {
+      if (ActualID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Level);
+        output.WriteInt32(ActualID);
       }
       if (Health != 0) {
         output.WriteRawTag(16);
@@ -6643,8 +6643,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+      if (ActualID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ActualID);
       }
       if (Health != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
@@ -6666,8 +6666,8 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.ActualID != 0) {
+        ActualID = other.ActualID;
       }
       if (other.Health != 0) {
         Health = other.Health;
@@ -6692,7 +6692,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            Level = input.ReadInt32();
+            ActualID = input.ReadInt32();
             break;
           }
           case 16: {
