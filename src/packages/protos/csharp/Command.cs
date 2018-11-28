@@ -76,23 +76,23 @@ namespace Pb {
             "dGESCgoCaWQYASABKAUSDQoFY291bnQYAiABKAUihwEKClBsYXllckRhdGES",
             "DgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUSGwoFcHJvcHMYAyAD",
             "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURh",
-            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiVwoJTWFwUmVjb3Jk",
-            "Eh0KBnRvd2VycxgBIAMoCzINLnBiLlRvd2VyRGF0YRIdCgVpdGVtcxgCIAMo",
-            "CzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBSZWNvcmRT",
-            "YXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQYAyABKAwi",
-            "KgoKUmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250ZW50cxgCIAEoDCK5",
-            "AQoJQnVpbGREYXRhEhAKCGFjdHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEo",
-            "BRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEiUK",
-            "CmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsKBXByb3Bz",
-            "GAYgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgHIAMoCzIMLnBiLkl0",
-            "ZW1EYXRhIh8KDENhbGVuZGFyRGF0YRIPCgdtaW51dGVzGAEgASgFInQKCVRv",
-            "d2VyRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoL",
-            "dXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIcCghQb3Np",
-            "dGlvbhgFIAEoCzIKLnBiLlZlY3RvciIuCg9NaXNzaW9uSXRlbURhdGESCgoC",
-            "aWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJRCgtNaXNzaW9uRGF0YRIKCgJp",
-            "ZBgBIAEoBRIhCgRsaXN0GAIgAygLMhMucGIuTWlzc2lvbkl0ZW1EYXRhEhMK",
-            "C3JlZnJlc2hUaW1lGAMgASgFIiwKC01pc3Npb25MaXN0Eh0KBGxpc3QYASAD",
-            "KAsyDy5wYi5NaXNzaW9uRGF0YWIGcHJvdG8z"));
+            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiWAoJTWFwUmVjb3Jk",
+            "Eh4KBnRvd2VycxgBIAMoCzIOLnBiLlJlY29yZEl0ZW0SHQoFaXRlbXMYAiAD",
+            "KAsyDi5wYi5SZWNvcmRJdGVtEgwKBHRpbWUYAyABKAMiOAoNTWFwUmVjb3Jk",
+            "U2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiABKAUSDgoGcmVjb3JkGAMgASgM",
+            "IioKClJlY29yZEl0ZW0SCgoCaWQYASABKAUSEAoIY29udGVudHMYAiABKAwi",
+            "uQEKCUJ1aWxkRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiAB",
+            "KAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIl",
+            "Cgpjb21wb3NpdGVzGAUgAygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9w",
+            "cxgGIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5J",
+            "dGVtRGF0YSIfCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBSJ0CglU",
+            "b3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMK",
+            "C3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSHAoIUG9z",
+            "aXRpb24YBSABKAsyCi5wYi5WZWN0b3IiLgoPTWlzc2lvbkl0ZW1EYXRhEgoK",
+            "AmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiUQoLTWlzc2lvbkRhdGESCgoC",
+            "aWQYASABKAUSIQoEbGlzdBgCIAMoCzITLnBiLk1pc3Npb25JdGVtRGF0YRIT",
+            "CgtyZWZyZXNoVGltZRgDIAEoBSIsCgtNaXNzaW9uTGlzdBIdCgRsaXN0GAEg",
+            "AygLMg8ucGIuTWlzc2lvbkRhdGFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -6537,11 +6537,11 @@ namespace Pb {
 
     /// <summary>Field number for the "towers" field.</summary>
     public const int TowersFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.TowerData> _repeated_towers_codec
-        = pb::FieldCodec.ForMessage(10, global::Pb.TowerData.Parser);
-    private readonly pbc::RepeatedField<global::Pb.TowerData> towers_ = new pbc::RepeatedField<global::Pb.TowerData>();
+    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_towers_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.RecordItem.Parser);
+    private readonly pbc::RepeatedField<global::Pb.RecordItem> towers_ = new pbc::RepeatedField<global::Pb.RecordItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.TowerData> Towers {
+    public pbc::RepeatedField<global::Pb.RecordItem> Towers {
       get { return towers_; }
     }
 

@@ -302,7 +302,7 @@ message PlayerData{
 
 //地图记录
 message MapRecord{
-	repeated TowerData towers = 1;
+	repeated RecordItem towers = 1;
 	repeated RecordItem items = 2;
 	int64 time = 3;
 }
