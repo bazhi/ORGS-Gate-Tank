@@ -76,20 +76,23 @@ namespace Pb {
             "dGESCgoCaWQYASABKAUSDQoFY291bnQYAiABKAUihwEKClBsYXllckRhdGES",
             "DgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUSGwoFcHJvcHMYAyAD",
             "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURh",
-            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiuQEKCUJ1aWxkRGF0",
-            "YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoLdXBncmFk",
-            "ZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIlCgpjb21wb3NpdGVz",
-            "GAUgAygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9wcxgGIAMoCzIMLnBi",
-            "Lkl0ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5JdGVtRGF0YSIfCgxD",
-            "YWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBSIqCgpSZWNvcmRJdGVtEgoK",
-            "AmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIi4KD01pc3Npb25JdGVtRGF0",
-            "YRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIlEKC01pc3Npb25EYXRh",
-            "EgoKAmlkGAEgASgFEiEKBGxpc3QYAiADKAsyEy5wYi5NaXNzaW9uSXRlbURh",
-            "dGESEwoLcmVmcmVzaFRpbWUYAyABKAUiLAoLTWlzc2lvbkxpc3QSHQoEbGlz",
-            "dBgBIAMoCzIPLnBiLk1pc3Npb25EYXRhIjgKCU1hcFJlY29yZBIdCgVpdGVt",
-            "cxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBS",
-            "ZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQY",
-            "AyABKAxiBnByb3RvMw=="));
+            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiVwoJTWFwUmVjb3Jk",
+            "Eh0KBnRvd2VycxgBIAMoCzINLnBiLlRvd2VyRGF0YRIdCgVpdGVtcxgCIAMo",
+            "CzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBSZWNvcmRT",
+            "YXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQYAyABKAwi",
+            "KgoKUmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250ZW50cxgCIAEoDCK5",
+            "AQoJQnVpbGREYXRhEhAKCGFjdHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEo",
+            "BRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEiUK",
+            "CmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsKBXByb3Bz",
+            "GAYgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgHIAMoCzIMLnBiLkl0",
+            "ZW1EYXRhIh8KDENhbGVuZGFyRGF0YRIPCgdtaW51dGVzGAEgASgFInQKCVRv",
+            "d2VyRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoL",
+            "dXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIcCghQb3Np",
+            "dGlvbhgFIAEoCzIKLnBiLlZlY3RvciIuCg9NaXNzaW9uSXRlbURhdGESCgoC",
+            "aWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJRCgtNaXNzaW9uRGF0YRIKCgJp",
+            "ZBgBIAEoBRIhCgRsaXN0GAIgAygLMhMucGIuTWlzc2lvbkl0ZW1EYXRhEhMK",
+            "C3JlZnJlc2hUaW1lGAMgASgFIiwKC01pc3Npb25MaXN0Eh0KBGxpc3QYASAD",
+            "KAsyDy5wYi5NaXNzaW9uRGF0YWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -132,20 +135,60 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Items", "Time" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionItemData), global::Pb.MissionItemData.Parser, new[]{ "Id", "Process" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionData), global::Pb.MissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionList), global::Pb.MissionList.Parser, new[]{ "List" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Items", "Time" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionList), global::Pb.MissionList.Parser, new[]{ "List" }, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
+  /// <summary>
+  ///
+  /// Pack==1
+  /// Error==2
+  /// Operation==3
+  /// CreateRole==4
+  /// EnterChapter==5
+  /// EnterSection==6
+  ///
+  /// Delete==11
+  /// SigninRecord==12
+  /// SigninGet==13
+  /// MapRecordSave==15
+  ///
+  /// ShopRecord==21
+  /// ShopGet==22
+  ///
+  /// OpenBox==31
+  /// GainBox==32
+  ///
+  /// Decompose==41
+  ///
+  /// FinishMission==51
+  ///
+  /// Role==101
+  /// Chapters==102
+  /// Equipments==103
+  /// Missions==104
+  /// Sections==105
+  /// Boxes==106
+  /// Props==107
+  /// Rewards==108
+  ///
+  /// Chapter==1021
+  /// Mission==1041
+  /// Section==1051
+  /// Box==1061
+  /// Prop==1071
+  /// </summary>
   public sealed partial class Pack : pb::IMessage<Pack> {
     private static readonly pb::MessageParser<Pack> _parser = new pb::MessageParser<Pack>(() => new Pack());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6456,6 +6499,487 @@ namespace Pb {
   }
 
   /// <summary>
+  /// 地图记录
+  /// </summary>
+  public sealed partial class MapRecord : pb::IMessage<MapRecord> {
+    private static readonly pb::MessageParser<MapRecord> _parser = new pb::MessageParser<MapRecord>(() => new MapRecord());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MapRecord> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecord() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecord(MapRecord other) : this() {
+      towers_ = other.towers_.Clone();
+      items_ = other.items_.Clone();
+      time_ = other.time_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecord Clone() {
+      return new MapRecord(this);
+    }
+
+    /// <summary>Field number for the "towers" field.</summary>
+    public const int TowersFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.TowerData> _repeated_towers_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.TowerData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.TowerData> towers_ = new pbc::RepeatedField<global::Pb.TowerData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.TowerData> Towers {
+      get { return towers_; }
+    }
+
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(18, global::Pb.RecordItem.Parser);
+    private readonly pbc::RepeatedField<global::Pb.RecordItem> items_ = new pbc::RepeatedField<global::Pb.RecordItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.RecordItem> Items {
+      get { return items_; }
+    }
+
+    /// <summary>Field number for the "time" field.</summary>
+    public const int TimeFieldNumber = 3;
+    private long time_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Time {
+      get { return time_; }
+      set {
+        time_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MapRecord);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MapRecord other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!towers_.Equals(other.towers_)) return false;
+      if(!items_.Equals(other.items_)) return false;
+      if (Time != other.Time) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= towers_.GetHashCode();
+      hash ^= items_.GetHashCode();
+      if (Time != 0L) hash ^= Time.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      towers_.WriteTo(output, _repeated_towers_codec);
+      items_.WriteTo(output, _repeated_items_codec);
+      if (Time != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(Time);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += towers_.CalculateSize(_repeated_towers_codec);
+      size += items_.CalculateSize(_repeated_items_codec);
+      if (Time != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MapRecord other) {
+      if (other == null) {
+        return;
+      }
+      towers_.Add(other.towers_);
+      items_.Add(other.items_);
+      if (other.Time != 0L) {
+        Time = other.Time;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            towers_.AddEntriesFrom(input, _repeated_towers_codec);
+            break;
+          }
+          case 18: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
+            break;
+          }
+          case 24: {
+            Time = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MapRecordSave : pb::IMessage<MapRecordSave> {
+    private static readonly pb::MessageParser<MapRecordSave> _parser = new pb::MessageParser<MapRecordSave>(() => new MapRecordSave());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MapRecordSave> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecordSave() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecordSave(MapRecordSave other) : this() {
+      id_ = other.id_;
+      seq_ = other.seq_;
+      record_ = other.record_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MapRecordSave Clone() {
+      return new MapRecordSave(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "seq" field.</summary>
+    public const int SeqFieldNumber = 2;
+    private int seq_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Seq {
+      get { return seq_; }
+      set {
+        seq_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "record" field.</summary>
+    public const int RecordFieldNumber = 3;
+    private pb::ByteString record_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString Record {
+      get { return record_; }
+      set {
+        record_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MapRecordSave);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MapRecordSave other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Seq != other.Seq) return false;
+      if (Record != other.Record) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Seq != 0) hash ^= Seq.GetHashCode();
+      if (Record.Length != 0) hash ^= Record.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Seq != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Seq);
+      }
+      if (Record.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Record);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Seq != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seq);
+      }
+      if (Record.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Record);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MapRecordSave other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Seq != 0) {
+        Seq = other.Seq;
+      }
+      if (other.Record.Length != 0) {
+        Record = other.Record;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Seq = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Record = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// id对应的数据
+  /// </summary>
+  public sealed partial class RecordItem : pb::IMessage<RecordItem> {
+    private static readonly pb::MessageParser<RecordItem> _parser = new pb::MessageParser<RecordItem>(() => new RecordItem());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RecordItem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordItem(RecordItem other) : this() {
+      id_ = other.id_;
+      contents_ = other.contents_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordItem Clone() {
+      return new RecordItem(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "contents" field.</summary>
+    public const int ContentsFieldNumber = 2;
+    private pb::ByteString contents_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString Contents {
+      get { return contents_; }
+      set {
+        contents_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RecordItem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RecordItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Contents != other.Contents) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Contents.Length != 0) hash ^= Contents.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Contents.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Contents);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Contents.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Contents);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RecordItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Contents.Length != 0) {
+        Contents = other.Contents;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Contents = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
   /// 建筑数据
   /// </summary>
   public sealed partial class BuildData : pb::IMessage<BuildData> {
@@ -6465,7 +6989,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6735,7 +7259,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6845,17 +7369,14 @@ namespace Pb {
 
   }
 
-  /// <summary>
-  /// id对应的数据
-  /// </summary>
-  public sealed partial class RecordItem : pb::IMessage<RecordItem> {
-    private static readonly pb::MessageParser<RecordItem> _parser = new pb::MessageParser<RecordItem>(() => new RecordItem());
+  public sealed partial class TowerData : pb::IMessage<TowerData> {
+    private static readonly pb::MessageParser<TowerData> _parser = new pb::MessageParser<TowerData>(() => new TowerData());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RecordItem> Parser { get { return _parser; } }
+    public static pb::MessageParser<TowerData> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[44]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6864,68 +7385,110 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem() {
+    public TowerData() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem(RecordItem other) : this() {
-      id_ = other.id_;
-      contents_ = other.contents_;
+    public TowerData(TowerData other) : this() {
+      actualID_ = other.actualID_;
+      health_ = other.health_;
+      upgradeTime_ = other.upgradeTime_;
+      repairTime_ = other.repairTime_;
+      Position = other.position_ != null ? other.Position.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem Clone() {
-      return new RecordItem(this);
+    public TowerData Clone() {
+      return new TowerData(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
+    /// <summary>Field number for the "actualID" field.</summary>
+    public const int ActualIDFieldNumber = 1;
+    private int actualID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
+    public int ActualID {
+      get { return actualID_; }
       set {
-        id_ = value;
+        actualID_ = value;
       }
     }
 
-    /// <summary>Field number for the "contents" field.</summary>
-    public const int ContentsFieldNumber = 2;
-    private pb::ByteString contents_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "health" field.</summary>
+    public const int HealthFieldNumber = 2;
+    private int health_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Contents {
-      get { return contents_; }
+    public int Health {
+      get { return health_; }
       set {
-        contents_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        health_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "upgradeTime" field.</summary>
+    public const int UpgradeTimeFieldNumber = 3;
+    private int upgradeTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int UpgradeTime {
+      get { return upgradeTime_; }
+      set {
+        upgradeTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "repairTime" field.</summary>
+    public const int RepairTimeFieldNumber = 4;
+    private int repairTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RepairTime {
+      get { return repairTime_; }
+      set {
+        repairTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Position" field.</summary>
+    public const int PositionFieldNumber = 5;
+    private global::Pb.Vector position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.Vector Position {
+      get { return position_; }
+      set {
+        position_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as RecordItem);
+      return Equals(other as TowerData);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RecordItem other) {
+    public bool Equals(TowerData other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Contents != other.Contents) return false;
+      if (ActualID != other.ActualID) return false;
+      if (Health != other.Health) return false;
+      if (UpgradeTime != other.UpgradeTime) return false;
+      if (RepairTime != other.RepairTime) return false;
+      if (!object.Equals(Position, other.Position)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Contents.Length != 0) hash ^= Contents.GetHashCode();
+      if (ActualID != 0) hash ^= ActualID.GetHashCode();
+      if (Health != 0) hash ^= Health.GetHashCode();
+      if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
+      if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
+      if (position_ != null) hash ^= Position.GetHashCode();
       return hash;
     }
 
@@ -6936,38 +7499,71 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
+      if (ActualID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteInt32(ActualID);
       }
-      if (Contents.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(Contents);
+      if (Health != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Health);
+      }
+      if (UpgradeTime != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(UpgradeTime);
+      }
+      if (RepairTime != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(RepairTime);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Position);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (ActualID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ActualID);
       }
-      if (Contents.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Contents);
+      if (Health != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
+      }
+      if (UpgradeTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UpgradeTime);
+      }
+      if (RepairTime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RepairTime);
+      }
+      if (position_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
       }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RecordItem other) {
+    public void MergeFrom(TowerData other) {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.ActualID != 0) {
+        ActualID = other.ActualID;
       }
-      if (other.Contents.Length != 0) {
-        Contents = other.Contents;
+      if (other.Health != 0) {
+        Health = other.Health;
+      }
+      if (other.UpgradeTime != 0) {
+        UpgradeTime = other.UpgradeTime;
+      }
+      if (other.RepairTime != 0) {
+        RepairTime = other.RepairTime;
+      }
+      if (other.position_ != null) {
+        if (position_ == null) {
+          position_ = new global::Pb.Vector();
+        }
+        Position.MergeFrom(other.Position);
       }
     }
 
@@ -6980,11 +7576,26 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            Id = input.ReadInt32();
+            ActualID = input.ReadInt32();
             break;
           }
-          case 18: {
-            Contents = input.ReadBytes();
+          case 16: {
+            Health = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            UpgradeTime = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            RepairTime = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            if (position_ == null) {
+              position_ = new global::Pb.Vector();
+            }
+            input.ReadMessage(position_);
             break;
           }
         }
@@ -6993,6 +7604,9 @@ namespace Pb {
 
   }
 
+  /// <summary>
+  /// 任务数据
+  /// </summary>
   public sealed partial class MissionItemData : pb::IMessage<MissionItemData> {
     private static readonly pb::MessageParser<MissionItemData> _parser = new pb::MessageParser<MissionItemData>(() => new MissionItemData());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7000,7 +7614,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[45]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7148,7 +7762,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[46]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7313,7 +7927,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[44]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[47]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7407,319 +8021,6 @@ namespace Pb {
             break;
           case 10: {
             list_.AddEntriesFrom(input, _repeated_list_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// 地图记录
-  /// </summary>
-  public sealed partial class MapRecord : pb::IMessage<MapRecord> {
-    private static readonly pb::MessageParser<MapRecord> _parser = new pb::MessageParser<MapRecord>(() => new MapRecord());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MapRecord> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[45]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecord() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecord(MapRecord other) : this() {
-      items_ = other.items_.Clone();
-      time_ = other.time_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecord Clone() {
-      return new MapRecord(this);
-    }
-
-    /// <summary>Field number for the "items" field.</summary>
-    public const int ItemsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(18, global::Pb.RecordItem.Parser);
-    private readonly pbc::RepeatedField<global::Pb.RecordItem> items_ = new pbc::RepeatedField<global::Pb.RecordItem>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.RecordItem> Items {
-      get { return items_; }
-    }
-
-    /// <summary>Field number for the "time" field.</summary>
-    public const int TimeFieldNumber = 3;
-    private long time_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Time {
-      get { return time_; }
-      set {
-        time_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MapRecord);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MapRecord other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!items_.Equals(other.items_)) return false;
-      if (Time != other.Time) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= items_.GetHashCode();
-      if (Time != 0L) hash ^= Time.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      items_.WriteTo(output, _repeated_items_codec);
-      if (Time != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(Time);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += items_.CalculateSize(_repeated_items_codec);
-      if (Time != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MapRecord other) {
-      if (other == null) {
-        return;
-      }
-      items_.Add(other.items_);
-      if (other.Time != 0L) {
-        Time = other.Time;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 18: {
-            items_.AddEntriesFrom(input, _repeated_items_codec);
-            break;
-          }
-          case 24: {
-            Time = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class MapRecordSave : pb::IMessage<MapRecordSave> {
-    private static readonly pb::MessageParser<MapRecordSave> _parser = new pb::MessageParser<MapRecordSave>(() => new MapRecordSave());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MapRecordSave> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[46]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecordSave() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecordSave(MapRecordSave other) : this() {
-      id_ = other.id_;
-      seq_ = other.seq_;
-      record_ = other.record_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MapRecordSave Clone() {
-      return new MapRecordSave(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "seq" field.</summary>
-    public const int SeqFieldNumber = 2;
-    private int seq_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Seq {
-      get { return seq_; }
-      set {
-        seq_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "record" field.</summary>
-    public const int RecordFieldNumber = 3;
-    private pb::ByteString record_ = pb::ByteString.Empty;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Record {
-      get { return record_; }
-      set {
-        record_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MapRecordSave);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MapRecordSave other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Seq != other.Seq) return false;
-      if (Record != other.Record) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Seq != 0) hash ^= Seq.GetHashCode();
-      if (Record.Length != 0) hash ^= Record.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (Seq != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Seq);
-      }
-      if (Record.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteBytes(Record);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (Seq != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seq);
-      }
-      if (Record.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Record);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MapRecordSave other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Seq != 0) {
-        Seq = other.Seq;
-      }
-      if (other.Record.Length != 0) {
-        Record = other.Record;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Seq = input.ReadInt32();
-            break;
-          }
-          case 26: {
-            Record = input.ReadBytes();
             break;
           }
         }

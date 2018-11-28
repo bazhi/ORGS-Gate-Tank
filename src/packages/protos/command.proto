@@ -1,6 +1,44 @@
 syntax = "proto3";
 package pb;
 
+/*
+	Pack==1
+	Error==2
+	Operation==3
+	CreateRole==4
+	EnterChapter==5
+	EnterSection==6
+
+	Delete==11
+	SigninRecord==12
+	SigninGet==13
+	MapRecordSave==15
+
+	ShopRecord==21
+	ShopGet==22
+	
+	OpenBox==31
+	GainBox==32
+
+	Decompose==41
+
+	FinishMission==51
+
+	Role==101
+	Chapters==102
+	Equipments==103
+	Missions==104
+	Sections==105
+	Boxes==106
+	Props==107
+	Rewards==108
+
+	Chapter==1021
+	Mission==1041
+	Section==1051
+	Box==1061
+	Prop==1071
+*/
 message Pack{
 	int32 type = 1;
 	bytes content = 2; //actions的参数
@@ -259,6 +297,25 @@ message PlayerData{
 	Vector Position = 5;
 }
 
+//地图记录
+message MapRecord{
+	repeated TowerData towers = 1;
+	repeated RecordItem items = 2;
+	int64 time = 3;
+}
+
+message MapRecordSave{
+	int32 id = 1;
+	int32 seq = 2;
+	bytes record = 3;
+}
+
+//id对应的数据
+message RecordItem{
+	int32 id = 1;
+	bytes contents = 2;
+}
+
 //建筑数据
 message BuildData{
 	int32 actualID = 1;
@@ -269,16 +326,21 @@ message BuildData{
 	repeated ItemData props = 6; //仓库中才使用
 	repeated ItemData weapons = 7; //仓库中才使用
 }
+
 //日历数据
 message CalendarData{
 	int32 minutes = 1;
 }
-//id对应的数据
-message RecordItem{
-	int32 id = 1;
-	bytes contents = 2;
+
+message TowerData{
+	int32 actualID = 1;
+	int32 health = 2;
+	int32 upgradeTime = 3;
+	int32 repairTime = 4;
+	Vector Position = 5;
 }
 
+//任务数据
 message MissionItemData{
 	int32 id = 1;
 	int32 process = 2;
@@ -293,16 +355,4 @@ message MissionData{
 
 message MissionList{
 	repeated MissionData list = 1;
-}
-
-//地图记录
-message MapRecord{
-	repeated RecordItem items = 2;
-	int64 time = 3;
-}
-
-message MapRecordSave{
-	int32 id = 1;
-	int32 seq = 2;
-	bytes record = 3;
 }

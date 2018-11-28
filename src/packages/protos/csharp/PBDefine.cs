@@ -2,107 +2,71 @@ using Google.Protobuf;
 using System.Collections.Generic;
 namespace Pb{
     public enum PBDefine{
-		Unknow,
-		Pack,
-		Error,
-		Operation,
-		CreateRole,
-		UpgradeStar,
-		UnlockEquipment,
-		UpgradeLevel,
-		Decompose,
-		EnterChapter,
-		EnterSection,
-		FinishSection,
-		FinishMission,
-		OpenBox,
-		GainBox,
-		Delete,
-		Vector,
-		Role,
-		Prop,
-		Props,
-		Equipment,
-		Equipments,
-		Chapter,
-		Chapters,
-		Section,
-		SectionResult,
-		Sections,
-		Mission,
-		Missions,
-		Box,
-		Boxes,
-		Reward,
-		Rewards,
-		SigninRecord,
-		SigninGet,
-		ShopGet,
-		ShopRecord,
-		CompositeItem,
-		ItemData,
-		PlayerData,
-		BuildData,
-		CalendarData,
-		RecordItem,
-		MissionItemData,
-		MissionData,
-		MissionList,
-		MapRecord,
-		MapRecordSave
+        Unknow,
+        Pack = 1,
+        Error = 2,
+        Operation = 3,
+        CreateRole = 4,
+        Decompose = 41,
+        EnterChapter = 5,
+        EnterSection = 6,
+        FinishMission = 51,
+        OpenBox = 31,
+        GainBox = 32,
+        Delete = 11,
+        Role = 101,
+        Prop = 1071,
+        Props = 107,
+        Equipments = 103,
+        Chapter = 1021,
+        Chapters = 102,
+        Section = 1051,
+        Sections = 105,
+        Mission = 1041,
+        Missions = 104,
+        Box = 1061,
+        Boxes = 106,
+        Rewards = 108,
+        SigninRecord = 12,
+        SigninGet = 13,
+        ShopGet = 22,
+        ShopRecord = 21,
+        MapRecordSave = 15
     }
 
-	public static class PBRegister
-	{
-		public static void Register(ref Dictionary<PBDefine, MessageParser>dict)
-		{
-			dict.Add(PBDefine.Pack, Pack.Parser);
-			dict.Add(PBDefine.Error, Error.Parser);
-			dict.Add(PBDefine.Operation, Operation.Parser);
-			dict.Add(PBDefine.CreateRole, CreateRole.Parser);
-			dict.Add(PBDefine.UpgradeStar, UpgradeStar.Parser);
-			dict.Add(PBDefine.UnlockEquipment, UnlockEquipment.Parser);
-			dict.Add(PBDefine.UpgradeLevel, UpgradeLevel.Parser);
-			dict.Add(PBDefine.Decompose, Decompose.Parser);
-			dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);
-			dict.Add(PBDefine.EnterSection, EnterSection.Parser);
-			dict.Add(PBDefine.FinishSection, FinishSection.Parser);
-			dict.Add(PBDefine.FinishMission, FinishMission.Parser);
-			dict.Add(PBDefine.OpenBox, OpenBox.Parser);
-			dict.Add(PBDefine.GainBox, GainBox.Parser);
-			dict.Add(PBDefine.Delete, Delete.Parser);
-			dict.Add(PBDefine.Vector, Vector.Parser);
-			dict.Add(PBDefine.Role, Role.Parser);
-			dict.Add(PBDefine.Prop, Prop.Parser);
-			dict.Add(PBDefine.Props, Props.Parser);
-			dict.Add(PBDefine.Equipment, Equipment.Parser);
-			dict.Add(PBDefine.Equipments, Equipments.Parser);
-			dict.Add(PBDefine.Chapter, Chapter.Parser);
-			dict.Add(PBDefine.Chapters, Chapters.Parser);
-			dict.Add(PBDefine.Section, Section.Parser);
-			dict.Add(PBDefine.SectionResult, SectionResult.Parser);
-			dict.Add(PBDefine.Sections, Sections.Parser);
-			dict.Add(PBDefine.Mission, Mission.Parser);
-			dict.Add(PBDefine.Missions, Missions.Parser);
-			dict.Add(PBDefine.Box, Box.Parser);
-			dict.Add(PBDefine.Boxes, Boxes.Parser);
-			dict.Add(PBDefine.Reward, Reward.Parser);
-			dict.Add(PBDefine.Rewards, Rewards.Parser);
-			dict.Add(PBDefine.SigninRecord, SigninRecord.Parser);
-			dict.Add(PBDefine.SigninGet, SigninGet.Parser);
-			dict.Add(PBDefine.ShopGet, ShopGet.Parser);
-			dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
-			dict.Add(PBDefine.CompositeItem, CompositeItem.Parser);
-			dict.Add(PBDefine.ItemData, ItemData.Parser);
-			dict.Add(PBDefine.PlayerData, PlayerData.Parser);
-			dict.Add(PBDefine.BuildData, BuildData.Parser);
-			dict.Add(PBDefine.CalendarData, CalendarData.Parser);
-			dict.Add(PBDefine.RecordItem, RecordItem.Parser);
-			dict.Add(PBDefine.MissionItemData, MissionItemData.Parser);
-			dict.Add(PBDefine.MissionData, MissionData.Parser);
-			dict.Add(PBDefine.MissionList, MissionList.Parser);
-			dict.Add(PBDefine.MapRecord, MapRecord.Parser);
-			dict.Add(PBDefine.MapRecordSave, MapRecordSave.Parser);
-		}
-	}
+    public static class PBRegister
+    {
+        public static void Register(ref Dictionary<PBDefine, MessageParser>dict)
+        {
+            dict.Add(PBDefine.Pack, Pack.Parser);
+            dict.Add(PBDefine.Error, Error.Parser);
+            dict.Add(PBDefine.Operation, Operation.Parser);
+            dict.Add(PBDefine.CreateRole, CreateRole.Parser);
+            dict.Add(PBDefine.Decompose, Decompose.Parser);
+            dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);
+            dict.Add(PBDefine.EnterSection, EnterSection.Parser);
+            dict.Add(PBDefine.FinishMission, FinishMission.Parser);
+            dict.Add(PBDefine.OpenBox, OpenBox.Parser);
+            dict.Add(PBDefine.GainBox, GainBox.Parser);
+            dict.Add(PBDefine.Delete, Delete.Parser);
+            dict.Add(PBDefine.Role, Role.Parser);
+            dict.Add(PBDefine.Prop, Prop.Parser);
+            dict.Add(PBDefine.Props, Props.Parser);
+            dict.Add(PBDefine.Equipments, Equipments.Parser);
+            dict.Add(PBDefine.Chapter, Chapter.Parser);
+            dict.Add(PBDefine.Chapters, Chapters.Parser);
+            dict.Add(PBDefine.Section, Section.Parser);
+            dict.Add(PBDefine.Sections, Sections.Parser);
+            dict.Add(PBDefine.Mission, Mission.Parser);
+            dict.Add(PBDefine.Missions, Missions.Parser);
+            dict.Add(PBDefine.Box, Box.Parser);
+            dict.Add(PBDefine.Boxes, Boxes.Parser);
+            dict.Add(PBDefine.Rewards, Rewards.Parser);
+            dict.Add(PBDefine.SigninRecord, SigninRecord.Parser);
+            dict.Add(PBDefine.SigninGet, SigninGet.Parser);
+            dict.Add(PBDefine.ShopGet, ShopGet.Parser);
+            dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
+            dict.Add(PBDefine.MapRecordSave, MapRecordSave.Parser);
+        }
+    }
 }
