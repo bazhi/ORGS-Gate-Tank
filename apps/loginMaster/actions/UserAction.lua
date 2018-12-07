@@ -33,12 +33,13 @@ local str = require ("resty.string")
 local _opensession = function(redis, args)
     local sid = args.sid
     if not sid then
-        cc.throw("not set argsument: \"sid\"")
+        cc.printf("not set argsument: \"sid\"")
     end
     
     local session = Session:new(redis)
     if not session:start(sid) then
-        cc.throw("session is expired, or invalid session id")
+        cc.printf("session is expired, or invalid session id")
+        return nil
     end
     
     return session
@@ -141,10 +142,13 @@ function UserAction:verifyAction(args, redis)
     end
     
     local session = _opensession(redis, args)
-    local username = session:get("username")
-    local platform = session:get("platform")
-    local user = AccountManager.Get(username, platform)
-    return user
+    if session then
+        local username = session:get("username")
+        local platform = session:get("platform")
+        local user = AccountManager.Get(username, platform)
+        return user
+    end
+    return nil
 end
 
 -- function UserAction:testAction()
