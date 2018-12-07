@@ -6,7 +6,7 @@ function InitializeTimer:ctor(config, ...)
 end
 
 function InitializeTimer:runEventLoop()
-    cc.printf("website InitializeTimer:runEventLoop()")
+    cc.printf("update InitializeTimer:runEventLoop()")
     
     self:Initialized()
     return InitializeTimer.super.runEventLoop(self)
