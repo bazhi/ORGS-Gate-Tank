@@ -131,7 +131,7 @@ function MasterTimer:ConnectMaster()
         },
     })
     if not ok then
-        cc.printerror("wb connect:"..err)
+        cc.printerror("wb failed to connect::"..err)
         return nil
     end
     
