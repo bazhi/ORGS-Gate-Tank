@@ -14,7 +14,6 @@ function MasterTimer:runEventLoop()
     local running = true
     while running do
         if not wb then
-            --cc.printf("runEventLoop MasterTimer")
             wb, err = self:ConnectMaster()
             self:addToServer(wb)
             if err then
@@ -22,8 +21,8 @@ function MasterTimer:runEventLoop()
             end
         end
         
-        if wb then
-            --wb:send_ping()
+        if wb and not wb.fatal then
+            wb:send_ping()
             local _data, typ, err = wb:recv_frame()
             if typ == "close" then
                 wb:set_keepalive()
@@ -31,6 +30,9 @@ function MasterTimer:runEventLoop()
             elseif typ == "pong" then
             elseif err then
                 cc.printerror("wb recv_frame:"..err)
+            end
+        else
+            if wb and wb.fatal then
                 wb:set_keepalive()
                 wb = nil
             end
