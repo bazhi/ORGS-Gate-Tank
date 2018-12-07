@@ -25,11 +25,12 @@ function MasterTimer:runEventLoop()
         if wb then
             wb:send_ping()
             local _data, typ, err = wb:recv_frame()
-            if typ == "close" or err then
-                cc.printerror("wb recv_frame:"..err .. " type:"..typ)
+            if typ == "close" then
                 wb:set_keepalive()
                 wb = nil
             elseif typ == "pong" then
+            elseif err then
+                cc.printerror("wb recv_frame:"..err)
             end
         end
         ngx.sleep(10)
