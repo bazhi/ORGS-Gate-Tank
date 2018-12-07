@@ -18,7 +18,7 @@ end
 
 function NginxWorkerInstance:onWorkerFirst()
     --cc.dump(self.config)
-    self:runTimer(1, InitializeTimer, self.config)
+    self:runTimer(0.5, InitializeTimer, self.config)
 end
 
 return NginxWorkerInstance
