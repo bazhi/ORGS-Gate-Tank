@@ -15,9 +15,13 @@ function MasterTimer:runEventLoop()
     while running do
         if not wb then
             wb, err = self:ConnectMaster()
-            self:addToServer(wb)
             if err then
                 cc.printerror(err)
+            else
+                local _, err = self:addToServer(wb)
+                if err then
+                    cc.printerror(err)
+                end
             end
         end
         
@@ -49,7 +53,7 @@ end
 function MasterTimer:addToServer(wb)
     if wb then
         local serverConfig, appName = self:getNginxConfig()
-        wb:send_text(json.encode({
+        return wb:send_text(json.encode({
             action = "service.add",
             port = serverConfig.port,
             host = serverConfig.host,
