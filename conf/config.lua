@@ -66,7 +66,7 @@ local config = {
                 },
             },
             {
-                name = "server",
+                name = "Server",
                 numOfWorkers = 2,
                 port = 8089,
                 host = "192.168.0.66",
@@ -90,12 +90,12 @@ local config = {
             port = 11300,
         },
         
-        mysql = {
-            host = "127.0.0.1",
-            port = 3306,
-            username = "",
-            password = "",
-        },
+        -- mysql = {
+        --     host = "127.0.0.1",
+        --     port = 3306,
+        --     username = "",
+        --     password = "",
+        -- },
     },
 }
 return config
