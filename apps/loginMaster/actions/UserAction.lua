@@ -38,7 +38,7 @@ local _opensession = function(redis, args)
     
     local session = Session:new(redis)
     if not session:start(sid) then
-        cc.printf("session is expired, or invalid session id")
+        --cc.printf("session is expired, or invalid session id")
         return nil
     end
     

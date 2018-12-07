@@ -36,11 +36,13 @@ end
 
 function WebSocketInstance:authConnect()
     if not sdSIG:get(Constants.SIGINIT) then
+        cc.printf("SIGINIT is not set")
         return nil, nil, "SIGINIT is not set"
     end
     
     local authorization = WebSocketInstance.super.authConnect(self)
     if not self:hasAuthority(authorization) then
+        cc.printf("authorization is error")
         return nil, nil, "authorization is error"
     end
     
