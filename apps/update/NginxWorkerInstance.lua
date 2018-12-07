@@ -9,7 +9,7 @@ end
 
 function NginxWorkerInstance:runEventLoop()
     local workerid = ngx.worker.id()
-    cc.printf("website NginxWorkerInstance runEventLoop:"..workerid..":"..self.config.app.appName)
+    cc.printf("NginxWorkerInstance runEventLoop:"..workerid..":"..self.config.app.appName)
     if 0 == workerid then
         self:onWorkerFirst()
     end
