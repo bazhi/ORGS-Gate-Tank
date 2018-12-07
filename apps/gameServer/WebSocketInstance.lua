@@ -56,6 +56,8 @@ function WebSocketInstance:authConnect()
     self._User = user
     if user and user.id then
         return token, user.id
+    else
+        cc.printf("authConnect failed")
     end
     
     return nil, nil, "authConnect failed"
