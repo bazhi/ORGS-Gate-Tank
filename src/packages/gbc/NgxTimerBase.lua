@@ -30,9 +30,9 @@ local json = cc.import("#json")
 local json_encode = json.encode
 local sdSIG = ngx.shared.sdSIG
 
-function NgxTimerBase:ctor(config, bInit)
+function NgxTimerBase:ctor(config, param)
     self.config = config
-    self.bInit = bInit
+    self.param = param
 end
 
 function NgxTimerBase:run()
@@ -40,11 +40,14 @@ function NgxTimerBase:run()
     self:onClose()
 end
 
+function NgxTimerBase:safeFunction(func)
+    return xpcall(func, function(err)
+        err = tostring(err)
+        cc.printerror(err .. debug.traceback("", 10))
+    end)
+end
+
 function NgxTimerBase:runEventLoop()
-    if self.bInit then
-        self:initOver()
-        self.bInit = false
-    end
     return true
 end
 
@@ -92,14 +95,14 @@ function NgxTimerBase:getRedis()
     end
     local redis = self._redis
     if not redis then
-        local config = self.config.server.redis
+        local redisConfig = self.config.server.redis
         redis = Redis:new()
         
         local ok, err
-        if config.socket then
-            ok, err = redis:connect(config.socket)
+        if redisConfig.socket then
+            ok, err = redis:connect(redisConfig.socket)
         else
-            ok, err = redis:connect(config.host, config.port)
+            ok, err = redis:connect(redisConfig.host, redisConfig.port)
         end
         if not ok then
             cc.throw("InstanceBase:getRedis() - %s", err)
@@ -116,13 +119,13 @@ function NgxTimerBase:getMysql()
     end
     local mysql = self._mysql
     if not mysql then
-        local config = self.config.app.mysql
-        if not config then
+        local mysqlConfig = self.config.app.mysql
+        if not mysqlConfig then
             cc.printerror("NgxTimerBase:getMysql() - mysql is not set config:"..self.config.app.appName)
             --cc.printerror("package.path:"..package.path)
             return nil
         end
-        local _mysql, _err = Mysql.create(config)
+        local _mysql, _err = Mysql.create(mysqlConfig)
         if not _mysql then
             cc.printerror("NgxTimerBase:getMysql() - can not create mysql:".._err)
             return nil
@@ -138,7 +141,7 @@ function NgxTimerBase:onClose()
     self:closeRedis()
 end
 
-function NgxTimerBase:initOver()
+function NgxTimerBase:Initialized()
     local redis = self:getRedis()
     redis:set(Constants.NEXT_CONNECT_ID_KEY, 0)
     sdSIG:set(Constants.SIGINIT, true)
@@ -158,6 +161,7 @@ function NgxTimerBase:closeRedis()
     end
 end
 
+--获取server.nginx
 function NgxTimerBase:getNginxConfig()
     local config = self.config
     local appName = config.app.appName
@@ -170,6 +174,7 @@ function NgxTimerBase:getNginxConfig()
     return nil, nil
 end
 
+--获取server.master
 function NgxTimerBase:getMasterConfig()
     return self.config.server.master
 end

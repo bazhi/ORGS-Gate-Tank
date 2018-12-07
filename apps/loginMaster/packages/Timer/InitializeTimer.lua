@@ -20,6 +20,7 @@ function InitializeTimer:runEventLoop()
     local ormAccount = OrmMysql:new(Account.Name, Account.Define, Account.Struct, Account.Indexes)
     ormAccount:Create(db)
     
+    self:Initialized()
     return InitializeTimer.super.runEventLoop(self)
 end
 
