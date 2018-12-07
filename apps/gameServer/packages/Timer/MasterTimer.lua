@@ -16,11 +16,11 @@ function MasterTimer:runEventLoop()
         if not wb then
             wb, err = self:ConnectMaster()
             if err then
-                cc.printerror(err)
+                cc.printerror("wb connect:"..err)
             else
                 local _, err = self:addToServer(wb)
                 if err then
-                    cc.printerror(err)
+                    cc.printerror("wb send_frame:"..err)
                 end
             end
         end
