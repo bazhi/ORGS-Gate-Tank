@@ -31,6 +31,8 @@ function MasterTimer:runEventLoop()
             elseif typ == "pong" then
             elseif err then
                 cc.printerror("wb recv_frame:"..err)
+                wb:set_keepalive()
+                wb = nil
             end
         end
         ngx.sleep(10)
