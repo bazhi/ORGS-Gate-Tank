@@ -24,24 +24,32 @@ function MasterTimer:runEventLoop()
                 end
             end
         end
+        ngx.sleep(10)
         
         if wb and not wb.fatal then
-            --wb:send_ping()
-            local _data, typ, err = wb:recv_frame()
-            if typ == "close" then
+            local _, err = wb:send_ping()
+            if wb.fatal then
+                if err then
+                    cc.printerror("wb send_ping:"..err)
+                end
                 wb:set_keepalive()
                 wb = nil
-            elseif typ == "pong" then
-            elseif err then
-                cc.printerror("wb recv_frame:"..err)
             end
+            -- local _data, typ, err = wb:recv_frame()
+            -- if typ == "close" then
+            --     wb:set_keepalive()
+            --     wb = nil
+            -- elseif typ == "pong" then
+            -- elseif err then
+            --     cc.printerror("wb recv_frame:"..err)
+            -- end
         else
             if wb and wb.fatal then
                 wb:set_keepalive()
                 wb = nil
             end
         end
-        ngx.sleep(10)
+        
     end
     if wb then
         wb:set_keepalive()
