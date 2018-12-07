@@ -3,57 +3,97 @@ local gbc = cc.import("#gbc")
 local MasterTimer = cc.class("MasterTimer", gbc.NgxTimerBase)
 local json = cc.import("#json")
 
+local ngx_thread_spawn = ngx.thread.spawn
+local ngx_thread_kill = ngx.thread.kill
+local table_concat = table.concat
+local string_sub = string.sub
+
 local client = require "resty.websocket.client"
 
 function MasterTimer:ctor(config, ...)
     MasterTimer.super.ctor(self, config, ...)
 end
 
+function MasterTimer:killThread()
+    if self._thread ~= nil then
+        ngx_thread_kill(self._thread)
+        self._thread = nil
+    end
+end
+
+function MasterTimer:Clear()
+    if self._socket then
+        self._socket:set_keepalive()
+        self._socket = nil
+    end
+end
+
+function MasterTimer:Reconect()
+    if self._socket and self._socket.fatal then
+        self._socket:set_keepalive()
+        self._socket = nil
+        self:killThread()
+    end
+    if not self._socket then
+        local wb, err = self:ConnectMaster()
+        if not err then
+            self._socket = wb
+            self._thread = ngx_thread_spawn(MasterTimer.OnLoop, self)
+            local _, err = self:addToServer(self._socket)
+            if err then
+                cc.printerror("wb send_frame:"..err)
+            end
+        end
+    end
+end
+
+function MasterTimer:OnLoop()
+    local frames = {}
+    while true do
+        local frame, ftype, err = self._socket:recv_frame()
+        if err then
+            if err == "again" then
+                frames[#frames + 1] = frame
+                break -- recv next message
+            end
+            
+            if string_sub(err, -7) == "timeout" then
+                break -- recv next message
+            end
+            
+            break
+        end
+        
+        if #frames > 0 then
+            -- merging fragmented frames
+            frames[#frames + 1] = frame
+            frame = table_concat(frames)
+            frames = {}
+        end
+        
+        if ftype == "close" then
+            break
+        elseif ftype == "ping" then
+            self._socket:send_pong()
+        elseif ftype == "pong" then
+            -- client ponged
+        elseif ftype == "text" or ftype == "binary" then
+            cc.printinfo(frame)
+        end
+    end
+end
+
 function MasterTimer:runEventLoop()
-    local wb, err
     local running = true
     while running do
-        if not wb then
-            wb, err = self:ConnectMaster()
-            if err then
-                cc.printerror("wb connect:"..err)
-            else
-                local _, err = self:addToServer(wb)
-                if err then
-                    cc.printerror("wb send_frame:"..err)
-                end
-            end
-        end
+        self:Reconect()
         ngx.sleep(10)
-        
-        if wb and not wb.fatal then
-            local _, err = wb:send_ping()
-            if wb.fatal then
-                if err then
-                    cc.printerror("wb send_ping:"..err)
-                end
-                wb:set_keepalive()
-                wb = nil
-            end
-            -- local _data, typ, err = wb:recv_frame()
-            -- if typ == "close" then
-            --     wb:set_keepalive()
-            --     wb = nil
-            -- elseif typ == "pong" then
-            -- elseif err then
-            --     cc.printerror("wb recv_frame:"..err)
-            -- end
-        else
-            if wb and wb.fatal then
-                wb:set_keepalive()
-                wb = nil
-            end
+        if self._socket then
+            self._socket:send_ping()
         end
-        
     end
-    if wb then
-        wb:set_keepalive()
-    end
+    self:Clear()
+    self:killThread()
     MasterTimer.super.runEventLoop(self)
     return false
 end
