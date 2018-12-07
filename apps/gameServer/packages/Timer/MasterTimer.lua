@@ -26,7 +26,7 @@ function MasterTimer:runEventLoop()
             wb:send_ping()
             local _data, typ, err = wb:recv_frame()
             if typ == "close" or err then
-                cc.printerror("wb recv_frame:"..err)
+                cc.printerror("wb recv_frame:"..err .. " type:"..typ)
                 wb:set_keepalive()
                 wb = nil
             elseif typ == "pong" then
