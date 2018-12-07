@@ -23,7 +23,7 @@ function MasterTimer:runEventLoop()
         end
         
         if wb then
-            wb:send_ping()
+            --wb:send_ping()
             local _data, typ, err = wb:recv_frame()
             if typ == "close" then
                 wb:set_keepalive()
