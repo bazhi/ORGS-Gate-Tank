@@ -60,7 +60,6 @@ function MasterTimer:OnLoop()
             if string_sub(err, -7) == "timeout" then
                 break -- recv next message
             end
-            
             break
         end
         
@@ -89,7 +88,10 @@ function MasterTimer:runEventLoop()
         self:Reconect()
         ngx.sleep(10)
         if self._socket then
-            self._socket:send_ping()
+            local _, err = self._socket:send_ping()
+            if err then
+                cc.printerror("wb send_frame:"..err)
+            end
         end
     end
     self:Clear()
