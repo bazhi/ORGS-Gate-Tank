@@ -117,7 +117,9 @@ function MasterTimer:ConnectMaster()
     local ok, err, wb
     local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.name)
     cc.printf("MasterTimer connect to:"..uri)
-    wb, err = client:new()
+    wb, err = client:new({
+        timeout = 1000
+    })
     if not wb then
         cc.printerror("client new:"..err)
         return nil
