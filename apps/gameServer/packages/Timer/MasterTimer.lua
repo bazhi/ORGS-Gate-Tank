@@ -14,7 +14,7 @@ function MasterTimer:runEventLoop()
     local running = true
     while running do
         if not wb then
-            cc.printf("runEventLoop MasterTimer")
+            --cc.printf("runEventLoop MasterTimer")
             wb, err = self:ConnectMaster()
             self:addToServer(wb)
             if err then
@@ -60,7 +60,7 @@ function MasterTimer:ConnectMaster()
     local masterConfig = self:getMasterConfig()
     local ok, err, wb
     local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.name)
-    
+    cc.printf("MasterTimer connect to:"..uri)
     wb, err = client:new()
     if not wb then
         cc.printerror("client new:"..err)
