@@ -39,10 +39,10 @@ function MasterTimer:Reconect()
         if not err then
             self._socket = wb
             self._thread = ngx_thread_spawn(MasterTimer.OnLoop, self)
-            local _, err = self:addToServer(self._socket)
-            if err then
-                cc.printerror("wb send_frame:"..err)
-            end
+            -- local _, err = self:addToServer(self._socket)
+            -- if err then
+            --     cc.printerror("wb send_frame:"..err)
+            -- end
         end
     end
 end
