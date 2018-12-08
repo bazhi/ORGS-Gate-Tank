@@ -1,7 +1,7 @@
 
 local gbc = cc.import("#gbc")
 local SocketTimer = cc.class("SocketTimer", gbc.NgxTimerBase)
-local client = require "resty.websocket.client"
+local client = require "resty.websocket_client"
 local ngx_sleep = ngx.sleep
 local string_sub = string.sub
 local table_concat = table.concat
@@ -12,15 +12,20 @@ function SocketTimer:ctor(config, param, ...)
     SocketTimer.super.ctor(self, config, param, ...)
 end
 
-function SocketTimer:connect(socket)
-    local ok, err = socket:connect(self.param.uri, {
-        protocols = {
-            "gbc-auth-"..self.param.authorization,
-        },
-    })
-    if not ok then
-        cc.printerror("wb connect:"..err)
-        return false
+function SocketTimer:connect()
+    if self._socket == nil then
+        local socket = client:new()
+        local ok, err = socket:connect(self.param.uri, {
+            protocols = {
+                "gbc-auth-"..self.param.authorization,
+            },
+        })
+        if not ok then
+            cc.printerror("wb connect:"..err)
+            return false
+        end
+        self._socket = socket
+        return true
     end
     return true
 end
@@ -34,35 +39,34 @@ function SocketTimer:ProcessMessage(frame, _ftype)
     end)
 end
 
+function SocketTimer:closeSocket()
+    if self._socket ~= nil then
+        self._socket:set_keepalive()
+        self._socket = nil
+    end
+end
+
 function SocketTimer:runEventLoop()
     local sub, _err = self:getRedis():makeSubscribeLoop(self.param.channel)
     if not sub then
         cc.printerror("makeSubscribeLoop failure")
         return false
     end
-    local connected = false
-    local socket = client:new()
+    local this = self
     sub:start(function(_subRedis, _channel, msg)
-        if socket ~= nil then
-            if connected then
-                local _, err = socket:send_text(msg)
-                if err then
-                    connected = false
-                end
+        if this._socket ~= nil then
+            local _, err = this._socket:send_text(msg)
+            if err then
+                this:closeSocket()
             end
-            
         end
     end, self.param.channel)
     
     local frames = {}
     while true do
-        if not connected then
-            connected = self:connect(socket)
-        end
-        
-        if connected then
-            while true do
-                local frame, ftype, err = socket:recv_frame()
+        if self._socket then
+            while self._socket do
+                local frame, ftype, err = self._socket:recv_frame()
                 if err then
                     if err == "again" then
                         frames[#frames + 1] = frame
@@ -71,7 +75,7 @@ function SocketTimer:runEventLoop()
                     if string_sub(err, -7) == "timeout" then
                         break -- recv next message
                     end
-                    connected = false
+                    self:closeSocket()
                     break
                 end
                 if #frames > 0 then
@@ -81,10 +85,10 @@ function SocketTimer:runEventLoop()
                     frames = {}
                 end
                 if ftype == "close" then
-                    connected = false
+                    self:closeSocket()
                     break
                 elseif ftype == "ping" then
-                    socket:send_pong()
+                    self._socket:send_pong()
                 elseif ftype == "pong" then
                     -- client ponged
                 elseif ftype == "text" or ftype == "binary" then
@@ -93,10 +97,9 @@ function SocketTimer:runEventLoop()
                     cc.printwarn("[websocket:%s] unknown frame type \"%s\"", self.param.channel, tostring(ftype))
                 end
             end
-            
         else
+            self:connect()
             ngx_sleep(1)
-            connected = self:connect(socket)
         end
     end
 end
