@@ -49,10 +49,10 @@ function WebSocketInstance:authConnect()
         return nil, pid, err
     end
     --cc.printf("authConnect")
-    local user = http.Post(master.host, master.port, master.name.."/?action=user.verify", {
-        sid = token,
-        authorization = self:GetAuthority(),
-    })
+    -- local user = http.Post(master.host, master.port, master.name.."/?action=user.verify", {
+    --     sid = token,
+    --     authorization = self:GetAuthority(),
+    -- })
     self._User = user
     if user and user.id then
         return token, user.id

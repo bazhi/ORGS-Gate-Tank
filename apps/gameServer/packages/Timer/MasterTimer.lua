@@ -87,7 +87,7 @@ function MasterTimer:runEventLoop()
     local running = true
     while running do
         self:Reconect()
-        ngx.sleep(1)
+        ngx.sleep(10)
         if self._socket then
             local _, err = self._socket:send_ping()
             if err then
