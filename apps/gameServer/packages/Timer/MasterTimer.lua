@@ -49,7 +49,7 @@ end
 
 function MasterTimer:OnLoop()
     local frames = {}
-    while true do
+    while self._socket do
         local frame, ftype, err = self._socket:recv_frame()
         if err then
             if err == "again" then
@@ -60,6 +60,7 @@ function MasterTimer:OnLoop()
             if string_sub(err, -7) == "timeout" then
                 break -- recv next message
             end
+            cc.printerror(err)
             break
         end
         
