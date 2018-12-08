@@ -116,13 +116,11 @@ function MasterTimer:ConnectMaster()
     local masterConfig = self:getMasterConfig()
     local ok, err, wb
     local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.name)
-    cc.printf("MasterTimer connect to:"..uri)
     wb, err = client:new({
         timeout = 10000
     })
     if not wb then
-        cc.printerror("client new:"..err)
-        return nil
+        return nil, err
     end
     
     ok, err = wb:connect(uri, {
@@ -131,10 +129,9 @@ function MasterTimer:ConnectMaster()
         },
     })
     if not ok then
-        cc.printerror("wb failed to connect::"..err)
-        return nil
+        return nil, err
     end
-    
+    cc.printf("websocket connected:"..uri)
     return wb
 end
 
