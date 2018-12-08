@@ -132,7 +132,7 @@ function MasterTimer:ConnectMaster()
     if not ok then
         return nil, err
     end
-    cc.printf("websocket connected:"..uri)
+    cc.printf("websocket connected:"..uri.." reusedtimes:" .. wb.sock:getreusedtimes())
     return wb
 end
 
