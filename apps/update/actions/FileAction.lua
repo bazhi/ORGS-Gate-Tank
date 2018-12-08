@@ -9,7 +9,7 @@ function FileAction:checkConfigAction(args, _redis)
     local md5 = cache.get("sqlite_file_md5")
     if not md5 then
         md5 = Umd5.file(cc.sqlite_file)
-        cache.set("sqlite_file_md5", md5)
+        cache.set("sqlite_file_md5", md5, 60)
     end
     return {
         result = string.lower(args.md5) == string.lower(md5),
