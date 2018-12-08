@@ -36,7 +36,7 @@ function NginxBootstrap:runapp(appRootPath)
     if type(upgrade) == "table" then
         upgrade = upgrade[1]
     end
-    cc.dump(headers)
+    --cc.dump(headers)
     local classNamePrefix = "HttpInstance"
     local appConfig = self._configs[appRootPath]
     if upgrade and string.lower(upgrade) == "websocket" then
