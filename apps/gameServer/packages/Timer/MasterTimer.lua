@@ -8,7 +8,7 @@ local ngx_thread_kill = ngx.thread.kill
 local table_concat = table.concat
 local string_sub = string.sub
 
-local client = require "resty.websocket.client"
+local client = require "resty.websocket_client"
 
 function MasterTimer:ctor(config, ...)
     MasterTimer.super.ctor(self, config, ...)
