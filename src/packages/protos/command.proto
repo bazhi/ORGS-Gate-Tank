@@ -286,6 +286,7 @@ message CompositeItem{
 message ItemData{
 	int32 id = 1; //id
 	int32 count = 2; //道具数量或者武器的子弹装载数量
+	int32 hp = 3; //耐久度/血量
 }
 
 //角色数据
