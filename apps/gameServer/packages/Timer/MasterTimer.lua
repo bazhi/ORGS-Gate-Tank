@@ -118,7 +118,7 @@ function MasterTimer:ConnectMaster()
     local ok, err, wb
     local uri = string.format("ws://%s:%d/%s/", masterConfig.host, masterConfig.port, masterConfig.name)
     wb, err = client:new({
-        timeout = 10000
+        timeout = 60000
     })
     if not wb then
         return nil, err
