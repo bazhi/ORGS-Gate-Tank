@@ -10,7 +10,6 @@ package pb;
 	Operation==3
 	CreateRole==4
 	EnterChapter==5
-	EnterSection==6
 
 	Delete==11
 	SigninRecord==12
@@ -23,13 +22,10 @@ package pb;
 	OpenBox==31
 	GainBox==32
 
-	Decompose==41
-
 	FinishMission==51
 
 	Role==101
 	Chapters==102
-	Equipments==103
 	Missions==104
 	Sections==105
 	Boxes==106
@@ -95,41 +91,9 @@ message CreateRole{
 	string nickname = 1; //昵称
 }
 
-//升级星级
-message UpgradeStar{
-	int32 id = 1; //武器id
-	repeated int32 prop_ids = 2 [packed=true]; //道具id
-}
-
-//升级星级
-message UnlockEquipment{
-	int32 cid = 1; //武器id
-	int32 prop_id = 2; //道具id
-}
-
-//升级等级
-message UpgradeLevel{
-	int32 id = 1; //武器id
-	int32 prop_id = 2; //道具id
-}
-
-//分解物品
-message Decompose{
-	int32 id = 1; //分解的道具id
-}
-
 //进入章节
 message EnterChapter{
 	int32 cid = 1; //进入章节
-}
-
-message EnterSection{
-	int32 cid = 1; //进入Section
-}
-
-message FinishSection{
-	int32 id = 1; //关卡等级
-	int32 star = 2; //关卡星级
 }
 
 message FinishMission{
@@ -181,19 +145,6 @@ message Props{
 	repeated Prop values = 1;
 }
 
-message Equipment{
-	int32 id = 1;
-	int32 rid = 2;
-	int32 cid = 3;
-	int32 star = 4;
-	int32 oid = 5;
-	int32 exp = 6;
-}
-
-message Equipments{
-	repeated Equipment values = 1;
-}
-
 message Chapter{
 	int32 id = 1;
 	int32 rid = 2;
@@ -206,27 +157,6 @@ message Chapter{
 
 message Chapters{
 	repeated Chapter values = 1;
-}
-
-message Section{
-	int32 id = 1;
-	int32 rid = 2;
-	int32 cid = 3;
-	int32 chapter_cid = 4;
-	int32 star = 5;
-	int32 tryTimes = 6;
-	int32 finishTimes = 7;
-	int32 enterTime = 8;
-}
-
-message SectionResult{
-	int32 id = 1;
-	int32 star = 2;
-	int32 exp = 3;
-}
-
-message Sections{
-	repeated Section values = 1;
 }
 
 message Mission{

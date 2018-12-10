@@ -34,65 +34,52 @@ namespace Pb {
             "dBDrBxIMCgdOb25lQm94EOwHEg0KCE5vbmVHb2xkEO0HEhAKC05vbm9EaWFt",
             "b25kEO4HEhAKC05vbmVNaXNzaW9uEPMHEhcKEk9wZXJhdGlvbk5vdFBlcm1p",
             "dBDRDyIbCglPcGVyYXRpb24SDgoGcmVzdWx0GAEgASgFIh4KCkNyZWF0ZVJv",
-            "bGUSEAoIbmlja25hbWUYASABKAkiLwoLVXBncmFkZVN0YXISCgoCaWQYASAB",
-            "KAUSFAoIcHJvcF9pZHMYAiADKAVCAhABIi8KD1VubG9ja0VxdWlwbWVudBIL",
-            "CgNjaWQYASABKAUSDwoHcHJvcF9pZBgCIAEoBSIrCgxVcGdyYWRlTGV2ZWwS",
-            "CgoCaWQYASABKAUSDwoHcHJvcF9pZBgCIAEoBSIXCglEZWNvbXBvc2USCgoC",
-            "aWQYASABKAUiGwoMRW50ZXJDaGFwdGVyEgsKA2NpZBgBIAEoBSIbCgxFbnRl",
-            "clNlY3Rpb24SCwoDY2lkGAEgASgFIikKDUZpbmlzaFNlY3Rpb24SCgoCaWQY",
-            "ASABKAUSDAoEc3RhchgCIAEoBSIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEg",
-            "ASgFIhUKB09wZW5Cb3gSCgoCaWQYASABKAUiFQoHR2FpbkJveBIKCgJpZBgB",
-            "IAEoBSIiCgZEZWxldGUSCgoCaWQYASABKAUSDAoEdHlwZRgCIAEoBSIpCgZW",
-            "ZWN0b3ISCQoBeBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIioAEKBFJv",
-            "bGUSCgoCaWQYASABKAUSCwoDcGlkGAIgASgFEgsKA2NpZBgDIAEoBRIQCghu",
-            "aWNrbmFtZRgEIAEoCRINCgVsZXZlbBgFIAEoBRIMCgRnb2xkGAYgASgFEg8K",
-            "B2RpYW1vbmQYByABKAUSEQoJbG9naW5UaW1lGAggASgFEhIKCmNyZWF0ZVRp",
-            "bWUYCSABKAUSCwoDZXhwGAogASgFIjsKBFByb3ASCgoCaWQYASABKAUSCwoD",
-            "cmlkGAIgASgFEgsKA2NpZBgDIAEoBRINCgVjb3VudBgEIAEoBSIhCgVQcm9w",
-            "cxIYCgZ2YWx1ZXMYASADKAsyCC5wYi5Qcm9wIlkKCUVxdWlwbWVudBIKCgJp",
-            "ZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEgwKBHN0YXIYBCAB",
-            "KAUSCwoDb2lkGAUgASgFEgsKA2V4cBgGIAEoBSIrCgpFcXVpcG1lbnRzEh0K",
-            "BnZhbHVlcxgBIAMoCzINLnBiLkVxdWlwbWVudCJyCgdDaGFwdGVyEgoKAmlk",
-            "GAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSDgoGc3RhdHVzGAQg",
-            "ASgFEg8KB3JlY29yZDEYBSABKAwSDwoHcmVjb3JkMhgGIAEoDBIPCgdyZWNv",
-            "cmQzGAcgASgMIicKCENoYXB0ZXJzEhsKBnZhbHVlcxgBIAMoCzILLnBiLkNo",
-            "YXB0ZXIijAEKB1NlY3Rpb24SCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsK",
-            "A2NpZBgDIAEoBRITCgtjaGFwdGVyX2NpZBgEIAEoBRIMCgRzdGFyGAUgASgF",
-            "EhAKCHRyeVRpbWVzGAYgASgFEhMKC2ZpbmlzaFRpbWVzGAcgASgFEhEKCWVu",
-            "dGVyVGltZRgIIAEoBSI2Cg1TZWN0aW9uUmVzdWx0EgoKAmlkGAEgASgFEgwK",
-            "BHN0YXIYAiABKAUSCwoDZXhwGAMgASgFIicKCFNlY3Rpb25zEhsKBnZhbHVl",
-            "cxgBIAMoCzILLnBiLlNlY3Rpb24iQQoHTWlzc2lvbhIKCgJpZBgBIAEoBRIL",
-            "CgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEhAKCHByb2dyZXNzGAQgASgFIicK",
-            "CE1pc3Npb25zEhsKBnZhbHVlcxgBIAMoCzILLnBiLk1pc3Npb24iPwoDQm94",
-            "EgoKAmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEgoKdW5s",
-            "b2NrVGltZRgEIAEoBSIgCgVCb3hlcxIXCgZ2YWx1ZXMYASADKAsyBy5wYi5C",
-            "b3giJAoGUmV3YXJkEgsKA2NpZBgBIAEoBRINCgVjb3VudBgCIAEoBSJECgdS",
-            "ZXdhcmRzEhoKBnZhbHVlcxgBIAMoCzIKLnBiLlJld2FyZBIMCgRnb2xkGAIg",
-            "ASgFEg8KB2RpYW1vbmQYAyABKAUiMQoMU2lnbmluUmVjb3JkEg0KBXRpbWVz",
-            "GAEgASgFEhIKBnJlY29yZBgCIAMoBUICEAEiGAoJU2lnbmluR2V0EgsKA2Rh",
-            "eRgBIAEoBSIVCgdTaG9wR2V0EgoKAmlkGAEgASgFIi8KClNob3BSZWNvcmQS",
-            "DgoCaWQYASADKAVCAhABEhEKBXRpbWVzGAIgAygFQgIQASIsCg1Db21wb3Np",
-            "dGVJdGVtEgoKAmlkGAEgASgFEg8KB3RpbWVFbmQYAiABKAUiMQoISXRlbURh",
-            "dGESCgoCaWQYASABKAUSDQoFY291bnQYAiABKAUSCgoCaHAYAyABKAUihwEK",
-            "ClBsYXllckRhdGESDgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUS",
-            "GwoFcHJvcHMYAyADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygL",
-            "MgwucGIuSXRlbURhdGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3Ii",
-            "WAoJTWFwUmVjb3JkEh4KBnRvd2VycxgBIAMoCzIOLnBiLlJlY29yZEl0ZW0S",
-            "HQoFaXRlbXMYAiADKAsyDi5wYi5SZWNvcmRJdGVtEgwKBHRpbWUYAyABKAMi",
-            "OAoNTWFwUmVjb3JkU2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiABKAUSDgoG",
-            "cmVjb3JkGAMgASgMIioKClJlY29yZEl0ZW0SCgoCaWQYASABKAUSEAoIY29u",
-            "dGVudHMYAiABKAwiuQEKCUJ1aWxkRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIO",
-            "CgZoZWFsdGgYAiABKAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWly",
-            "VGltZRgEIAEoBRIlCgpjb21wb3NpdGVzGAUgAygLMhEucGIuQ29tcG9zaXRl",
-            "SXRlbRIbCgVwcm9wcxgGIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMY",
-            "ByADKAsyDC5wYi5JdGVtRGF0YSIfCgxDYWxlbmRhckRhdGESDwoHbWludXRl",
-            "cxgBIAEoBSJ0CglUb3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVh",
-            "bHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUY",
-            "BCABKAUSHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiLgoPTWlzc2lv",
-            "bkl0ZW1EYXRhEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiUQoLTWlz",
-            "c2lvbkRhdGESCgoCaWQYASABKAUSIQoEbGlzdBgCIAMoCzITLnBiLk1pc3Np",
-            "b25JdGVtRGF0YRITCgtyZWZyZXNoVGltZRgDIAEoBSIsCgtNaXNzaW9uTGlz",
-            "dBIdCgRsaXN0GAEgAygLMg8ucGIuTWlzc2lvbkRhdGFiBnByb3RvMw=="));
+            "bGUSEAoIbmlja25hbWUYASABKAkiGwoMRW50ZXJDaGFwdGVyEgsKA2NpZBgB",
+            "IAEoBSIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEgASgFIhUKB09wZW5Cb3gS",
+            "CgoCaWQYASABKAUiFQoHR2FpbkJveBIKCgJpZBgBIAEoBSIiCgZEZWxldGUS",
+            "CgoCaWQYASABKAUSDAoEdHlwZRgCIAEoBSIpCgZWZWN0b3ISCQoBeBgBIAEo",
+            "AhIJCgF5GAIgASgCEgkKAXoYAyABKAIioAEKBFJvbGUSCgoCaWQYASABKAUS",
+            "CwoDcGlkGAIgASgFEgsKA2NpZBgDIAEoBRIQCghuaWNrbmFtZRgEIAEoCRIN",
+            "CgVsZXZlbBgFIAEoBRIMCgRnb2xkGAYgASgFEg8KB2RpYW1vbmQYByABKAUS",
+            "EQoJbG9naW5UaW1lGAggASgFEhIKCmNyZWF0ZVRpbWUYCSABKAUSCwoDZXhw",
+            "GAogASgFIjsKBFByb3ASCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2Np",
+            "ZBgDIAEoBRINCgVjb3VudBgEIAEoBSIhCgVQcm9wcxIYCgZ2YWx1ZXMYASAD",
+            "KAsyCC5wYi5Qcm9wInIKB0NoYXB0ZXISCgoCaWQYASABKAUSCwoDcmlkGAIg",
+            "ASgFEgsKA2NpZBgDIAEoBRIOCgZzdGF0dXMYBCABKAUSDwoHcmVjb3JkMRgF",
+            "IAEoDBIPCgdyZWNvcmQyGAYgASgMEg8KB3JlY29yZDMYByABKAwiJwoIQ2hh",
+            "cHRlcnMSGwoGdmFsdWVzGAEgAygLMgsucGIuQ2hhcHRlciJBCgdNaXNzaW9u",
+            "EgoKAmlkGAEgASgFEgsKA3JpZBgCIAEoBRILCgNjaWQYAyABKAUSEAoIcHJv",
+            "Z3Jlc3MYBCABKAUiJwoITWlzc2lvbnMSGwoGdmFsdWVzGAEgAygLMgsucGIu",
+            "TWlzc2lvbiI/CgNCb3gSCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2Np",
+            "ZBgDIAEoBRISCgp1bmxvY2tUaW1lGAQgASgFIiAKBUJveGVzEhcKBnZhbHVl",
+            "cxgBIAMoCzIHLnBiLkJveCIkCgZSZXdhcmQSCwoDY2lkGAEgASgFEg0KBWNv",
+            "dW50GAIgASgFIkQKB1Jld2FyZHMSGgoGdmFsdWVzGAEgAygLMgoucGIuUmV3",
+            "YXJkEgwKBGdvbGQYAiABKAUSDwoHZGlhbW9uZBgDIAEoBSIxCgxTaWduaW5S",
+            "ZWNvcmQSDQoFdGltZXMYASABKAUSEgoGcmVjb3JkGAIgAygFQgIQASIYCglT",
+            "aWduaW5HZXQSCwoDZGF5GAEgASgFIhUKB1Nob3BHZXQSCgoCaWQYASABKAUi",
+            "LwoKU2hvcFJlY29yZBIOCgJpZBgBIAMoBUICEAESEQoFdGltZXMYAiADKAVC",
+            "AhABIiwKDUNvbXBvc2l0ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgC",
+            "IAEoBSIxCghJdGVtRGF0YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBRIK",
+            "CgJocBgDIAEoBSKHAQoKUGxheWVyRGF0YRIOCgZoZWFsdGgYASABKAUSDwoH",
+            "c3RhbWluYRgCIAEoBRIbCgVwcm9wcxgDIAMoCzIMLnBiLkl0ZW1EYXRhEh0K",
+            "B3dlYXBvbnMYBCADKAsyDC5wYi5JdGVtRGF0YRIcCghQb3NpdGlvbhgFIAEo",
+            "CzIKLnBiLlZlY3RvciJYCglNYXBSZWNvcmQSHgoGdG93ZXJzGAEgAygLMg4u",
+            "cGIuUmVjb3JkSXRlbRIdCgVpdGVtcxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0S",
+            "DAoEdGltZRgDIAEoAyI4Cg1NYXBSZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsK",
+            "A3NlcRgCIAEoBRIOCgZyZWNvcmQYAyABKAwiKgoKUmVjb3JkSXRlbRIKCgJp",
+            "ZBgBIAEoBRIQCghjb250ZW50cxgCIAEoDCK5AQoJQnVpbGREYXRhEhAKCGFj",
+            "dHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgD",
+            "IAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEiUKCmNvbXBvc2l0ZXMYBSADKAsy",
+            "ES5wYi5Db21wb3NpdGVJdGVtEhsKBXByb3BzGAYgAygLMgwucGIuSXRlbURh",
+            "dGESHQoHd2VhcG9ucxgHIAMoCzIMLnBiLkl0ZW1EYXRhIh8KDENhbGVuZGFy",
+            "RGF0YRIPCgdtaW51dGVzGAEgASgFInQKCVRvd2VyRGF0YRIQCghhY3R1YWxJ",
+            "RBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoLdXBncmFkZVRpbWUYAyABKAUS",
+            "EgoKcmVwYWlyVGltZRgEIAEoBRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZl",
+            "Y3RvciIuCg9NaXNzaW9uSXRlbURhdGESCgoCaWQYASABKAUSDwoHcHJvY2Vz",
+            "cxgCIAEoBSJRCgtNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIhCgRsaXN0GAIg",
+            "AygLMhMucGIuTWlzc2lvbkl0ZW1EYXRhEhMKC3JlZnJlc2hUaW1lGAMgASgF",
+            "IiwKC01pc3Npb25MaXN0Eh0KBGxpc3QYASADKAsyDy5wYi5NaXNzaW9uRGF0",
+            "YWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -100,13 +87,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Error), global::Pb.Error.Parser, new[]{ "Code" }, null, new[]{ typeof(global::Pb.Error.Types.EType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Operation), global::Pb.Operation.Parser, new[]{ "Result" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CreateRole), global::Pb.CreateRole.Parser, new[]{ "Nickname" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeStar), global::Pb.UpgradeStar.Parser, new[]{ "Id", "PropIds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UnlockEquipment), global::Pb.UnlockEquipment.Parser, new[]{ "Cid", "PropId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.UpgradeLevel), global::Pb.UpgradeLevel.Parser, new[]{ "Id", "PropId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Decompose), global::Pb.Decompose.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.EnterChapter), global::Pb.EnterChapter.Parser, new[]{ "Cid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.EnterSection), global::Pb.EnterSection.Parser, new[]{ "Cid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.FinishSection), global::Pb.FinishSection.Parser, new[]{ "Id", "Star" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.FinishMission), global::Pb.FinishMission.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.OpenBox), global::Pb.OpenBox.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.GainBox), global::Pb.GainBox.Parser, new[]{ "Id" }, null, null, null),
@@ -115,13 +96,8 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime", "Exp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipment), global::Pb.Equipment.Parser, new[]{ "Id", "Rid", "Cid", "Star", "Oid", "Exp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Equipments), global::Pb.Equipments.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapter), global::Pb.Chapter.Parser, new[]{ "Id", "Rid", "Cid", "Status", "Record1", "Record2", "Record3" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapters), global::Pb.Chapters.Parser, new[]{ "Values" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Section), global::Pb.Section.Parser, new[]{ "Id", "Rid", "Cid", "ChapterCid", "Star", "TryTimes", "FinishTimes", "EnterTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SectionResult), global::Pb.SectionResult.Parser, new[]{ "Id", "Star", "Exp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Sections), global::Pb.Sections.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Mission), global::Pb.Mission.Parser, new[]{ "Id", "Rid", "Cid", "Progress" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Missions), global::Pb.Missions.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Box), global::Pb.Box.Parser, new[]{ "Id", "Rid", "Cid", "UnlockTime" }, null, null, null),
@@ -157,7 +133,6 @@ namespace Pb {
   /// Operation==3
   /// CreateRole==4
   /// EnterChapter==5
-  /// EnterSection==6
   ///
   /// Delete==11
   /// SigninRecord==12
@@ -170,13 +145,10 @@ namespace Pb {
   /// OpenBox==31
   /// GainBox==32
   ///
-  /// Decompose==41
-  ///
   /// FinishMission==51
   ///
   /// Role==101
   /// Chapters==102
-  /// Equipments==103
   /// Missions==104
   /// Sections==105
   /// Boxes==106
@@ -828,584 +800,6 @@ namespace Pb {
   }
 
   /// <summary>
-  /// 升级星级
-  /// </summary>
-  public sealed partial class UpgradeStar : pb::IMessage<UpgradeStar> {
-    private static readonly pb::MessageParser<UpgradeStar> _parser = new pb::MessageParser<UpgradeStar>(() => new UpgradeStar());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UpgradeStar> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeStar() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeStar(UpgradeStar other) : this() {
-      id_ = other.id_;
-      propIds_ = other.propIds_.Clone();
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeStar Clone() {
-      return new UpgradeStar(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    /// <summary>
-    /// 武器id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "prop_ids" field.</summary>
-    public const int PropIdsFieldNumber = 2;
-    private static readonly pb::FieldCodec<int> _repeated_propIds_codec
-        = pb::FieldCodec.ForInt32(18);
-    private readonly pbc::RepeatedField<int> propIds_ = new pbc::RepeatedField<int>();
-    /// <summary>
-    /// 道具id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> PropIds {
-      get { return propIds_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UpgradeStar);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UpgradeStar other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if(!propIds_.Equals(other.propIds_)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      hash ^= propIds_.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      propIds_.WriteTo(output, _repeated_propIds_codec);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      size += propIds_.CalculateSize(_repeated_propIds_codec);
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UpgradeStar other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      propIds_.Add(other.propIds_);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 18:
-          case 16: {
-            propIds_.AddEntriesFrom(input, _repeated_propIds_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// 升级星级
-  /// </summary>
-  public sealed partial class UnlockEquipment : pb::IMessage<UnlockEquipment> {
-    private static readonly pb::MessageParser<UnlockEquipment> _parser = new pb::MessageParser<UnlockEquipment>(() => new UnlockEquipment());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UnlockEquipment> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnlockEquipment() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnlockEquipment(UnlockEquipment other) : this() {
-      cid_ = other.cid_;
-      propId_ = other.propId_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnlockEquipment Clone() {
-      return new UnlockEquipment(this);
-    }
-
-    /// <summary>Field number for the "cid" field.</summary>
-    public const int CidFieldNumber = 1;
-    private int cid_;
-    /// <summary>
-    /// 武器id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Cid {
-      get { return cid_; }
-      set {
-        cid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "prop_id" field.</summary>
-    public const int PropIdFieldNumber = 2;
-    private int propId_;
-    /// <summary>
-    /// 道具id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PropId {
-      get { return propId_; }
-      set {
-        propId_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UnlockEquipment);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UnlockEquipment other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Cid != other.Cid) return false;
-      if (PropId != other.PropId) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Cid != 0) hash ^= Cid.GetHashCode();
-      if (PropId != 0) hash ^= PropId.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Cid != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Cid);
-      }
-      if (PropId != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(PropId);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Cid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
-      }
-      if (PropId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PropId);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UnlockEquipment other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Cid != 0) {
-        Cid = other.Cid;
-      }
-      if (other.PropId != 0) {
-        PropId = other.PropId;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Cid = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            PropId = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// 升级等级
-  /// </summary>
-  public sealed partial class UpgradeLevel : pb::IMessage<UpgradeLevel> {
-    private static readonly pb::MessageParser<UpgradeLevel> _parser = new pb::MessageParser<UpgradeLevel>(() => new UpgradeLevel());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UpgradeLevel> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[6]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeLevel() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeLevel(UpgradeLevel other) : this() {
-      id_ = other.id_;
-      propId_ = other.propId_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UpgradeLevel Clone() {
-      return new UpgradeLevel(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    /// <summary>
-    /// 武器id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "prop_id" field.</summary>
-    public const int PropIdFieldNumber = 2;
-    private int propId_;
-    /// <summary>
-    /// 道具id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PropId {
-      get { return propId_; }
-      set {
-        propId_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UpgradeLevel);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UpgradeLevel other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (PropId != other.PropId) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (PropId != 0) hash ^= PropId.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (PropId != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(PropId);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (PropId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PropId);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UpgradeLevel other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.PropId != 0) {
-        PropId = other.PropId;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            PropId = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// 分解物品
-  /// </summary>
-  public sealed partial class Decompose : pb::IMessage<Decompose> {
-    private static readonly pb::MessageParser<Decompose> _parser = new pb::MessageParser<Decompose>(() => new Decompose());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Decompose> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[7]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Decompose() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Decompose(Decompose other) : this() {
-      id_ = other.id_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Decompose Clone() {
-      return new Decompose(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    /// <summary>
-    /// 分解的道具id
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Decompose);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Decompose other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Decompose other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
   /// 进入章节
   /// </summary>
   public sealed partial class EnterChapter : pb::IMessage<EnterChapter> {
@@ -1415,7 +809,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1528,277 +922,6 @@ namespace Pb {
 
   }
 
-  public sealed partial class EnterSection : pb::IMessage<EnterSection> {
-    private static readonly pb::MessageParser<EnterSection> _parser = new pb::MessageParser<EnterSection>(() => new EnterSection());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<EnterSection> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[9]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EnterSection() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EnterSection(EnterSection other) : this() {
-      cid_ = other.cid_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EnterSection Clone() {
-      return new EnterSection(this);
-    }
-
-    /// <summary>Field number for the "cid" field.</summary>
-    public const int CidFieldNumber = 1;
-    private int cid_;
-    /// <summary>
-    /// 进入Section
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Cid {
-      get { return cid_; }
-      set {
-        cid_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as EnterSection);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(EnterSection other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Cid != other.Cid) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Cid != 0) hash ^= Cid.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Cid != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Cid);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Cid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(EnterSection other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Cid != 0) {
-        Cid = other.Cid;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Cid = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class FinishSection : pb::IMessage<FinishSection> {
-    private static readonly pb::MessageParser<FinishSection> _parser = new pb::MessageParser<FinishSection>(() => new FinishSection());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<FinishSection> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[10]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FinishSection() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FinishSection(FinishSection other) : this() {
-      id_ = other.id_;
-      star_ = other.star_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FinishSection Clone() {
-      return new FinishSection(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    /// <summary>
-    /// 关卡等级
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 2;
-    private int star_;
-    /// <summary>
-    /// 关卡星级
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Star {
-      get { return star_; }
-      set {
-        star_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as FinishSection);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(FinishSection other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Star != other.Star) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Star);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(FinishSection other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Star != 0) {
-        Star = other.Star;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Star = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class FinishMission : pb::IMessage<FinishMission> {
     private static readonly pb::MessageParser<FinishMission> _parser = new pb::MessageParser<FinishMission>(() => new FinishMission());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1806,7 +929,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1929,7 +1052,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2049,7 +1172,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2166,7 +1289,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2317,7 +1440,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2493,7 +1616,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2862,7 +1985,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3063,7 +2186,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3165,372 +2288,6 @@ namespace Pb {
 
   }
 
-  public sealed partial class Equipment : pb::IMessage<Equipment> {
-    private static readonly pb::MessageParser<Equipment> _parser = new pb::MessageParser<Equipment>(() => new Equipment());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Equipment> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[19]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipment() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipment(Equipment other) : this() {
-      id_ = other.id_;
-      rid_ = other.rid_;
-      cid_ = other.cid_;
-      star_ = other.star_;
-      oid_ = other.oid_;
-      exp_ = other.exp_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipment Clone() {
-      return new Equipment(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "rid" field.</summary>
-    public const int RidFieldNumber = 2;
-    private int rid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Rid {
-      get { return rid_; }
-      set {
-        rid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cid" field.</summary>
-    public const int CidFieldNumber = 3;
-    private int cid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Cid {
-      get { return cid_; }
-      set {
-        cid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 4;
-    private int star_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Star {
-      get { return star_; }
-      set {
-        star_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "oid" field.</summary>
-    public const int OidFieldNumber = 5;
-    private int oid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Oid {
-      get { return oid_; }
-      set {
-        oid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 6;
-    private int exp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Exp {
-      get { return exp_; }
-      set {
-        exp_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Equipment);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Equipment other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Rid != other.Rid) return false;
-      if (Cid != other.Cid) return false;
-      if (Star != other.Star) return false;
-      if (Oid != other.Oid) return false;
-      if (Exp != other.Exp) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Rid != 0) hash ^= Rid.GetHashCode();
-      if (Cid != 0) hash ^= Cid.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
-      if (Oid != 0) hash ^= Oid.GetHashCode();
-      if (Exp != 0) hash ^= Exp.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (Rid != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Rid);
-      }
-      if (Cid != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Cid);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(Star);
-      }
-      if (Oid != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Oid);
-      }
-      if (Exp != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(Exp);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (Rid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rid);
-      }
-      if (Cid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
-      }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
-      }
-      if (Oid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Oid);
-      }
-      if (Exp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Equipment other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Rid != 0) {
-        Rid = other.Rid;
-      }
-      if (other.Cid != 0) {
-        Cid = other.Cid;
-      }
-      if (other.Star != 0) {
-        Star = other.Star;
-      }
-      if (other.Oid != 0) {
-        Oid = other.Oid;
-      }
-      if (other.Exp != 0) {
-        Exp = other.Exp;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Rid = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            Cid = input.ReadInt32();
-            break;
-          }
-          case 32: {
-            Star = input.ReadInt32();
-            break;
-          }
-          case 40: {
-            Oid = input.ReadInt32();
-            break;
-          }
-          case 48: {
-            Exp = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class Equipments : pb::IMessage<Equipments> {
-    private static readonly pb::MessageParser<Equipments> _parser = new pb::MessageParser<Equipments>(() => new Equipments());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Equipments> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[20]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipments() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipments(Equipments other) : this() {
-      values_ = other.values_.Clone();
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Equipments Clone() {
-      return new Equipments(this);
-    }
-
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Equipment> _repeated_values_codec
-        = pb::FieldCodec.ForMessage(10, global::Pb.Equipment.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Equipment> values_ = new pbc::RepeatedField<global::Pb.Equipment>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Equipment> Values {
-      get { return values_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Equipments);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Equipments other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!values_.Equals(other.values_)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= values_.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Equipments other) {
-      if (other == null) {
-        return;
-      }
-      values_.Add(other.values_);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class Chapter : pb::IMessage<Chapter> {
     private static readonly pb::MessageParser<Chapter> _parser = new pb::MessageParser<Chapter>(() => new Chapter());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3538,7 +2295,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3823,7 +2580,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3925,601 +2682,6 @@ namespace Pb {
 
   }
 
-  public sealed partial class Section : pb::IMessage<Section> {
-    private static readonly pb::MessageParser<Section> _parser = new pb::MessageParser<Section>(() => new Section());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Section> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[23]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Section() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Section(Section other) : this() {
-      id_ = other.id_;
-      rid_ = other.rid_;
-      cid_ = other.cid_;
-      chapterCid_ = other.chapterCid_;
-      star_ = other.star_;
-      tryTimes_ = other.tryTimes_;
-      finishTimes_ = other.finishTimes_;
-      enterTime_ = other.enterTime_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Section Clone() {
-      return new Section(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "rid" field.</summary>
-    public const int RidFieldNumber = 2;
-    private int rid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Rid {
-      get { return rid_; }
-      set {
-        rid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cid" field.</summary>
-    public const int CidFieldNumber = 3;
-    private int cid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Cid {
-      get { return cid_; }
-      set {
-        cid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "chapter_cid" field.</summary>
-    public const int ChapterCidFieldNumber = 4;
-    private int chapterCid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ChapterCid {
-      get { return chapterCid_; }
-      set {
-        chapterCid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 5;
-    private int star_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Star {
-      get { return star_; }
-      set {
-        star_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tryTimes" field.</summary>
-    public const int TryTimesFieldNumber = 6;
-    private int tryTimes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int TryTimes {
-      get { return tryTimes_; }
-      set {
-        tryTimes_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "finishTimes" field.</summary>
-    public const int FinishTimesFieldNumber = 7;
-    private int finishTimes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int FinishTimes {
-      get { return finishTimes_; }
-      set {
-        finishTimes_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "enterTime" field.</summary>
-    public const int EnterTimeFieldNumber = 8;
-    private int enterTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int EnterTime {
-      get { return enterTime_; }
-      set {
-        enterTime_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Section);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Section other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Rid != other.Rid) return false;
-      if (Cid != other.Cid) return false;
-      if (ChapterCid != other.ChapterCid) return false;
-      if (Star != other.Star) return false;
-      if (TryTimes != other.TryTimes) return false;
-      if (FinishTimes != other.FinishTimes) return false;
-      if (EnterTime != other.EnterTime) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Rid != 0) hash ^= Rid.GetHashCode();
-      if (Cid != 0) hash ^= Cid.GetHashCode();
-      if (ChapterCid != 0) hash ^= ChapterCid.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
-      if (TryTimes != 0) hash ^= TryTimes.GetHashCode();
-      if (FinishTimes != 0) hash ^= FinishTimes.GetHashCode();
-      if (EnterTime != 0) hash ^= EnterTime.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (Rid != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Rid);
-      }
-      if (Cid != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Cid);
-      }
-      if (ChapterCid != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(ChapterCid);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Star);
-      }
-      if (TryTimes != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(TryTimes);
-      }
-      if (FinishTimes != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(FinishTimes);
-      }
-      if (EnterTime != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(EnterTime);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (Rid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rid);
-      }
-      if (Cid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
-      }
-      if (ChapterCid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ChapterCid);
-      }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
-      }
-      if (TryTimes != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TryTimes);
-      }
-      if (FinishTimes != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FinishTimes);
-      }
-      if (EnterTime != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EnterTime);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Section other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Rid != 0) {
-        Rid = other.Rid;
-      }
-      if (other.Cid != 0) {
-        Cid = other.Cid;
-      }
-      if (other.ChapterCid != 0) {
-        ChapterCid = other.ChapterCid;
-      }
-      if (other.Star != 0) {
-        Star = other.Star;
-      }
-      if (other.TryTimes != 0) {
-        TryTimes = other.TryTimes;
-      }
-      if (other.FinishTimes != 0) {
-        FinishTimes = other.FinishTimes;
-      }
-      if (other.EnterTime != 0) {
-        EnterTime = other.EnterTime;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Rid = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            Cid = input.ReadInt32();
-            break;
-          }
-          case 32: {
-            ChapterCid = input.ReadInt32();
-            break;
-          }
-          case 40: {
-            Star = input.ReadInt32();
-            break;
-          }
-          case 48: {
-            TryTimes = input.ReadInt32();
-            break;
-          }
-          case 56: {
-            FinishTimes = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            EnterTime = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class SectionResult : pb::IMessage<SectionResult> {
-    private static readonly pb::MessageParser<SectionResult> _parser = new pb::MessageParser<SectionResult>(() => new SectionResult());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<SectionResult> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[24]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SectionResult() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SectionResult(SectionResult other) : this() {
-      id_ = other.id_;
-      star_ = other.star_;
-      exp_ = other.exp_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SectionResult Clone() {
-      return new SectionResult(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "star" field.</summary>
-    public const int StarFieldNumber = 2;
-    private int star_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Star {
-      get { return star_; }
-      set {
-        star_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 3;
-    private int exp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Exp {
-      get { return exp_; }
-      set {
-        exp_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as SectionResult);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(SectionResult other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (Star != other.Star) return false;
-      if (Exp != other.Exp) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Star != 0) hash ^= Star.GetHashCode();
-      if (Exp != 0) hash ^= Exp.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
-      }
-      if (Star != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Star);
-      }
-      if (Exp != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Exp);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-      }
-      if (Star != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
-      }
-      if (Exp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(SectionResult other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.Star != 0) {
-        Star = other.Star;
-      }
-      if (other.Exp != 0) {
-        Exp = other.Exp;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Id = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Star = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            Exp = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class Sections : pb::IMessage<Sections> {
-    private static readonly pb::MessageParser<Sections> _parser = new pb::MessageParser<Sections>(() => new Sections());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Sections> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[25]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Sections() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Sections(Sections other) : this() {
-      values_ = other.values_.Clone();
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Sections Clone() {
-      return new Sections(this);
-    }
-
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Section> _repeated_values_codec
-        = pb::FieldCodec.ForMessage(10, global::Pb.Section.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Section> values_ = new pbc::RepeatedField<global::Pb.Section>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Section> Values {
-      get { return values_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Sections);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Sections other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!values_.Equals(other.values_)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= values_.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Sections other) {
-      if (other == null) {
-        return;
-      }
-      values_.Add(other.values_);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class Mission : pb::IMessage<Mission> {
     private static readonly pb::MessageParser<Mission> _parser = new pb::MessageParser<Mission>(() => new Mission());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4527,7 +2689,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4728,7 +2890,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4837,7 +2999,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5041,7 +3203,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5150,7 +3312,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5295,7 +3457,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5466,7 +3628,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[32]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5607,7 +3769,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[33]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5727,7 +3889,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[34]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5847,7 +4009,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[35]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5984,7 +4146,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6132,7 +4294,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6317,7 +4479,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6539,7 +4701,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6696,7 +4858,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6872,7 +5034,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[30]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7020,7 +5182,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7290,7 +5452,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7407,7 +5569,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[44]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7645,7 +5807,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[45]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7793,7 +5955,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[46]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7958,7 +6120,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[47]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

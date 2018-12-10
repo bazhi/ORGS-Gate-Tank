@@ -186,12 +186,10 @@ function RoleAction:loadOthersAction(_args, _redis)
     if not role then
         return
     end
-    local rid = role:getID()
     
-    local equipments = player:getEquipments()
-    local Equipment = equipments:getTemplate()
-    local query = Equipment:selectQuery({rid = rid})
-    Equipment:pushQuery(query, instance:getConnectId(), "role.onEquipment")
+    local query
+    
+    local rid = role:getID()
     
     local props = player:getProps()
     local Prop = props:getTemplate()
@@ -203,11 +201,6 @@ function RoleAction:loadOthersAction(_args, _redis)
     query = chapter:selectQuery({rid = rid})
     chapter:pushQuery(query, instance:getConnectId(), "role.onChapter")
     
-    local sections = player:getSections()
-    local section = sections:getTemplate()
-    query = section:selectQuery({rid = rid})
-    section:pushQuery(query, instance:getConnectId(), "role.onSection")
-    
     local missions = player:getMissions()
     local mission = missions:getTemplate()
     query = mission:selectQuery({rid = rid})
@@ -217,16 +210,6 @@ function RoleAction:loadOthersAction(_args, _redis)
     local box = boxes:getTemplate()
     query = box:selectQuery({rid = rid})
     box:pushQuery(query, instance:getConnectId(), "role.onBox")
-end
-
-function RoleAction:onEquipment(args, _redis)
-    local instance = self:getInstance()
-    local player = instance:getPlayer()
-    local equipments = player:getEquipments()
-    equipments:set(args)
-    instance:sendPack("Equipments", {
-        values = args,
-    })
 end
 
 function RoleAction:onProp(args, _redis)
@@ -245,16 +228,6 @@ function RoleAction:onChapter(args, _redis)
     local chapters = player:getChapters()
     chapters:set(args)
     instance:sendPack("Chapters", {
-        values = args
-    })
-end
-
-function RoleAction:onSection(args, _redis)
-    local instance = self:getInstance()
-    local player = instance:getPlayer()
-    local sections = player:getSections()
-    sections:set(args)
-    instance:sendPack("Sections", {
         values = args
     })
 end

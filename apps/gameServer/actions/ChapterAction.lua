@@ -125,31 +125,6 @@ function ChapterAction:onChapter(args, _redis, params)
     end
 end
 
--- function ChapterAction:getAction(args)
---     local id = args.id
---     local seq = args.seq
---     if not id or not seq then
---         return - 1
---     end
---     local recordKey = "record"..seq
---     local instance = self:getInstance()
---     local player = instance:getPlayer()
---     local chapters = player:getChapters()
---     local chapter = chapters:getByCID(id)
---     if not chapter then
---         return - 1
---     end
---     local chapter_data = chapter:get()
---     if chapter_data[recordKey] ~= nil then
---         instance:sendPack("MapRecordSave", {
---             id = id,
---             seq = seq,
---             record = chapter_data[recordKey],
---         })
---         --instance:sendMessage(chapter_data[recordKey])
---     end
--- end
-
 function ChapterAction:saveAction(args)
     local id = args.id
     local seq = args.seq

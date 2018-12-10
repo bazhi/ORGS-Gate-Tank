@@ -1,10 +1,8 @@
 local Player = cc.class("Player")
 local Role = cc.import(".Role")
 
-local Equipments = cc.import(".Equipments")
 local Props = cc.import(".Props")
 local Chapters = cc.import(".Chapters")
-local Sections = cc.import(".Sections")
 local Missions = cc.import(".Missions")
 local Boxes = cc.import(".Boxes")
 
@@ -42,18 +40,6 @@ function Player:updateRole(data)
 end
 
 --------------------------------------------------------------------------------------------------------------------
---装备API
---------------------------------------------------------------------------------------------------------------------
---更新所有装备
-
-function Player:getEquipments()
-    if not self._Equipments then
-        self._Equipments = Equipments:new()
-    end
-    return self._Equipments
-end
-
---------------------------------------------------------------------------------------------------------------------
 --道具API
 --------------------------------------------------------------------------------------------------------------------
 
@@ -73,16 +59,6 @@ function Player:getChapters()
         self._Chapters = Chapters:new()
     end
     return self._Chapters
-end
-
---------------------------------------------------------------------------------------------------------------------
---小节API
---------------------------------------------------------------------------------------------------------------------
-function Player:getSections()
-    if not self._Sections then
-        self._Sections = Sections:new()
-    end
-    return self._Sections
 end
 
 --------------------------------------------------------------------------------------------------------------------
