@@ -14,7 +14,6 @@ local Shop = cc.import(".Shop")
 --玩家所有数据的集合
 function Player:ctor(user)
     self._User = user
-    
     self._Role = Role:new()
 end
 
