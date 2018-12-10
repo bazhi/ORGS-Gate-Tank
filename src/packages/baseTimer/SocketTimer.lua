@@ -41,8 +41,9 @@ end
 
 function SocketTimer:closeSocket()
     if self._socket ~= nil then
-        self._socket:set_keepalive()
+        local socket = self._socket
         self._socket = nil
+        socket:set_keepalive()
     end
 end
 
@@ -88,7 +89,9 @@ function SocketTimer:runEventLoop()
                     self:closeSocket()
                     break
                 elseif ftype == "ping" then
-                    self._socket:send_pong()
+                    if self._socket then
+                        self._socket:send_pong()
+                    end
                 elseif ftype == "pong" then
                     -- client ponged
                 elseif ftype == "text" or ftype == "binary" then

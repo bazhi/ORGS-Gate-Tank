@@ -30,9 +30,10 @@ end
 
 function MasterTimer:Reconect()
     if self._socket and self._socket.fatal then
-        self._socket:set_keepalive()
+        local sock = self._socket
         self._socket = nil
         self:killThread()
+        sock:set_keepalive()
     end
     if not self._socket then
         local wb, err = self:ConnectMaster()
@@ -74,7 +75,9 @@ function MasterTimer:OnLoop()
         if ftype == "close" then
             break
         elseif ftype == "ping" then
-            self._socket:send_pong()
+            if self._socket then
+                self._socket:send_pong()
+            end
         elseif ftype == "pong" then
             -- client ponged
         elseif ftype == "text" or ftype == "binary" then
