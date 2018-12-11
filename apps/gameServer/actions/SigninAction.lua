@@ -15,6 +15,7 @@ function SigninAction:getAction(args, redis)
     local day = args.day or 1
     local instance = self:getInstance()
     local player = instance:getPlayer()
+    local role = player:getRole()
     local signin = player:getSignin()
     local signin_Data = signin:get()
     if day >= 1 and day <= signin_Data.times then
@@ -32,7 +33,7 @@ function SigninAction:getAction(args, redis)
         --增加到家
         local cfg_signin = dbConfig.get("cfg_signin", day)
         if cfg_signin ~= nil then
-            self:runAction("role.add", {diamond = cfg_signin.diamond, gold = cfg_signin.gold}, redis)
+            role:AddData(instance:getConnectId(), nil, cfg_signin.gold, cfg_signin.diamond)
             self:runAction("prop.addProps", {
                 items = cfg_signin.items,
                 diamond = cfg_signin.diamond,

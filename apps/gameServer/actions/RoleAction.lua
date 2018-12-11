@@ -34,39 +34,24 @@ function RoleAction:createAction(args, _redis)
     local instance = self:getInstance()
     local user = instance:getUser()
     local player = instance:getPlayer()
+    
     local pid = user.id
     local nickname = args.nickname
     local cid = default_role_cid
-    if not nickname or #nickname <= 5 then
-        return false, "NoSetNickname"
-    end
-    local now = ngx.now()
     
     local role = player:getRole()
     if not role then
-        return
+        return false, "UnExpectedError"
     end
-    local dt = role:get()
-    dt.pid = pid
-    dt.nickname = nickname
-    dt.loginTime = now
-    dt.createTime = now
-    dt.cid = cid
-    local query = role:insertQuery(dt)
-    role:pushQuery(query, instance:getConnectId(), "role.onCreate")
-    
-    return true
+    return role:Create(instance:getConnectId(), "role.onCreate", pid, nickname, cid)
 end
 
 function RoleAction:onCreate(args, _redis)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
-    if args.insert_id then
-        local query = role:selectQuery({id = args.insert_id})
-        role:pushQuery(query, instance:getConnectId(), "role.onRole", {
-            initRole = true
-        })
+    if args.insert_id and role then
+        role:LoadID(instance:getConnectId(), "role.onRole", args.insert_id, true)
     end
 end
 
@@ -78,61 +63,10 @@ function RoleAction:loadAction(_args, _redis)
     instance:setPlayer(player)
     local pid = user.id
     local role = player:getRole()
-    local query = role:selectQuery({pid = pid})
-    role:pushQuery(query, instance:getConnectId(), "role.onRole")
-    return true
-end
-
-function RoleAction:update(args, _redis)
-    local instance = self:getInstance()
-    local loginTime = args.loginTime
-    local player = instance:getPlayer()
-    local role = player:getRole()
-    local role_data = role:get()
-    local query = role:updateQuery({id = role_data.id}, {
-        loginTime = loginTime,
-    })
-    role_data.loginTime = loginTime
-    role:pushQuery(query, instance:getConnectId())
-end
-
-function RoleAction:add(args, _redis)
-    local instance = self:getInstance()
-    local exp = args.exp or 0
-    local gold = args.gold or 0
-    local diamond = args.diamond or 0
-    
-    local player = instance:getPlayer()
-    local role = player:getRole()
-    local role_data = role:get()
-    
-    local nextLevel = role_data.level
-    --升级下一级的配置
-    local cfg = dbConfig.get("cfg_levelup", nextLevel)
-    if not cfg then
-        --找不到下一等级的配置，说明已经满级
-        return
+    if not role then
+        return false, "UnExpectedError"
     end
-    role_data.exp = role_data.exp + exp
-    if role_data.exp >= cfg.exp then
-        --等级提升
-        role_data.level = nextLevel
-        role_data.exp = role_data.exp - cfg.exp
-    end
-    
-    local query = role:updateQuery({
-        id = role_data.id
-        }, {
-        exp = exp,
-        level = role_data.level,
-        }, {
-        diamond = diamond,
-        gold = gold,
-    })
-    role_data.diamond = role_data.diamond + diamond
-    role_data.gold = role_data.gold + gold
-    role:pushQuery(query, instance:getConnectId())
-    instance:sendPack("Role", role_data)
+    return role:LoadPID(instance:getConnectId(), "role.onRole", pid)
 end
 
 function RoleAction:onRole(args, redis, params)
@@ -146,18 +80,21 @@ function RoleAction:onRole(args, redis, params)
     local role = player:updateRole(args[1])
     local role_data = role:get()
     local loginTime = ngx.now()
+    
     --加载角色数据成功
     self:runAction("signin.login", {
         lastTime = role_data.loginTime,
         loginTime = loginTime,
     }, redis)
+    
     self:runAction("shop.login", {
     }, redis)
     
     --更新登陆时间
-    self:update({loginTime = loginTime}, redis)
+    role:UpdateData(instance:getConnectId(), nil, loginTime)
     instance:sendPack("Role", role_data)
-    self:loadOthersAction(args, redis)
+    
+    self:LoadOthers()
     if params then
         --初始化数据
         if params.initRole then
@@ -168,17 +105,12 @@ function RoleAction:onRole(args, redis, params)
                         items = cfg_role.initProps,
                     }, redis)
                 end
-                if cfg_role.missionid then
-                    self:runAction("mission.add", {
-                        cid = cfg_role.missionid,
-                    }, redis)
-                end
             end
         end
     end
 end
 
-function RoleAction:loadOthersAction(_args, _redis)
+function RoleAction:LoadOthers()
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -199,11 +131,6 @@ function RoleAction:loadOthersAction(_args, _redis)
     local chapter = chapters:getTemplate()
     query = chapter:selectQuery({rid = rid})
     chapter:pushQuery(query, instance:getConnectId(), "role.onChapter")
-    
-    local missions = player:getMissions()
-    local mission = missions:getTemplate()
-    query = mission:selectQuery({rid = rid})
-    mission:pushQuery(query, instance:getConnectId(), "role.onMission")
     
     local boxes = player:getBoxes()
     local box = boxes:getTemplate()
@@ -229,18 +156,6 @@ function RoleAction:onChapter(args, _redis)
     instance:sendPack("Chapters", {
         values = args
     })
-end
-
-function RoleAction:onMission(args, redis)
-    local instance = self:getInstance()
-    local player = instance:getPlayer()
-    local missions = player:getMissions()
-    missions:set(args)
-    instance:sendPack("Missions", {
-        values = args
-    })
-    
-    self:runAction("mission.resetMission", {}, redis)
 end
 
 function RoleAction:onBox(args, _redis)

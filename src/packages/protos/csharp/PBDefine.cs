@@ -8,7 +8,6 @@ namespace Pb{
         Operation = 3,
         CreateRole = 4,
         EnterChapter = 5,
-        FinishMission = 51,
         OpenBox = 31,
         GainBox = 32,
         Delete = 11,
@@ -17,8 +16,9 @@ namespace Pb{
         Props = 107,
         Chapter = 1021,
         Chapters = 102,
-        Mission = 1041,
-        Missions = 104,
+        FinishDailyMission = 51,
+        DailyMission = 1051,
+        DailyMissionList = 105,
         Box = 1061,
         Boxes = 106,
         Rewards = 108,
@@ -38,7 +38,6 @@ namespace Pb{
             dict.Add(PBDefine.Operation, Operation.Parser);
             dict.Add(PBDefine.CreateRole, CreateRole.Parser);
             dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);
-            dict.Add(PBDefine.FinishMission, FinishMission.Parser);
             dict.Add(PBDefine.OpenBox, OpenBox.Parser);
             dict.Add(PBDefine.GainBox, GainBox.Parser);
             dict.Add(PBDefine.Delete, Delete.Parser);
@@ -47,8 +46,9 @@ namespace Pb{
             dict.Add(PBDefine.Props, Props.Parser);
             dict.Add(PBDefine.Chapter, Chapter.Parser);
             dict.Add(PBDefine.Chapters, Chapters.Parser);
-            dict.Add(PBDefine.Mission, Mission.Parser);
-            dict.Add(PBDefine.Missions, Missions.Parser);
+            dict.Add(PBDefine.FinishDailyMission, FinishDailyMission.Parser);
+            dict.Add(PBDefine.DailyMission, DailyMission.Parser);
+            dict.Add(PBDefine.DailyMissionList, DailyMissionList.Parser);
             dict.Add(PBDefine.Box, Box.Parser);
             dict.Add(PBDefine.Boxes, Boxes.Parser);
             dict.Add(PBDefine.Rewards, Rewards.Parser);

@@ -64,7 +64,8 @@ function ShopAction:getAction(args, redis)
     end
     
     --扣除金钱
-    self:runAction("role.add", {diamond = -cfg_shop.diamond, gold = cfg_shop.getGold - cfg_shop.gold}, redis)
+    role:AddData(instance:getConnectId(), nil, cfg_shop.getGold - cfg_shop.gold, -cfg_shop.diamond)
+    
     self:runAction("prop.addProps", {
         items = cfg_shop.items,
         diamond = 0,

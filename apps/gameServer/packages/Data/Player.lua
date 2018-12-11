@@ -3,7 +3,6 @@ local Role = cc.import(".Role")
 
 local Props = cc.import(".Props")
 local Chapters = cc.import(".Chapters")
-local Missions = cc.import(".Missions")
 local Boxes = cc.import(".Boxes")
 
 local Signin = cc.import(".Signin")
@@ -59,17 +58,6 @@ function Player:getChapters()
         self._Chapters = Chapters:new()
     end
     return self._Chapters
-end
-
---------------------------------------------------------------------------------------------------------------------
---小节API
---------------------------------------------------------------------------------------------------------------------
-
-function Player:getMissions()
-    if not self._Missions then
-        self._Missions = Missions:new()
-    end
-    return self._Missions
 end
 
 --------------------------------------------------------------------------------------------------------------------
