@@ -19,11 +19,11 @@ package pb;
 	OpenBox==31
 	GainBox==32
 
-	FinishDailyMission==51
+	FinishMission==51
 
 	Role==101
 	Chapters==102
-	DailyMissionList==105
+	MissionList==105
 	Boxes==106
 	Props==107
 	Rewards==108
@@ -31,7 +31,7 @@ package pb;
 	Chapter==1021
 	Box==1061
 	Prop==1071
-	DailyMission==1051
+	MissionItem==1051
 */
 message Pack{
 	int32 type = 1;
@@ -126,7 +126,6 @@ message Role{
     int32 loginTime = 8;
     int32 createTime = 9;
     int32 exp = 10;
-    bytes missions = 11;
 }
 
 message Prop{
@@ -154,26 +153,20 @@ message Chapters{
 	repeated Chapter values = 1;
 }
 
-//完成日常任务
-message FinishDailyMission{
+//完成任务
+message FinishMission{
 	int32 id = 1; //mission id
 }
 
-//日常任务项目
-message DailyMissionItem{
+//任务项目
+message MissionItem{
 	int32 id = 1;
 	int32 process = 2;
 }
 
-//日常任务
-message DailyMission{
-	int32 id = 1;
-	repeated DailyMissionItem items = 2;
-}
-
-//日常任务列表
-message DailyMissionList{
-	repeated DailyMission items = 1;
+//任务列表
+message MissionList{
+	repeated MissionItem items = 1;
 }
 
 message Box{
@@ -282,19 +275,19 @@ message TowerData{
 }
 
 //任务数据
-message MissionItemData{
+message CMissionItem{
 	int32 id = 1;
 	int32 process = 2;
 }
 
 //任务信息
-message MissionData{
+message CMissionData{
 	int32 id = 1;
-	repeated MissionItemData list = 2;
+	repeated CMissionItem list = 2;
 	int32 refreshTime = 3;
 }
 
 //任务列表
-message MissionList{
-	repeated MissionData list = 1;
+message CMissionList{
+	repeated CMissionData list = 1;
 }

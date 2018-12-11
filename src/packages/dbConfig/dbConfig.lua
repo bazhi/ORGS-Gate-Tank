@@ -6,36 +6,62 @@ if not db then
     cc.printerror("can not open sqlite_file:"..cc.sqlite_file)
 end
 
-local cacheAll = {}
+local cacheTable = {}
+local cacheMap = {}
 
-function M.get(tab, id, noCache)
+function M.get(tableName, id, noCache)
     if noCache then
-        return M.getNoCache(tab, id)
+        return M.getNoCache(tableName, id)
     else
-        return M.getCache(tab, id)
+        return M.getCache(tableName, id)
     end
 end
 
-function M.getCache(tab, id)
-    local cache = cacheAll[tab]
+function M.getCache(tableName, id)
+    local cache = cacheTable[tableName]
     if not cache then
         cache = {}
-        cacheAll[tab] = cache
+        cacheTable[tableName] = cache
     end
     local result = cache[id]
     if not result and db then
-        for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tab, id)) do
-            cache[row.id] = table.readonly(row, tab)
-        end
+        cache[id] = M.getNoCache(tableName, id)
     end
     return cache[id]
 end
 
-function M.getNoCache(tab, id)
-    for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tab, id)) do
+function M.getNoCache(tableName, id)
+    for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tableName, id)) do
         if row then
-            return table.readonly(row, tab)
+            return table.readonly(row, tableName)
         end
+    end
+end
+
+function M.getAllCache(tableName)
+    local cache = cacheMap[tableName]
+    if not cache then
+        cache = M.getAllNoCache(tableName)
+        cacheMap[tableName] = cache
+    end
+    return cache
+end
+
+function M.getAllNoCache(tableName)
+    local temp = {}
+    for row in db:nrows(string.format("SELECT * FROM %s", tableName)) do
+        if row then
+            table.insert(temp, table.readonly(row, tableName))
+        end
+    end
+    return temp
+end
+
+function M.getAll(tableName, noCache)
+    if noCache then
+        return M.getAllNoCache(tableName)
+    else
+        return M.getAllCache(tableName)
     end
 end
 

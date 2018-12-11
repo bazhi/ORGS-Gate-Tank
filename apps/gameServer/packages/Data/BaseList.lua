@@ -101,18 +101,4 @@ function BaseList:getByCID(cid)
     return nil
 end
 
-function BaseList:getOriginal(cid)
-    if not cid then
-        return nil
-    end
-    
-    local values = self._Datas or {}
-    for _, v in ipairs(values) do
-        if v.isOriginal and v:isOriginal(cid) then
-            return v
-        end
-    end
-    return nil
-end
-
 return BaseList

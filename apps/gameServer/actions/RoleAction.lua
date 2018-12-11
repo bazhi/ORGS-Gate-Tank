@@ -93,7 +93,6 @@ function RoleAction:onRole(args, redis, params)
     --更新登陆时间
     role:UpdateData(instance:getConnectId(), nil, loginTime)
     instance:sendPack("Role", role_data)
-    
     self:LoadOthers()
     if params then
         --初始化数据

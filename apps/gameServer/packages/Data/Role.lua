@@ -18,8 +18,6 @@ function Role:Create(connectid, action, pid, nickname, cid)
         return false, "NoParam"
     end
     
-    local now = ngx.now()
-    
     if #nickname <= 6 then
         return false, "NoSetNickname"
     end
@@ -27,8 +25,8 @@ function Role:Create(connectid, action, pid, nickname, cid)
     local data = self:get()
     data.pid = pid
     data.nickname = nickname
-    data.loginTime = now
-    data.createTime = now
+    data.loginTime = 0
+    data.createTime = ngx.now()
     data.cid = cid
     
     local query = self:insertQuery(data)
@@ -37,9 +35,6 @@ function Role:Create(connectid, action, pid, nickname, cid)
 end
 
 function Role:update(data)
-    if type(data.missions) ~= "string" then
-        data.missions = ""
-    end
     Role.super.update(self, data)
 end
 

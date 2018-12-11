@@ -61,7 +61,6 @@ function SigninAction:onData(args, _redis)
     local signin_Data = signin:get()
     if #args > 0 then
         signin:update(args[1])
-        --self:getAction({day = 2})
         instance:sendPack("SigninRecord", {
             times = signin_Data.times,
             record = json_decode(signin_Data.record) or {},
@@ -89,29 +88,7 @@ function SigninAction:login(args, _redis)
     local lastTime = args.lastTime
     local loginTime = args.loginTime
     
-    local loginDate = os.date("*t", loginTime)
-    local lastDate = os.date("*t", lastTime)
-    if loginDate.year ~= lastDate.year or loginDate.month ~= lastDate.month then
-        --月份不同或者年份不同，则重制签到
-        local query = signin:insertWithUpdateQuery({
-            rid = role_data.id,
-            times = 1,
-            record = "",
-        }, {times = 1, record = ""}, {})
-        signin:pushQuery(query, instance:getConnectId(), "signin.onLogin")
-        return
-    end
-    
-    if loginDate.year ~= lastDate.year or loginDate.yday ~= lastDate.yday or 1 then
-        --新的一天
-        local query = signin:insertWithUpdateQuery({
-            rid = role_data.id,
-            times = 1,
-            record = "",
-        }, {}, {times = 1})
-        signin:pushQuery(query, instance:getConnectId(), "signin.onLogin")
-        return
-    end
+    return signin:Login(instance:getConnectId(), "signin.onLogin", lastTime, loginTime, role_data.id)
 end
 
 return SigninAction

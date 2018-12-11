@@ -10,7 +10,6 @@ local Struct = {
     loginTime = 0,
     createTime = 0,
     exp = 0,
-    missions = "",
 }
 
 local Define = {
@@ -24,7 +23,6 @@ local Define = {
     loginTime = "int",
     createTime = "int",
     exp = "int",
-    missions = "longblob",
 }
 
 local Indexes = {
