@@ -15,8 +15,7 @@ function ShopAction:getAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     if not id then
-        instance:sendError("NoneID")
-        return
+        return false, "NoneID"
     end
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -24,22 +23,18 @@ function ShopAction:getAction(args, redis)
     local cfg_shop = dbConfig.get("cfg_shop", id)
     local nowtime = ngx.now()
     if cfg_shop.startTime > 0 and nowtime < cfg_shop.startTime then
-        instance:sendError("OutOfDate")
-        return
+        return false, "OutOfDate"
     end
     
     if cfg_shop.endTime > 0 and nowtime > cfg_shop.endTime then
-        instance:sendError("OutOfDate")
-        return
+        return false, "OutOfDate"
     end
     if role_data.diamond < cfg_shop.diamond then
-        instance:sendError("LessDiamond")
-        return
+        return false, "LessDiamond"
     end
     
     if role_data.gold < cfg_shop.gold then
-        instance:sendError("LessGold")
-        return
+        return false, "LessGold"
     end
     
     local shop = player:getShop()
@@ -84,6 +79,7 @@ function ShopAction:getAction(args, redis)
     shop_Data.idList = json_encode(idList)
     shop_Data.timesList = json_encode(timesList)
     self:saveData()
+    return true
 end
 
 function ShopAction:saveData()

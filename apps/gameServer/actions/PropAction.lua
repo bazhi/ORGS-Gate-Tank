@@ -34,31 +34,26 @@ function PropAction:decomposeAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     if type(id) ~= "number" then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     
     local player = instance:getPlayer()
     local props = player:getProps()
     local prop = props:get(id)
     if not prop then
-        instance:sendError("NoneProp")
-        return - 1
+        return false, "NoneProp"
     end
     local prop_data = prop:get()
     if prop_data.count < 1 then
-        instance:sendError("NoneProp")
-        return - 1
+        return false, "NoneProp"
     end
     
     local cfg_prop = dbConfig.get("cfg_prop", prop_data.cid)
     if not cfg_prop then
-        instance:sendError("ConfigError")
-        return - 1
+        return false, "ConfigError"
     end
     if not cfg_prop.decompose or cfg_prop.type ~= 2 or #(cfg_prop.decompose) <= 0 then
-        instance:sendError("OperationNotPermit")
-        return - 1
+        return false, "OperationNotPermit"
     end
     
     prop_data.count = prop_data.count - 1
@@ -69,14 +64,13 @@ function PropAction:decomposeAction(args, redis)
     })
     self:addProps({items = cfg_prop.decompose}, redis)
     
-    return 1
+    return true
 end
 
-function PropAction:addProps(args, redis)
+function PropAction:addProps(args, _redis)
     local instance = self:getInstance()
     if not args.items then
-        cc.printerror("PropAction:addProps args is not support")
-        return
+        return false, "NoParam"
     end
     local items = ParseConfig.ParseDecompose(args.items)
     local rewardlist = {}
@@ -102,14 +96,14 @@ function PropAction:addProps(args, redis)
         gold = args.gold or 0,
         diamond = args.diamond or 0,
     })
+    return true
 end
 
 function PropAction:addPropsWithList(args, _redis)
     local instance = self:getInstance()
     local ids = args.ids
     if type(ids) ~= "table" then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     local idMap = {}
     
@@ -130,7 +124,7 @@ function PropAction:addPropsWithList(args, _redis)
     instance:sendPack("Rewards", {
         values = rewardlist,
     })
-    return 1
+    return true
 end
 
 function PropAction:addProp(cid, count)
@@ -151,7 +145,7 @@ function PropAction:addProp(cid, count)
         local cfg_prop = dbConfig.get("cfg_prop", cid)
         if not cfg_prop then
             instance:sendError("ConfigError")
-            return - 1
+            return false
         end
         
         prop = props:get()
@@ -162,10 +156,10 @@ function PropAction:addProp(cid, count)
         local query = prop:insertQuery(dt)
         prop:pushQuery(query, instance:getConnectId(), "prop.onPropNew")
     end
-    return 1
+    return true
 end
 
-function PropAction:onProp(args, redis, params)
+function PropAction:onProp(args, _redis, params)
     --cc.dump(args)
     if params and params.update then
         local instance = self:getInstance()
@@ -180,7 +174,7 @@ function PropAction:onProp(args, redis, params)
     end
 end
 
-function PropAction:onPropNew(args, redis)
+function PropAction:onPropNew(args, _redis)
     if args.err or not args.insert_id or args.insert_id <= 0 then
         return
     end

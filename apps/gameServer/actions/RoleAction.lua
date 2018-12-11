@@ -38,8 +38,7 @@ function RoleAction:createAction(args, _redis)
     local nickname = args.nickname
     local cid = default_role_cid
     if not nickname or #nickname <= 5 then
-        instance:sendError("NoSetNickname")
-        return
+        return false, "NoSetNickname"
     end
     local now = ngx.now()
     
@@ -56,7 +55,7 @@ function RoleAction:createAction(args, _redis)
     local query = role:insertQuery(dt)
     role:pushQuery(query, instance:getConnectId(), "role.onCreate")
     
-    return 1
+    return true
 end
 
 function RoleAction:onCreate(args, _redis)
@@ -81,7 +80,7 @@ function RoleAction:loadAction(_args, _redis)
     local role = player:getRole()
     local query = role:selectQuery({pid = pid})
     role:pushQuery(query, instance:getConnectId(), "role.onRole")
-    return 1
+    return true
 end
 
 function RoleAction:update(args, _redis)
@@ -184,7 +183,7 @@ function RoleAction:loadOthersAction(_args, _redis)
     local player = instance:getPlayer()
     local role = player:getRole()
     if not role then
-        return
+        return false, "NoParam"
     end
     
     local query

@@ -34,8 +34,7 @@ function ChapterAction:enterAction(args, _redis)
     local instance = self:getInstance()
     local cid = args.cid
     if type(cid) ~= "number" then
-        instance:sendError("NoneConfigID")
-        return - 1
+        return false, "NoneConfigID"
     end
     
     local player = instance:getPlayer()
@@ -45,41 +44,37 @@ function ChapterAction:enterAction(args, _redis)
     local chapter = chapters:getByCID(cid)
     --已经解锁该章节了, 不用理会
     if chapter then
-        return 0
+        return true
     end
     
     --检查是否有该章节的配置
     local cfg_chapter = dbConfig.get("cfg_chapter", cid)
     if not cfg_chapter then
-        instance:sendError("NoneConfig")
-        return - 1
+        return false, "NoneConfig"
     end
     --取到config之后，检查config是否解锁
     --1.检查解锁等级
     if cfg_chapter.unlockLevel > role_data.level then
-        instance:sendError("NoAccept", 1)
-        return - 1
+        return false, "NoAccept"
     end
     --2.检查解锁星级
     if cfg_chapter.preID > 0 then
         local pre_chapter = chapters:getByCID(cfg_chapter.preID)
         if not pre_chapter then
             --前置关卡未解锁
-            instance:sendError("NoAccept", 2)
-            return - 1
+            return false, "NoAccept"
         end
         
         local pre_chapter_data = pre_chapter:get()
         if pre_chapter_data.status ~= 2 then
             --前置关卡未完结
-            instance:sendError("NoAccept", 2)
-            return - 1
+            return false, "NoAccept"
         end
     end
     
     --3.是否需要购买
     if cfg_chapter.price > 0 then
-        return 0
+        return false, "NotBuy"
     end
     
     --所有条件都满足，插入新的关卡
@@ -93,7 +88,7 @@ function ChapterAction:enterAction(args, _redis)
     dt.record3 = ""
     local query = chapter:insertQuery(dt)
     chapter:pushQuery(query, instance:getConnectId(), "chapter.onChapterNew")
-    return 1
+    return true
 end
 
 function ChapterAction:onChapterNew(args, _redis)
@@ -129,14 +124,14 @@ function ChapterAction:saveAction(args)
     local id = args.id
     local seq = args.seq
     if not id or not seq then
-        return - 1
+        return false, "NoParam"
     end
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local chapters = player:getChapters()
     local chapter = chapters:getByCID(id)
     if not chapter then
-        return - 1
+        return false, "NoAccept"
     end
     local chapter_data = chapter:get()
     local query
@@ -157,6 +152,7 @@ function ChapterAction:saveAction(args)
         seq = seq,
         record = args.record,
     })
+    return true
 end
 
 return ChapterAction

@@ -25,8 +25,7 @@ function SigninAction:getAction(args, redis)
         
         for _, d in ipairs(record) do
             if d == day then
-                instance:sendError("NoAccept")
-                return
+                return false, "NoAccept"
             end
         end
         
@@ -51,6 +50,7 @@ function SigninAction:getAction(args, redis)
             record = record,
         })
     end
+    return true
 end
 
 function SigninAction:onData(args, _redis)

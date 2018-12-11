@@ -33,8 +33,7 @@ MissionAction.ACCEPTED_REQUEST_TYPE = "websocket"
 function MissionAction:add(args, _redis)
     local instance = self:getInstance()
     if not args.cid or args.cid == 0 then
-        instance:sendError("NoneConfigID")
-        return - 1
+        return false, "NoneConfigID"
     end
     local cid = args.cid
     
@@ -44,7 +43,7 @@ function MissionAction:add(args, _redis)
     local mission = missions:getByCID(cid)
     if mission then
         cc.printerror("mission is all ready added:"..cid)
-        return - 1
+        return false, "UnExpectedError"
     end
     
     mission = missions:get()
@@ -53,6 +52,7 @@ function MissionAction:add(args, _redis)
     dt.cid = cid
     local query = mission:insertQuery(dt)
     mission:pushQuery(query, instance:getConnectId(), "mission.onMissionNew")
+    return true
 end
 
 --重置任务
@@ -94,33 +94,32 @@ function MissionAction:finishAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     if not id then
-        instance:sendError("NoneID")
-        return - 1
+        return false, "NoneID"
     end
     
     local player = instance:getPlayer()
     local missions = player:getMissions()
     local mission = missions:get(id)
     if not mission then
-        instance:sendError("NoneMission")
-        return - 1
+        return false, "NoneMission"
     end
     
     local mission_data = mission:get()
     local cfg_mission = dbConfig.get("cfg_mission", mission_data.cid)
     if not cfg_mission then
-        instance:sendError("NoneConfig")
-        return - 1
+        return false, "NoneConfig"
     end
     
     if mission_data.progress < cfg_mission.count then
-        instance:sendError("Unfinished")
-        return - 1
+        return false, "Unfinished"
     end
     
     --任务完成
     --1.给予箱子
-    self:runAction("box.addBoxes", {ids = cfg_mission.boxID}, redis)
+    local result, err = self:runAction("box.addBoxes", {ids = cfg_mission.boxID}, redis)
+    if not result then
+        return result, err
+    end
     
     --删除当前任务
     self:deleteMission(mission_data.id)
@@ -130,7 +129,7 @@ function MissionAction:finishAction(args, redis)
         self:add({cid = cid}, redis)
     end
     
-    return 1
+    return true
 end
 
 function MissionAction:onMissionNew(args, _redis)

@@ -46,7 +46,7 @@ function ActionBase:hasAuthority(authorization)
 end
 
 function ActionBase:runAction(actionName, args, redis, params)
-    self._instance:runAction(actionName, args, redis, true, params)
+    return self._instance:runAction(actionName, args, redis, true, params)
 end
 
 return ActionBase

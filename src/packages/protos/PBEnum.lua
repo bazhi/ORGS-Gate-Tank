@@ -10,7 +10,7 @@ local _M = {
 			Unfinished = 6,
 			NoAccept = 7,
 			NoParam = 8,
-			UnexpectedError = 10,
+			UnExpectedError = 10,
 			ConfigError = 11,
 			OutOfDate = 12,
 			LessGold = 13,
@@ -24,6 +24,7 @@ local _M = {
 			NonoDiamond = 1006,
 			NoneMission = 1011,
 			OperationNotPermit = 2001,
+			NotBuy = 3001,
 		},
 	},
 }

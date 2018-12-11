@@ -13,13 +13,13 @@ function RewardAction:open(args, redis)
     local id = args.id
     if type(id) ~= "number" then
         instance:sendError("NoParam")
-        return - 1
+        return false
     end
     
     local cfg_reward = dbConfig.get("cfg_reward", id)
     if not cfg_reward then
         instance:sendError("NoneConfig")
-        return - 1
+        return false
     end
     
     --获取总的道具

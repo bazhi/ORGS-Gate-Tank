@@ -134,9 +134,10 @@ function WebSocketInstanceBase:sendMessage(msg)
     end
 end
 
-function WebSocketInstanceBase:sendError(erroname, msgid)
+function WebSocketInstanceBase:sendError(erroname, msgid, tp)
     self:sendPack(PBToCmd.Error, {
         code = erroname,
+        type = tp,
     }, msgid)
 end
 
@@ -403,8 +404,8 @@ _processMessage = function(self, rawMessage, messageType)
     local msgid = message.msgid
     local actionName = message.action
     
-    local _ok, result = self:safeFunction(function()
-        return this:runAction(actionName, message._args or message)
+    local _ok, result, errCode = self:safeFunction(function()
+        return this:runAction(actionName, message.args or message)
     end)
     
     if not _ok then
@@ -421,11 +422,13 @@ _processMessage = function(self, rawMessage, messageType)
     end
     
     if messageFormat == "pbc" then
-        local rtype = type(result)
-        if rtype == "number" then
-            self:sendPack("Operation", {result = result}, msgid)
+        if result then
+            self:sendPack("Operation", {result = true, type = message.type}, msgid)
         else
-            self:sendPack("Operation", result or {result = 1}, msgid)
+            self:sendPack("Operation", {result = false, type = message.type}, msgid)
+            if errCode then
+                self:sendError(errCode, msgid, message.type)
+            end
         end
     else
         local rtype = type(result)
@@ -460,8 +463,9 @@ function WebSocketInstanceBase:parseMessage(rawMessage, messageType, messageForm
                             local content = pb.decode("pb."..name, message.content)
                             return {
                                 action = actionName,
-                                _args = content,
+                                args = content,
                                 msgid = message.msgid,
+                                type = message.type,
                             }
                         else
                             cc.throw("can not supported pbc messagename:"..name)

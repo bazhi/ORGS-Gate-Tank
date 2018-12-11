@@ -8,12 +8,11 @@ local ParseConfig = parse.ParseConfig
 BoxAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
 --分解
-function BoxAction:add(args, redis)
-    local instance = self:getInstance()
+function BoxAction:add(args, _redis)
+    --local instance = self:getInstance()
     local id = args.id
     if type(id) ~= "number" or id <= 0 then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     
     return self:addBox(id)
@@ -24,8 +23,7 @@ function BoxAction:addBox(id)
     --检查是否在真的存在该box
     local cfg_box = dbConfig.get("cfg_box", id)
     if not cfg_box then
-        instance:sendError("NoneConfig")
-        return - 1
+        return false, "NoneConfig"
     end
     
     local player = instance:getPlayer()
@@ -38,24 +36,23 @@ function BoxAction:addBox(id)
     dt.cid = id
     local query = box:insertQuery(dt)
     box:pushQuery(query, instance:getConnectId(), "box.onBoxNew")
-    return 1
+    return true
 end
 
-function BoxAction:addBoxes(args, redis)
-    local instance = self:getInstance()
+function BoxAction:addBoxes(args, _redis)
+    --local instance = self:getInstance()
     local ids = args.ids
     if type(ids) ~= "string" then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     ids = ParseConfig.ParseIDList(ids)
     for _, id in ipairs(ids) do
         self:addBox(id)
     end
-    return 1
+    return true
 end
 
-function BoxAction:onBoxNew(args, redis, param)
+function BoxAction:onBoxNew(args, _redis, _param)
     if args.err then
         cc.printf(args.err)
         return
@@ -72,7 +69,7 @@ function BoxAction:onBoxNew(args, redis, param)
     box:pushQuery(query, instance:getConnectId(), "box.onBox")
 end
 
-function BoxAction:onBox(args, redis, param)
+function BoxAction:onBox(args, _redis, _param)
     if type(args) ~= "table" then
         return
     end
@@ -87,32 +84,28 @@ function BoxAction:onBox(args, redis, param)
     end
 end
 
-function BoxAction:openAction(args, redis)
+function BoxAction:openAction(args, _redis)
     local instance = self:getInstance()
     local id = args.id
     if type(id) ~= "number" or id <= 0 then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     local player = instance:getPlayer()
     local boxes = player:getBoxes()
     local box = boxes:get(id)
     if not box then
-        instance:sendError("NoneBox")
-        return - 1
+        return false, "NoneBox"
     end
     local box_data = box:get()
     
     --箱子已经在打开过程中，不允许再次打开
     if box_data.unlockTime > 0 then
-        instance:sendError("OperationNotPermit")
-        return - 1
+        return false, "OperationNotPermit"
     end
     
     local cfg_box = dbConfig.get("cfg_box", box_data.cid)
     if not cfg_box then
-        instance:sendError("NoneConfig")
-        return - 1
+        return false, "NoneConfig"
     end
     
     --
@@ -125,7 +118,7 @@ function BoxAction:openAction(args, redis)
         },
     })
     
-    return 1
+    return true
 end
 
 function BoxAction:deleteBox(id)
@@ -146,29 +139,25 @@ function BoxAction:gainAction(args, redis)
     local instance = self:getInstance()
     local id = args.id
     if type(id) ~= "number" or id <= 0 then
-        instance:sendError("NoParam")
-        return - 1
+        return false, "NoParam"
     end
     local player = instance:getPlayer()
     local boxes = player:getBoxes()
     local box = boxes:get(id)
     if not box then
-        instance:sendError("NoneBox")
-        return - 1
+        return false, "NoneBox"
     end
     local box_data = box:get()
     
     --箱子正在打开中, 或者没有打开
     if box_data.unlockTime > ngx.now() or box_data.unlockTime <= 0 then
-        instance:sendError("OperationNotPermit")
-        return - 1
+        return false, "OperationNotPermit"
     end
     
     --时间到了，允许收取物品了
     local cfg_box = dbConfig.get("cfg_box", box_data.cid)
     if not cfg_box then
-        instance:sendError("NoneConfig")
-        return - 1
+        return false, "NoneConfig"
     end
     --删除箱子
     self:deleteBox(id)

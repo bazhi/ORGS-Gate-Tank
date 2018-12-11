@@ -52,7 +52,7 @@ message Error{
 		Unfinished = 6; //未完成
 		NoAccept = 7; //没达到条件，不接受
 		NoParam = 8; //缺少参数
-		UnexpectedError = 10; //不期望的错误
+		UnExpectedError = 10; //不期望的错误
 		ConfigError = 11; //配置表错误
 		OutOfDate = 12; //已经过期
 		LessGold = 13; //金币不够
@@ -68,12 +68,15 @@ message Error{
 		NoneMission = 1011; //找不到任务
 
 		OperationNotPermit = 2001; //操作不允许
+		NotBuy = 3001; //没有购买
 	}
 	EType code = 1; //错误码
+	int32 type = 2;
 }
 
 message Operation{
-	int32 result = 1; //-1:表示有错误吗，0:表示操作失败，1:表示操作成功
+	bool result = 1;
+	int32 type = 2;
 }
 
 //Server Command
