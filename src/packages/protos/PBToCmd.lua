@@ -13,6 +13,7 @@ local _M = {
     Chapter = 1021,
     Chapters = 102,
     FinishMission = 51,
+    MissionEvent = 52,
     MissionItem = 1051,
     MissionList = 105,
     Box = 1061,

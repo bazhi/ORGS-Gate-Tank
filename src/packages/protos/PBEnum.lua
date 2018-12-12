@@ -27,5 +27,23 @@ local _M = {
 			NotBuy = 3001,
 		},
 	},
+	MissionEvent={
+		MType={
+			None = 0,
+			Kill = 1,
+			Collect = 2,
+			MakeProp = 3,
+			Build = 4,
+			Alive = 5,
+			UseDiamond = 6,
+			UseTech = 7,
+			UseItem = 8,
+			UpgradeTech = 9,
+			UpgradeTalent = 10,
+			FinishMission = 11,
+			FinishChapter = 12,
+			MakeEquip = 13,
+		},
+	},
 }
 return table.readonly(_M)

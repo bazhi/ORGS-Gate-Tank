@@ -17,6 +17,7 @@ namespace Pb{
         Chapter = 1021,
         Chapters = 102,
         FinishMission = 51,
+        MissionEvent = 52,
         MissionItem = 1051,
         MissionList = 105,
         Box = 1061,
@@ -47,6 +48,7 @@ namespace Pb{
             dict.Add(PBDefine.Chapter, Chapter.Parser);
             dict.Add(PBDefine.Chapters, Chapters.Parser);
             dict.Add(PBDefine.FinishMission, FinishMission.Parser);
+            dict.Add(PBDefine.MissionEvent, MissionEvent.Parser);
             dict.Add(PBDefine.MissionItem, MissionItem.Parser);
             dict.Add(PBDefine.MissionList, MissionList.Parser);
             dict.Add(PBDefine.Box, Box.Parser);

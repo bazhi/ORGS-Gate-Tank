@@ -30,7 +30,7 @@ local MissionAction = cc.class("MissionAction", gbc.ActionBase)
 MissionAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
 --登陆初始化
-function MissionAction:login(args, redis)
+function MissionAction:login(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -41,12 +41,12 @@ function MissionAction:login(args, redis)
     local loginTime = args.loginTime
     
     if not missions:Login(instance:getConnectId(), "mission.onLogin", lastTime, loginTime, role_data.id) then
-        self:onLogin(args, redis)
+        self:onLogin(args)
     end
     return true
 end
 
-function MissionAction:onLogin(_args, _redis)
+function MissionAction:onLogin(_args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
@@ -55,7 +55,7 @@ function MissionAction:onLogin(_args, _redis)
     missions:LoadAll(instance:getConnectId(), "mission.onLoad", role_data.id)
 end
 
-function MissionAction:onLoad(args, _redis)
+function MissionAction:onLoad(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local missions = player:getMissions()
@@ -65,11 +65,14 @@ function MissionAction:onLoad(args, _redis)
     })
 end
 
-function MissionAction:deleteAction(_args, _redis)
-    
+function MissionAction:eventAction(args)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local missions = player:getMissions()
+    missions:process(instance:getConnectId(), nil, args.action_type, args.action_id, args.action_place, args.action_count, args.action_override)
 end
 
-function MissionAction:finishAction(_args, _redis)
+function MissionAction:finishAction(_args)
     
 end
 

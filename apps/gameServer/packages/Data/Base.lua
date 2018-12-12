@@ -29,6 +29,17 @@ function Base:getID()
     return self._data.id
 end
 
+function Base:set(key, value)
+    self._data[key] = value
+end
+
+function Base:add(key, value)
+    if not self._data[key] then
+        self._data[key] = 0
+    end
+    self._data[key] = self._data[key] + value
+end
+
 function Base:get(key)
     if key then
         return self._data[key]

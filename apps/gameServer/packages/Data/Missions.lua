@@ -60,4 +60,11 @@ function Missions:DeleteAll(connectid, action, roleid)
     return true
 end
 
+function Missions:process(connectid, action, tp, id, place, count, override)
+    local list = self._Datas
+    for _, item in ipairs(list) do
+        item:process(connectid, action, tp, id, place, count, override)
+    end
+end
+
 return Missions

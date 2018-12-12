@@ -23,6 +23,7 @@ package pb;
 	GainBox==32
 
 	FinishMission==51
+	MissionEvent==52
 
 	Role==101
 	Chapters==102
@@ -159,6 +160,31 @@ message Chapters{
 //完成任务
 message FinishMission{
 	int32 id = 1; //mission id
+}
+
+message MissionEvent{
+	enum MType{
+		None = 0;
+		Kill = 1; //杀死怪物
+		Collect = 2; //收集物品
+		MakeProp = 3; //制作道具
+		Build = 4; //建造
+		Alive = 5; //存活
+		UseDiamond = 6; //使用钻石
+		UseTech = 7; //使用科技点
+		UseItem = 8; //使用道具
+		UpgradeTech = 9; //提升科技
+		UpgradeTalent = 10; //提升天赋
+		FinishMission = 11; //完成任务
+		FinishChapter = 12; //通过章节
+		MakeEquip = 13; //制作装备
+	}
+
+	int32 action_id = 1;
+	int32 action_place = 2;
+	int32 action_count = 3;
+	int32 action_type = 4;
+	bool action_override = 5;
 }
 
 //任务项目
