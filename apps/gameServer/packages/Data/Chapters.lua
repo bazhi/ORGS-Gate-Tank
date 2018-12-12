@@ -8,6 +8,16 @@ function Chapters:createItem()
     return Chapter:new()
 end
 
+function Chapters:Login(connectid, action, lastTime, loginTime, roleid)
+    if not connectid or not lastTime or not loginTime or not roleid then
+        return false, "NoParam"
+    end
+    local chapter = self:get()
+    local query = chapter:selectQuery({rid = roleid})
+    chapter:pushQuery(query, connectid, action)
+    return true
+end
+
 function Chapters:Create(connectid, action, cid, roleData)
     if not connectid or not roleData then
         return false, "NoParam"

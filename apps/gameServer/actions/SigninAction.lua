@@ -24,13 +24,14 @@ function SigninAction:getAction(args, redis)
             record = {}
         end
         
+        --已经签到了，不能再签到
         for _, d in ipairs(record) do
             if d == day then
                 return false, "NoAccept"
             end
         end
         
-        --增加到家
+        --获取签到奖励
         local cfg_signin = dbConfig.get("cfg_signin", day)
         if cfg_signin ~= nil then
             role:AddData(instance:getConnectId(), nil, cfg_signin.gold, cfg_signin.diamond)
@@ -41,7 +42,7 @@ function SigninAction:getAction(args, redis)
             }, redis)
         end
         
-        --可以领取，计算道具
+        --更新签到结果
         table.insert(record, day)
         signin_Data.record = json_encode(record)
         local query = signin:updateQuery({rid = signin_Data.rid}, {record = signin_Data.record})

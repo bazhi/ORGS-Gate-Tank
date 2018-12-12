@@ -52,6 +52,14 @@ function table.copy(t)
     return _copy(t, lookup)
 end
 
+function table.clone(t)
+    local n = {}
+    for k, v in pairs(t) do
+        n[k] = v
+    end
+    return n
+end
+
 function table.keys(hashtable)
     local keys = {}
     for k, _v in pairs(hashtable) do

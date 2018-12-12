@@ -48,38 +48,39 @@ namespace Pb {
             "KAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRIOCgZzdGF0dXMYBCABKAUS",
             "DwoHcmVjb3JkMRgFIAEoDBIPCgdyZWNvcmQyGAYgASgMEg8KB3JlY29yZDMY",
             "ByABKAwiJwoIQ2hhcHRlcnMSGwoGdmFsdWVzGAEgAygLMgsucGIuQ2hhcHRl",
-            "ciIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEgASgFIioKC01pc3Npb25JdGVt",
-            "EgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiLQoLTWlzc2lvbkxpc3QS",
-            "HgoFaXRlbXMYASADKAsyDy5wYi5NaXNzaW9uSXRlbSI/CgNCb3gSCgoCaWQY",
-            "ASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRISCgp1bmxvY2tUaW1l",
-            "GAQgASgFIiAKBUJveGVzEhcKBnZhbHVlcxgBIAMoCzIHLnBiLkJveCIkCgZS",
-            "ZXdhcmQSCwoDY2lkGAEgASgFEg0KBWNvdW50GAIgASgFIkQKB1Jld2FyZHMS",
-            "GgoGdmFsdWVzGAEgAygLMgoucGIuUmV3YXJkEgwKBGdvbGQYAiABKAUSDwoH",
-            "ZGlhbW9uZBgDIAEoBSIxCgxTaWduaW5SZWNvcmQSDQoFdGltZXMYASABKAUS",
-            "EgoGcmVjb3JkGAIgAygFQgIQASIYCglTaWduaW5HZXQSCwoDZGF5GAEgASgF",
-            "IhUKB1Nob3BHZXQSCgoCaWQYASABKAUiLwoKU2hvcFJlY29yZBIOCgJpZBgB",
-            "IAMoBUICEAESEQoFdGltZXMYAiADKAVCAhABIiwKDUNvbXBvc2l0ZUl0ZW0S",
-            "CgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSIxCghJdGVtRGF0YRIKCgJp",
-            "ZBgBIAEoBRINCgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBSKHAQoKUGxheWVy",
-            "RGF0YRIOCgZoZWFsdGgYASABKAUSDwoHc3RhbWluYRgCIAEoBRIbCgVwcm9w",
-            "cxgDIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYBCADKAsyDC5wYi5J",
-            "dGVtRGF0YRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvciJYCglNYXBS",
-            "ZWNvcmQSHgoGdG93ZXJzGAEgAygLMg4ucGIuUmVjb3JkSXRlbRIdCgVpdGVt",
-            "cxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBS",
-            "ZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQY",
-            "AyABKAwiKgoKUmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250ZW50cxgC",
-            "IAEoDCK5AQoJQnVpbGREYXRhEhAKCGFjdHVhbElEGAEgASgFEg4KBmhlYWx0",
-            "aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJUaW1lGAQg",
-            "ASgFEiUKCmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsK",
-            "BXByb3BzGAYgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgHIAMoCzIM",
-            "LnBiLkl0ZW1EYXRhIh8KDENhbGVuZGFyRGF0YRIPCgdtaW51dGVzGAEgASgF",
-            "InQKCVRvd2VyRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiAB",
-            "KAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIc",
-            "CghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvciIrCgxDTWlzc2lvbkl0ZW0S",
-            "CgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJPCgxDTWlzc2lvbkRhdGES",
-            "CgoCaWQYASABKAUSHgoEbGlzdBgCIAMoCzIQLnBiLkNNaXNzaW9uSXRlbRIT",
-            "CgtyZWZyZXNoVGltZRgDIAEoBSIuCgxDTWlzc2lvbkxpc3QSHgoEbGlzdBgB",
-            "IAMoCzIQLnBiLkNNaXNzaW9uRGF0YWIGcHJvdG8z"));
+            "ciIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEgASgFIkQKC01pc3Npb25JdGVt",
+            "EgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUSCwoDY2lkGAMgASgFEgsK",
+            "A3JpZBgEIAEoBSItCgtNaXNzaW9uTGlzdBIeCgVpdGVtcxgBIAMoCzIPLnBi",
+            "Lk1pc3Npb25JdGVtIj8KA0JveBIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUS",
+            "CwoDY2lkGAMgASgFEhIKCnVubG9ja1RpbWUYBCABKAUiIAoFQm94ZXMSFwoG",
+            "dmFsdWVzGAEgAygLMgcucGIuQm94IiQKBlJld2FyZBILCgNjaWQYASABKAUS",
+            "DQoFY291bnQYAiABKAUiRAoHUmV3YXJkcxIaCgZ2YWx1ZXMYASADKAsyCi5w",
+            "Yi5SZXdhcmQSDAoEZ29sZBgCIAEoBRIPCgdkaWFtb25kGAMgASgFIjEKDFNp",
+            "Z25pblJlY29yZBINCgV0aW1lcxgBIAEoBRISCgZyZWNvcmQYAiADKAVCAhAB",
+            "IhgKCVNpZ25pbkdldBILCgNkYXkYASABKAUiFQoHU2hvcEdldBIKCgJpZBgB",
+            "IAEoBSIvCgpTaG9wUmVjb3JkEg4KAmlkGAEgAygFQgIQARIRCgV0aW1lcxgC",
+            "IAMoBUICEAEiLAoNQ29tcG9zaXRlSXRlbRIKCgJpZBgBIAEoBRIPCgd0aW1l",
+            "RW5kGAIgASgFIjEKCEl0ZW1EYXRhEgoKAmlkGAEgASgFEg0KBWNvdW50GAIg",
+            "ASgFEgoKAmhwGAMgASgFIocBCgpQbGF5ZXJEYXRhEg4KBmhlYWx0aBgBIAEo",
+            "BRIPCgdzdGFtaW5hGAIgASgFEhsKBXByb3BzGAMgAygLMgwucGIuSXRlbURh",
+            "dGESHQoHd2VhcG9ucxgEIAMoCzIMLnBiLkl0ZW1EYXRhEhwKCFBvc2l0aW9u",
+            "GAUgASgLMgoucGIuVmVjdG9yIlgKCU1hcFJlY29yZBIeCgZ0b3dlcnMYASAD",
+            "KAsyDi5wYi5SZWNvcmRJdGVtEh0KBWl0ZW1zGAIgAygLMg4ucGIuUmVjb3Jk",
+            "SXRlbRIMCgR0aW1lGAMgASgDIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASAB",
+            "KAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEoDCIqCgpSZWNvcmRJdGVt",
+            "EgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIrkBCglCdWlsZERhdGES",
+            "EAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3JhZGVU",
+            "aW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSJQoKY29tcG9zaXRlcxgF",
+            "IAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0SGwoFcHJvcHMYBiADKAsyDC5wYi5J",
+            "dGVtRGF0YRIdCgd3ZWFwb25zGAcgAygLMgwucGIuSXRlbURhdGEiHwoMQ2Fs",
+            "ZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUidAoJVG93ZXJEYXRhEhAKCGFj",
+            "dHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgD",
+            "IAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEhwKCFBvc2l0aW9uGAUgASgLMgou",
+            "cGIuVmVjdG9yIisKDENNaXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9j",
+            "ZXNzGAIgASgFIk8KDENNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0",
+            "GAIgAygLMhAucGIuQ01pc3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgF",
+            "Ii4KDENNaXNzaW9uTGlzdBIeCgRsaXN0GAEgAygLMhAucGIuQ01pc3Npb25E",
+            "YXRhYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,7 +99,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapter), global::Pb.Chapter.Parser, new[]{ "Id", "Rid", "Cid", "Status", "Record1", "Record2", "Record3" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapters), global::Pb.Chapters.Parser, new[]{ "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.FinishMission), global::Pb.FinishMission.Parser, new[]{ "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionItem), global::Pb.MissionItem.Parser, new[]{ "Id", "Process" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionItem), global::Pb.MissionItem.Parser, new[]{ "Id", "Process", "Cid", "Rid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionList), global::Pb.MissionList.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Box), global::Pb.Box.Parser, new[]{ "Id", "Rid", "Cid", "UnlockTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Boxes), global::Pb.Boxes.Parser, new[]{ "Values" }, null, null, null),
@@ -2769,6 +2770,8 @@ namespace Pb {
     public MissionItem(MissionItem other) : this() {
       id_ = other.id_;
       process_ = other.process_;
+      cid_ = other.cid_;
+      rid_ = other.rid_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2798,6 +2801,28 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 3;
+    private int cid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rid" field.</summary>
+    public const int RidFieldNumber = 4;
+    private int rid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Rid {
+      get { return rid_; }
+      set {
+        rid_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MissionItem);
@@ -2813,6 +2838,8 @@ namespace Pb {
       }
       if (Id != other.Id) return false;
       if (Process != other.Process) return false;
+      if (Cid != other.Cid) return false;
+      if (Rid != other.Rid) return false;
       return true;
     }
 
@@ -2821,6 +2848,8 @@ namespace Pb {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Process != 0) hash ^= Process.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
+      if (Rid != 0) hash ^= Rid.GetHashCode();
       return hash;
     }
 
@@ -2839,6 +2868,14 @@ namespace Pb {
         output.WriteRawTag(16);
         output.WriteInt32(Process);
       }
+      if (Cid != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Cid);
+      }
+      if (Rid != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Rid);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2849,6 +2886,12 @@ namespace Pb {
       }
       if (Process != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Process);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
+      }
+      if (Rid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rid);
       }
       return size;
     }
@@ -2863,6 +2906,12 @@ namespace Pb {
       }
       if (other.Process != 0) {
         Process = other.Process;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
+      }
+      if (other.Rid != 0) {
+        Rid = other.Rid;
       }
     }
 
@@ -2880,6 +2929,14 @@ namespace Pb {
           }
           case 16: {
             Process = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Cid = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Rid = input.ReadInt32();
             break;
           }
         }

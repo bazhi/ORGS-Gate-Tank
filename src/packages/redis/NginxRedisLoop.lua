@@ -67,7 +67,7 @@ function NginxRedisLoop:start(onmessage, cmdchannel, ...)
         xpcall(function()
             return onmessage(priRedis, channel, msg, pchannel, id)
         end, function(err)
-            cc.printerror(debug.traceback(err, 5))
+            cc.printerror(debug.traceback(err, 1))
         end)
     end, onerror)
     return 1

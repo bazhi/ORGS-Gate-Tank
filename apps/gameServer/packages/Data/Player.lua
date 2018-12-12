@@ -4,6 +4,7 @@ local Role = cc.import(".Role")
 local Props = cc.import(".Props")
 local Chapters = cc.import(".Chapters")
 local Boxes = cc.import(".Boxes")
+local Missions = cc.import(".Missions")
 
 local Signin = cc.import(".Signin")
 local Shop = cc.import(".Shop")
@@ -11,10 +12,13 @@ local Shop = cc.import(".Shop")
 --玩家所有数据的集合
 function Player:ctor(user)
     self._User = user
-    self._Role = Role:new()
+    
 end
 
 function Player:getRole()
+    if not self._Role then
+        self._Role = Role:new()
+    end
     return self._Role
 end
 
@@ -32,10 +36,11 @@ function Player:getShop()
     return self._Shop
 end
 
-function Player:updateRole(data)
-    local role = self:getRole()
-    role:update(data)
-    return role
+function Player:getMissions()
+    if not self._Missions then
+        self._Missions = Missions:new()
+    end
+    return self._Missions
 end
 
 --------------------------------------------------------------------------------------------------------------------

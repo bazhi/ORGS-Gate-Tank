@@ -85,7 +85,7 @@ end
 function InstanceBase:safeFunction(func)
     return xpcall(func, function(err)
         err = tostring(err)
-        cc.printerror(err .. debug.traceback("", 10))
+        cc.printerror(err .. debug.traceback("", 1))
     end)
 end
 

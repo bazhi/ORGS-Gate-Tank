@@ -1,30 +1,31 @@
 
---[[
-Copyright (c) 2015 gameboxcloud.com
-Permission is hereby granted, free of chargse, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
- 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
- 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
- 
-]]
-
 local gbc = cc.import("#gbc")
 local ChapterAction = cc.class("ChapterAction", gbc.ActionBase)
 
 ChapterAction.ACCEPTED_REQUEST_TYPE = "websocket"
+
+function ChapterAction:login(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local role_data = role:get()
+    local chapters = player:getChapters()
+    
+    local lastTime = args.lastTime
+    local loginTime = args.loginTime
+    
+    return chapters:Login(instance:getConnectId(), "chapter.OnLogin", lastTime, loginTime, role_data.id)
+end
+
+function ChapterAction:OnLogin(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local chapters = player:getChapters()
+    chapters:updates(args)
+    instance:sendPack("Chapters", {
+        values = args
+    })
+end
 
 --解锁关卡，判断是否能够解锁关卡
 function ChapterAction:enterAction(args, _redis)
@@ -34,10 +35,10 @@ function ChapterAction:enterAction(args, _redis)
     local role = player:getRole()
     local role_data = role:get()
     local chapters = player:getChapters()
-    return chapters:Create(instance:getConnectId(), "chapter.OnCreate", cid, role_data)
+    return chapters:Create(instance:getConnectId(), "chapter.OnEnter", cid, role_data)
 end
 
-function ChapterAction:OnCreate(args, _redis)
+function ChapterAction:OnEnter(args, _redis)
     if args.err or not args.insert_id or args.insert_id <= 0 then
         return
     end
@@ -46,12 +47,12 @@ function ChapterAction:OnCreate(args, _redis)
     local chapters = player:getChapters()
     local chapter = chapters:get()
     local query = chapter:selectQuery({id = args.insert_id})
-    chapter:pushQuery(query, instance:getConnectId(), "chapter.onChapter", {
+    chapter:pushQuery(query, instance:getConnectId(), "chapter.OnLoad", {
         update = true,
     })
 end
 
-function ChapterAction:onChapter(args, _redis, params)
+function ChapterAction:OnLoad(args, _redis, params)
     if not params or not params.update then
         return
     end

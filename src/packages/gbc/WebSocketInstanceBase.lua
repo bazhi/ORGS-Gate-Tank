@@ -80,7 +80,7 @@ function WebSocketInstanceBase:run()
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)
-        cc.printerror(err .. debug.traceback("", 10))
+        cc.printerror(err .. debug.traceback("", 1))
         self:onClose()
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
         ngx.exit(ngx.ERROR)

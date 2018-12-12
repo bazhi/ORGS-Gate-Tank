@@ -95,7 +95,7 @@ function WorkerInstanceBase:runEventLoop()
                 return self:runAction(actionName, job)
             end, function(err)
                 if cc.DEBUG > cc.DEBUG_WARN then
-                    err = debug.traceback(err, 3)
+                    err = debug.traceback(err, 1)
                     cc.printwarn(err)
                 end
             end)

@@ -152,7 +152,7 @@ function HttpInstanceBase:runEventLoop()
     end, function(_err)
         err = _err
         if cc.DEBUG > cc.DEBUG_WARN then
-            err = debug.traceback(err, 3)
+            err = debug.traceback(err, 1)
             cc.printwarn(err)
         end
     end)
