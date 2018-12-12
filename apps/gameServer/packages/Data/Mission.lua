@@ -38,6 +38,10 @@ function Mission:process(connectid, action, action_type, action_id, action_place
             else
                 self:add("process", action_count)
             end
+            
+            local process = self:get("process")
+            local query = self:updateQuery({id = self:getID()}, {process = process})
+            self:pushQuery(query, connectid, action, {id = self:getID()})
         end
     end
 end

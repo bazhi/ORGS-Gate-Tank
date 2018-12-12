@@ -69,7 +69,18 @@ function MissionAction:eventAction(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local missions = player:getMissions()
-    missions:process(instance:getConnectId(), nil, args.action_type, args.action_id, args.action_place, args.action_count, args.action_override)
+    missions:process(instance:getConnectId(), "mission.onUpdate", args.action_type, args.action_id, args.action_place, args.action_count, args.action_override)
+end
+
+function MissionAction:onUpdate(_args, _redis, param)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local missions = player:getMissions()
+    local id = param.id
+    local mission = missions:get(id)
+    instance:sendPack("MissionList", {
+        items = {mission:get()},
+    })
 end
 
 function MissionAction:finishAction(_args)
