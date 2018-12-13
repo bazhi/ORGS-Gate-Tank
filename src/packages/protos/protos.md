@@ -37,6 +37,7 @@ package pb;
 	Box==1061
 	Prop==1071
 	MissionItem==1051
+	AchvItem==1091
 */
 message Pack{
 	int32 type = 1;

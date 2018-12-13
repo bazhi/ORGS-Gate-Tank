@@ -174,6 +174,7 @@ namespace Pb {
   /// Box==1061
   /// Prop==1071
   /// MissionItem==1051
+  /// AchvItem==1091
   /// </summary>
   public sealed partial class Pack : pb::IMessage<Pack> {
     private static readonly pb::MessageParser<Pack> _parser = new pb::MessageParser<Pack>(() => new Pack());
