@@ -24,6 +24,7 @@ package pb;
 
 	FinishMission==51
 	MissionEvent==52
+	FinishAchv==53
 
 	Role==101
 	Chapters==102
@@ -162,6 +163,11 @@ message Chapters{
 //完成任务
 message FinishMission{
 	int32 id = 1; //mission id
+}
+
+//完成任务
+message FinishAchv{
+	int32 id = 1; //achv id
 }
 
 message MissionEvent{

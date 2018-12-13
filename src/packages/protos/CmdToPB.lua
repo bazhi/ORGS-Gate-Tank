@@ -13,6 +13,7 @@ local _M = {
     [1021] = "Chapter",
     [102] = "Chapters",
     [51] = "FinishMission",
+    [53] = "FinishAchv",
     [52] = "MissionEvent",
     [1051] = "MissionItem",
     [105] = "MissionList",
