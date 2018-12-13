@@ -40,7 +40,7 @@ function AchvAction:onLoad(args)
     })
 end
 
-function AchvAction:eventAction(args)
+function AchvAction:event(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local achvs = player:getAchvs()
