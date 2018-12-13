@@ -71,6 +71,7 @@ function MissionAction:eventAction(args)
     local missions = player:getMissions()
     missions:process(instance:getConnectId(), "mission.onUpdate", args.action_type, args.action_id, args.action_place, args.action_count, args.action_override)
     self:runAction("achv.event", args)
+    return true
 end
 
 function MissionAction:onUpdate(_args, _redis, param)

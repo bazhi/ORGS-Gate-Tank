@@ -40,11 +40,11 @@ function Achvs:Login(connectid, action, lastTime, loginTime, roleid)
     local loginDate = os.date("*t", loginTime)
     local lastDate = os.date("*t", lastTime)
     
-    --if loginDate.year ~= lastDate.year or loginDate.yday ~= lastDate.yday then
-    --新的一天
-    self:InitializeAll(connectid, action, roleid)
-    return true
-    --end
+    if loginDate.year ~= lastDate.year or loginDate.yday ~= lastDate.yday then
+        --新的一天
+        self:InitializeAll(connectid, action, roleid)
+        return true
+    end
     
     --return false
 end
