@@ -20,6 +20,7 @@ namespace Pb{
         MissionEvent = 52,
         MissionItem = 1051,
         MissionList = 105,
+        AchvList = 109,
         Box = 1061,
         Boxes = 106,
         Rewards = 108,
@@ -51,6 +52,7 @@ namespace Pb{
             dict.Add(PBDefine.MissionEvent, MissionEvent.Parser);
             dict.Add(PBDefine.MissionItem, MissionItem.Parser);
             dict.Add(PBDefine.MissionList, MissionList.Parser);
+            dict.Add(PBDefine.AchvList, AchvList.Parser);
             dict.Add(PBDefine.Box, Box.Parser);
             dict.Add(PBDefine.Boxes, Boxes.Parser);
             dict.Add(PBDefine.Rewards, Rewards.Parser);

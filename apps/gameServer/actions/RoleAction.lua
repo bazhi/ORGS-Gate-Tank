@@ -94,6 +94,7 @@ function RoleAction:onLoad(args, redis, params)
     --加载角色数据成功
     self:runAction("signin.login", timeTab, redis)
     self:runAction("mission.login", timeTab, redis)
+    self:runAction("achv.login", timeTab, redis)
     self:runAction("chapter.login", timeTab, redis)
     self:runAction("shop.login", {}, redis)
     

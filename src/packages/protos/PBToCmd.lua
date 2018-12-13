@@ -16,6 +16,7 @@ local _M = {
     MissionEvent = 52,
     MissionItem = 1051,
     MissionList = 105,
+    AchvList = 109,
     Box = 1061,
     Boxes = 106,
     Rewards = 108,

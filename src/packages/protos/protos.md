@@ -31,6 +31,7 @@ package pb;
 	Boxes==106
 	Props==107
 	Rewards==108
+	AchvList==109
 
 	Chapter==1021
 	Box==1061
@@ -198,6 +199,20 @@ message MissionItem{
 //任务列表
 message MissionList{
 	repeated MissionItem items = 1;
+}
+
+//任务项目
+message AchvItem{
+	int32 id = 1;
+	int32 process = 2;
+	int32 cid = 3;
+	int32 rid = 4;
+	int32 got = 5; //0没领取，1领取了
+}
+
+//成就列表
+message AchvList{
+	repeated AchvItem items = 1;
 }
 
 message Box{

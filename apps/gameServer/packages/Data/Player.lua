@@ -5,6 +5,7 @@ local Props = cc.import(".Props")
 local Chapters = cc.import(".Chapters")
 local Boxes = cc.import(".Boxes")
 local Missions = cc.import(".Missions")
+local Achvs = cc.import(".Achvs")
 
 local Signin = cc.import(".Signin")
 local Shop = cc.import(".Shop")
@@ -34,6 +35,13 @@ function Player:getShop()
         self._Shop = Shop:new()
     end
     return self._Shop
+end
+
+function Player:getAchvs()
+    if not self._Achvs then
+        self._Achvs = Achvs:new()
+    end
+    return self._Achvs
 end
 
 function Player:getMissions()

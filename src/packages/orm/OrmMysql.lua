@@ -51,6 +51,11 @@ function OrmMysql:AlterIndex(db, cmd)
     db:query(query)
 end
 
+function OrmMysql:DropField(db, fieldName)
+    local query = string.format("ALtER TABLE %s DROP COLUMN %s", _escapeName(self._TableName), _escapeName(fieldName))
+    db:query(query)
+end
+
 function OrmMysql:Desc(db)
     local query = string.format("desc %s", _escapeName(self._TableName))
     return db:query(query)
@@ -64,6 +69,15 @@ function OrmMysql:Migrate(db)
     
     --检查增加字段
     local toBeAdd = table.copy(self._Define)
+    --需要删除的字段
+    local toBeDrop = {}
+    for _, v in ipairs(fields) do
+        toBeDrop[v.Field] = true
+    end
+    for k, _ in pairs(toBeAdd) do
+        toBeDrop[k] = nil
+    end
+    
     for _, v in ipairs(fields) do
         toBeAdd[v.Field] = nil
     end
@@ -79,6 +93,10 @@ function OrmMysql:Migrate(db)
     --设置key
     for _, v in pairs(self._KeyInfo) do
         self:AlterIndex(db, v)
+    end
+    --删除字段
+    for k, _ in pairs(toBeDrop) do
+        self:DropField(db, k)
     end
 end
 --------------------------------Insert------------------------------------------

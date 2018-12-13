@@ -12,6 +12,7 @@ end
 
 function Missions:InitializeAll(connectid, action, roleid)
     local missions = dbConfig.getAll("cfg_mission")
+    --cc.dump(missions)
     local lsitAdd = Random.Table(missions, 5)
     local endIndex = #lsitAdd
     local mission = self:get()
