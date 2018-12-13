@@ -54,6 +54,22 @@ function Missions:Login(connectid, action, lastTime, loginTime, roleid)
     return false
 end
 
+function Missions:Finish(connectid, action, id)
+    local mission = self:get(id)
+    
+    if not mission then
+        return true
+    end
+    if mission:isFinished() then
+        local query = mission:deleteQuery({id = id})
+        mission:pushQuery(query, connectid, action)
+        self:delete(id)
+        return true
+    else
+        return false
+    end
+end
+
 function Missions:DeleteAll(connectid, action, roleid)
     local mission = self:get()
     local query = mission:deleteQuery({rid = roleid})

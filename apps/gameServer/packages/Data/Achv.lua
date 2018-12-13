@@ -15,6 +15,16 @@ function Achv:getConfig()
     return self._Config
 end
 
+function Achv:isFinished()
+    local cfg = self:getConfig()
+    local process = self:get("process")
+    if process < cfg.action_count then
+        return false
+    else
+        return true
+    end
+end
+
 function Achv:process(connectid, action, action_type, action_id, action_place, action_count, action_override)
     local cfg = self:getConfig()
     if cfg then

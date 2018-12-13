@@ -15,6 +15,16 @@ function Mission:getConfig()
     return self._Config
 end
 
+function Mission:isFinished()
+    local cfg = self:getConfig()
+    local process = self:get("process")
+    if process < cfg.action_count then
+        return false
+    else
+        return true
+    end
+end
+
 function Mission:process(connectid, action, action_type, action_id, action_place, action_count, action_override)
     local cfg = self:getConfig()
     if cfg then

@@ -49,6 +49,22 @@ function Achvs:Login(connectid, action, lastTime, loginTime, roleid)
     --return false
 end
 
+function Achvs:Finish(connectid, action, id)
+    local achv = self:get(id)
+    
+    if not achv then
+        return true
+    end
+    if achv:isFinished() then
+        local query = achv:deleteQuery({id = id})
+        achv:pushQuery(query, connectid, action)
+        self:delete(id)
+        return true
+    else
+        return false
+    end
+end
+
 function Achvs:process(connectid, action, tp, id, place, count, override)
     local list = self._Datas
     for _, item in ipairs(list) do

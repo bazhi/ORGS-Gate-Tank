@@ -58,8 +58,15 @@ function AchvAction:onUpdate(_args, _redis, param)
     })
 end
 
-function AchvAction:finishAction(_args)
-    
+function AchvAction:finishAction(args)
+    local id = args.id
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local achvs = player:getAchvs()
+    if achvs:Finish(instance:getConnectId(), nil, id) then
+        instance:sendDelete("AchvItem", id, 0)
+    end
+    return true
 end
 
 return AchvAction

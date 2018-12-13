@@ -82,8 +82,15 @@ function MissionAction:onUpdate(_args, _redis, param)
     })
 end
 
-function MissionAction:finishAction(_args)
-    
+function MissionAction:finishAction(args)
+    local id = args.id
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local missions = player:getMissions()
+    if missions:Finish(instance:getConnectId(), nil, id) then
+        instance:sendDelete("MissionItem", id, 0)
+    end
+    return true
 end
 
 return MissionAction
