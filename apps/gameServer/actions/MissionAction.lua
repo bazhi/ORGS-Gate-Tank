@@ -23,9 +23,6 @@ THE SOFTWARE.
 
 local gbc = cc.import("#gbc")
 local MissionAction = cc.class("MissionAction", gbc.ActionBase)
--- local dbConfig = cc.import("#dbConfig")
--- local parse = cc.import("#parse")
--- local ParseConfig = parse.ParseConfig
 
 MissionAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
