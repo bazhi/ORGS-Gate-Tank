@@ -46,7 +46,11 @@ function ActionBase:hasAuthority(authorization)
 end
 
 function ActionBase:runAction(actionName, args, redis, params)
-    return self._instance:runAction(actionName, args, redis, true, params)
+    local ret, err = self._instance:runAction(actionName, args, redis, true, params)
+    if err then
+        cc.printerr(err)
+    end
+    return ret, err
 end
 
 return ActionBase

@@ -68,29 +68,29 @@ namespace Pb {
             "KAUiRAoHUmV3YXJkcxIaCgZ2YWx1ZXMYASADKAsyCi5wYi5SZXdhcmQSDAoE",
             "Z29sZBgCIAEoBRIPCgdkaWFtb25kGAMgASgFIjEKDFNpZ25pblJlY29yZBIN",
             "CgV0aW1lcxgBIAEoBRISCgZyZWNvcmQYAiADKAVCAhABIhgKCVNpZ25pbkdl",
-            "dBILCgNkYXkYASABKAUiFQoHU2hvcEdldBIKCgJpZBgBIAEoBSIvCgpTaG9w",
-            "UmVjb3JkEg4KAmlkGAEgAygFQgIQARIRCgV0aW1lcxgCIAMoBUICEAEiLAoN",
-            "Q29tcG9zaXRlSXRlbRIKCgJpZBgBIAEoBRIPCgd0aW1lRW5kGAIgASgFIjEK",
-            "CEl0ZW1EYXRhEgoKAmlkGAEgASgFEg0KBWNvdW50GAIgASgFEgoKAmhwGAMg",
-            "ASgFIocBCgpQbGF5ZXJEYXRhEg4KBmhlYWx0aBgBIAEoBRIPCgdzdGFtaW5h",
-            "GAIgASgFEhsKBXByb3BzGAMgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9u",
-            "cxgEIAMoCzIMLnBiLkl0ZW1EYXRhEhwKCFBvc2l0aW9uGAUgASgLMgoucGIu",
-            "VmVjdG9yIlgKCU1hcFJlY29yZBIeCgZ0b3dlcnMYASADKAsyDi5wYi5SZWNv",
-            "cmRJdGVtEh0KBWl0ZW1zGAIgAygLMg4ucGIuUmVjb3JkSXRlbRIMCgR0aW1l",
-            "GAMgASgDIjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIg",
-            "ASgFEg4KBnJlY29yZBgDIAEoDCIqCgpSZWNvcmRJdGVtEgoKAmlkGAEgASgF",
-            "EhAKCGNvbnRlbnRzGAIgASgMIrkBCglCdWlsZERhdGESEAoIYWN0dWFsSUQY",
-            "ASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIK",
-            "CnJlcGFpclRpbWUYBCABKAUSJQoKY29tcG9zaXRlcxgFIAMoCzIRLnBiLkNv",
-            "bXBvc2l0ZUl0ZW0SGwoFcHJvcHMYBiADKAsyDC5wYi5JdGVtRGF0YRIdCgd3",
-            "ZWFwb25zGAcgAygLMgwucGIuSXRlbURhdGEiHwoMQ2FsZW5kYXJEYXRhEg8K",
-            "B21pbnV0ZXMYASABKAUidAoJVG93ZXJEYXRhEhAKCGFjdHVhbElEGAEgASgF",
-            "Eg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBh",
-            "aXJUaW1lGAQgASgFEhwKCFBvc2l0aW9uGAUgASgLMgoucGIuVmVjdG9yIisK",
-            "DENNaXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIk8K",
-            "DENNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0GAIgAygLMhAucGIu",
-            "Q01pc3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgFIi4KDENNaXNzaW9u",
-            "TGlzdBIeCgRsaXN0GAEgAygLMhAucGIuQ01pc3Npb25EYXRhYgZwcm90bzM="));
+            "dBILCgNkYXkYASABKAUiFQoHU2hvcEJ1eRIKCgJpZBgBIAEoBSIcCgpTaG9w",
+            "UmVjb3JkEg4KAmlkGAEgAygFQgIQASIsCg1Db21wb3NpdGVJdGVtEgoKAmlk",
+            "GAEgASgFEg8KB3RpbWVFbmQYAiABKAUiMQoISXRlbURhdGESCgoCaWQYASAB",
+            "KAUSDQoFY291bnQYAiABKAUSCgoCaHAYAyABKAUihwEKClBsYXllckRhdGES",
+            "DgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUSGwoFcHJvcHMYAyAD",
+            "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURh",
+            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiWAoJTWFwUmVjb3Jk",
+            "Eh4KBnRvd2VycxgBIAMoCzIOLnBiLlJlY29yZEl0ZW0SHQoFaXRlbXMYAiAD",
+            "KAsyDi5wYi5SZWNvcmRJdGVtEgwKBHRpbWUYAyABKAMiOAoNTWFwUmVjb3Jk",
+            "U2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiABKAUSDgoGcmVjb3JkGAMgASgM",
+            "IioKClJlY29yZEl0ZW0SCgoCaWQYASABKAUSEAoIY29udGVudHMYAiABKAwi",
+            "uQEKCUJ1aWxkRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiAB",
+            "KAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIl",
+            "Cgpjb21wb3NpdGVzGAUgAygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9w",
+            "cxgGIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5J",
+            "dGVtRGF0YSIfCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBSJ0CglU",
+            "b3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMK",
+            "C3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSHAoIUG9z",
+            "aXRpb24YBSABKAsyCi5wYi5WZWN0b3IiKwoMQ01pc3Npb25JdGVtEgoKAmlk",
+            "GAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiTwoMQ01pc3Npb25EYXRhEgoKAmlk",
+            "GAEgASgFEh4KBGxpc3QYAiADKAsyEC5wYi5DTWlzc2lvbkl0ZW0SEwoLcmVm",
+            "cmVzaFRpbWUYAyABKAUiLgoMQ01pc3Npb25MaXN0Eh4KBGxpc3QYASADKAsy",
+            "EC5wYi5DTWlzc2lvbkRhdGFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -121,8 +121,8 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Values", "Gold", "Diamond" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninRecord), global::Pb.SigninRecord.Parser, new[]{ "Times", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopGet), global::Pb.ShopGet.Parser, new[]{ "Id" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id", "Times" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopBuy), global::Pb.ShopBuy.Parser, new[]{ "Id" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position" }, null, null, null),
@@ -155,7 +155,7 @@ namespace Pb {
   /// MapRecordSave==15
   ///
   /// ShopRecord==21
-  /// ShopGet==22
+  /// ShopBuy==22
   ///
   /// OpenBox==31
   /// GainBox==32
@@ -4727,10 +4727,10 @@ namespace Pb {
 
   }
 
-  public sealed partial class ShopGet : pb::IMessage<ShopGet> {
-    private static readonly pb::MessageParser<ShopGet> _parser = new pb::MessageParser<ShopGet>(() => new ShopGet());
+  public sealed partial class ShopBuy : pb::IMessage<ShopBuy> {
+    private static readonly pb::MessageParser<ShopBuy> _parser = new pb::MessageParser<ShopBuy>(() => new ShopBuy());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ShopGet> Parser { get { return _parser; } }
+    public static pb::MessageParser<ShopBuy> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -4743,20 +4743,20 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShopGet() {
+    public ShopBuy() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShopGet(ShopGet other) : this() {
+    public ShopBuy(ShopBuy other) : this() {
       id_ = other.id_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShopGet Clone() {
-      return new ShopGet(this);
+    public ShopBuy Clone() {
+      return new ShopBuy(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -4775,11 +4775,11 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ShopGet);
+      return Equals(other as ShopBuy);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ShopGet other) {
+    public bool Equals(ShopBuy other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -4820,7 +4820,7 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ShopGet other) {
+    public void MergeFrom(ShopBuy other) {
       if (other == null) {
         return;
       }
@@ -4872,7 +4872,6 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ShopRecord(ShopRecord other) : this() {
       id_ = other.id_.Clone();
-      times_ = other.times_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4886,24 +4885,11 @@ namespace Pb {
         = pb::FieldCodec.ForInt32(10);
     private readonly pbc::RepeatedField<int> id_ = new pbc::RepeatedField<int>();
     /// <summary>
-    /// 已经签到天
+    /// 已经购买过的id
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<int> Id {
       get { return id_; }
-    }
-
-    /// <summary>Field number for the "times" field.</summary>
-    public const int TimesFieldNumber = 2;
-    private static readonly pb::FieldCodec<int> _repeated_times_codec
-        = pb::FieldCodec.ForInt32(18);
-    private readonly pbc::RepeatedField<int> times_ = new pbc::RepeatedField<int>();
-    /// <summary>
-    /// 已经签到天
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> Times {
-      get { return times_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4920,7 +4906,6 @@ namespace Pb {
         return true;
       }
       if(!id_.Equals(other.id_)) return false;
-      if(!times_.Equals(other.times_)) return false;
       return true;
     }
 
@@ -4928,7 +4913,6 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= id_.GetHashCode();
-      hash ^= times_.GetHashCode();
       return hash;
     }
 
@@ -4940,14 +4924,12 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       id_.WriteTo(output, _repeated_id_codec);
-      times_.WriteTo(output, _repeated_times_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
       size += id_.CalculateSize(_repeated_id_codec);
-      size += times_.CalculateSize(_repeated_times_codec);
       return size;
     }
 
@@ -4957,7 +4939,6 @@ namespace Pb {
         return;
       }
       id_.Add(other.id_);
-      times_.Add(other.times_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4971,11 +4952,6 @@ namespace Pb {
           case 10:
           case 8: {
             id_.AddEntriesFrom(input, _repeated_id_codec);
-            break;
-          }
-          case 18:
-          case 16: {
-            times_.AddEntriesFrom(input, _repeated_times_codec);
             break;
           }
         }

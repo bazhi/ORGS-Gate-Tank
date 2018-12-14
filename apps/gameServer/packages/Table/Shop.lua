@@ -2,15 +2,13 @@
 local Struct = {
     id = 0,
     rid = 0,
-    idList = "",
-    timesList = "",
+    uniques = "", --已经购买过的id列表
 }
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
     rid = "int",
-    idList = "varchar(4096)",
-    timesList = "varchar(4096)",
+    uniques = "varchar(4096)  NOT NULL",
 }
 
 local Indexes = {

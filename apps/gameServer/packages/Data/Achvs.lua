@@ -15,9 +15,9 @@ function Achvs:InitializeAll(connectid, action, roleid)
     for i, cfg in ipairs(achvs) do
         local query = achv:insertQuery({rid = roleid, cid = cfg.id})
         if endIndex == i then
-            achv:pushQuery(query, connectid, action)
+            achv:pushQuery(query, connectid, action, {ignorerr = true})
         else
-            achv:pushQuery(query, connectid, nil)
+            achv:pushQuery(query, connectid, nil, {ignorerr = true})
         end
     end
 end

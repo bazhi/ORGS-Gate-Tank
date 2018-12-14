@@ -17,7 +17,7 @@ package pb;
 	MapRecordSave==15
 
 	ShopRecord==21
-	ShopGet==22
+	ShopBuy==22
 	
 	OpenBox==31
 	GainBox==32
@@ -253,13 +253,12 @@ message SigninGet{
 	int32 day = 1; //获取第几天的奖励
 }
 
-message ShopGet{
+message ShopBuy{
 	int32 id = 1; //购买商店物品
 }
 
 message ShopRecord{
-	repeated int32 id = 1 [packed=true]; //已经签到天
-	repeated int32 times = 2 [packed=true]; //已经签到天
+	repeated int32 id = 1 [packed=true]; //已经购买过的id
 }
 
 message CompositeItem{

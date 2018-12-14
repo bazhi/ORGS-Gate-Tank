@@ -96,7 +96,7 @@ function RoleAction:onLoad(args, redis, params)
     self:runAction("mission.login", timeTab, redis)
     self:runAction("achv.login", timeTab, redis)
     self:runAction("chapter.login", timeTab, redis)
-    self:runAction("shop.login", {}, redis)
+    self:runAction("shop.login", timeTab, redis)
     
     if params and params.initRole then
         

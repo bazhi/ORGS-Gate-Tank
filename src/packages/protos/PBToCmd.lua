@@ -24,7 +24,7 @@ local _M = {
     Rewards = 108,
     SigninRecord = 12,
     SigninGet = 13,
-    ShopGet = 22,
+    ShopBuy = 22,
     ShopRecord = 21,
     MapRecordSave = 15,
 }

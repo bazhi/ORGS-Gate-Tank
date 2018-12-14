@@ -28,7 +28,7 @@ namespace Pb{
         Rewards = 108,
         SigninRecord = 12,
         SigninGet = 13,
-        ShopGet = 22,
+        ShopBuy = 22,
         ShopRecord = 21,
         MapRecordSave = 15
     }
@@ -62,7 +62,7 @@ namespace Pb{
             dict.Add(PBDefine.Rewards, Rewards.Parser);
             dict.Add(PBDefine.SigninRecord, SigninRecord.Parser);
             dict.Add(PBDefine.SigninGet, SigninGet.Parser);
-            dict.Add(PBDefine.ShopGet, ShopGet.Parser);
+            dict.Add(PBDefine.ShopBuy, ShopBuy.Parser);
             dict.Add(PBDefine.ShopRecord, ShopRecord.Parser);
             dict.Add(PBDefine.MapRecordSave, MapRecordSave.Parser);
         }
