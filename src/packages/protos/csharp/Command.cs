@@ -43,54 +43,54 @@ namespace Pb {
             "bmFtZRgEIAEoCRINCgVsZXZlbBgFIAEoBRIMCgRnb2xkGAYgASgFEg8KB2Rp",
             "YW1vbmQYByABKAUSEQoJbG9naW5UaW1lGAggASgFEhIKCmNyZWF0ZVRpbWUY",
             "CSABKAUSCwoDZXhwGAogASgFIjsKBFByb3ASCgoCaWQYASABKAUSCwoDcmlk",
-            "GAIgASgFEgsKA2NpZBgDIAEoBRINCgVjb3VudBgEIAEoBSIhCgVQcm9wcxIY",
-            "CgZ2YWx1ZXMYASADKAsyCC5wYi5Qcm9wInIKB0NoYXB0ZXISCgoCaWQYASAB",
-            "KAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRIOCgZzdGF0dXMYBCABKAUS",
-            "DwoHcmVjb3JkMRgFIAEoDBIPCgdyZWNvcmQyGAYgASgMEg8KB3JlY29yZDMY",
-            "ByABKAwiJwoIQ2hhcHRlcnMSGwoGdmFsdWVzGAEgAygLMgsucGIuQ2hhcHRl",
-            "ciIbCg1GaW5pc2hNaXNzaW9uEgoKAmlkGAEgASgFIhgKCkZpbmlzaEFjaHYS",
-            "CgoCaWQYASABKAUizQIKDE1pc3Npb25FdmVudBIRCglhY3Rpb25faWQYASAB",
-            "KAUSFAoMYWN0aW9uX3BsYWNlGAIgASgFEhQKDGFjdGlvbl9jb3VudBgDIAEo",
-            "BRITCgthY3Rpb25fdHlwZRgEIAEoBRIXCg9hY3Rpb25fb3ZlcnJpZGUYBSAB",
-            "KAgizwEKBU1UeXBlEggKBE5vbmUQABIICgRLaWxsEAESCwoHQ29sbGVjdBAC",
-            "EgwKCE1ha2VQcm9wEAMSCQoFQnVpbGQQBBIJCgVBbGl2ZRAFEg4KClVzZURp",
-            "YW1vbmQQBhILCgdVc2VUZWNoEAcSCwoHVXNlSXRlbRAIEg8KC1VwZ3JhZGVU",
-            "ZWNoEAkSEQoNVXBncmFkZVRhbGVudBAKEhEKDUZpbmlzaE1pc3Npb24QCxIR",
-            "Cg1GaW5pc2hDaGFwdGVyEAwSDQoJTWFrZUVxdWlwEA0iRAoLTWlzc2lvbkl0",
-            "ZW0SCgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBRILCgNjaWQYAyABKAUS",
-            "CwoDcmlkGAQgASgFIi0KC01pc3Npb25MaXN0Eh4KBWl0ZW1zGAEgAygLMg8u",
-            "cGIuTWlzc2lvbkl0ZW0iTgoIQWNodkl0ZW0SCgoCaWQYASABKAUSDwoHcHJv",
-            "Y2VzcxgCIAEoBRILCgNjaWQYAyABKAUSCwoDcmlkGAQgASgFEgsKA2dvdBgF",
-            "IAEoBSInCghBY2h2TGlzdBIbCgVpdGVtcxgBIAMoCzIMLnBiLkFjaHZJdGVt",
-            "Ij8KA0JveBIKCgJpZBgBIAEoBRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgF",
-            "EhIKCnVubG9ja1RpbWUYBCABKAUiIAoFQm94ZXMSFwoGdmFsdWVzGAEgAygL",
-            "MgcucGIuQm94IiQKBlJld2FyZBILCgNjaWQYASABKAUSDQoFY291bnQYAiAB",
-            "KAUiRAoHUmV3YXJkcxIaCgZ2YWx1ZXMYASADKAsyCi5wYi5SZXdhcmQSDAoE",
-            "Z29sZBgCIAEoBRIPCgdkaWFtb25kGAMgASgFIjEKDFNpZ25pblJlY29yZBIN",
-            "CgV0aW1lcxgBIAEoBRISCgZyZWNvcmQYAiADKAVCAhABIhgKCVNpZ25pbkdl",
-            "dBILCgNkYXkYASABKAUiFQoHU2hvcEJ1eRIKCgJpZBgBIAEoBSIcCgpTaG9w",
-            "UmVjb3JkEg4KAmlkGAEgAygFQgIQASIsCg1Db21wb3NpdGVJdGVtEgoKAmlk",
-            "GAEgASgFEg8KB3RpbWVFbmQYAiABKAUiMQoISXRlbURhdGESCgoCaWQYASAB",
-            "KAUSDQoFY291bnQYAiABKAUSCgoCaHAYAyABKAUihwEKClBsYXllckRhdGES",
-            "DgoGaGVhbHRoGAEgASgFEg8KB3N0YW1pbmEYAiABKAUSGwoFcHJvcHMYAyAD",
-            "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURh",
-            "dGESHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiWAoJTWFwUmVjb3Jk",
-            "Eh4KBnRvd2VycxgBIAMoCzIOLnBiLlJlY29yZEl0ZW0SHQoFaXRlbXMYAiAD",
-            "KAsyDi5wYi5SZWNvcmRJdGVtEgwKBHRpbWUYAyABKAMiOAoNTWFwUmVjb3Jk",
-            "U2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiABKAUSDgoGcmVjb3JkGAMgASgM",
-            "IioKClJlY29yZEl0ZW0SCgoCaWQYASABKAUSEAoIY29udGVudHMYAiABKAwi",
-            "uQEKCUJ1aWxkRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiAB",
-            "KAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIl",
-            "Cgpjb21wb3NpdGVzGAUgAygLMhEucGIuQ29tcG9zaXRlSXRlbRIbCgVwcm9w",
-            "cxgGIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYByADKAsyDC5wYi5J",
-            "dGVtRGF0YSIfCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBSJ0CglU",
-            "b3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMK",
-            "C3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSHAoIUG9z",
-            "aXRpb24YBSABKAsyCi5wYi5WZWN0b3IiKwoMQ01pc3Npb25JdGVtEgoKAmlk",
-            "GAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiTwoMQ01pc3Npb25EYXRhEgoKAmlk",
-            "GAEgASgFEh4KBGxpc3QYAiADKAsyEC5wYi5DTWlzc2lvbkl0ZW0SEwoLcmVm",
-            "cmVzaFRpbWUYAyABKAUiLgoMQ01pc3Npb25MaXN0Eh4KBGxpc3QYASADKAsy",
-            "EC5wYi5DTWlzc2lvbkRhdGFiBnByb3RvMw=="));
+            "GAIgASgFEgsKA2NpZBgDIAEoBRINCgVjb3VudBgEIAEoBSIgCgVQcm9wcxIX",
+            "CgVpdGVtcxgBIAMoCzIILnBiLlByb3AicgoHQ2hhcHRlchIKCgJpZBgBIAEo",
+            "BRILCgNyaWQYAiABKAUSCwoDY2lkGAMgASgFEg4KBnN0YXR1cxgEIAEoBRIP",
+            "CgdyZWNvcmQxGAUgASgMEg8KB3JlY29yZDIYBiABKAwSDwoHcmVjb3JkMxgH",
+            "IAEoDCImCghDaGFwdGVycxIaCgVpdGVtcxgBIAMoCzILLnBiLkNoYXB0ZXIi",
+            "GwoNRmluaXNoTWlzc2lvbhIKCgJpZBgBIAEoBSIYCgpGaW5pc2hBY2h2EgoK",
+            "AmlkGAEgASgFIs0CCgxNaXNzaW9uRXZlbnQSEQoJYWN0aW9uX2lkGAEgASgF",
+            "EhQKDGFjdGlvbl9wbGFjZRgCIAEoBRIUCgxhY3Rpb25fY291bnQYAyABKAUS",
+            "EwoLYWN0aW9uX3R5cGUYBCABKAUSFwoPYWN0aW9uX292ZXJyaWRlGAUgASgI",
+            "Is8BCgVNVHlwZRIICgROb25lEAASCAoES2lsbBABEgsKB0NvbGxlY3QQAhIM",
+            "CghNYWtlUHJvcBADEgkKBUJ1aWxkEAQSCQoFQWxpdmUQBRIOCgpVc2VEaWFt",
+            "b25kEAYSCwoHVXNlVGVjaBAHEgsKB1VzZUl0ZW0QCBIPCgtVcGdyYWRlVGVj",
+            "aBAJEhEKDVVwZ3JhZGVUYWxlbnQQChIRCg1GaW5pc2hNaXNzaW9uEAsSEQoN",
+            "RmluaXNoQ2hhcHRlchAMEg0KCU1ha2VFcXVpcBANIkQKC01pc3Npb25JdGVt",
+            "EgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUSCwoDY2lkGAMgASgFEgsK",
+            "A3JpZBgEIAEoBSItCgtNaXNzaW9uTGlzdBIeCgVpdGVtcxgBIAMoCzIPLnBi",
+            "Lk1pc3Npb25JdGVtIk4KCEFjaHZJdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nl",
+            "c3MYAiABKAUSCwoDY2lkGAMgASgFEgsKA3JpZBgEIAEoBRILCgNnb3QYBSAB",
+            "KAUiJwoIQWNodkxpc3QSGwoFaXRlbXMYASADKAsyDC5wYi5BY2h2SXRlbSI/",
+            "CgNCb3gSCgoCaWQYASABKAUSCwoDcmlkGAIgASgFEgsKA2NpZBgDIAEoBRIS",
+            "Cgp1bmxvY2tUaW1lGAQgASgFIh8KBUJveGVzEhYKBWl0ZW1zGAEgAygLMgcu",
+            "cGIuQm94IiQKBlJld2FyZBILCgNjaWQYASABKAUSDQoFY291bnQYAiABKAUi",
+            "QwoHUmV3YXJkcxIZCgVpdGVtcxgBIAMoCzIKLnBiLlJld2FyZBIMCgRnb2xk",
+            "GAIgASgFEg8KB2RpYW1vbmQYAyABKAUiMQoMU2lnbmluUmVjb3JkEg0KBXRp",
+            "bWVzGAEgASgFEhIKBnJlY29yZBgCIAMoBUICEAEiGAoJU2lnbmluR2V0EgsK",
+            "A2RheRgBIAEoBSIVCgdTaG9wQnV5EgoKAmlkGAEgASgFIhwKClNob3BSZWNv",
+            "cmQSDgoCaWQYASADKAVCAhABIiwKDUNvbXBvc2l0ZUl0ZW0SCgoCaWQYASAB",
+            "KAUSDwoHdGltZUVuZBgCIAEoBSIxCghJdGVtRGF0YRIKCgJpZBgBIAEoBRIN",
+            "CgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBSKHAQoKUGxheWVyRGF0YRIOCgZo",
+            "ZWFsdGgYASABKAUSDwoHc3RhbWluYRgCIAEoBRIbCgVwcm9wcxgDIAMoCzIM",
+            "LnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYBCADKAsyDC5wYi5JdGVtRGF0YRIc",
+            "CghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvciJYCglNYXBSZWNvcmQSHgoG",
+            "dG93ZXJzGAEgAygLMg4ucGIuUmVjb3JkSXRlbRIdCgVpdGVtcxgCIAMoCzIO",
+            "LnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4Cg1NYXBSZWNvcmRTYXZl",
+            "EgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZyZWNvcmQYAyABKAwiKgoK",
+            "UmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250ZW50cxgCIAEoDCK5AQoJ",
+            "QnVpbGREYXRhEhAKCGFjdHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRIT",
+            "Cgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEiUKCmNv",
+            "bXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsKBXByb3BzGAYg",
+            "AygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgHIAMoCzIMLnBiLkl0ZW1E",
+            "YXRhIh8KDENhbGVuZGFyRGF0YRIPCgdtaW51dGVzGAEgASgFInQKCVRvd2Vy",
+            "RGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFsdGgYAiABKAUSEwoLdXBn",
+            "cmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgEIAEoBRIcCghQb3NpdGlv",
+            "bhgFIAEoCzIKLnBiLlZlY3RvciIrCgxDTWlzc2lvbkl0ZW0SCgoCaWQYASAB",
+            "KAUSDwoHcHJvY2VzcxgCIAEoBSJPCgxDTWlzc2lvbkRhdGESCgoCaWQYASAB",
+            "KAUSHgoEbGlzdBgCIAMoCzIQLnBiLkNNaXNzaW9uSXRlbRITCgtyZWZyZXNo",
+            "VGltZRgDIAEoBSIuCgxDTWlzc2lvbkxpc3QSHgoEbGlzdBgBIAMoCzIQLnBi",
+            "LkNNaXNzaW9uRGF0YWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -105,9 +105,9 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Vector), global::Pb.Vector.Parser, new[]{ "X", "Y", "Z" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Role), global::Pb.Role.Parser, new[]{ "Id", "Pid", "Cid", "Nickname", "Level", "Gold", "Diamond", "LoginTime", "CreateTime", "Exp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Prop), global::Pb.Prop.Parser, new[]{ "Id", "Rid", "Cid", "Count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Values" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Props), global::Pb.Props.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapter), global::Pb.Chapter.Parser, new[]{ "Id", "Rid", "Cid", "Status", "Record1", "Record2", "Record3" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapters), global::Pb.Chapters.Parser, new[]{ "Values" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Chapters), global::Pb.Chapters.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.FinishMission), global::Pb.FinishMission.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.FinishAchv), global::Pb.FinishAchv.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MissionEvent), global::Pb.MissionEvent.Parser, new[]{ "ActionId", "ActionPlace", "ActionCount", "ActionType", "ActionOverride" }, null, new[]{ typeof(global::Pb.MissionEvent.Types.MType) }, null),
@@ -116,9 +116,9 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.AchvItem), global::Pb.AchvItem.Parser, new[]{ "Id", "Process", "Cid", "Rid", "Got" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.AchvList), global::Pb.AchvList.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Box), global::Pb.Box.Parser, new[]{ "Id", "Rid", "Cid", "UnlockTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Boxes), global::Pb.Boxes.Parser, new[]{ "Values" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Boxes), global::Pb.Boxes.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Reward), global::Pb.Reward.Parser, new[]{ "Cid", "Count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Values", "Gold", "Diamond" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.Rewards), global::Pb.Rewards.Parser, new[]{ "Items", "Gold", "Diamond" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninRecord), global::Pb.SigninRecord.Parser, new[]{ "Times", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SigninGet), global::Pb.SigninGet.Parser, new[]{ "Day" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopBuy), global::Pb.ShopBuy.Parser, new[]{ "Id" }, null, null, null),
@@ -2157,7 +2157,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Props(Props other) : this() {
-      values_ = other.values_.Clone();
+      items_ = other.items_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2165,14 +2165,14 @@ namespace Pb {
       return new Props(this);
     }
 
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Prop> _repeated_values_codec
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Prop> _repeated_items_codec
         = pb::FieldCodec.ForMessage(10, global::Pb.Prop.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Prop> values_ = new pbc::RepeatedField<global::Pb.Prop>();
+    private readonly pbc::RepeatedField<global::Pb.Prop> items_ = new pbc::RepeatedField<global::Pb.Prop>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Prop> Values {
-      get { return values_; }
+    public pbc::RepeatedField<global::Pb.Prop> Items {
+      get { return items_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2188,14 +2188,14 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!values_.Equals(other.values_)) return false;
+      if(!items_.Equals(other.items_)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= values_.GetHashCode();
+      hash ^= items_.GetHashCode();
       return hash;
     }
 
@@ -2206,13 +2206,13 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
+      items_.WriteTo(output, _repeated_items_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
+      size += items_.CalculateSize(_repeated_items_codec);
       return size;
     }
 
@@ -2221,7 +2221,7 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      values_.Add(other.values_);
+      items_.Add(other.items_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2233,7 +2233,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
+            items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
         }
@@ -2551,7 +2551,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Chapters(Chapters other) : this() {
-      values_ = other.values_.Clone();
+      items_ = other.items_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2559,14 +2559,14 @@ namespace Pb {
       return new Chapters(this);
     }
 
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Chapter> _repeated_values_codec
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Chapter> _repeated_items_codec
         = pb::FieldCodec.ForMessage(10, global::Pb.Chapter.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Chapter> values_ = new pbc::RepeatedField<global::Pb.Chapter>();
+    private readonly pbc::RepeatedField<global::Pb.Chapter> items_ = new pbc::RepeatedField<global::Pb.Chapter>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Chapter> Values {
-      get { return values_; }
+    public pbc::RepeatedField<global::Pb.Chapter> Items {
+      get { return items_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2582,14 +2582,14 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!values_.Equals(other.values_)) return false;
+      if(!items_.Equals(other.items_)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= values_.GetHashCode();
+      hash ^= items_.GetHashCode();
       return hash;
     }
 
@@ -2600,13 +2600,13 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
+      items_.WriteTo(output, _repeated_items_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
+      size += items_.CalculateSize(_repeated_items_codec);
       return size;
     }
 
@@ -2615,7 +2615,7 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      values_.Add(other.values_);
+      items_.Add(other.items_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2627,7 +2627,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
+            items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
         }
@@ -4065,7 +4065,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Boxes(Boxes other) : this() {
-      values_ = other.values_.Clone();
+      items_ = other.items_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4073,14 +4073,14 @@ namespace Pb {
       return new Boxes(this);
     }
 
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Box> _repeated_values_codec
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Box> _repeated_items_codec
         = pb::FieldCodec.ForMessage(10, global::Pb.Box.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Box> values_ = new pbc::RepeatedField<global::Pb.Box>();
+    private readonly pbc::RepeatedField<global::Pb.Box> items_ = new pbc::RepeatedField<global::Pb.Box>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Box> Values {
-      get { return values_; }
+    public pbc::RepeatedField<global::Pb.Box> Items {
+      get { return items_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4096,14 +4096,14 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!values_.Equals(other.values_)) return false;
+      if(!items_.Equals(other.items_)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= values_.GetHashCode();
+      hash ^= items_.GetHashCode();
       return hash;
     }
 
@@ -4114,13 +4114,13 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
+      items_.WriteTo(output, _repeated_items_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
+      size += items_.CalculateSize(_repeated_items_codec);
       return size;
     }
 
@@ -4129,7 +4129,7 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      values_.Add(other.values_);
+      items_.Add(other.items_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4141,7 +4141,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
+            items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
         }
@@ -4319,7 +4319,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Rewards(Rewards other) : this() {
-      values_ = other.values_.Clone();
+      items_ = other.items_.Clone();
       gold_ = other.gold_;
       diamond_ = other.diamond_;
     }
@@ -4329,14 +4329,14 @@ namespace Pb {
       return new Rewards(this);
     }
 
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.Reward> _repeated_values_codec
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pb.Reward> _repeated_items_codec
         = pb::FieldCodec.ForMessage(10, global::Pb.Reward.Parser);
-    private readonly pbc::RepeatedField<global::Pb.Reward> values_ = new pbc::RepeatedField<global::Pb.Reward>();
+    private readonly pbc::RepeatedField<global::Pb.Reward> items_ = new pbc::RepeatedField<global::Pb.Reward>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.Reward> Values {
-      get { return values_; }
+    public pbc::RepeatedField<global::Pb.Reward> Items {
+      get { return items_; }
     }
 
     /// <summary>Field number for the "gold" field.</summary>
@@ -4380,7 +4380,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!values_.Equals(other.values_)) return false;
+      if(!items_.Equals(other.items_)) return false;
       if (Gold != other.Gold) return false;
       if (Diamond != other.Diamond) return false;
       return true;
@@ -4389,7 +4389,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= values_.GetHashCode();
+      hash ^= items_.GetHashCode();
       if (Gold != 0) hash ^= Gold.GetHashCode();
       if (Diamond != 0) hash ^= Diamond.GetHashCode();
       return hash;
@@ -4402,7 +4402,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
+      items_.WriteTo(output, _repeated_items_codec);
       if (Gold != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(Gold);
@@ -4416,7 +4416,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
+      size += items_.CalculateSize(_repeated_items_codec);
       if (Gold != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gold);
       }
@@ -4431,7 +4431,7 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      values_.Add(other.values_);
+      items_.Add(other.items_);
       if (other.Gold != 0) {
         Gold = other.Gold;
       }
@@ -4449,7 +4449,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 10: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
+            items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
           case 16: {

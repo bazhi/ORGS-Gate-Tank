@@ -29,4 +29,38 @@ local PropAction = cc.class("PropAction", gbc.ActionBase)
 
 PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
+function PropAction:login(args)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local role = player:getRole()
+    local props = player:getProps()
+    
+    local lastTime = args.lastTime
+    local loginTime = args.loginTime
+    
+    return props:Login(instance:getConnectId(), "prop.OnLoad", lastTime, loginTime, role:get("id"))
+end
+
+function PropAction:OnLoad(args)
+    if #args == 0 then
+        return
+    end
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local props = player:getProps()
+    props:updates(args)
+    instance:sendPack("Props", {
+        items = args
+    })
+end
+
+--更新一个新的道具
+function PropAction:LoadOne(args)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local props = player:getProps()
+    local id = args.insert_id
+    return props:LoadOne(instance:getConnectId(), "prop.OnLoad", id)
+end
+
 return PropAction

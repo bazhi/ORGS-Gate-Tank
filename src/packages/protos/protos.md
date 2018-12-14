@@ -143,7 +143,7 @@ message Prop{
 }
 
 message Props{
-	repeated Prop values = 1;
+	repeated Prop items = 1;
 }
 
 message Chapter{
@@ -157,7 +157,7 @@ message Chapter{
 }
 
 message Chapters{
-	repeated Chapter values = 1;
+	repeated Chapter items = 1;
 }
 
 //完成任务
@@ -230,7 +230,7 @@ message Box{
 }
 
 message Boxes{
-	repeated Box values = 1;
+	repeated Box items = 1;
 }
 
 message Reward{
@@ -239,7 +239,7 @@ message Reward{
 }
 
 message Rewards{
-	repeated Reward values = 1;
+	repeated Reward items = 1;
 	int32 gold = 2; //金币
 	int32 diamond = 3; //钻石
 }

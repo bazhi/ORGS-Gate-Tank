@@ -102,6 +102,9 @@ function Role:AddData(connectid, action, gold, diamond, exp)
         end
     end
     
+    data.diamond = data.diamond + diamond
+    data.gold = data.gold + gold
+    
     local query = self:updateQuery({id = data.id}, {exp = data.exp, level = data.level}, {diamond = diamond, gold = gold})
     return self:pushQuery(query, connectid, action)
 end

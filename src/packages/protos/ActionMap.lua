@@ -8,7 +8,7 @@ local ActionMap = {
     
     ["EnterChapter"] = "chapter.enter",
     ["SigninGet"] = "signin.get",
-    ["ShopGet"] = "shop.get",
+    ["ShopBuy"] = "shop.buy",
     ["MapRecordSave"] = "chapter.save",
 }
 

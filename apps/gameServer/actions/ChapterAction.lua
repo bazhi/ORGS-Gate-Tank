@@ -23,7 +23,7 @@ function ChapterAction:OnLogin(args, _redis)
     local chapters = player:getChapters()
     chapters:updates(args)
     instance:sendPack("Chapters", {
-        values = args
+        items = args
     })
 end
 
@@ -62,7 +62,7 @@ function ChapterAction:OnLoad(args, _redis, params)
     local bupdate = chapters:updates(args)
     if bupdate then
         instance:sendPack("Chapters", {
-            values = args,
+            items = args,
         })
     end
 end
