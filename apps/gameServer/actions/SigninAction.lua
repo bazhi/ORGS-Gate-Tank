@@ -34,11 +34,11 @@ function SigninAction:getAction(args, redis)
         --获取签到奖励
         local cfg_signin = dbConfig.get("cfg_signin", day)
         if cfg_signin ~= nil then
-            role:AddData(instance:getConnectId(), nil, cfg_signin.gold, cfg_signin.diamond)
+            role:AddData(instance:getConnectId(), nil, cfg_signin.tech, cfg_signin.diamond)
             self:runAction("prop.addProps", {
                 items = cfg_signin.items,
                 diamond = cfg_signin.diamond,
-                gold = cfg_signin.gold,
+                techPoint = cfg_signin.tech,
             }, redis)
         end
         

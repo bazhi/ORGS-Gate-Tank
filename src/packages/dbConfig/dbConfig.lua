@@ -36,7 +36,18 @@ function M.getCache(tableName, id)
 end
 
 function M.getNoCache(tableName, id)
-    for row in db:nrows(string.format("SELECT * FROM %s WHERE id = %d", tableName, id)) do
+    local where
+    if type(id) == "table" then
+        local whereFields = {}
+        for name, value in pairs(id) do
+            whereFields[#whereFields + 1] = name .. " = " .. _escapeValue(value)
+        end
+        where = table.concat(whereFields, " AND ")
+    else
+        where = string.format("id = %d", id)
+    end
+    
+    for row in db:nrows(string.format("SELECT * FROM %s WHERE %s", tableName, where)) do
         if row then
             return table.readonly(row, tableName)
         end

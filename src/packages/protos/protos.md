@@ -25,6 +25,7 @@ package pb;
 	FinishMission==51
 	MissionEvent==52
 	FinishAchv==53
+	TalentUnlock==54
 
 	Role==101
 	Chapters==102
@@ -33,6 +34,7 @@ package pb;
 	Props==107
 	Rewards==108
 	AchvList==109
+	Talents==110
 
 	Chapter==1021
 	Box==1061
@@ -128,7 +130,7 @@ message Role{
     int32 cid = 3;
     string nickname = 4;
     int32 level = 5;
-    int32 gold = 6;
+    int32 techPoint = 6; //科技点
     int32 diamond = 7;
     int32 loginTime = 8;
     int32 createTime = 9;
@@ -242,6 +244,22 @@ message Rewards{
 	repeated Reward items = 1;
 	int32 gold = 2; //金币
 	int32 diamond = 3; //钻石
+}
+
+message Talent{
+	int32 id = 1;
+	int32 rid = 2;
+	int32 cid = 3;
+	int32 level = 4;
+}
+
+message Talents{
+	repeated Talent items = 1;
+}
+
+message TalentUnlock{
+	int32 cid = 1; //配置id
+	int32 level = 2; //等级
 }
 
 message SigninRecord{

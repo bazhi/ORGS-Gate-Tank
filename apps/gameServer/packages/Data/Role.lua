@@ -78,12 +78,12 @@ function Role:UpdateData(connectid, action, logintime)
     return true
 end
 
-function Role:AddData(connectid, action, gold, diamond, exp)
+function Role:AddData(connectid, action, techPoint, diamond, exp)
     if not connectid then
         return false, "NoParam"
     end
     
-    gold = gold or 0
+    techPoint = techPoint or 0
     diamond = diamond or 0
     exp = exp or 0
     
@@ -103,9 +103,9 @@ function Role:AddData(connectid, action, gold, diamond, exp)
     end
     
     data.diamond = data.diamond + diamond
-    data.gold = data.gold + gold
+    data.techPoint = data.techPoint + techPoint
     
-    local query = self:updateQuery({id = data.id}, {exp = data.exp, level = data.level}, {diamond = diamond, gold = gold})
+    local query = self:updateQuery({id = data.id}, {exp = data.exp, level = data.level}, {diamond = diamond, techPoint = techPoint})
     return self:pushQuery(query, connectid, action)
 end
 
