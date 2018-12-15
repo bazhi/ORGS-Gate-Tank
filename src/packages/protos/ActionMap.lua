@@ -5,6 +5,7 @@ local ActionMap = {
     ["FinishMission"] = "mission.finish",
     ["MissionEvent"] = "mission.event",
     ["FinishAchv"] = "achv.finish",
+    ["TalentUnlock"] = "talent.unlock",
     
     ["EnterChapter"] = "chapter.enter",
     ["SigninGet"] = "signin.get",

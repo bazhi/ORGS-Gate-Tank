@@ -5,6 +5,7 @@ local Props = cc.import(".Props")
 local Chapters = cc.import(".Chapters")
 local Boxes = cc.import(".Boxes")
 local Missions = cc.import(".Missions")
+local Talents = cc.import(".Talents")
 local Achvs = cc.import(".Achvs")
 
 local Signin = cc.import(".Signin")
@@ -49,6 +50,13 @@ function Player:getMissions()
         self._Missions = Missions:new()
     end
     return self._Missions
+end
+
+function Player:getTalents()
+    if not self._Talents then
+        self._Talents = Talents:new()
+    end
+    return self._Talents
 end
 
 --------------------------------------------------------------------------------------------------------------------

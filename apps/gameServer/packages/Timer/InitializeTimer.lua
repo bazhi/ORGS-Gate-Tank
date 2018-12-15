@@ -23,6 +23,7 @@ function InitializeTimer:runEventLoop()
     self:createTable(db, Table.Box)
     self:createTable(db, Table.Signin)
     self:createTable(db, Table.Shop)
+    self:createTable(db, Table.Talent)
     
     self:Initialized()
     return InitializeTimer.super.runEventLoop(self)
