@@ -49,8 +49,9 @@ function ShopAction:buyAction(args)
     end
     if cfg then
         role:AddData(instance:getConnectId(), nil, 0, -cfg.price_diamond, 0)
+        local ret, err = props:AddRewards(instance:getConnectId(), "shop.OnProps", cfg.items, role)
         instance:sendPack("Role", role:get())
-        return props:AddRewards(instance:getConnectId(), "shop.OnProps", cfg.items, role)
+        return ret, err
     end
     
     return false
@@ -60,8 +61,10 @@ function ShopAction:OnBuy(_args)
     --更新商店数据
     local instance = self:getInstance()
     local player = instance:getPlayer()
+    
     local shop = player:getShop()
     instance:sendPack("ShopRecord", shop:GetProto())
+    
 end
 
 function ShopAction:OnProps(args, redis)
