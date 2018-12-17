@@ -49,12 +49,11 @@ function ShopAction:buyAction(args)
     end
     if cfg then
         role:AddData(instance:getConnectId(), nil, 0, -cfg.price_diamond, 0)
+        instance:sendPack("Role", role:get())
         return props:AddRewards(instance:getConnectId(), "shop.OnProps", cfg.items, role)
     end
     
-    --返回玩家数据
-    instance:sendPack("Role", role:get())
-    return true
+    return false
 end
 
 function ShopAction:OnBuy(_args)
