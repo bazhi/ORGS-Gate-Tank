@@ -1,8 +1,31 @@
 
 local BaseList = cc.class("BaseList")
+local ngx_now = ngx.now
+
+local LockTime = 3
 
 function BaseList:ctor()
+end
+
+function BaseList:IsLocked()
+    local lockTime = self._LockTime
+    if not lockTime then
+        return false
+    end
     
+    if ngx_now() - lockTime >= LockTime then
+        return false
+    end
+    
+    return true
+end
+
+function BaseList:Lock()
+    self._LockTime = ngx_now()
+end
+
+function BaseList:UnLock()
+    self._LockTime = nil
 end
 
 function BaseList:createItem()

@@ -14,6 +14,9 @@ function TalentAction:OnLoad(args, _redis)
     if args then
         talents:update(args)
     end
+    instance:sendPack("Talents", {
+        items = args
+    })
 end
 
 function TalentAction:login(args)
@@ -34,12 +37,37 @@ function TalentAction:unlockAction(args)
     local player = instance:getPlayer()
     local role = player:getRole()
     local talents = player:getTalents()
+    if talents:IsLocked() then
+        return false, "NoAccept"
+    end
     
-    return talents:Unlock(instance:getConnectId(), "talent.OnUnlock", args.cid, args.level, role)
+    local ret, err = talents:UnlockItem(instance:getConnectId(), "talent.OnUnlock", args.cid, args.level, role)
+    if ret then
+        talents:Lock()
+    end
+    return ret, err
 end
 
-function TalentAction:OnUnlock(args)
-    cc.dump(args)
+function TalentAction:OnUnlock(args, _redis, params)
+    local id = params.update_id or args.insert_id
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local talents = player:getTalents()
+    
+    return talents:LoadOne(instance:getConnectId(), "talent.OnLoadOne", id)
+end
+
+function TalentAction:OnLoadOne(args, _redis)
+    local instance = self:getInstance()
+    local player = instance:getPlayer()
+    local talents = player:getTalents()
+    if args then
+        talents:update(args)
+    end
+    talents:UnLock()
+    instance:sendPack("Talents", {
+        items = args
+    })
 end
 
 return TalentAction

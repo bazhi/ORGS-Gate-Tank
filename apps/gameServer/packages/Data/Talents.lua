@@ -21,7 +21,17 @@ function Talents:Login(connectid, action, lastTime, loginTime, roleid)
     return true
 end
 
-function Talents:Unlock(connectid, action, cid, level, role)
+function Talents:LoadOne(connectid, action, id)
+    if not connectid or not id then
+        return false, "NoParam"
+    end
+    local talent = self:get()
+    local query = talent:selectQuery({id = id})
+    talent:pushQuery(query, connectid, action)
+    return true
+end
+
+function Talents:UnlockItem(connectid, action, cid, level, role)
     if not connectid or not cid or not level then
         return false, "NoParam"
     end
@@ -43,19 +53,28 @@ function Talents:Unlock(connectid, action, cid, level, role)
         if cfg.prelevel == _level then
             talent:set("level", cfg.level)
             local query = talent:updateQuery({id = talent:get("id")}, {level = cfg.level})
-            talent:pushQuery(query, connectid, action)
+            talent:pushQuery(query, connectid, action, {update_id = self:get("id")})
         end
     else
-        talent = self:getByCID(cfg.preId)
-        if talent then
-            local _level = talent:get("level")
-            local _cid = talent:get("cid")
-            if cfg.prelevel == _level and cfg.preId == _cid then
-                local query = talent:insertQuery({cid = cid, level = level, rid = role_data.id})
-                talent:pushQuery(query, connectid, action)
+        if cfg.preId == 0 then
+            talent = self:get()
+            local query = talent:insertQuery({cid = cid, level = level, rid = role_data.id})
+            talent:pushQuery(query, connectid, action)
+        else
+            talent = self:getByCID(cfg.preId)
+            if talent then
+                local _level = talent:get("level")
+                local _cid = talent:get("cid")
+                if cfg.prelevel == _level and cfg.preId == _cid then
+                    local query = talent:insertQuery({cid = cid, level = level, rid = role_data.id})
+                    talent:pushQuery(query, connectid, action)
+                end
             end
         end
+        
     end
+    
+    return true
 end
 
 return Talents
