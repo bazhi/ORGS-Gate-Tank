@@ -8,9 +8,9 @@ local Struct = {
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    rid = "int",
-    cid = "int",
-    count = "int",
+    rid = "int NOT NULL",
+    cid = "int NOT NULL",
+    count = "int NOT NULL",
 }
 
 local Indexes = {

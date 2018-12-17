@@ -49,7 +49,7 @@ function ShopAction:buyAction(args)
     end
     if cfg then
         role:AddData(instance:getConnectId(), nil, 0, -cfg.price_diamond, 0)
-        return props:AddItem(instance:getConnectId(), "shop.OnProps", cfg.items, role)
+        return props:AddRewards(instance:getConnectId(), "shop.OnProps", cfg.items, role)
     end
     
     --返回玩家数据

@@ -14,15 +14,15 @@ local Struct = {
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    pid = "int",
-    cid = "int",
-    nickname = "varchar(255)",
-    level = "int",
-    techPoint = "int",
-    diamond = "int",
-    loginTime = "int",
-    createTime = "int",
-    exp = "int",
+    pid = "int NOT NULL",
+    cid = "int NOT NULL",
+    nickname = "varchar(255) NOT NULL",
+    level = "int NOT NULL",
+    techPoint = "int NOT NULL",
+    diamond = "int NOT NULL",
+    loginTime = "int NOT NULL",
+    createTime = "int NOT NULL",
+    exp = "int NOT NULL",
 }
 
 local Indexes = {

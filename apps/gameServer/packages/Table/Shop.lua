@@ -7,7 +7,7 @@ local Struct = {
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    rid = "int",
+    rid = "int NOT NULL",
     uniques = "varchar(4096)  NOT NULL",
 }
 

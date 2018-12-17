@@ -8,8 +8,8 @@ local Struct = {
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
-    rid = "int",
-    times = "int",
+    rid = "int NOT NULL",
+    times = "int NOT NULL",
     record = "varchar(1024) NOT NULL",
 }
 

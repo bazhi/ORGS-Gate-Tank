@@ -14,9 +14,9 @@ local Define = {
     rid = "int NOT NULL",
     cid = "int NOT NULL",
     status = "int NOT NULL",
-    record1 = "longblob",
-    record2 = "longblob",
-    record3 = "longblob",
+    record1 = "longblob NOT NULL",
+    record2 = "longblob NOT NULL",
+    record3 = "longblob NOT NULL",
 }
 
 local Indexes = {

@@ -89,6 +89,7 @@ function RoleAction:onLoad(args, redis, params)
     
     --更新登陆时间
     role:UpdateData(instance:getConnectId(), nil, loginTime)
+    role:AddData(instance:getConnectId(), nil, 0, 500)
     instance:sendPack("Role", role_data)
     
     --加载角色数据成功
