@@ -49,8 +49,12 @@ function DatabaseTimer:processEvent(event)
     
     if event.query then
         local result, err = db:query(event.query)
-        if err and (not event.params.ignorerr or not string_find(err, "Duplicate entry")) then
-            cc.printerror(err.."|-------|"..event.query.."|------|" .. (event.action or ""))
+        if err then
+            if event.params and event.params.ignorerr and string_find(err, "Duplicate entry") then
+                
+            else
+                cc.printerror(err.."|-------|"..event.query.."|------|" .. (event.action or ""))
+            end
         end
         if err and string_find(err, "failed to send query:") then
             self:closeMysql()
