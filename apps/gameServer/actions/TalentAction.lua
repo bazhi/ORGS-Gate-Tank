@@ -49,7 +49,14 @@ function TalentAction:unlockAction(args)
 end
 
 function TalentAction:OnUnlock(args, _redis, params)
-    local id = params.update_id or args.insert_id
+    
+    local id
+    if params and params.update_id then
+        id = params.update_id
+    else
+        id = args.insert_id
+    end
+    
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local talents = player:getTalents()

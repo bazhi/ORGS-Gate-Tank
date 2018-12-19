@@ -86,14 +86,15 @@ namespace Pb {
             "BmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJU",
             "aW1lGAQgASgFEiUKCmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJ",
             "dGVtEhsKBXByb3BzGAYgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgH",
-            "IAMoCzIMLnBiLkl0ZW1EYXRhIh8KDENhbGVuZGFyRGF0YRIPCgdtaW51dGVz",
-            "GAEgASgFInQKCVRvd2VyRGF0YRIQCghhY3R1YWxJRBgBIAEoBRIOCgZoZWFs",
-            "dGgYAiABKAUSEwoLdXBncmFkZVRpbWUYAyABKAUSEgoKcmVwYWlyVGltZRgE",
-            "IAEoBRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvciIrCgxDTWlzc2lv",
-            "bkl0ZW0SCgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJPCgxDTWlzc2lv",
-            "bkRhdGESCgoCaWQYASABKAUSHgoEbGlzdBgCIAMoCzIQLnBiLkNNaXNzaW9u",
-            "SXRlbRITCgtyZWZyZXNoVGltZRgDIAEoBSIuCgxDTWlzc2lvbkxpc3QSHgoE",
-            "bGlzdBgBIAMoCzIQLnBiLkNNaXNzaW9uRGF0YWIGcHJvdG8z"));
+            "IAMoCzIMLnBiLkl0ZW1EYXRhIjAKDENhbGVuZGFyRGF0YRIPCgdtaW51dGVz",
+            "GAEgASgFEg8KB2V2ZW50aWQYAiABKAUidAoJVG93ZXJEYXRhEhAKCGFjdHVh",
+            "bElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEo",
+            "BRISCgpyZXBhaXJUaW1lGAQgASgFEhwKCFBvc2l0aW9uGAUgASgLMgoucGIu",
+            "VmVjdG9yIisKDENNaXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNz",
+            "GAIgASgFIk8KDENNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0GAIg",
+            "AygLMhAucGIuQ01pc3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgFIi4K",
+            "DENNaXNzaW9uTGlzdBIeCgRsaXN0GAEgAygLMhAucGIuQ01pc3Npb25EYXRh",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -136,7 +137,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Eventid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionItem), global::Pb.CMissionItem.Parser, new[]{ "Id", "Process" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionData), global::Pb.CMissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null),
@@ -6763,6 +6764,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CalendarData(CalendarData other) : this() {
       minutes_ = other.minutes_;
+      eventid_ = other.eventid_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6773,11 +6775,28 @@ namespace Pb {
     /// <summary>Field number for the "minutes" field.</summary>
     public const int MinutesFieldNumber = 1;
     private int minutes_;
+    /// <summary>
+    /// 当前时间进度
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Minutes {
       get { return minutes_; }
       set {
         minutes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "eventid" field.</summary>
+    public const int EventidFieldNumber = 2;
+    private int eventid_;
+    /// <summary>
+    /// 当前事件进度
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Eventid {
+      get { return eventid_; }
+      set {
+        eventid_ = value;
       }
     }
 
@@ -6795,6 +6814,7 @@ namespace Pb {
         return true;
       }
       if (Minutes != other.Minutes) return false;
+      if (Eventid != other.Eventid) return false;
       return true;
     }
 
@@ -6802,6 +6822,7 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       if (Minutes != 0) hash ^= Minutes.GetHashCode();
+      if (Eventid != 0) hash ^= Eventid.GetHashCode();
       return hash;
     }
 
@@ -6816,6 +6837,10 @@ namespace Pb {
         output.WriteRawTag(8);
         output.WriteInt32(Minutes);
       }
+      if (Eventid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Eventid);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6823,6 +6848,9 @@ namespace Pb {
       int size = 0;
       if (Minutes != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Minutes);
+      }
+      if (Eventid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Eventid);
       }
       return size;
     }
@@ -6834,6 +6862,9 @@ namespace Pb {
       }
       if (other.Minutes != 0) {
         Minutes = other.Minutes;
+      }
+      if (other.Eventid != 0) {
+        Eventid = other.Eventid;
       }
     }
 
@@ -6847,6 +6878,10 @@ namespace Pb {
             break;
           case 8: {
             Minutes = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Eventid = input.ReadInt32();
             break;
           }
         }

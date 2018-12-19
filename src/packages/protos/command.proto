@@ -329,7 +329,8 @@ message BuildData{
 
 //日历数据
 message CalendarData{
-	int32 minutes = 1;
+	int32 minutes = 1; //当前时间进度
+	int32 eventid = 2; //当前事件进度
 }
 
 //塔数据
