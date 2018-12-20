@@ -92,7 +92,7 @@ function WebSocketInstance:onConnected()
     --玩家连接上了
     local redis = self:getRedis()
     if redis then
-        redis:sadd(Constants.USERLIST, id)
+        redis:zadd(Constants.USERLIST, ngx.now(), id)
     end
 end
 
@@ -104,7 +104,7 @@ function WebSocketInstance:onDisconnected(event)
     --玩家下线了
     local redis = self:getRedis()
     if redis then
-        redis:srem(Constants.USERLIST, id)
+        redis:zrem(Constants.USERLIST, id)
     end
 end
 
