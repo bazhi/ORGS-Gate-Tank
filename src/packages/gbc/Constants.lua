@@ -31,14 +31,18 @@ _M.WEBSOCKET_DEFAULT_MAX_PAYLOAD_LEN = 16 * 1024 -- 16KB
 -- misc
 _M.STRIP_LUA_PATH_PATTERN = "[/%.%a%-]+/([%a%-]+%.lua:%d+: )"
 
--- control message
+--关闭连接消息
 _M.CLOSE_CONNECT = "SEND_CLOSE"
 
+--数据库事件
 _M.MYSQL_EVENT = "_MYSQL_EVENT"
 
 --初始化信号
 _M.SIGINIT = "_SIGINIT"
 --退出信号
 _M.SIGQUIT = "_SIGQUIT"
+
+--登陆列表
+_M.USERLIST = "_USERLIST"
 
 return table.readonly(_M)

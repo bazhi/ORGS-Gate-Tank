@@ -86,16 +86,26 @@ function WebSocketInstance:onClose()
 end
 
 function WebSocketInstance:onConnected()
-    cc.printf("onConnected:"..self:getConnectId())
+    local id = self:getConnectId()
+    cc.printf("onConnected:"..id)
     self:runAction("role.load", {})
     --玩家连接上了
+    local redis = self:getRedis()
+    if redis then
+        redis:sadd(Constants.USERLIST, id)
+    end
 end
 
 function WebSocketInstance:onDisconnected(event)
-    cc.printf("onDisconnected:"..self:getConnectId())
+    local id = self:getConnectId()
+    cc.printf("onDisconnected:"..id)
     if event.reason ~= gbc.Constants.CLOSE_CONNECT then
     end
     --玩家下线了
+    local redis = self:getRedis()
+    if redis then
+        redis:srem(Constants.USERLIST, id)
+    end
 end
 
 function WebSocketInstance:heartbeat()

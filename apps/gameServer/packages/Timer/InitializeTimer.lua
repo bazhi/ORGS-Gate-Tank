@@ -3,6 +3,7 @@ local InitializeTimer = cc.class("InitializeTimer", gbc.NgxTimerBase)
 local orm = cc.import("#orm")
 local OrmMysql = orm.OrmMysql
 local Table = cc.import("#Table", ...)
+local Constants = gbc.Constants
 
 function InitializeTimer:ctor(config, ...)
     InitializeTimer.super.ctor(self, config, ...)
@@ -25,8 +26,16 @@ function InitializeTimer:runEventLoop()
     self:createTable(db, Table.Shop)
     self:createTable(db, Table.Talent)
     
+    self:clearUserList()
     self:Initialized()
     return InitializeTimer.super.runEventLoop(self)
+end
+
+function InitializeTimer:clearUserList()
+    local redis = self:getRedis()
+    if redis then
+        redis:del(Constants.USERLIST)
+    end
 end
 
 function InitializeTimer:createTable(db, type)
