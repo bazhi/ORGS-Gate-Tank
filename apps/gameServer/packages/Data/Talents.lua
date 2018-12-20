@@ -53,7 +53,7 @@ function Talents:UnlockItem(connectid, action, cid, level, role)
         if cfg.prelevel == _level then
             talent:set("level", cfg.level)
             local query = talent:updateQuery({id = talent:get("id")}, {level = cfg.level})
-            talent:pushQuery(query, connectid, action, {update_id = self:get("id")})
+            talent:pushQuery(query, connectid, action, {update_id = talent:get("id")})
         end
     else
         if cfg.preId == 0 then
