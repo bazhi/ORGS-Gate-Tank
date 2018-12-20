@@ -12,7 +12,7 @@ function TalentAction:OnLoad(args, _redis)
     local player = instance:getPlayer()
     local talents = player:getTalents()
     if args then
-        talents:update(args)
+        talents:updates(args)
     end
     instance:sendPack("Talents", {
         items = args
@@ -69,7 +69,7 @@ function TalentAction:OnLoadOne(args, _redis)
     local player = instance:getPlayer()
     local talents = player:getTalents()
     if args then
-        talents:update(args)
+        talents:updates(args)
     end
     talents:UnLock()
     instance:sendPack("Talents", {
