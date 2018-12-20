@@ -54,6 +54,8 @@ function Talents:UnlockItem(connectid, action, cid, level, role)
             talent:set("level", cfg.level)
             local query = talent:updateQuery({id = talent:get("id")}, {level = cfg.level})
             talent:pushQuery(query, connectid, action, {update_id = talent:get("id")})
+        else
+            return false, "OperationNotPermit"
         end
     else
         if cfg.preId == 0 then
@@ -69,9 +71,10 @@ function Talents:UnlockItem(connectid, action, cid, level, role)
                     local query = talent:insertQuery({cid = cid, level = level, rid = role_data.id})
                     talent:pushQuery(query, connectid, action)
                 end
+            else
+                return false, "NoneID"
             end
         end
-        
     end
     
     return true
