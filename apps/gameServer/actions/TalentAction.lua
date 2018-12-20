@@ -49,7 +49,7 @@ function TalentAction:unlockAction(args)
 end
 
 function TalentAction:OnUnlock(args, _redis, params)
-    cc.dump(args)
+    --cc.dump(args)
     local id
     if params and params.update_id then
         id = params.update_id
