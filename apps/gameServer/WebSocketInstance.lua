@@ -92,7 +92,7 @@ function WebSocketInstance:onConnected()
     --玩家连接上了
     local redis = self:getRedis()
     if redis then
-        redis:zadd(Constants.USERLIST, ngx.now(), id)
+        redis:zadd(Constants.USERLIST, math.floor(ngx.now()), id)
     end
 end
 
