@@ -88,13 +88,14 @@ end
 function WebSocketInstance:onConnected()
     cc.printf("onConnected:"..self:getConnectId())
     self:runAction("role.load", {})
+    --玩家连接上了
 end
 
 function WebSocketInstance:onDisconnected(event)
     cc.printf("onDisconnected:"..self:getConnectId())
     if event.reason ~= gbc.Constants.CLOSE_CONNECT then
-        
     end
+    --玩家下线了
 end
 
 function WebSocketInstance:heartbeat()
