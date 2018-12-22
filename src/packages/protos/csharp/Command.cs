@@ -74,27 +74,28 @@ namespace Pb {
             "GAoJU2lnbmluR2V0EgsKA2RheRgBIAEoBSIVCgdTaG9wQnV5EgoKAmlkGAEg",
             "ASgFIhwKClNob3BSZWNvcmQSDgoCaWQYASADKAVCAhABIiwKDUNvbXBvc2l0",
             "ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSIxCghJdGVtRGF0",
-            "YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBSKHAQoK",
+            "YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBSLRAQoK",
             "UGxheWVyRGF0YRIOCgZoZWFsdGgYASABKAUSDwoHc3RhbWluYRgCIAEoBRIb",
             "CgVwcm9wcxgDIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYBCADKAsy",
-            "DC5wYi5JdGVtRGF0YRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvciJY",
-            "CglNYXBSZWNvcmQSHgoGdG93ZXJzGAEgAygLMg4ucGIuUmVjb3JkSXRlbRId",
-            "CgVpdGVtcxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgDIAEoAyI4",
-            "Cg1NYXBSZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEoBRIOCgZy",
-            "ZWNvcmQYAyABKAwiKgoKUmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQCghjb250",
-            "ZW50cxgCIAEoDCK5AQoJQnVpbGREYXRhEhAKCGFjdHVhbElEGAEgASgFEg4K",
-            "BmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpyZXBhaXJU",
-            "aW1lGAQgASgFEiUKCmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21wb3NpdGVJ",
-            "dGVtEhsKBXByb3BzGAYgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgH",
-            "IAMoCzIMLnBiLkl0ZW1EYXRhIjAKDENhbGVuZGFyRGF0YRIPCgdtaW51dGVz",
-            "GAEgASgFEg8KB2V2ZW50aWQYAiABKAUidAoJVG93ZXJEYXRhEhAKCGFjdHVh",
-            "bElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEo",
-            "BRISCgpyZXBhaXJUaW1lGAQgASgFEhwKCFBvc2l0aW9uGAUgASgLMgoucGIu",
-            "VmVjdG9yIisKDENNaXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNz",
-            "GAIgASgFIk8KDENNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0GAIg",
-            "AygLMhAucGIuQ01pc3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgFIi4K",
-            "DENNaXNzaW9uTGlzdBIeCgRsaXN0GAEgAygLMhAucGIuQ01pc3Npb25EYXRh",
-            "YgZwcm90bzM="));
+            "DC5wYi5JdGVtRGF0YRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvchIi",
+            "CgxlcXVpcGVkUHJvcHMYBiADKAsyDC5wYi5JdGVtRGF0YRIkCg5lcXVpcGVk",
+            "V2VhcG9ucxgHIAMoCzIMLnBiLkl0ZW1EYXRhIlgKCU1hcFJlY29yZBIeCgZ0",
+            "b3dlcnMYASADKAsyDi5wYi5SZWNvcmRJdGVtEh0KBWl0ZW1zGAIgAygLMg4u",
+            "cGIuUmVjb3JkSXRlbRIMCgR0aW1lGAMgASgDIjgKDU1hcFJlY29yZFNhdmUS",
+            "CgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEoDCIqCgpS",
+            "ZWNvcmRJdGVtEgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIrkBCglC",
+            "dWlsZERhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMK",
+            "C3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSJQoKY29t",
+            "cG9zaXRlcxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0SGwoFcHJvcHMYBiAD",
+            "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAcgAygLMgwucGIuSXRlbURh",
+            "dGEiMAoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUSDwoHZXZlbnRp",
+            "ZBgCIAEoBSJ0CglUb3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVh",
+            "bHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUY",
+            "BCABKAUSHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiKwoMQ01pc3Np",
+            "b25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiTwoMQ01pc3Np",
+            "b25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QYAiADKAsyEC5wYi5DTWlzc2lv",
+            "bkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAUiLgoMQ01pc3Npb25MaXN0Eh4K",
+            "BGxpc3QYASADKAsyEC5wYi5DTWlzc2lvbkRhdGFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -132,7 +133,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position", "EquipedProps", "EquipedWeapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Items", "Time" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
@@ -5795,6 +5796,8 @@ namespace Pb {
       props_ = other.props_.Clone();
       weapons_ = other.weapons_.Clone();
       Position = other.position_ != null ? other.Position.Clone() : null;
+      equipedProps_ = other.equipedProps_.Clone();
+      equipedWeapons_ = other.equipedWeapons_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5855,6 +5858,26 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "equipedProps" field.</summary>
+    public const int EquipedPropsFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_equipedProps_codec
+        = pb::FieldCodec.ForMessage(50, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> equipedProps_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> EquipedProps {
+      get { return equipedProps_; }
+    }
+
+    /// <summary>Field number for the "equipedWeapons" field.</summary>
+    public const int EquipedWeaponsFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_equipedWeapons_codec
+        = pb::FieldCodec.ForMessage(58, global::Pb.ItemData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.ItemData> equipedWeapons_ = new pbc::RepeatedField<global::Pb.ItemData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.ItemData> EquipedWeapons {
+      get { return equipedWeapons_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as PlayerData);
@@ -5873,6 +5896,8 @@ namespace Pb {
       if(!props_.Equals(other.props_)) return false;
       if(!weapons_.Equals(other.weapons_)) return false;
       if (!object.Equals(Position, other.Position)) return false;
+      if(!equipedProps_.Equals(other.equipedProps_)) return false;
+      if(!equipedWeapons_.Equals(other.equipedWeapons_)) return false;
       return true;
     }
 
@@ -5884,6 +5909,8 @@ namespace Pb {
       hash ^= props_.GetHashCode();
       hash ^= weapons_.GetHashCode();
       if (position_ != null) hash ^= Position.GetHashCode();
+      hash ^= equipedProps_.GetHashCode();
+      hash ^= equipedWeapons_.GetHashCode();
       return hash;
     }
 
@@ -5908,6 +5935,8 @@ namespace Pb {
         output.WriteRawTag(42);
         output.WriteMessage(Position);
       }
+      equipedProps_.WriteTo(output, _repeated_equipedProps_codec);
+      equipedWeapons_.WriteTo(output, _repeated_equipedWeapons_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5924,6 +5953,8 @@ namespace Pb {
       if (position_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
       }
+      size += equipedProps_.CalculateSize(_repeated_equipedProps_codec);
+      size += equipedWeapons_.CalculateSize(_repeated_equipedWeapons_codec);
       return size;
     }
 
@@ -5946,6 +5977,8 @@ namespace Pb {
         }
         Position.MergeFrom(other.Position);
       }
+      equipedProps_.Add(other.equipedProps_);
+      equipedWeapons_.Add(other.equipedWeapons_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5977,6 +6010,14 @@ namespace Pb {
               position_ = new global::Pb.Vector();
             }
             input.ReadMessage(position_);
+            break;
+          }
+          case 50: {
+            equipedProps_.AddEntriesFrom(input, _repeated_equipedProps_codec);
+            break;
+          }
+          case 58: {
+            equipedWeapons_.AddEntriesFrom(input, _repeated_equipedWeapons_codec);
             break;
           }
         }

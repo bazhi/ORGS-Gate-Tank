@@ -298,6 +298,8 @@ message PlayerData{
 	repeated ItemData props = 3;
 	repeated ItemData weapons = 4;
 	Vector Position = 5;
+	repeated ItemData equipedProps = 6;
+	repeated ItemData equipedWeapons = 7;
 }
 
 //地图记录
