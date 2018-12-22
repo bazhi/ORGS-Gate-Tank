@@ -73,29 +73,30 @@ namespace Pb {
             "bmluUmVjb3JkEg0KBXRpbWVzGAEgASgFEhIKBnJlY29yZBgCIAMoBUICEAEi",
             "GAoJU2lnbmluR2V0EgsKA2RheRgBIAEoBSIVCgdTaG9wQnV5EgoKAmlkGAEg",
             "ASgFIhwKClNob3BSZWNvcmQSDgoCaWQYASADKAVCAhABIiwKDUNvbXBvc2l0",
-            "ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSIxCghJdGVtRGF0",
-            "YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBSLRAQoK",
-            "UGxheWVyRGF0YRIOCgZoZWFsdGgYASABKAUSDwoHc3RhbWluYRgCIAEoBRIb",
-            "CgVwcm9wcxgDIAMoCzIMLnBiLkl0ZW1EYXRhEh0KB3dlYXBvbnMYBCADKAsy",
-            "DC5wYi5JdGVtRGF0YRIcCghQb3NpdGlvbhgFIAEoCzIKLnBiLlZlY3RvchIi",
-            "CgxlcXVpcGVkUHJvcHMYBiADKAsyDC5wYi5JdGVtRGF0YRIkCg5lcXVpcGVk",
-            "V2VhcG9ucxgHIAMoCzIMLnBiLkl0ZW1EYXRhIlgKCU1hcFJlY29yZBIeCgZ0",
-            "b3dlcnMYASADKAsyDi5wYi5SZWNvcmRJdGVtEh0KBWl0ZW1zGAIgAygLMg4u",
-            "cGIuUmVjb3JkSXRlbRIMCgR0aW1lGAMgASgDIjgKDU1hcFJlY29yZFNhdmUS",
-            "CgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEoDCIqCgpS",
-            "ZWNvcmRJdGVtEgoKAmlkGAEgASgFEhAKCGNvbnRlbnRzGAIgASgMIrkBCglC",
-            "dWlsZERhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMK",
-            "C3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUYBCABKAUSJQoKY29t",
-            "cG9zaXRlcxgFIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0SGwoFcHJvcHMYBiAD",
-            "KAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAcgAygLMgwucGIuSXRlbURh",
-            "dGEiMAoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUSDwoHZXZlbnRp",
-            "ZBgCIAEoBSJ0CglUb3dlckRhdGESEAoIYWN0dWFsSUQYASABKAUSDgoGaGVh",
-            "bHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFpclRpbWUY",
-            "BCABKAUSHAoIUG9zaXRpb24YBSABKAsyCi5wYi5WZWN0b3IiKwoMQ01pc3Np",
-            "b25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiTwoMQ01pc3Np",
-            "b25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QYAiADKAsyEC5wYi5DTWlzc2lv",
-            "bkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAUiLgoMQ01pc3Npb25MaXN0Eh4K",
-            "BGxpc3QYASADKAsyEC5wYi5DTWlzc2lvbkRhdGFiBnByb3RvMw=="));
+            "ZUl0ZW0SCgoCaWQYASABKAUSDwoHdGltZUVuZBgCIAEoBSJDCghJdGVtRGF0",
+            "YRIKCgJpZBgBIAEoBRINCgVjb3VudBgCIAEoBRIKCgJocBgDIAEoBRIQCghs",
+            "b2NhdGlvbhgEIAEoBSLRAQoKUGxheWVyRGF0YRIOCgZoZWFsdGgYASABKAUS",
+            "DwoHc3RhbWluYRgCIAEoBRIbCgVwcm9wcxgDIAMoCzIMLnBiLkl0ZW1EYXRh",
+            "Eh0KB3dlYXBvbnMYBCADKAsyDC5wYi5JdGVtRGF0YRIcCghQb3NpdGlvbhgF",
+            "IAEoCzIKLnBiLlZlY3RvchIiCgxlcXVpcGVkUHJvcHMYBiADKAsyDC5wYi5J",
+            "dGVtRGF0YRIkCg5lcXVpcGVkV2VhcG9ucxgHIAMoCzIMLnBiLkl0ZW1EYXRh",
+            "IlgKCU1hcFJlY29yZBIeCgZ0b3dlcnMYASADKAsyDi5wYi5SZWNvcmRJdGVt",
+            "Eh0KBWl0ZW1zGAIgAygLMg4ucGIuUmVjb3JkSXRlbRIMCgR0aW1lGAMgASgD",
+            "IjgKDU1hcFJlY29yZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4K",
+            "BnJlY29yZBgDIAEoDCIqCgpSZWNvcmRJdGVtEgoKAmlkGAEgASgFEhAKCGNv",
+            "bnRlbnRzGAIgASgMIrkBCglCdWlsZERhdGESEAoIYWN0dWFsSUQYASABKAUS",
+            "DgoGaGVhbHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMgASgFEhIKCnJlcGFp",
+            "clRpbWUYBCABKAUSJQoKY29tcG9zaXRlcxgFIAMoCzIRLnBiLkNvbXBvc2l0",
+            "ZUl0ZW0SGwoFcHJvcHMYBiADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25z",
+            "GAcgAygLMgwucGIuSXRlbURhdGEiMAoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0",
+            "ZXMYASABKAUSDwoHZXZlbnRpZBgCIAEoBSJ0CglUb3dlckRhdGESEAoIYWN0",
+            "dWFsSUQYASABKAUSDgoGaGVhbHRoGAIgASgFEhMKC3VwZ3JhZGVUaW1lGAMg",
+            "ASgFEhIKCnJlcGFpclRpbWUYBCABKAUSHAoIUG9zaXRpb24YBSABKAsyCi5w",
+            "Yi5WZWN0b3IiKwoMQ01pc3Npb25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nl",
+            "c3MYAiABKAUiTwoMQ01pc3Npb25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QY",
+            "AiADKAsyEC5wYi5DTWlzc2lvbkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAUi",
+            "LgoMQ01pc3Npb25MaXN0Eh4KBGxpc3QYASADKAsyEC5wYi5DTWlzc2lvbkRh",
+            "dGFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -132,7 +133,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopBuy), global::Pb.ShopBuy.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ShopRecord), global::Pb.ShopRecord.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp", "Location" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position", "EquipedProps", "EquipedWeapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Items", "Time" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
@@ -5609,6 +5610,7 @@ namespace Pb {
       id_ = other.id_;
       count_ = other.count_;
       hp_ = other.hp_;
+      location_ = other.location_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5658,6 +5660,20 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "location" field.</summary>
+    public const int LocationFieldNumber = 4;
+    private int location_;
+    /// <summary>
+    /// 位置信息
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Location {
+      get { return location_; }
+      set {
+        location_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ItemData);
@@ -5674,6 +5690,7 @@ namespace Pb {
       if (Id != other.Id) return false;
       if (Count != other.Count) return false;
       if (Hp != other.Hp) return false;
+      if (Location != other.Location) return false;
       return true;
     }
 
@@ -5683,6 +5700,7 @@ namespace Pb {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Count != 0) hash ^= Count.GetHashCode();
       if (Hp != 0) hash ^= Hp.GetHashCode();
+      if (Location != 0) hash ^= Location.GetHashCode();
       return hash;
     }
 
@@ -5705,6 +5723,10 @@ namespace Pb {
         output.WriteRawTag(24);
         output.WriteInt32(Hp);
       }
+      if (Location != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Location);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5718,6 +5740,9 @@ namespace Pb {
       }
       if (Hp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hp);
+      }
+      if (Location != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Location);
       }
       return size;
     }
@@ -5735,6 +5760,9 @@ namespace Pb {
       }
       if (other.Hp != 0) {
         Hp = other.Hp;
+      }
+      if (other.Location != 0) {
+        Location = other.Location;
       }
     }
 
@@ -5756,6 +5784,10 @@ namespace Pb {
           }
           case 24: {
             Hp = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Location = input.ReadInt32();
             break;
           }
         }
