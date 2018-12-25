@@ -32,24 +32,34 @@ function TalentAction:login(args)
     return talents:Login(instance:getConnectId(), "talent.OnLoad", lastTime, loginTime, role_data.id)
 end
 
+--解锁操作
 function TalentAction:unlockAction(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local role = player:getRole()
     local talents = player:getTalents()
+    local props = player:getProps()
+    --正在解锁中
     if talents:IsLocked() then
         return false, "NoAccept"
     end
     
-    local ret, err = talents:UnlockItem(instance:getConnectId(), "talent.OnUnlock", args.cid, args.level, role)
-    if ret then
+    local ok, err, props = talents:UnlockItem(instance:getConnectId(), "talent.OnUnlock", args.cid, args.level, role, props)
+    if ok then
         talents:Lock()
+        
+        if props then
+            instance:sendPack("Props", {
+                items = props,
+            })
+        end
+        instance:sendPack("Role", role:get())
     end
-    return ret, err
+    
+    return ok, err
 end
 
 function TalentAction:OnUnlock(args, _redis, params)
-    --cc.dump(args)
     local id
     if params and params.update_id then
         id = params.update_id

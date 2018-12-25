@@ -39,11 +39,6 @@ function Chapters:Create(connectid, action, cid, roleData)
         return false, "NoneConfig"
     end
     
-    --1.检查解锁等级
-    if cfg_chapter.unlockLevel > roleData.level then
-        return false, "NoAccept"
-    end
-    
     --2.检查解锁星级
     if cfg_chapter.preID > 0 then
         local pre_chapter = self:getByCID(cfg_chapter.preID)

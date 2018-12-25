@@ -43,14 +43,26 @@ function ShopAction:buyAction(args)
     local shop = player:getShop()
     local id = args.id
     
-    local result, cfg = shop:Buy(instance:getConnectId(), "shop.OnBuy", id, role, props)
-    if not result then
-        return result, cfg
+    local ok, err, cfg = shop:Buy(instance:getConnectId(), "shop.OnBuy", id, role, props)
+    if not ok then
+        return ok, err
     end
+    
     if cfg then
         role:AddData(instance:getConnectId(), nil, 0, -cfg.price_diamond, 0)
-        local ret, err = props:AddRewards(instance:getConnectId(), "shop.OnProps", cfg.items, role)
+        local ret, err, items, rewards = props:AddRewards(instance:getConnectId(), "prop.OnProps", cfg.items, role)
         instance:sendPack("Role", role:get())
+        if items then
+            --直接更新的道具
+            instance:sendPack("Props", {
+                items = items,
+            })
+        end
+        if rewards then
+            instance:sendPack("Rewards", {
+                items = rewards,
+            })
+        end
         return ret, err
     end
     
@@ -64,11 +76,6 @@ function ShopAction:OnBuy(_args)
     
     local shop = player:getShop()
     instance:sendPack("ShopRecord", shop:GetProto())
-    
-end
-
-function ShopAction:OnProps(args, redis)
-    self:runAction("prop.LoadOne", args, redis)
 end
 
 return ShopAction

@@ -65,6 +65,8 @@ message Error{
 		LessGold = 13; //金币不够
 		LessDiamond = 14;//钻石不够
 		LessTimes = 15;//超出次数
+		LessProp = 16; //缺少道具
+		LessTech = 17; //缺少科技点
 		NoneRole = 1001; //还没有创建角色
 		NoneProp = 1002; //道具不存在
 		NoneEquipment = 1003; //装备不存在
@@ -236,14 +238,13 @@ message Boxes{
 }
 
 message Reward{
-	int32 cid = 1;
-	int32 count = 2;
+	int32 tp = 1; //1钻石，2:科技点，3:道具
+	int32 id = 2;
+	int32 count = 3;
 }
 
 message Rewards{
 	repeated Reward items = 1;
-	int32 gold = 2; //金币
-	int32 diamond = 3; //钻石
 }
 
 message Talent{

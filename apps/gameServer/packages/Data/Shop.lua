@@ -19,9 +19,6 @@ function Shop:Login(connectid, action, lastTime, loginTime, roleid)
         return false, "NoParam"
     end
     
-    -- local loginDate = os.date("*t", loginTime)
-    -- local lastDate = os.date("*t", lastTime)
-    
     local query = self:insertQuery({
         rid = roleid,
     })
@@ -66,18 +63,18 @@ end
 function Shop:CanBuy(id)
     local cfg = dbConfig.get("cfg_shop", id)
     if not cfg then
-        return false
+        return false, "NoAccept"
     end
     if cfg.unique == 1 and self:HadBuy(id) then
-        return false
+        return false, "NoAccept"
     end
-    return true, cfg
+    return true, nil, cfg
 end
 
 function Shop:Buy(connectid, action, id, role)
-    local result, cfg = self:CanBuy(id)
-    if not result then
-        return false, "NoAccept"
+    local ok, err, cfg = self:CanBuy(id)
+    if not ok then
+        return ok, err
     end
     
     if not connectid or not cfg or not role or not id then
@@ -102,7 +99,7 @@ function Shop:Buy(connectid, action, id, role)
         self:pushQuery(query, connectid, action)
     end
     --增加道具
-    return true, cfg
+    return true, nil, cfg
 end
 
 return Shop

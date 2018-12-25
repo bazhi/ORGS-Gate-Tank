@@ -45,8 +45,7 @@ function Achvs:Login(connectid, action, lastTime, loginTime, roleid)
         self:InitializeAll(connectid, action, roleid)
         return true
     end
-    
-    --return false
+    return false
 end
 
 function Achvs:Finish(connectid, action, id)
@@ -57,9 +56,10 @@ function Achvs:Finish(connectid, action, id)
     end
     if achv:isFinished() then
         local query = achv:deleteQuery({id = id})
+        local cfg = achv:getConfig()
         achv:pushQuery(query, connectid, action)
         self:delete(id)
-        return true
+        return true, nil, cfg
     else
         return false
     end

@@ -23,9 +23,6 @@ THE SOFTWARE.
 
 local gbc = cc.import("#gbc")
 local PropAction = cc.class("PropAction", gbc.ActionBase)
--- local dbConfig = cc.import("#dbConfig")
--- local parse = cc.import("#parse")
--- local ParseConfig = parse.ParseConfig
 
 PropAction.ACCEPTED_REQUEST_TYPE = "websocket"
 
@@ -34,7 +31,6 @@ function PropAction:login(args)
     local player = instance:getPlayer()
     local role = player:getRole()
     local props = player:getProps()
-    
     local lastTime = args.lastTime
     local loginTime = args.loginTime
     
@@ -54,13 +50,13 @@ function PropAction:OnLoad(args)
     })
 end
 
---更新一个新的道具
-function PropAction:LoadOne(args)
-    local instance = self:getInstance()
-    local player = instance:getPlayer()
-    local props = player:getProps()
-    local id = args.insert_id
-    return props:LoadOne(instance:getConnectId(), "prop.OnLoad", id)
+function PropAction:OnProps(args, _redis, item)
+    if args.insert_id then
+        local instance = self:getInstance()
+        local player = instance:getPlayer()
+        local props = player:getProps()
+        props:IncreaseUpdate(instance:getConnectId(), "prop.OnLoad", args.insert_id, item)
+    end
 end
 
 return PropAction

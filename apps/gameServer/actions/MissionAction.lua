@@ -87,9 +87,36 @@ function MissionAction:finishAction(args)
     local instance = self:getInstance()
     local player = instance:getPlayer()
     local missions = player:getMissions()
-    if missions:Finish(instance:getConnectId(), nil, id) then
-        instance:sendDelete("MissionItem", id, 0)
+    local props = player:getProps()
+    local role = player:getRole()
+    
+    local ok, err, cfg = missions:Finish(instance:getConnectId(), nil, id)
+    if not ok then
+        return ok, err
     end
+    
+    if cfg then
+        --增加奖励
+        local ok, err, items, rewards = props:AddRewards(instance:getConnectId(), "prop.OnProps", cfg.rewards, role)
+        
+        if not ok then
+            return ok, err
+        end
+        
+        if items then
+            instance:sendPack("Props", {
+                items = items,
+            })
+        end
+        if rewards then
+            instance:sendPack("Rewards", {
+                items = rewards,
+            })
+        end
+        instance:sendPack("Role", role:get())
+    end
+    
+    instance:sendDelete("MissionItem", id, 0)
     return true
 end
 

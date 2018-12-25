@@ -55,6 +55,19 @@ function M.ParseProbability(idstr)
     return result
 end
 
+function M.ParseProps(idstr)
+    local result = {}
+    local items = string.split(idstr, "|")
+    for _, v in ipairs(items) do
+        local info = string.split(v, "_")
+        table.insert(result, {
+            id = tonumber(info[1]),
+            count = tonumber(info[2]),
+        })
+    end
+    return result
+end
+
 function M.ParseRewards(idstr)
     local result = {}
     local items = string.split(idstr, "|")
