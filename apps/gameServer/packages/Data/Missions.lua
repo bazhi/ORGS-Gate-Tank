@@ -63,8 +63,9 @@ function Missions:Finish(connectid, action, id)
     if mission:isFinished() then
         local query = mission:deleteQuery({id = id})
         mission:pushQuery(query, connectid, action)
+        local cfg = mission:getConfig()
         self:delete(id)
-        return true
+        return true, nil, cfg
     else
         return false
     end
