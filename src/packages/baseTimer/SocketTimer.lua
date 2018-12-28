@@ -42,16 +42,17 @@ end
 
 function SocketTimer:ProcessMessage(frame, _ftype)
     self:safeFunction(function ()
-        local data = cmsgpack_unpack(frame)
-        if type(data) == "table" and data.connectid then
-            if data.tp == 1 then
-                self:sendControlMessage(data.connectid, data.message)
+        if #frame > 0 then
+            local data = cmsgpack_unpack(frame)
+            if type(data) == "table" and data.connectid then
+                if data.tp == 1 then
+                    self:sendControlMessage(data.connectid, data.message)
+                else
+                    self:sendMessageToConnectID(data.connectid, data.message)
+                end
             else
-                self:sendMessageToConnectID(data.connectid, data.message)
+                cc.dump(frame)
             end
-        else
-            cc.dump(data)
-            cc.dump(frame)
         end
     end)
 end
