@@ -44,7 +44,11 @@ end
 function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
         if frame and frame ~= "" then
-            local data = net_decode(frame)
+            local data, err = net_decode(frame)
+            if err then
+                cc.printerror(string.format("can not decode frame err:%s [%d]", err, #frame))
+                return
+            end
             if type(data) == "table" and data.connectid then
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
