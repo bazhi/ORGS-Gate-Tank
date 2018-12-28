@@ -41,11 +41,12 @@ function ServiceManager.GetName()
 end
 
 function ServiceManager.Get(name)
-    index = index + 1
+    
     local list = ServiceMap[name] or {}
     
     if #list > 1 then
         local id = index % #list + 1
+        index = index + 1
         return list[id]
     end
     return list[1]
