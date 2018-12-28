@@ -43,14 +43,13 @@ end
 
 function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
-        if frame and frame ~= "" then
+        if frame then
             local data, err = net_decode(frame)
             if err then
                 cc.printerror(string.format("can not decode frame err:%s [%d]", err, #frame))
                 return
             end
             if type(data) == "table" and data.connectid then
-                cc.dump(data)
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
                 else
@@ -126,7 +125,7 @@ function SocketTimer:runEventLoop()
                 elseif ftype == "text" or ftype == "binary" then
                     self:ProcessMessage(frame, ftype)
                 else
-                    cc.printwarn("[websocket:%s] unknown frame type \"%s\"", self.param.channel, tostring(ftype))
+                    cc.printwarn("[SocketTimer:%s] unknown frame type \"%s\"", self.param.channel, tostring(ftype))
                 end
             end
         else
