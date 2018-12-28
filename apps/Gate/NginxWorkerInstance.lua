@@ -23,10 +23,11 @@ function NginxWorkerInstance:onWorkerFirst()
     local uri = string.format("ws://%s:%d/%s/", game.host, game.port, game.name)
     local gate = self:GetConfig() --本身的配置
     local gateuri = string.format("ws://%s:%d/%s/", gate.host, gate.port, "Gate")
+    local channel = Constants.SOCKET_CONNECT_CHANNLE..gate.name
     self:runTimer(0.5, SocketTimer, self.config, {
         uri = uri,
         authorization = authorization,
-        channel = Constants.SOCKET_CONNECT_CHANNLE..gate.name,
+        channel = channel,
         msg = gateuri,
     })
 end

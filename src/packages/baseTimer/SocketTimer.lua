@@ -83,7 +83,7 @@ function SocketTimer:runEventLoop()
             cc.printf("send_binary failed:"..msg)
         end
     end, self.param.channel)
-    
+    cc.printf("subscribe channel:"..self.param.channel)
     local frames = {}
     while true do
         if self._socket then
