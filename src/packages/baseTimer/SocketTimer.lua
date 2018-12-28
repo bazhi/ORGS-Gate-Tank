@@ -50,6 +50,7 @@ function SocketTimer:ProcessMessage(frame, ftype)
                 return
             end
             if type(data) == "table" and data.connectid then
+                cc.printf(string.format("decode success length[%d]", #frame))
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
                 else
