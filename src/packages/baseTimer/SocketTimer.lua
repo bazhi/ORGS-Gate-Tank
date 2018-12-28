@@ -40,7 +40,7 @@ function SocketTimer:connect()
     return true
 end
 
-function SocketTimer:ProcessMessage(frame, _ftype)
+function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
         if #frame > 0 then
             local data = cmsgpack_unpack(frame)
@@ -51,7 +51,7 @@ function SocketTimer:ProcessMessage(frame, _ftype)
                     self:sendMessageToConnectID(data.connectid, data.message)
                 end
             else
-                cc.dump(frame)
+                cc.printf(frame.."-----type:"..ftype)
             end
         end
     end)
