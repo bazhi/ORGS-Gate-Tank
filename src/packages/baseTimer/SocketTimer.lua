@@ -51,7 +51,7 @@ function SocketTimer:ProcessMessage(frame, ftype)
                     self:sendMessageToConnectID(data.connectid, data.message)
                 end
             else
-                cc.printf(frame.."-----type:"..ftype)
+                cc.printf(#frame.."-----type:"..ftype)
             end
         end
     end)
