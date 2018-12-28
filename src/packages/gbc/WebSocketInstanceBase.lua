@@ -173,9 +173,10 @@ function WebSocketInstanceBase:runEventLoop()
     --当没有取得链接ID时，使用自动生成的ID
     if not connectId then
         connectId = tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
-    else
-        connectId = connectId
     end
+    
+    connectId = self.config.app.appName .. connectId
+    
     self._connectId = connectId
     
     if not self:afterAuth() then

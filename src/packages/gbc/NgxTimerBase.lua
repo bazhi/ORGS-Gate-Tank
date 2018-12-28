@@ -61,7 +61,7 @@ function NgxTimerBase:sendControlMessage(connectId, message)
         message = json_encode(message)
     end
     
-    local controlChannel = Constants.CONTROL_CHANNEL_PREFIX .. connectId
+    local controlChannel = Constants.CONTROL_CHANNEL_PREFIX..self.config.app.appName .. connectId
     local ok, err = redis:publish(controlChannel, message)
     if not ok then
         cc.printerror(err)
@@ -80,7 +80,7 @@ function NgxTimerBase:sendMessageToConnectID(connectId, message)
         message = json_encode(message)
     end
     
-    local connectChannel = Constants.CONNECT_CHANNEL_PREFIX .. connectId
+    local connectChannel = Constants.CONNECT_CHANNEL_PREFIX ..self.config.app.appName .. connectId
     local ok, err = redis:publish(connectChannel, message)
     if not ok then
         cc.printerror(err)
