@@ -172,9 +172,9 @@ function WebSocketInstanceBase:runEventLoop()
     local redis = self:getRedis()
     --当没有取得链接ID时，使用自动生成的ID
     if not connectId then
-        connectId = "CON_"..tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
+        connectId = tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
     else
-        connectId = "CON_"..connectId
+        connectId = connectId
     end
     self._connectId = connectId
     

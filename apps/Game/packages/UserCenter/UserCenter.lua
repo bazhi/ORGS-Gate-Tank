@@ -4,7 +4,7 @@ local UserCenter = cc.class("UserCenter")
 local gbc = cc.import("#gbc")
 local User = cc.import(".User")
 local MessageType = gbc.MessageType
-
+local Constants = gbc.Constants
 local sdLogin = ngx.shared.sdLogin
 
 function UserCenter:ctor(instance)
@@ -30,6 +30,11 @@ function UserCenter:userLogin(connectid, mysql)
             user = User:new(connectid)
             self.users[connectid] = user
             user:Login(mysql, self.instance)
+        end
+    else
+        if self.instance then
+            self.instance:sendError(connectid, "UserLoggedIn")
+            self.instance:sendToGate(connectid, Constants.CLOSE_CONNECT, 1)
         end
     end
 end

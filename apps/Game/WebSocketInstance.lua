@@ -54,10 +54,13 @@ function WebSocketInstance:sendError(pid, errtype, msgid)
     }, msgid)
 end
 
-function WebSocketInstance:sendToGate(pid, msg)
+--tp
+--默认为发送到连接，1发送到control
+function WebSocketInstance:sendToGate(pid, msg, tp)
     self:sendMessage(cmsgpack_pack({
         connectid = pid,
         message = msg,
+        tp = tp,
     }))
 end
 
