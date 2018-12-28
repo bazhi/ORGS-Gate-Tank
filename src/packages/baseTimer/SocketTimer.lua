@@ -42,7 +42,7 @@ end
 
 function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
-        if #frame > 0 then
+        if frame and frame ~= "" then
             local data = cmsgpack_unpack(frame)
             if type(data) == "table" and data.connectid then
                 if data.tp == 1 then
