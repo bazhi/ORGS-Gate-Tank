@@ -35,7 +35,15 @@ function Factory.create(config, classname, ...)
         --package.path = config.app.packagePath
     end
     
-    local newClassname = config.app.appName.."."..classname
+    --cc.dump(config)
+    
+    local newClassname
+    if config.app.entryName then
+        newClassname = config.app.entryName.."."..classname
+    else
+        newClassname = config.app.appName.."."..classname
+    end
+    --cc.printf(newClassname)
     local ok, cls = pcall(require, newClassname)
     if not ok then
         local err = cls
