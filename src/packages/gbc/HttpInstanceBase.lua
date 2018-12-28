@@ -37,7 +37,7 @@ local table_merge = table.merge
 
 local json = cc.import("#json")
 local Constants = cc.import(".Constants")
-local Redis = cc.import("#redis")
+-- local Redis = cc.import("#redis")
 local Mysql = cc.import("#mysql")
 
 local InstanceBase = cc.import(".InstanceBase")
@@ -147,7 +147,7 @@ function HttpInstanceBase:runEventLoop()
     end
     
     local err = nil
-    local ok, result = xpcall(function()
+    local _ok, result = xpcall(function()
         return self:runAction(actionName, self._requestParameters)
     end, function(_err)
         err = _err

@@ -103,13 +103,11 @@ function InstanceBase:GetAuthority()
     return config.authorization
 end
 
-function InstanceBase:runAction(actionName, args, redis, noSuffix, params)
+function InstanceBase:runAction(actionName, args, redis)
     local appConfig = self.config.app
     
     local moduleName, methodName, folder = _normalize(actionName)
-    if not noSuffix then
-        methodName = methodName .. _MEHTOD_SUFFIX
-    end
+    methodName = methodName .. _MEHTOD_SUFFIX
     
     local actionModulePath = _getpath(moduleName, folder, self._package)
     actionModulePath = appConfig.appName .. "."..actionModulePath
@@ -120,7 +118,7 @@ function InstanceBase:runAction(actionName, args, redis, noSuffix, params)
         local acceptedRequestType = actionModule.ACCEPTED_REQUEST_TYPE or appConfig.defaultAcceptedRequestType
         local currentRequestType = self:getRequestType()
         if not _checkreqtype(currentRequestType, acceptedRequestType) then
-            cc.throw("can't access this action via request type \"%s\"", currentRequestType)
+            return nil, string_format("can't access this action via request type \"%s\"", currentRequestType)
         end
         
         action = actionModule:new(self)
@@ -129,14 +127,14 @@ function InstanceBase:runAction(actionName, args, redis, noSuffix, params)
     
     local method = action[methodName]
     if type(method) ~= "function" then
-        cc.throw("invalid action method \"%s:%s()\"", moduleName, methodName)
+        return nil, string_format("invalid action method \"%s:%s()\"", moduleName, methodName)
     end
     
     if not args then
         args = self._requestParameters or {}
     end
     
-    return method(action, args, redis or self:getRedis(), params)
+    return method(action, args, redis or self:getRedis())
 end
 
 function InstanceBase:onClose()
@@ -159,7 +157,7 @@ function InstanceBase:getRedis()
             ok, err = redis:connect(config.host, config.port)
         end
         if not ok then
-            cc.throw("InstanceBase:getRedis() - %s", err)
+            return nil, string_format("InstanceBase:getRedis() - %s", err)
         end
         
         redis:Select(self.config.app.appIndex)
@@ -179,7 +177,7 @@ function InstanceBase:getJobs(_opts)
             if ok then break end
             try = try - 1
             if try == 0 then
-                cc.throw("InstanceBase:getJobs() - connect to beanstalkd, %s", err)
+                return nil, string_format("InstanceBase:getJobs() - connect to beanstalkd, %s", err)
             else
                 sleep(1.0)
             end

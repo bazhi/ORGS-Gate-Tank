@@ -2,7 +2,7 @@
 local _CUR = ...
 
 local _M = {
-    DatabaseTimer = cc.import(".DatabaseTimer", _CUR),
+    SocketTimer = cc.import(".SocketTimer", _CUR),
 }
 
 return _M

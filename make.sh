@@ -22,6 +22,8 @@ LUAPROCESS_VER=1.9.0
 LUASQLITE3_VER=0.9.4
 #https://keplerproject.github.io/luafilesystem/
 LUAFILESYSTEM_VER=1.7.0.2
+#https://github.com/antirez/lua-cmsgpack
+LUACMSGPACK_VER=20181227
 
 function showHelp()
 {
@@ -323,6 +325,22 @@ make
 
 cp -f lsqlite3.so $DEST_BIN_DIR/openresty/lualib
 cp -f lsqlite3.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
+
+#install lua-cmsgpack
+echo ""
+echo -e "[\033[32mINSTALL\033[0m] lua-cmsgpack"
+cd $BUILD_DIR
+tar zxf lua-cmsgpack-$LUACMSGPACK_VER.tar.gz
+cd lua-cmsgpack-$LUACMSGPACK_VER
+if [ $OSTYPE == "MACOS" ]; then
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1 -L$DEST_BIN_DIR/openresty/luajit/lib -lluajit-5.1#g" Makefile
+else
+    $SED_BIN "s#/usr/local/include#$DEST_BIN_DIR/openresty/luajit/include/luajit-2.1#g" Makefile
+fi
+make
+
+cp -f cmsgpack.so $DEST_BIN_DIR/openresty/lualib
+cp -f cmsgpack.so $DEST_BIN_DIR/openresty/luajit/lib/lua/5.1
 
 #install luafilesystem
 echo ""

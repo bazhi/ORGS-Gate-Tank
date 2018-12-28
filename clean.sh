@@ -10,3 +10,4 @@ rm -rf $BIN_DIR/redis
 rm -rf $BIN_DIR/openresty
 rm -rf $BIN_DIR/beanstalkd
 rm -rf $BIN_DIR/python_env
+rm -rf $BIN_DIR/getopt_long

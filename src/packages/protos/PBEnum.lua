@@ -27,6 +27,7 @@ local _M = {
 			NoneMission = 1011,
 			OperationNotPermit = 2001,
 			NotBuy = 3001,
+			DBError = 40001,
 		},
 	},
 	MissionEvent={

@@ -5,8 +5,16 @@ local client = require "resty.websocket_client"
 local ngx_sleep = ngx.sleep
 local string_sub = string.sub
 local table_concat = table.concat
-local json = cc.import("#json")
-local json_decode = json.decode
+local cmsgpack = require "cmsgpack"
+local cmsgpack_unpack = cmsgpack.unpack
+
+--param
+--[[
+    uri -- 服务器地址
+    authorization --授权码
+    channel --共享通道
+    msg --附带消息
+]]--
 
 function SocketTimer:ctor(config, param, ...)
     SocketTimer.super.ctor(self, config, param, ...)
@@ -18,12 +26,14 @@ function SocketTimer:connect()
         local ok, err = socket:connect(self.param.uri, {
             protocols = {
                 "gbc-auth-"..self.param.authorization,
+                "gbc-msg-"..self.param.msg,
             },
         })
         if not ok then
             cc.printerror("wb connect:"..err)
             return false
         end
+        cc.printf(string.format("%s is connect success", self.param.uri))
         self._socket = socket
         return true
     end
@@ -32,9 +42,9 @@ end
 
 function SocketTimer:ProcessMessage(frame, _ftype)
     self:safeFunction(function ()
-        local data = json_decode(frame)
+        local data = cmsgpack_unpack(frame)
         if data then
-            self:sendMessageToConnectID(data.connectid, data.message)
+            self:sendMessageToConnectID("CON_"..data.connectid, data.message)
         end
     end)
 end
@@ -56,10 +66,13 @@ function SocketTimer:runEventLoop()
     local this = self
     sub:start(function(_subRedis, _channel, msg)
         if this._socket ~= nil then
-            local _, err = this._socket:send_text(msg)
+            local _, err = this._socket:send_binary(msg)
             if err then
+                cc.printf("sub close socket:"..err)
                 this:closeSocket()
             end
+        else
+            cc.printf("send_text failed:"..msg)
         end
     end, self.param.channel)
     
@@ -76,6 +89,7 @@ function SocketTimer:runEventLoop()
                     if string_sub(err, -7) == "timeout" then
                         break -- recv next message
                     end
+                    cc.printf("close socket:"..err)
                     self:closeSocket()
                     break
                 end
@@ -102,7 +116,7 @@ function SocketTimer:runEventLoop()
             end
         else
             self:connect()
-            ngx_sleep(1)
+            ngx_sleep(5)
         end
     end
 end

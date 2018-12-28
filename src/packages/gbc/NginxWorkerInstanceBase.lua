@@ -38,6 +38,24 @@ function NginxWorkerInstanceBase:runEventLoop()
     return true
 end
 
+function NginxWorkerInstanceBase:GetConfig(name)
+    if not name then
+        name = self:getAppName()
+    end
+    local configs = self.config.server.nginx
+    if configs then
+        for _, v in ipairs(configs) do
+            if v.apps and v.apps[name] then
+                return v
+            end
+        end
+    end
+end
+
+function NginxWorkerInstanceBase:getAppName()
+    return self.config.app.appName
+end
+
 function NginxWorkerInstanceBase:runTimer(delay, timer, param, isInit)
     ngx.timer.at(delay, function(premature, config)
         if premature then

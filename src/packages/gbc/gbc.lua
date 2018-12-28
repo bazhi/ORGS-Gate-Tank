@@ -28,6 +28,7 @@ local _M = {
     VERSION = "0.8.0",
     
     Constants = cc.import(".Constants", _CUR),
+    MessageType = cc.import(".MessageType", _CUR),
     Factory = cc.import(".Factory", _CUR),
     
     ActionBase = cc.import(".ActionBase", _CUR),

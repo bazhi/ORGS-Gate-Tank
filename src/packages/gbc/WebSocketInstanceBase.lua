@@ -1,38 +1,14 @@
---[[
- 
-Copyright (c) 2015 gameboxcloud.com
- 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
- 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
- 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
- 
-]]
-
 local ngx = ngx
-local ngx_log = ngx.log
-local ngx_md5 = ngx.md5
-local ngx_thread_spawn = ngx.thread.spawn
-local req_get_headers = ngx.req.get_headers
+-- local ngx_log = ngx.log
+-- local ngx_md5 = ngx.md5
+-- local ngx_thread_spawn = ngx.thread.spawn
+-- local req_get_headers = ngx.req.get_headers
 local req_read_body = ngx.req.read_body
-local string_format = string.format
+-- local string_format = string.format
 local string_sub = string.sub
 local table_concat = table.concat
-local table_insert = table.insert
-local ngx_say = ngx.say
+-- local table_insert = table.insert
+-- local ngx_say = ngx.say
 local tostring = tostring
 local type = type
 
@@ -42,24 +18,13 @@ local Constants = cc.import(".Constants")
 local json_encode = json.encode
 local json_decode = json.decode
 
-local pb = cc.import("#protos")
-local CmdToPB = pb.CmdToPB
-local PBToCmd = pb.PBToCmd
-local ActionMap = pb.ActionMap
+local cmsgpack = require "cmsgpack"
+local cmsgpack_pack = cmsgpack.pack
 
 local InstanceBase = cc.import(".InstanceBase")
 local WebSocketInstanceBase = cc.class("WebSocketInstanceBase", InstanceBase)
 
-local _EVENT = table.readonly({
-    CONNECTED = "CONNECTED",
-    DISCONNECTED = "DISCONNECTED",
-    CONTROL_MESSAGE = "CONTROL_MESSAGE",
-    USER_MESSAGE = "USER_MESSAGE",
-})
-
-WebSocketInstanceBase.EVENT = _EVENT
-
-local _processMessage
+local sdLogin = ngx.shared.sdLogin
 
 function WebSocketInstanceBase:ctor(config)
     WebSocketInstanceBase.super.ctor(self, config, Constants.WEBSOCKET_REQUEST_TYPE)
@@ -74,22 +39,23 @@ end
 
 function WebSocketInstanceBase:run()
     local _ok
+    local this = self
     _ok, _ = xpcall(function()
-        self:runEventLoop()
-        self:onClose()
+        this:runEventLoop()
+        this:onClose()
         ngx.exit(ngx.OK)
     end, function(err)
         err = tostring(err)
         cc.printerror(err .. debug.traceback("", 1))
-        self:onClose()
+        this:onClose()
         ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
         ngx.exit(ngx.ERROR)
     end)
 end
 
-function WebSocketInstanceBase:authConnect()
+function WebSocketInstanceBase:readProtocols()
     if ngx.headers_sent then
-        return nil, nil, "response header already sent"
+        return nil, "response header already sent"
     end
     
     req_read_body()
@@ -99,27 +65,52 @@ function WebSocketInstanceBase:authConnect()
         protocols = {protocols}
     end
     if #protocols == 0 then
-        return nil, nil, "not set header: Sec-WebSocket-Protocol"
+        return nil, "not set header: Sec-WebSocket-Protocol"
     end
-    
-    local pattern = Constants.WEBSOCKET_SUBPROTOCOL_PATTERN
-    for _, protocol in ipairs(protocols) do
-        local token = string.match(protocol, pattern)
-        if token then
-            return token, nil
+    self.protocols = protocols
+    return true
+end
+
+function WebSocketInstanceBase:getProtocol(pattern)
+    for _, protocol in ipairs(self.protocols) do
+        local item = string.match(protocol, pattern)
+        if item then
+            return item
         end
     end
-    
+    return nil
+end
+
+function WebSocketInstanceBase:authConnect()
+    local pattern = Constants.WEBSOCKET_SUBPROTOCOL_PATTERN
+    local token = self:getProtocol(pattern)
+    if token then
+        return token, nil
+    end
     return nil, nil, "not found token in header: Sec-WebSocket-Protocol"
 end
 
 function WebSocketInstanceBase:afterAuth()
-    --self:sendMessage("afterAuth error")
-    --cc.throw("afterAuth error")
+    local connectId = self:getConnectId()
+    if connectId then
+        local lgcnt = sdLogin:incr(connectId, 1, 0)
+        if lgcnt > 1 then
+            sdLogin:incr(connectId, -1, 0)
+            self:sendMessage({
+                err = "already logged",
+            })
+            return false
+        end
+        self._locked = true
+    end
     return true
 end
 
 function WebSocketInstanceBase:onClose()
+    if self._locked then
+        local connectId = self:getConnectId()
+        sdLogin:incr(connectId, -1, 0)
+    end
     if self._socket then
         self._socket:send_close()
         self._socket = nil
@@ -127,88 +118,54 @@ function WebSocketInstanceBase:onClose()
     return WebSocketInstanceBase.super.onClose(self)
 end
 
+function WebSocketInstanceBase:send_text(msg)
+    if self._socket then
+        self._socket:send_text(tostring(msg))
+    end
+end
+
 --回复消息
 function WebSocketInstanceBase:sendMessage(msg)
     if self._socket then
-        self._socket:send_binary(tostring(msg))
-    end
-end
-
-function WebSocketInstanceBase:sendError(erroname, msgid, tp)
-    self:sendPack(PBToCmd.Error, {
-        code = erroname,
-        type = tp,
-    }, msgid)
-end
-
-function WebSocketInstanceBase:sendDelete(cmd, id, msgid)
-    if type(cmd) == "string" then
-        cmd = PBToCmd[cmd]
-    end
-    self:sendPack("Delete", {
-        ["type"] = cmd,
-        id = id,
-    }, msgid)
-end
-
-function WebSocketInstanceBase:sendPack(cmd, msg, msgid)
-    msgid = msgid or 0
-    local ok, result = self:safeFunction(function()
-        local name = cmd
-        if type(name) == "number" then
-            name = CmdToPB[cmd]
+        if type(msg) == "table" then
+            self._socket:send_text(json_encode(msg))
         else
-            name = cmd
-            cmd = PBToCmd[cmd]
+            self._socket:send_binary(tostring(msg))
         end
-        local data
-        if name then
-            if msg then
-                data = pb.encode("pb."..name, msg)
-            end
-        else
-            cmd = 0
-            data = tostring(msg)
-        end
-        
-        return pb.encode("pb.Pack", {
-            ["type"] = cmd,
-            content = data,
-            msgid = msgid,
-        })
-    end)
-    if ok then
-        self:sendMessage(result)
     end
 end
 
-function WebSocketInstanceBase:onControlMessage(event)
-    local msg = event.message
-    local redis = event.redis
-    local _eventname = event.name
-    local _channel = event.channel
-    local this = self
-    if msg then
-        if msg ~= Constants.CLOSE_CONNECT then
-            self:safeFunction(function()
-                msg = json_decode(msg)
-                if msg.action then
-                    this:runAction(msg.action, msg.args, redis, true, msg.params)
-                end
-            end)
+--服务器本身通信使用msgpack
+function WebSocketInstanceBase:sendToChannel(channel, msg)
+    local redis = self:getRedis()
+    if redis then
+        if type(msg) == "table" then
+            return redis:publish(channel, cmsgpack_pack(msg))
+        else
+            return redis:publish(channel, tostring(msg))
         end
     end
-    
+    return false, "sendToChannel failed"
 end
 
 function WebSocketInstanceBase:runEventLoop()
     -- auth client
     local this = self
+    local ok, err = self:readProtocols()
+    if not ok then
+        cc.printf("readProtocols:"..err)
+        return ok, err
+    end
+    
     local token, connectId, err = self:authConnect()
     if not token then
         cc.printinfo(err)
+        self:sendMessage({
+            err = err,
+        })
         return false
     end
+    
     self._connectToken = token
     
     -- generate connect id and channel
@@ -217,9 +174,14 @@ function WebSocketInstanceBase:runEventLoop()
     if not connectId then
         connectId = "CON_"..tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
     else
-        connectId = "PID_"..connectId
+        connectId = "CON_"..connectId
     end
     self._connectId = connectId
+    
+    if not self:afterAuth() then
+        cc.printinfo("user is already connected:"..connectId)
+        return false
+    end
     
     local connectChannel = Constants.CONNECT_CHANNEL_PREFIX .. tostring(connectId)
     self._connectChannel = connectChannel
@@ -233,12 +195,9 @@ function WebSocketInstanceBase:runEventLoop()
         max_payload_len = self.config.app.websocketsMaxPayloadLen,
     })
     if err then
-        cc.throw("[websocket:%s] create websocket server failed, %s", connectId, err)
+        return false, string.format("[websocket:%s] create websocket server failed, %s", connectId, err)
     end
     self._socket = socket
-    if not self:afterAuth() then
-        return false
-    end
     
     -- tracking socket close reason
     local closeReason = ""
@@ -246,26 +205,18 @@ function WebSocketInstanceBase:runEventLoop()
     -- create subscribe loop
     local sub, _err = self:getRedis():makeSubscribeLoop(connectId)
     if not sub then
-        cc.throw(err)
+        return false, err
     end
     
-    local event = self._event
     sub:start(function(subRedis, channel, msg)
         if channel == controlChannel then
-            local evt = {
-                name = _EVENT.CONTROL_MESSAGE,
-                channel = channel,
-                message = msg,
-                redis = subRedis,
-            }
-            this:onControlMessage(evt)
-            event:trigger(evt)
+            this:onControlMessage(msg, subRedis)
             if msg == Constants.CLOSE_CONNECT then
                 closeReason = Constants.CLOSE_CONNECT
                 socket:send_close()
             end
         else
-            socket:send_text(msg)
+            socket:send_binary(msg)
         end
     end, controlChannel, connectChannel, Constants.BROADCAST_ALL_CHANNEL)
     self._subloop = sub
@@ -274,7 +225,7 @@ function WebSocketInstanceBase:runEventLoop()
     cc.printinfo("[websocket:%s] connected", connectId)
     
     self:safeFunction(function()
-        event:trigger(_EVENT.CONNECTED)
+        this:onConnected()
     end)
     
     -- event loop
@@ -282,26 +233,7 @@ function WebSocketInstanceBase:runEventLoop()
     local running = true
     while running do
         self:heartbeat()
-        
         while true do
-            --[[
-            Receives a WebSocket frame from the wire.
- 
-            In case of an error, returns two nil values and a string describing the error.
- 
-            The second return value is always the frame type, which could be
-            one of continuation, text, binary, close, ping, pong, or nil (for unknown types).
- 
-            For close frames, returns 3 values: the extra status message
-            (which could be an empty string), the string "close", and a Lua number for
-            the status code (if any). For possible closing status codes, see
- 
-            http://tools.ietf.org/html/rfc6455#section-7.4.1
- 
-            For other types of frames, just returns the payload and the type.
- 
-            For fragmented frames, the err return value is the Lua string "again".
-            ]]
             local frame, ftype, err = socket:recv_frame()
             if err then
                 if err == "again" then
@@ -334,7 +266,7 @@ function WebSocketInstanceBase:runEventLoop()
             elseif ftype == "pong" then
                 -- client ponged
             elseif ftype == "text" or ftype == "binary" then
-                local _, err = _processMessage(self, frame, ftype)
+                local _, err = self:processMessage(frame, ftype)
                 if err then
                     cc.printerror("[websocket:%s] process %s message failed, %s", connectId, ftype, err)
                 end
@@ -344,18 +276,19 @@ function WebSocketInstanceBase:runEventLoop()
         end -- rect next message
     end -- loop
     
+    -- disconnected
+    self:safeFunction(function()
+        this:onDisconnected(closeReason)
+    end)
+    
     sub:stop()
     self._subloop = nil
     self._socket = nil
-    
-    -- disconnected
-    self:safeFunction(function()
-        event:trigger({name = _EVENT.DISCONNECTED, reason = closeReason})
-    end)
     cc.printinfo("[websocket:%s] disconnected", connectId)
 end
 
 function WebSocketInstanceBase:heartbeat()
+    
 end
 
 function WebSocketInstanceBase:getConnectToken()
@@ -389,113 +322,98 @@ for _, cmd in ipairs(_COMMANDS) do
     end
 end
 
--- private
+function WebSocketInstanceBase:onConnected()
+    -- body
+end
 
-_processMessage = function(self, rawMessage, messageType)
+function WebSocketInstanceBase:onDisconnected(_closeReason)
+    -- body
+end
+
+function WebSocketInstanceBase:onControlMessage(_msg, _subRedis)
+    
+end
+
+function WebSocketInstanceBase:onProtobuf(_rawMessage)
+    return nil, "not support protobuf"
+end
+
+function WebSocketInstanceBase:onData(_message)
+    
+    return false, "not message action"
+end
+
+function WebSocketInstanceBase:onJson(rawMessage)
+    local message = json_decode(rawMessage)
+    if message.action then
+        return self:runAction(message.action, message.args or message)
+    else
+        return self:onData(message)
+    end
+end
+
+function WebSocketInstanceBase:onMessage(rawMessage, messageType, messageFormat)
+    if messageType == Constants.WEBSOCKET_BINARY_MESSAGE_TYPE then
+        if messageFormat == "pbc" then
+            return self:onProtobuf(rawMessage)
+        else
+            return nil, string.format("not support message format \"%s\"", tostring(messageFormat))
+        end
+    end
+    
+    if messageType == Constants.WEBSOCKET_TEXT_MESSAGE_TYPE then
+        if messageFormat == "json" then
+            return self:onJson(rawMessage)
+        else
+            return nil, string.format("not support message format \"%s\"", tostring(messageFormat))
+        end
+    end
+    
+    return nil, string.format("not supported message type \"%s\"", messageType)
+end
+
+function WebSocketInstanceBase:processMessage(rawMessage, messageType)
     local this = self
+    local ok, result, err
     local messageFormat = self.config.app.websocketMessageFormat
-    local ok, message = self:safeFunction(function()
-        return this:parseMessage(rawMessage, messageType, messageFormat)
-    end)
-    if not ok then
-        return nil, "parseMessage error"
-    end
-    
-    local msgid = message.msgid
-    local actionName = message.action
-    
-    local _ok, result, errCode = self:safeFunction(function()
-        return this:runAction(actionName, message.args or message)
+    ok, result, err = self:safeFunction(function()
+        return this:onMessage(rawMessage, messageType, messageFormat)
     end)
     
-    if not _ok then
-        return nil, "runAction Error:"..actionName
-    end
-    
-    if not msgid then
-        cc.printwarn("action \"%s\" return unused result", actionName)
-        return true
+    if not ok or err then
+        return nil, err
     end
     
     if not self._socket then
-        return nil, string.format("socket removed, action \"%s\"", actionName)
+        return nil, string.format("socket removed, action")
     end
     
-    if messageFormat == "pbc" then
-        if result then
-            self:sendPack("Operation", {result = true, type = message.type}, msgid)
-        else
-            self:sendPack("Operation", {result = false, type = message.type}, msgid)
-            if errCode then
-                self:sendError(errCode, msgid, message.type)
-            end
-        end
-    else
-        local rtype = type(result)
-        if rtype == "nil" then
-            return
-        end
-        
-        if rtype ~= "table" then
-            cc.printwarn("action \"%s\" return invalid result", actionName)
-        end
-        result.msgid = msgid
+    if type(result) == "table" then
         local message = json_encode(result)
         local _bytes, err = self._socket:send_text(message)
         if err then
             return nil, string.format("send message to client failed, %s", err)
         end
     end
-    
     return true
 end
 
-function WebSocketInstanceBase:parseMessage(rawMessage, messageType, messageFormat)
-    if messageType == Constants.WEBSOCKET_BINARY_MESSAGE_TYPE then
-        if messageFormat == "pbc" then
-            local message = pb.decode("pb.Pack", rawMessage)
-            if type(message) == "table" then
-                if message.type then
-                    local name = CmdToPB[message.type]
-                    if name then
-                        local actionName = ActionMap[name]
-                        if actionName then
-                            local content = pb.decode("pb."..name, message.content)
-                            return {
-                                action = actionName,
-                                args = content,
-                                msgid = message.msgid,
-                                type = message.type,
-                            }
-                        else
-                            cc.throw("can not supported pbc messagename:"..name)
-                        end
-                    else
-                        cc.throw("can not supported pbc messageindex:"..message.type)
-                    end
-                end
-                return message
-            else
-                cc.throw("not supported message format \"%s\"", type(message))
+function WebSocketInstanceBase:GetConfig(name)
+    if not name then
+        name = self:getAppName()
+    end
+    local configs = self.config.server.nginx
+    if configs then
+        for _, v in ipairs(configs) do
+            if v.apps and v.apps[name] then
+                return v
             end
         end
     end
-    
-    if messageType ~= Constants.WEBSOCKET_TEXT_MESSAGE_TYPE then
-        cc.throw("not supported message type \"%s\"", messageType)
-    end
-    
-    -- TODO: support message format plugin
-    if messageFormat == "json" then
-        local message = json_decode(rawMessage)
-        if type(message) == "table" then
-            return message
-        else
-            cc.throw("not supported message format \"%s\"", type(message))
-        end
-    else
-        cc.throw("not support message format \"%s\"", tostring(messageFormat))
-    end
+end
+
+function WebSocketInstanceBase:getAppName()
+    return self.config.app.appName
 end
 
 return WebSocketInstanceBase

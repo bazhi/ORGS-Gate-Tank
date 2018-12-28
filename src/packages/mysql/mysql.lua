@@ -5,10 +5,6 @@ local ngx = ngx
 local string_format = string.format
 local table_concat = table.concat
 local ngx_quote_sql_str = ngx.quote_sql_str
-local sdDBEvent = ngx.shared.sdDBEvent
-local json = cc.import("#json")
-local json_encode = json.encode
---local json_decode = json.decode
 
 local _M = {}
 
@@ -32,15 +28,6 @@ function _M.create(config)
     
     db:query("SET NAMES 'utf8'")
     return db
-end
-
-function _M.pushSql(sql, connectid, action, key)
-    sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
-        sql = sql,
-        connectid = connectid,
-        action = action,
-        key = key
-    }))
 end
 
 function _M.close(db)

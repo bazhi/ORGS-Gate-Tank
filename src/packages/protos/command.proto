@@ -75,9 +75,9 @@ message Error{
 
 		OperationNotPermit = 2001; //操作不允许
 		NotBuy = 3001; //没有购买
+		DBError = 40001; //数据库错误
 	}
 	EType code = 1; //错误码
-	int32 type = 2;
 }
 
 message Operation{
@@ -202,6 +202,7 @@ message MissionItem{
 	int32 process = 2;
 	int32 cid = 3;
 	int32 rid = 4;
+	int32 got = 5; //0没领取，1领取了
 }
 
 //任务列表

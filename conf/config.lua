@@ -47,11 +47,6 @@ local config = {
     
     -- server config
     server = {
-        master = {
-            host = "127.0.0.1",
-            port = 8088,
-            name = "loginMaster",
-        },
         authorization = "HqQHj9WGQMP3XaQzOJnD8DM17wBX67iD",
         nginx = {
             {
@@ -60,18 +55,28 @@ local config = {
                 port = 8088,
                 host = "192.168.0.66",
                 apps = {
-                    loginMaster = "_GBC_CORE_ROOT_/apps/loginMaster",
+                    Master = "_GBC_CORE_ROOT_/apps/Master",
                     website = "_GBC_CORE_ROOT_/apps/website",
                     update = "_GBC_CORE_ROOT_/apps/update",
                 },
             },
             {
-                name = "Server",
+                name = "Game",
                 numOfWorkers = 2,
                 port = 8089,
                 host = "192.168.0.66",
+                servername = "qcfs01",
                 apps = {
-                    gameServer = "_GBC_CORE_ROOT_/apps/gameServer",
+                    Game = "_GBC_CORE_ROOT_/apps/Game",
+                },
+            },
+            {
+                name = "Gate",
+                numOfWorkers = 2,
+                port = 8090,
+                host = "192.168.0.66",
+                apps = {
+                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
                 },
             },
         },
@@ -89,13 +94,6 @@ local config = {
             host = "127.0.0.1",
             port = 11300,
         },
-        
-        -- mysql = {
-        --     host = "127.0.0.1",
-        --     port = 3306,
-        --     username = "",
-        --     password = "",
-        -- },
     },
 }
 return config

@@ -3,9 +3,6 @@ local OrmMysql = cc.class("OrmMysql")
 local string_format = string.format
 local table_concat = table.concat
 local ngx_quote_sql_str = ngx.quote_sql_str
-local sdDBEvent = ngx.shared.sdDBEvent
-local json = cc.import("#json")
-local json_encode = json.encode
 
 function OrmMysql:ctor(tableName, define, defualt, keyinfo)
     self._TableName = tableName or ""
@@ -279,17 +276,9 @@ function OrmMysql:insertWithUpdate(db, params, upparams, addparams)
 end
 
 --------------------------------Insert Update------------------------------------------
--- query, sql语句
--- connectid, 链接id
--- action, 回调action
--- param, 回调参数
-function OrmMysql:pushQuery(query, connectid, action, params)
-    sdDBEvent:lpush("_MYSQL_EVENT", json_encode({
-        query = query,
-        connectid = connectid,
-        action = action,
-        params = params,
-    }))
+
+function OrmMysql:pushQuery(db, query)
+    return db:query(query)
 end
 
 return OrmMysql

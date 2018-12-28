@@ -17,6 +17,7 @@ _M.NEXT_CONNECT_ID_KEY = "_NEXT_CONNECT_ID"
 _M.CONNECT_CHANNEL_PREFIX = "_CN_"
 _M.CONTROL_CHANNEL_PREFIX = "_CT_"
 _M.BROADCAST_ALL_CHANNEL = "_CN_ALL"
+_M.SOCKET_CONNECT_CHANNLE = "_SCCN_" --连接互通的通道
 
 -- beanstalkd
 _M.BEANSTALKD_JOB_TUBE_PATTERN = "job-%s" -- job-<appindex>
@@ -25,6 +26,7 @@ _M.BEANSTALKD_JOB_TUBE_PATTERN = "job-%s" -- job-<appindex>
 _M.WEBSOCKET_TEXT_MESSAGE_TYPE = "text"
 _M.WEBSOCKET_BINARY_MESSAGE_TYPE = "binary"
 _M.WEBSOCKET_SUBPROTOCOL_PATTERN = "gbc%-auth%-([%w%d%-]+)" -- token
+_M.WEBSOCKET_SUBPROTOCOL_PATTERN_MESSAGE = "gbc%-msg%-([%p%w%d%-]+)" -- message
 _M.WEBSOCKET_DEFAULT_TIME_OUT = 10 * 1000 -- 10s
 _M.WEBSOCKET_DEFAULT_MAX_PAYLOAD_LEN = 16 * 1024 -- 16KB
 
@@ -34,15 +36,12 @@ _M.STRIP_LUA_PATH_PATTERN = "[/%.%a%-]+/([%a%-]+%.lua:%d+: )"
 --关闭连接消息
 _M.CLOSE_CONNECT = "SEND_CLOSE"
 
---数据库事件
-_M.MYSQL_EVENT = "_MYSQL_EVENT"
-
 --初始化信号
 _M.SIGINIT = "_SIGINIT"
 --退出信号
 _M.SIGQUIT = "_SIGQUIT"
 
---登陆列表
+--登录列表
 _M.USERLIST = "_USERLIST"
 
 return table.readonly(_M)
