@@ -135,7 +135,7 @@ function WebSocketInstance:onConnected()
     self:postMaster("service.add")
     local this = self
     self:safeFunction(function()
-        this.userCenter = UserCenter:new(this)
+        this.userCenter = UserCenter:new(this, connectid)
     end)
 end
 

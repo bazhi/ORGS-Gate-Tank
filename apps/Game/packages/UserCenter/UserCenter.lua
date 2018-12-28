@@ -7,9 +7,10 @@ local MessageType = gbc.MessageType
 local Constants = gbc.Constants
 local sdLogin = ngx.shared.sdLogin
 
-function UserCenter:ctor(instance)
+function UserCenter:ctor(instance, connect_channel)
     self.users = {}
     self.instance = instance
+    self.connect_channel = connect_channel
 end
 
 function UserCenter:canLogin(connectid)
@@ -33,7 +34,7 @@ function UserCenter:userLogin(connectid, mysql)
         end
     else
         if self.instance then
-            cc.printf(string.format("user:%d is already logged", connectid))
+            cc.printf(string.format("user:%d is already logged|--|%s", connectid, self.connect_channel))
             self.instance:sendError(connectid, "UserLoggedIn")
             self.instance:sendToGate(connectid, Constants.CLOSE_CONNECT, 1)
         end
