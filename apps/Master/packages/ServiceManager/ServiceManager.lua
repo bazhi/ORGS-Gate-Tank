@@ -45,7 +45,7 @@ function ServiceManager.Get(name)
     local list = ServiceMap[name] or {}
     
     if #list > 1 then
-        local id = index % #list
+        local id = index % #list + 1
         return list[id]
     end
     return list[1]
