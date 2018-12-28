@@ -50,13 +50,14 @@ function SocketTimer:ProcessMessage(frame, ftype)
                 return
             end
             if type(data) == "table" and data.connectid then
+                cc.dump(data)
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
                 else
                     self:sendMessageToConnectID(data.connectid, data.message)
                 end
             else
-                cc.printf(frame.."-----type:"..ftype)
+                cc.printf(string.format("net_decode data is not table length:[%d] ftype:[%s]", #frame, ftype))
             end
         end
     end)
