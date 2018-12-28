@@ -51,6 +51,7 @@ function SocketTimer:ProcessMessage(frame, _ftype)
             end
         else
             cc.dump(data)
+            cc.dump(frame)
         end
     end)
 end
