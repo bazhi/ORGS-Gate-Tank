@@ -33,6 +33,7 @@ function UserCenter:userLogin(connectid, mysql)
         end
     else
         if self.instance then
+            cc.printf(string.format("user:%d is already logged", connectid))
             self.instance:sendError(connectid, "UserLoggedIn")
             self.instance:sendToGate(connectid, Constants.CLOSE_CONNECT, 1)
         end
