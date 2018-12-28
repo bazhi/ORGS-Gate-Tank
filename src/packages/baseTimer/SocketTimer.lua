@@ -43,7 +43,7 @@ end
 function SocketTimer:ProcessMessage(frame, _ftype)
     self:safeFunction(function ()
         local data = cmsgpack_unpack(frame)
-        if type(data) == "table" then
+        if type(data) == "table" and data.connectid then
             if data.tp == 1 then
                 self:sendControlMessage(data.connectid, data.message)
             else
