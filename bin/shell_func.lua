@@ -149,8 +149,8 @@ _updateCoreConfig = function()
         
         for _, name in ipairs(names) do
             local path = apps[name]
-            contents[#contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
-            CB_contents[#CB_contents + 1] = string.format('keys["%s"] = {name = "%s", index = %d, key = "%s"}', path, name, index, luamd5.sumhexa(path))
+            contents[#contents + 1] = string.format('keys["%s"] = { path="%s", name = "%s", index = %d, key = "%s"}', name, path, name, index, luamd5.sumhexa(path))
+            CB_contents[#CB_contents + 1] = string.format('keys["%s"] = { path="%s", name = "%s", index = %d, key = "%s"}', name, path, name, index, luamd5.sumhexa(path))
             index = index + 1
         end
         contents[#contents + 1] = "return keys"
@@ -198,6 +198,7 @@ _updateNginxConfig = function()
                 local entry = io.readfile(entryPath)
                 entry = string.gsub(entry, "_GBC_CORE_ROOT_", ROOT_DIR)
                 entry = string.gsub(entry, "_APP_ROOT_", path)
+                entry = string.gsub(entry, "_APP_NAME_", name)
                 io.writefile(varEntryPath, entry)
                 includes[#includes + 1] = string.format("        include %s;", varEntryPath)
             end
@@ -289,7 +290,7 @@ _updateSupervisordConfig = function()
             prog = string.gsub(prog, "_APP_NAME_", name)
             
             -- get numOfJobWorkers
-            local appConfig = appConfigs[path]
+            local appConfig = appConfigs[name]
             prog = string.gsub(prog, "_NUM_PROCESS_", appConfig.app.numOfJobWorkers)
             
             workers[#workers + 1] = prog

@@ -76,7 +76,7 @@ local config = {
                 port = 8090,
                 host = "cb2.funkiigame.com",
                 apps = {
-                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
+                    Gate1 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
             },
             {
@@ -85,7 +85,7 @@ local config = {
                 port = 8091,
                 host = "cb2.funkiigame.com",
                 apps = {
-                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
+                    Gate2 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
             },
             {
@@ -94,7 +94,7 @@ local config = {
                 port = 8092,
                 host = "cb2.funkiigame.com",
                 apps = {
-                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
+                    Gate3 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
             },
             

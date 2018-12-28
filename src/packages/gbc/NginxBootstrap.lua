@@ -30,7 +30,7 @@ function NginxBootstrap:ctor(appKeys, globalConfig)
     self._configs = Factory.makeAppConfigs(appKeys, globalConfig, package.path)
 end
 
-function NginxBootstrap:runapp(appRootPath)
+function NginxBootstrap:runapp(appname)
     local headers = ngx.req.get_headers()
     local upgrade = headers.upgrade
     if type(upgrade) == "table" then
@@ -38,7 +38,7 @@ function NginxBootstrap:runapp(appRootPath)
     end
     --cc.dump(headers)
     local classNamePrefix = "HttpInstance"
-    local appConfig = self._configs[appRootPath]
+    local appConfig = self._configs[appname]
     if upgrade and string.lower(upgrade) == "websocket" then
         classNamePrefix = "WebSocketInstance"
         if not appConfig.app.websocketEnabled then

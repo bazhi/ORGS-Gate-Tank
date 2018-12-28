@@ -61,26 +61,26 @@ end
 function Factory.makeAppConfigs(appKeys, serverConfig, defaultPackagePath)
     local appConfigs = {}
     
-    for appRootPath, opts in pairs(appKeys) do
+    for appName, opts in pairs(appKeys) do
         local config = table.copy(serverConfig)
         local appConfig = config.app
-        appConfig.rootPath = appRootPath
+        appConfig.rootPath = opts.path
         appConfig.appKey = opts.key
         appConfig.appIndex = opts.index
         appConfig.appName = opts.name
         
-        local appPackagePath = appRootPath .. "/?.lua;"
+        local appPackagePath = opts.path .. "/?.lua;"
         local pattern = string.gsub(appPackagePath, "([.?-])", "%%%1")
         defaultPackagePath = string.gsub(defaultPackagePath, pattern, "")
         appConfig.packagePath = appPackagePath .. defaultPackagePath
         
-        local appConfigPath = appRootPath .. "/conf/app_config.lua"
+        local appConfigPath = opts.path .. "/conf/app_config.lua"
         if io.exists(appConfigPath) then
             local appCustomConfig = dofile(appConfigPath)
             table.merge(appConfig, appCustomConfig)
         end
         
-        appConfigs[appRootPath] = config
+        appConfigs[appName] = config
     end
     
     return appConfigs
