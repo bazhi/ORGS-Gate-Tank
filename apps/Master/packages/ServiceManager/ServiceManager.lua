@@ -3,6 +3,8 @@ local ServiceManager = {}
 
 local ServiceMap = {}
 
+local index = 0
+
 -- 一台服务区，只允许一个同名服务器
 function ServiceManager.Add(name, uri)
     local list = ServiceMap[name]
@@ -39,9 +41,12 @@ function ServiceManager.GetName()
 end
 
 function ServiceManager.Get(name)
+    index = index + 1
     local list = ServiceMap[name] or {}
+    
     if #list > 1 then
-        return list[math.random(1, #list)]
+        local id = index % #list
+        return list[id]
     end
     return list[1]
 end
