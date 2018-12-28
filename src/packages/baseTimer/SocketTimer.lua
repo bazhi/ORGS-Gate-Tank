@@ -78,7 +78,7 @@ function SocketTimer:runEventLoop()
                 this:closeSocket()
             end
         else
-            cc.printf("send_text failed:"..msg)
+            cc.printf("send_binary failed:"..msg)
         end
     end, self.param.channel)
     
