@@ -175,7 +175,7 @@ function WebSocketInstanceBase:runEventLoop()
         connectId = tostring(redis:incr(Constants.NEXT_CONNECT_ID_KEY))
     end
     
-    connectId = self.config.app.appName .. connectId
+    connectId = self.config.app.appName .. "-" .. connectId
     
     self._connectId = connectId
     
