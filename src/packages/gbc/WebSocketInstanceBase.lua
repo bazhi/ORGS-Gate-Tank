@@ -130,7 +130,7 @@ function WebSocketInstanceBase:sendMessage(msg)
         if type(msg) == "table" then
             self._socket:send_text(json_encode(msg))
         else
-            self._socket:send_binary(tostring(msg))
+            self._socket:send_binary(msg)
         end
     end
 end
