@@ -9,9 +9,13 @@ local pb = cc.import("#protos")
 local CmdToPB = pb.CmdToPB
 local PBToCmd = pb.PBToCmd
 
-local cmsgpack = require "cmsgpack"
-local cmsgpack_unpack = cmsgpack.unpack
-local cmsgpack_pack = cmsgpack.pack
+-- local cmsgpack = require "cmsgpack"
+-- local cmsgpack_unpack = cmsgpack.unpack
+-- local cmsgpack_pack = cmsgpack.pack
+local json = cc.import("#json")
+
+local json_encode = json.encode
+-- local json_decode = json.decode
 
 local Mysql = cc.import("#mysql")
 
@@ -57,7 +61,7 @@ end
 --tp
 --默认为发送到连接，1发送到control
 function WebSocketInstance:sendToGate(pid, msg, tp)
-    self:sendMessage(cmsgpack_pack({
+    self:sendMessage(json_encode({
         connectid = pid,
         message = msg,
         tp = tp,

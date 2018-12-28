@@ -5,8 +5,12 @@ local client = require "resty.websocket_client"
 local ngx_sleep = ngx.sleep
 local string_sub = string.sub
 local table_concat = table.concat
-local cmsgpack = require "cmsgpack"
-local cmsgpack_unpack = cmsgpack.unpack
+-- local cmsgpack = require "cmsgpack"
+-- local cmsgpack_unpack = cmsgpack.unpack
+local json = cc.import("#json")
+
+-- local json_encode = json.encode
+local json_decode = json.decode
 
 --param
 --[[
@@ -43,7 +47,7 @@ end
 function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
         if frame and frame ~= "" then
-            local data = cmsgpack_unpack(frame)
+            local data = json_decode(frame)
             if type(data) == "table" and data.connectid then
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
@@ -51,7 +55,7 @@ function SocketTimer:ProcessMessage(frame, ftype)
                     self:sendMessageToConnectID(data.connectid, data.message)
                 end
             else
-                cc.printf(#frame.."-----type:"..ftype)
+                cc.printf(frame.."-----type:"..ftype)
             end
         end
     end)

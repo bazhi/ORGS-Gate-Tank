@@ -18,8 +18,8 @@ local Constants = cc.import(".Constants")
 local json_encode = json.encode
 local json_decode = json.decode
 
-local cmsgpack = require "cmsgpack"
-local cmsgpack_pack = cmsgpack.pack
+-- local cmsgpack = require "cmsgpack"
+-- local cmsgpack_pack = cmsgpack.pack
 
 local InstanceBase = cc.import(".InstanceBase")
 local WebSocketInstanceBase = cc.class("WebSocketInstanceBase", InstanceBase)
@@ -140,7 +140,7 @@ function WebSocketInstanceBase:sendToChannel(channel, msg)
     local redis = self:getRedis()
     if redis then
         if type(msg) == "table" then
-            return redis:publish(channel, cmsgpack_pack(msg))
+            return redis:publish(channel, json_encode(msg))
         else
             return redis:publish(channel, tostring(msg))
         end
