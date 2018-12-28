@@ -15,7 +15,7 @@ local PBToCmd = pb.PBToCmd
 local json = cc.import("#json")
 
 local json_encode = json.encode
--- local json_decode = json.decode
+local json_decode = json.decode
 
 local Mysql = cc.import("#mysql")
 
@@ -161,7 +161,7 @@ function WebSocketInstance:onDisconnected(closeReason)
 end
 
 function WebSocketInstance:onProcess(rawmessage)
-    local data = cmsgpack_unpack(rawmessage)
+    local data = json_decode(rawmessage)
     if data.format == "pbc" then
         local message = pb.decode("pb.Pack", data.message)
         if "table" == type(message) then
