@@ -71,7 +71,7 @@ local config = {
                 },
             },
             {
-                name = "Gate",
+                name = "Gate1",
                 numOfWorkers = 2,
                 port = 8090,
                 host = "192.168.0.66",
@@ -79,6 +79,25 @@ local config = {
                     Gate = "_GBC_CORE_ROOT_/apps/Gate",
                 },
             },
+            {
+                name = "Gate2",
+                numOfWorkers = 2,
+                port = 8091,
+                host = "192.168.0.66",
+                apps = {
+                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
+                },
+            },
+            {
+                name = "Gate3",
+                numOfWorkers = 2,
+                port = 8092,
+                host = "192.168.0.66",
+                apps = {
+                    Gate = "_GBC_CORE_ROOT_/apps/Gate",
+                },
+            },
+            
         },
         
         -- internal memory database
