@@ -8,6 +8,8 @@ local http = cc.import("#http")
 
 function WebSocketInstance:ctor(config)
     WebSocketInstance.super.ctor(self, config)
+    local gate = self:GetConfig() --本身的配置
+    self._GATE_CN = Constants.SOCKET_CONNECT_CHANNLE..gate.name
 end
 
 function WebSocketInstance:authConnect()
@@ -54,7 +56,7 @@ function WebSocketInstance:onDisconnected(closeReason)
 end
 
 function WebSocketInstance:sendToGameServer(msg)
-    local ok, err = self:sendToChannel(Constants.SOCKET_CONNECT_CHANNLE, msg)
+    local ok, err = self:sendToChannel(self._GATE_CN, msg)
     if not ok then
         cc.printf(err)
     end

@@ -26,7 +26,7 @@ function NginxWorkerInstance:onWorkerFirst()
     self:runTimer(0.5, SocketTimer, self.config, {
         uri = uri,
         authorization = authorization,
-        channel = Constants.SOCKET_CONNECT_CHANNLE,
+        channel = Constants.SOCKET_CONNECT_CHANNLE..gate.name,
         msg = gateuri,
     })
 end
