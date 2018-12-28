@@ -57,11 +57,16 @@ end
 --tp
 --默认为发送到连接，1发送到control
 function WebSocketInstance:sendToGate(pid, msg, tp)
-    -- self:sendMessage(net_encode({
-    --     connectid = pid,
-    --     message = msg,
-    --     tp = tp,
-    -- }))
+    local data, err = net_encode({
+        connectid = pid,
+        message = msg,
+        tp = tp,
+    })
+    if err then
+        cc.printf("sendToGate err:"..err)
+    else
+        self:sendMessage(data)
+    end
 end
 
 function WebSocketInstance:sendPack(pid, cmd, msg, msgid)
