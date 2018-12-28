@@ -26,7 +26,7 @@ local _CUR = ...
 
 local string_find = string.find
 local string_format = string.format
-local string_sub = string.sub
+--local string_sub = string.sub
 
 local Factory = cc.class("Factory")
 

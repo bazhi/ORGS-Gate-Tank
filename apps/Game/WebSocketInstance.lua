@@ -9,13 +9,9 @@ local pb = cc.import("#protos")
 local CmdToPB = pb.CmdToPB
 local PBToCmd = pb.PBToCmd
 
--- local cmsgpack = require "cmsgpack"
--- local cmsgpack_unpack = cmsgpack.unpack
--- local cmsgpack_pack = cmsgpack.pack
-local json = cc.import("#json")
-
-local json_encode = json.encode
-local json_decode = json.decode
+local netpack = cc.import("#netpack")
+local net_encode = netpack.encode
+local net_decode = netpack.decode
 
 local Mysql = cc.import("#mysql")
 
@@ -61,7 +57,7 @@ end
 --tp
 --默认为发送到连接，1发送到control
 function WebSocketInstance:sendToGate(pid, msg, tp)
-    self:sendMessage(json_encode({
+    self:sendMessage(net_encode({
         connectid = pid,
         message = msg,
         tp = tp,
@@ -161,7 +157,7 @@ function WebSocketInstance:onDisconnected(closeReason)
 end
 
 function WebSocketInstance:onProcess(rawmessage)
-    local data = json_decode(rawmessage)
+    local data = net_decode(rawmessage)
     if data.format == "pbc" then
         local message = pb.decode("pb.Pack", data.message)
         if "table" == type(message) then

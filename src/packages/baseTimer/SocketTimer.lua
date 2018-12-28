@@ -5,12 +5,9 @@ local client = require "resty.websocket_client"
 local ngx_sleep = ngx.sleep
 local string_sub = string.sub
 local table_concat = table.concat
--- local cmsgpack = require "cmsgpack"
--- local cmsgpack_unpack = cmsgpack.unpack
-local json = cc.import("#json")
 
--- local json_encode = json.encode
-local json_decode = json.decode
+local netpack = cc.import("#netpack")
+local net_decode = netpack.decode
 
 --param
 --[[
@@ -47,7 +44,7 @@ end
 function SocketTimer:ProcessMessage(frame, ftype)
     self:safeFunction(function ()
         if frame and frame ~= "" then
-            local data = json_decode(frame)
+            local data = net_decode(frame)
             if type(data) == "table" and data.connectid then
                 if data.tp == 1 then
                     self:sendControlMessage(data.connectid, data.message)
@@ -95,7 +92,7 @@ function SocketTimer:runEventLoop()
                 local frame, ftype, err = self._socket:recv_frame()
                 if err then
                     if err == "again" then
-                        frames[#frames + 1] = frame
+                        table.insert(frames, frame)
                         break -- recv next message
                     end
                     if string_sub(err, -7) == "timeout" then
@@ -103,14 +100,15 @@ function SocketTimer:runEventLoop()
                     end
                     cc.printf("close socket:"..err)
                     self:closeSocket()
-                    break
                 end
+                
                 if #frames > 0 then
                     -- merging fragmented frames
-                    frames[#frames + 1] = frame
+                    table.insert(frames, frame)
                     frame = table_concat(frames)
                     frames = {}
                 end
+                
                 if ftype == "close" then
                     self:closeSocket()
                     break
