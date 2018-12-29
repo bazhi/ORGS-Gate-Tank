@@ -92,24 +92,19 @@ function Props:AddItem(db, item, role)
             
             local rid = role:get("id")
             prop = self:get()
-            local result, err = prop:insertWithUpdateQuery(db, {
+            local result, err = prop:insertQuery(db, {
                 rid = rid,
                 count = item.count,
                 cid = cfg.id
-                }, {
-                }, {
-                count = item.count,
             })
+            
             if err then
                 cc.printf(err)
                 return nil, "DBError"
             end
             
             if result and result.insert_id then
-                local datas = self:load(db, {id = result.insert_id})
-                if #datas == 1 then
-                    return datas[1]
-                end
+                return prop:load(db, {id = result.insert_id})
             end
         end
     end
@@ -121,15 +116,15 @@ function Props:AddRewards(db, items, role)
     if not items or not role or not db then
         return nil, "NoParam"
     end
-    local itemDatas = {}
+    local itemlist = {}
     local rewards = ParseConfig.ParseRewards(items)
     for _, item in ipairs(rewards) do
-        local _ok, _err, data = self:AddItem(db, item, role)
+        local data, _err = self:AddItem(db, item, role)
         if data then
-            table.insert(itemDatas, data)
+            table.insert(itemlist, data)
         end
     end
-    return itemDatas, nil, rewards
+    return itemlist, nil, rewards
 end
 
 return Props
