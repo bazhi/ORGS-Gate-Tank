@@ -222,6 +222,10 @@ function User:onFinishAchv(db, msg, instance, msgid)
         instance:sendPack(self.id, "Props", {items = items}, msgid)
         instance:sendPack(self.id, "Role", self._Role:get(), msgid)
         instance:sendPack(self.id, "Rewards", {items = rewards}, msgid)
+        local rid = self._Role:get("id")
+        local newAchvs = self._Achvs:insertAchvs(db, rid, cfg.id)
+        --新解锁的成就
+        instance:sendPack(self.id, "AchvList", {items = newAchvs}, msgid)
     end
 end
 

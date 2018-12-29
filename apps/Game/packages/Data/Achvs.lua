@@ -21,6 +21,23 @@ function Achvs:Initialize(db, rid)
     })
 end
 
+function Achvs:insertAchvs(db, rid, pre_id)
+    local achvs = dbConfig.getAll("cfg_achievement", {pre_id = pre_id})
+    local achv = self:get()
+    --插入所有需要插入的成就
+    local results = {}
+    for _, cfg in ipairs(achvs) do
+        local result, _ = achv:insertQuery(db, {rid = rid, cid = cfg.id})
+        if result and result.insert_id then
+            local data, _err = self:load(db, {id = result.insert_id})
+            if data then
+                table.insert(results, data)
+            end
+        end
+    end
+    return results
+end
+
 function Achvs:Finish(id)
     local achv = self:get(id)
     if not achv then
