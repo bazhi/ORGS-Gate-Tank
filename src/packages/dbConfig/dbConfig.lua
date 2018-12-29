@@ -84,8 +84,8 @@ function M.getAllNoCache(tableName, where)
     return temp
 end
 
-function M.getAll(tableName, where, noCache)
-    if noCache then
+function M.getAll(tableName, where)
+    if where then
         return M.getAllNoCache(tableName, where)
     else
         return M.getAllCache(tableName, where)

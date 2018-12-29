@@ -30,9 +30,9 @@ function Missions:Initialize(db, rid, lastTime, loginTime)
         for _, cfg in ipairs(lsitAdd) do
             template:insertQuery(db, {rid = rid, cid = cfg.id})
         end
-        for _, cfg in ipairs(cfgs) do
-            template:insertQuery(db, {rid = rid, cid = cfg.id})
-        end
+        -- for _, cfg in ipairs(cfgs) do
+        --     template:insertQuery(db, {rid = rid, cid = cfg.id})
+        -- end
     end
     return self:load(db, {
         rid = rid,
