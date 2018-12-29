@@ -75,11 +75,14 @@ function User:Login(db, instance)
     
     self:loadUser(db, instance, role:get("id"), role:get("loginTime"), ngx_now())
     role:set("loginTime", ngx_now())
+    
+    cc.printf("User Login:"..self.id)
 end
 
 --保存玩家数据
 function User:Logout(db, _instance)
     self:Save(db)
+    cc.printf("User Logout:"..self.id)
 end
 
 function User:Save(db)
