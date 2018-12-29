@@ -164,7 +164,7 @@ function User:onShopBuy(db, msg, instance, msgid)
         self._Role:add("diamond", -cfg.price_diamond)
         instance:sendPack(self.id, "Role", self._Role:get(), msgid)
     end
-    instance:sendPack(self.id, "ShopRecord", {id = self._Shop:get()}, msgid)
+    instance:sendPack(self.id, "ShopRecord", self._Shop:get(), msgid)
 end
 
 --完成任务
