@@ -24,13 +24,13 @@ function UserCenter:canLogin(connectid)
     end
 end
 
-function UserCenter:userLogin(connectid, mysql)
+function UserCenter:userLogin(connectid, db)
     if self:canLogin(connectid) then
         local user = self.users[connectid]
         if not user then
             user = User:new(connectid)
             self.users[connectid] = user
-            user:Login(mysql, self.instance)
+            user:Login(db, self.instance)
         end
     else
         if self.instance then
@@ -41,40 +41,41 @@ function UserCenter:userLogin(connectid, mysql)
     end
 end
 
-function UserCenter:userLogout(connectid, mysql)
+function UserCenter:userLogout(connectid, db)
     local user = self.users[connectid]
     if user then
-        user:Logout(mysql, self.instance)
+        user:Logout(db, self.instance)
     end
     self.users[connectid] = nil
     sdLogin:incr("PID:"..connectid, -1, 0)
 end
 
-function UserCenter:Process(connectid, message, mysql, msgtype, msgid)
+function UserCenter:Process(connectid, message, db, msgtype, msgid)
     if MessageType.ONCONNECTED == message then --用户登陆
-        self:userLogin(connectid, mysql)
+        self:userLogin(connectid, db)
     elseif MessageType.ONDISCONNECTED == message then --断开链接
-        self:userLogout(connectid, mysql)
+        self:userLogout(connectid, db)
     elseif MessageType.DB_SAVE == message then --存储到数据库
-        self:SaveAll(mysql)
+        self:SaveAll(db)
     else
         local user = self.users[connectid]
         if user then
-            user:Process(mysql, message, self.instance, msgtype, msgid)
+            user:Process(db, message, self.instance, msgtype, msgid)
         end
     end
 end
 
-function UserCenter:SaveAll(mysql)
+function UserCenter:SaveAll(db)
+    --cc.printf("SaveAll")
     for _, user in pairs(self.users) do
-        user:Save(mysql)
+        user:Save(db)
     end
 end
 
-function UserCenter:Save(connectid, mysql)
+function UserCenter:Save(connectid, db)
     local user = self.users[connectid]
     if user then
-        user:Save(mysql)
+        user:Save(db)
     end
 end
 

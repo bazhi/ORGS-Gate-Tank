@@ -31,8 +31,8 @@ local req_get_post_args = ngx.req.get_post_args
 local req_get_uri_args = ngx.req.get_uri_args
 local req_read_body = ngx.req.read_body
 local string_format = string.format
-local string_gsub = string.gsub
-local string_ltrim = string.ltrim
+-- local string_gsub = string.gsub
+-- local string_ltrim = string.ltrim
 local table_merge = table.merge
 
 local json = cc.import("#json")
@@ -117,15 +117,16 @@ function HttpInstanceBase:getMysql()
             return nil
         end
         semMysql:wait(1)
-        local _mysql, _err = Mysql.create(config)
-        if not _mysql then
+        mysql = Mysql:new(config)
+        local ok, err = mysql:connect()
+        if not ok then
+            cc.printerror(err)
             semMysql:post(1)
-            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:".._err)
             return nil
         end
-        mysql = _mysql
         self._mysql = mysql
     end
+    
     return mysql
 end
 

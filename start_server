@@ -58,7 +58,7 @@ done
 echo -e "\033[33mStart GameBox Cloud Core $VERSION\033[0m"
 echo ""
 
-sleep 2s
+sleep 5s
 # ./clear_log
 
 updateConfigs

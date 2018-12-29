@@ -12,6 +12,9 @@ local table_concat = table.concat
 local tostring = tostring
 local type = type
 
+-- local ngx_thread_kill = ngx.thread.kill
+-- local ngx_thread_spawn = ngx.thread.spawn
+
 local Constants = cc.import(".Constants")
 
 local json = cc.import("#json")

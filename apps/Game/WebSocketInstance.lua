@@ -34,16 +34,18 @@ function WebSocketInstance:getMysql()
     if not mysql then
         local config = self.config.app.mysql
         if not config then
-            cc.printerror("HttpInstanceBase:mysql() - mysql is not set config")
+            cc.printerror("WebSocketInstance:mysql() - mysql is not set config")
             return nil
         end
-        local _mysql, _err = Mysql.create(config)
-        if not _mysql then
-            cc.printerror("HttpInstanceBase:mysql() - can not create mysql:".._err)
-            return nil
-        end
-        mysql = _mysql
+        mysql = Mysql:new(config)
         self._mysql = mysql
+    end
+    local ok, err = mysql:connect()
+    if not ok then
+        cc.printerror(err)
+        self._mysql:close()
+        self._mysql = nil
+        return nil
     end
     return mysql
 end

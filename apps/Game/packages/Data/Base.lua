@@ -75,10 +75,14 @@ function Base:save(db)
     if not self:isDirty() then
         return true
     end
-    self._dirty = false
+    
     local id = self:getID()
     if id > 0 then
-        return self:updateQuery(db, {id = id}, self._data)
+        local ok, err = self:updateQuery(db, {id = id}, self._data)
+        if ok then
+            self._dirty = false
+        end
+        return ok, err
     end
     return false, "id is not set"
 end

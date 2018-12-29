@@ -105,7 +105,8 @@ function NgxTimerBase:getRedis()
             ok, err = redis:connect(redisConfig.host, redisConfig.port)
         end
         if not ok then
-            cc.throw("InstanceBase:getRedis() - %s", err)
+            cc.printerror("NgxTimerBase:getRedis() - %s", err)
+            return nil
         end
         redis:Select(self.config.app.appIndex)
         self._redis = redis
@@ -114,24 +115,22 @@ function NgxTimerBase:getRedis()
 end
 
 function NgxTimerBase:getMysql()
-    if not Mysql then
-        return nil
-    end
     local mysql = self._mysql
     if not mysql then
-        local mysqlConfig = self.config.app.mysql
-        if not mysqlConfig then
-            cc.printerror("NgxTimerBase:getMysql() - mysql is not set config:"..self.config.app.appName)
-            --cc.printerror("package.path:"..package.path)
+        local config = self.config.app.mysql
+        if not config then
+            cc.printerror("NgxTimerBase:mysql() - mysql is not set config")
             return nil
         end
-        local _mysql, _err = Mysql.create(mysqlConfig)
-        if not _mysql then
-            cc.printerror("NgxTimerBase:getMysql() - can not create mysql:".._err)
-            return nil
-        end
-        mysql = _mysql
+        mysql = Mysql:new(config)
         self._mysql = mysql
+    end
+    local ok, err = mysql:connect()
+    if not ok then
+        cc.printerror(err)
+        self._mysql:close()
+        self._mysql = nil
+        return nil
     end
     return mysql
 end

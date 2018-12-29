@@ -3,6 +3,10 @@ local gbc = cc.import("#gbc")
 local NginxWorkerInstance = cc.class("NginxWorkerInstance", gbc.NginxWorkerInstanceBase)
 local Timer = cc.import("#baseTimer")
 local SocketTimer = Timer.SocketTimer
+
+local Timer = cc.import("#Timer", ...)
+local LoopTimer = Timer.LoopTimer
+
 local Constants = gbc.Constants
 
 function NginxWorkerInstance:ctor(config, ...)
@@ -29,6 +33,10 @@ function NginxWorkerInstance:onWorkerFirst()
         authorization = authorization,
         channel = channel,
         msg = gateuri,
+    })
+    
+    self:runTimer(1, LoopTimer, self.config, {
+        channel = channel
     })
 end
 
