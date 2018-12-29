@@ -43,14 +43,14 @@ function Missions:Finish(id)
     local mission = self:get(id)
     
     if not mission then
-        return nil, "no mission"
+        return nil, "NoneID"
     end
     if mission:isFinished() then
         mission:set("got", 1)
         local cfg = mission:getConfig()
         return mission:get(), nil, cfg
     else
-        return nil, "no Ffnished"
+        return nil, "OperationNotPermit"
     end
 end
 
