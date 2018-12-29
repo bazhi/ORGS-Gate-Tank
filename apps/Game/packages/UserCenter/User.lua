@@ -52,7 +52,7 @@ function User:loadUser(db, instance, rid, lastTime, loginTime)
     self._Shop = Shop:new()
     local shop_data = self._Shop:Initialize(db, rid)
     if shop_data then
-        instance:sendPack(self.id, "ShopRecord", {id = shop_data})
+        instance:sendPack(self.id, "ShopRecord", shop_data)
     end
 end
 
