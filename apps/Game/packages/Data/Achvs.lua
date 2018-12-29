@@ -29,7 +29,7 @@ function Achvs:insertAchvs(db, rid, pre_id)
     for _, cfg in ipairs(achvs) do
         local result, _ = achv:insertQuery(db, {rid = rid, cid = cfg.id})
         if result and result.insert_id then
-            local data, _err = self:load(db, {id = result.insert_id})
+            local data, _err = achv:load(db, {id = result.insert_id})
             if data then
                 table.insert(results, data)
             end
