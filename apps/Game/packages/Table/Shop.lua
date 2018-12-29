@@ -2,13 +2,13 @@
 local Struct = {
     id = 0,
     rid = 0,
-    uniques = "", --已经购买过的id列表
+    buyTimes = "", --已经购买过的id列表
 }
 
 local Define = {
     id = "int NOT NULL AUTO_INCREMENT PRIMARY KEY",
     rid = "int NOT NULL",
-    uniques = "longblob NOT NULL",
+    buyTimes = "int NOT NULL",
 }
 
 local Indexes = {

@@ -15,6 +15,21 @@ function Props:Initialize(db, rid)
     return self:load(db, {rid = rid})
 end
 
+--已经拥有当前道具，无法再进行购买
+function Props:CanAddItems(items)
+    local list = ParseConfig.ParseRewards(items)
+    for _, item in ipairs(list) do
+        if 3 == item.tp then
+            local cfg = dbConfig.get("cfg_prop", item.id)
+            --当前道具唯一
+            if cfg.unique == 1 and self:HasItem(item.id, 1) then
+                return false
+            end
+        end
+    end
+    return true
+end
+
 function Props:HasItems(items)
     for _, item in ipairs(items) do
         if not item then

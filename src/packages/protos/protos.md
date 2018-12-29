@@ -278,7 +278,9 @@ message ShopBuy{
 }
 
 message ShopRecord{
-	repeated int32 id = 1 [packed=true]; //已经购买过的id
+	int32 id = 1;
+	int32 rid = 2;
+	int32 buyTimes = 3;
 }
 
 message CompositeItem{

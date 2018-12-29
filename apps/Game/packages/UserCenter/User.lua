@@ -136,13 +136,13 @@ function User:onShopBuy(db, msg, instance, msgid)
         return false
     end
     
-    if not self._Shop or not self._Role then
+    if not self._Shop or not self._Role or not self._Props then
         instance:sendError(self.id, "OperationNotPermit", msgid)
         return false
     end
     
     local role_data = self._Role:get()
-    local cfg, err = self._Shop:Buy(msg.id, role_data)
+    local cfg, err = self._Shop:Buy(msg.id, role_data, self._Props)
     if err then
         instance:sendError(self.id, err)
         return false
@@ -164,7 +164,7 @@ function User:onShopBuy(db, msg, instance, msgid)
         self._Role:add("diamond", -cfg.price_diamond)
         instance:sendPack(self.id, "Role", self._Role:get(), msgid)
     end
-    instance:sendPack(self.id, "ShopRecord", {id = self._Shop:getProto()}, msgid)
+    instance:sendPack(self.id, "ShopRecord", {id = self._Shop:get()}, msgid)
 end
 
 --完成任务
