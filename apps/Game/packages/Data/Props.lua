@@ -95,6 +95,7 @@ function Props:AddItem(db, item, role)
             local result, err = prop:insertWithUpdateQuery(db, {
                 rid = rid,
                 count = item.count,
+                cid = cfg.id
                 }, {
                 }, {
                 count = item.count,
