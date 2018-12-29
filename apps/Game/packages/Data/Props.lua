@@ -119,7 +119,10 @@ function Props:AddItem(db, item, role)
             end
             
             if result and result.insert_id then
-                return prop:load(db, {id = result.insert_id})
+                local datas = self:load(db, {id = result.insert_id})
+                if #datas == 1 then
+                    return datas[1]
+                end
             end
         end
     end
