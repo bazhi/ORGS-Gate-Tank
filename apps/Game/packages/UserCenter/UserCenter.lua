@@ -14,13 +14,15 @@ function UserCenter:ctor(instance, connect_channel)
 end
 
 function UserCenter:canLogin(connectid)
-    connectid = "PID:"..connectid
-    local lgcnt = sdLogin:incr(connectid, 1, 0)
-    cc.printf(string.format("user:%s is logged|--|%s|%d", connectid, self.connect_channel, lgcnt))
+    local connectid_CN = "PID:"..connectid
+    local lgcnt = sdLogin:incr(connectid_CN, 1, 0)
+    
     if lgcnt > 1 then
-        sdLogin:incr(connectid, -1, 0)
+        lgcnt = sdLogin:incr(connectid_CN, -1, 0)
+        cc.printf(string.format("User:%d |--|%s----|%d", connectid, self.connect_channel, lgcnt))
         return false
     else
+        cc.printf(string.format("User:%d |--|%s----å|%d", connectid, self.connect_channel, lgcnt))
         return true
     end
 end
@@ -47,7 +49,8 @@ function UserCenter:userLogout(connectid, db)
         user:Logout(db, self.instance)
     end
     self.users[connectid] = nil
-    sdLogin:incr("PID:"..connectid, -1, 0)
+    local lgcnt = sdLogin:incr("PID:"..connectid, -1, 0)
+    cc.printf(string.format("User:%d |--|%s----å|%d", connectid, self.connect_channel, lgcnt))
 end
 
 function UserCenter:Process(connectid, message, db, msgtype, msgid)
@@ -81,7 +84,8 @@ end
 
 function UserCenter:RemoveAll()
     for id, _ in pairs(self.users) do
-        sdLogin:incr("PID:"..id, -1, 0)
+        local lgcnt = sdLogin:incr("PID:"..id, -1, 0)
+        cc.printf(string.format("User:%d |--|%s----å|%d", id, self.connect_channel, lgcnt))
     end
     self.users = {}
 end
