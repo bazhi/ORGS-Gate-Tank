@@ -12,7 +12,7 @@ local Define = {
     rid = "int NOT NULL",
     cid = "int NOT NULL",
     process = "int NOT NULL",
-    got = "tinyint NOT NULL",
+    got = "int NOT NULL",
 }
 
 local Indexes = {
