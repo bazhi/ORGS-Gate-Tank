@@ -18,7 +18,8 @@ end
 function Mission:isFinished()
     local cfg = self:getConfig()
     local process = self:get("process")
-    if process < cfg.action_count then
+    local got = self:get("got")
+    if process < cfg.action_count or got == 1 then
         return false
     else
         return true
