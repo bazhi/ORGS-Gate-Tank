@@ -16,7 +16,7 @@ end
 function UserCenter:canLogin(connectid)
     connectid = "PID:"..connectid
     local lgcnt = sdLogin:incr(connectid, 1, 0)
-    cc.printf(string.format("user:%s is already logged|--|%s|%d", connectid, self.connect_channel, lgcnt))
+    cc.printf(string.format("user:%s is logged|--|%s|%d", connectid, self.connect_channel, lgcnt))
     if lgcnt > 1 then
         sdLogin:incr(connectid, -1, 0)
         return false
