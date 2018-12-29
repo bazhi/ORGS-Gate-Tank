@@ -19,6 +19,7 @@ function Achv:isFinished()
     local cfg = self:getConfig()
     local process = self:get("process")
     local got = self:get("got")
+    cc.printf("got is:"..got)
     if process < cfg.action_count or got == 1 then
         return false
     else
