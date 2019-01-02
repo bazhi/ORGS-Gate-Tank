@@ -56,9 +56,6 @@ function UserCenter:checkdb(db)
     if err then
         cc.printf("checkdb:"..err)
     end
-    if ok then
-        cc.dump(ok)
-    end
     return ok
 end
 
