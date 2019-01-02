@@ -61,7 +61,7 @@ end
 
 function User:Login(db, instance)
     --玩家连接上了
-    local redis = self:getRedis()
+    local redis = instance:getRedis()
     if redis then
         redis:zadd(Constants.USERLIST, math.floor(ngx.now()), self.id)
     end
@@ -89,10 +89,10 @@ function User:Login(db, instance)
 end
 
 --保存玩家数据
-function User:Logout(db, _instance)
+function User:Logout(db, instance)
     self:Save(db)
     --玩家下线了
-    local redis = self:getRedis()
+    local redis = instance:getRedis()
     if redis then
         redis:zrem(Constants.USERLIST, self.id)
     end
