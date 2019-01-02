@@ -11,6 +11,9 @@ local Achvs = Data.Achvs
 
 local ngx_now = ngx.now
 
+local gbc = cc.import("#gbc")
+local Constants = gbc.Constants
+
 function User:ctor(id)
     self.id = id
 end
@@ -57,6 +60,12 @@ function User:loadUser(db, instance, rid, lastTime, loginTime)
 end
 
 function User:Login(db, instance)
+    --玩家连接上了
+    local redis = self:getRedis()
+    if redis then
+        redis:zadd(Constants.USERLIST, math.floor(ngx.now()), self.id)
+    end
+    
     local role = Role:new()
     local data, err = role:Initialize(db, self.id)
     if err then
@@ -82,7 +91,11 @@ end
 --保存玩家数据
 function User:Logout(db, _instance)
     self:Save(db)
-    --    cc.printf("User Logout:"..self.id)
+    --玩家下线了
+    local redis = self:getRedis()
+    if redis then
+        redis:zrem(Constants.USERLIST, self.id)
+    end
 end
 
 function User:Save(db)
