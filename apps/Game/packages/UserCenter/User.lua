@@ -65,6 +65,7 @@ function User:Login(db, instance)
     if redis then
         redis:zadd(Constants.USERLIST, math.floor(ngx.now()), self.id)
     end
+    cc.printf("User Login:"..self.id)
     
     local role = Role:new()
     local data, err = role:Initialize(db, self.id)
@@ -85,11 +86,11 @@ function User:Login(db, instance)
     self:loadUser(db, instance, role:get("id"), role:get("loginTime"), ngx_now())
     role:set("loginTime", ngx_now())
     
-    cc.printf("User Login:"..self.id)
 end
 
 --保存玩家数据
 function User:Logout(db, instance)
+    cc.printf("User Logout:"..self.id)
     self:Save(db)
     --玩家下线了
     local redis = instance:getRedis()
