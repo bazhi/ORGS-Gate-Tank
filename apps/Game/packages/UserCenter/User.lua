@@ -119,6 +119,38 @@ function User:Process(db, message, instance, action, msgid)
     end
 end
 
+function User:useDiamond(db, count, instance, msgid)
+    if count <= 0 then
+        return
+    end
+    if self._Role then
+        self._Role:add("diamond", -count)
+    end
+    self:onMissionEvent(db, {
+        action_id = 0,
+        action_place = 0,
+        action_count = count,
+        action_type = 6,
+        action_override = false,
+    }, instance, msgid)
+end
+
+function User:useTechPoint(db, count, instance, msgid)
+    if count <= 0 then
+        return
+    end
+    if self._Role then
+        self._Role:add("techPoint", -count)
+    end
+    self:onMissionEvent(db, {
+        action_id = 0,
+        action_place = 0,
+        action_count = count,
+        action_type = 7,
+        action_override = false,
+    }, instance, msgid)
+end
+
 --[[
     所以处理协议的函数
 ]]--
@@ -173,8 +205,8 @@ function User:onShopBuy(db, msg, instance, msgid)
         if items then
             instance:sendPack(self.id, "Rewards", {items = rewards}, msgid)
         end
-        --减少钻石
-        self._Role:add("diamond", -cfg.price_diamond)
+        --使用钻石
+        self:useDiamond(db, cfg.price_diamond, instance, msgid)
         instance:sendPack(self.id, "Role", self._Role:get(), msgid)
     end
     instance:sendPack(self.id, "ShopRecord", self._Shop:get(), msgid)
@@ -209,6 +241,15 @@ function User:onFinishMission(db, msg, instance, msgid)
         instance:sendPack(self.id, "Role", self._Role:get(), msgid)
         instance:sendPack(self.id, "Rewards", {items = rewards}, msgid)
     end
+    
+    --完成日常任务数
+    self:onMissionEvent(db, {
+        action_id = 0,
+        action_place = 0,
+        action_count = 1,
+        action_type = 11,
+        action_override = false,
+    }, instance, msgid)
 end
 --完成成就
 function User:onFinishAchv(db, msg, instance, msgid)
@@ -284,10 +325,10 @@ function User:onTalentUnlock(db, msg, instance, msgid)
     
     if cfg then
         --消耗钻石和科技点
-        self._Role:add("diamond", -cfg.diamond)
-        self._Role:add("techPoint", -cfg.tech)
-        instance:sendPack(self.id, "Role", self._Role:get(), msgid)
+        self:useTechPoint(db, cfg.tech, instance, msgid)
+        self:useDiamond(db, cfg.diamond, instance, msgid)
         
+        instance:sendPack(self.id, "Role", self._Role:get(), msgid)
         --消耗道具
         local list = self._Props:UseItems(cfg.props)
         instance:sendPack(self.id, "Props", {items = list}, msgid)
