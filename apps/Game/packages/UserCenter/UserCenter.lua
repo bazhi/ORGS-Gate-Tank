@@ -51,13 +51,26 @@ function UserCenter:userLogout(connectid, db)
     --cc.printf(string.format("User:%d |--|%s----å|%d", connectid, self.connect_channel, lgcnt))
 end
 
+function UserCenter:checkdb(db)
+    local ok, err = db:query("select now()")
+    if err then
+        cc.printf("checkdb:"..err)
+    end
+    if ok then
+        cc.dump(ok)
+    end
+    return ok
+end
+
 function UserCenter:Process(connectid, message, db, msgtype, msgid)
     if MessageType.ONCONNECTED == message then --用户登陆
         self:userLogin(connectid, db)
     elseif MessageType.ONDISCONNECTED == message then --断开链接
         self:userLogout(connectid, db)
     elseif MessageType.DB_SAVE == message then --存储到数据库
-        self:SaveAll(db)
+        if self:checkdb(db) then
+            self:SaveAll(db)
+        end
     else
         local user = self.users[connectid]
         if user then

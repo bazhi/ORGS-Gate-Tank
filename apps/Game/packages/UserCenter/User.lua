@@ -82,7 +82,7 @@ end
 --保存玩家数据
 function User:Logout(db, _instance)
     self:Save(db)
-    cc.printf("User Logout:"..self.id)
+    --    cc.printf("User Logout:"..self.id)
 end
 
 function User:Save(db)
