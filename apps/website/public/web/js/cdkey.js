@@ -11,7 +11,6 @@ var HTTP_ENTRY      = "website";
 
 var CDKeyApp = function (apphtml) {
     var self = this;
-
     self._apphtml  = apphtml;
 }
 
@@ -20,7 +19,7 @@ var dataFormatter =  function (date){
         var m = date.getMonth()+1;  
         var d = date.getDate();  
         return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);  
-    }
+}
 
 CDKeyApp.prototype.init = function() {
     var self = this;
