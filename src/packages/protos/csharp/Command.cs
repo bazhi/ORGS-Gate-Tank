@@ -81,23 +81,30 @@ namespace Pb {
             "RGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURhdGESHAoIUG9zaXRp",
             "b24YBSABKAsyCi5wYi5WZWN0b3ISIgoMZXF1aXBlZFByb3BzGAYgAygLMgwu",
             "cGIuSXRlbURhdGESJAoOZXF1aXBlZFdlYXBvbnMYByADKAsyDC5wYi5JdGVt",
-            "RGF0YSJYCglNYXBSZWNvcmQSHgoGdG93ZXJzGAEgAygLMg4ucGIuUmVjb3Jk",
-            "SXRlbRIdCgVpdGVtcxgCIAMoCzIOLnBiLlJlY29yZEl0ZW0SDAoEdGltZRgD",
-            "IAEoAyI4Cg1NYXBSZWNvcmRTYXZlEgoKAmlkGAEgASgFEgsKA3NlcRgCIAEo",
-            "BRIOCgZyZWNvcmQYAyABKAwiKgoKUmVjb3JkSXRlbRIKCgJpZBgBIAEoBRIQ",
-            "Cghjb250ZW50cxgCIAEoDCK5AQoJQnVpbGREYXRhEhAKCGFjdHVhbElEGAEg",
-            "ASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGltZRgDIAEoBRISCgpy",
-            "ZXBhaXJUaW1lGAQgASgFEiUKCmNvbXBvc2l0ZXMYBSADKAsyES5wYi5Db21w",
-            "b3NpdGVJdGVtEhsKBXByb3BzGAYgAygLMgwucGIuSXRlbURhdGESHQoHd2Vh",
-            "cG9ucxgHIAMoCzIMLnBiLkl0ZW1EYXRhIjAKDENhbGVuZGFyRGF0YRIPCgdt",
-            "aW51dGVzGAEgASgFEg8KB2V2ZW50aWQYAiABKAUidAoJVG93ZXJEYXRhEhAK",
-            "CGFjdHVhbElEGAEgASgFEg4KBmhlYWx0aBgCIAEoBRITCgt1cGdyYWRlVGlt",
-            "ZRgDIAEoBRISCgpyZXBhaXJUaW1lGAQgASgFEhwKCFBvc2l0aW9uGAUgASgL",
-            "MgoucGIuVmVjdG9yIisKDENNaXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdw",
-            "cm9jZXNzGAIgASgFIk8KDENNaXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRs",
-            "aXN0GAIgAygLMhAucGIuQ01pc3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMg",
-            "ASgFIi4KDENNaXNzaW9uTGlzdBIeCgRsaXN0GAEgAygLMhAucGIuQ01pc3Np",
-            "b25EYXRhYgZwcm90bzM="));
+            "RGF0YSL7AQoJTWFwUmVjb3JkEh0KBnRvd2VycxgBIAMoCzINLnBiLlRvd2Vy",
+            "RGF0YRIdCgZidWlsZHMYAiADKAsyDS5wYi5CdWlsZERhdGESDAoEdGltZRgD",
+            "IAEoAxIiCghjYWxlbmRhchgEIAEoCzIQLnBiLkNhbGVuZGFyRGF0YRIiCght",
+            "aXNzaW9ucxgFIAMoCzIQLnBiLkNNaXNzaW9uRGF0YRIeCgZwbGF5ZXIYBiAB",
+            "KAsyDi5wYi5QbGF5ZXJEYXRhEhkKBG9yZXMYByADKAsyCy5wYi5PcmVEYXRh",
+            "Eh8KB3BpY2t1cHMYCCADKAsyDi5wYi5QaWNrdXBEYXRhIjsKDU1hcFJlY29y",
+            "ZFNhdmUSDQoFaWRzdHIYASABKAkSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgD",
+            "IAEoDCI4CgdPcmVEYXRhEg0KBWlkc3RyGAEgASgJEg4KBnRpbWluZxgCIAEo",
+            "AhIOCgZoZWFsdGgYAyABKAUiKAoKUGlja3VwRGF0YRIKCgJpZBgBIAEoBRIO",
+            "CgZ0aW1pbmcYAiABKAIi1gIKCUJ1aWxkRGF0YRILCgNjaWQYASABKAUSJgoF",
+            "YnR5cGUYAiABKA4yFy5wYi5CdWlsZERhdGEuQnVpbGRUeXBlEg4KBmhlYWx0",
+            "aBgDIAEoBRITCgt1cGdyYWRlVGltZRgEIAEoBRISCgpyZXBhaXJUaW1lGAUg",
+            "ASgFEiUKCmNvbXBvc2l0ZXMYBiADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsK",
+            "BXByb3BzGAcgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgIIAMoCzIM",
+            "LnBiLkl0ZW1EYXRhIngKCUJ1aWxkVHlwZRIICgROb25lEAASBwoDQmVkEAES",
+            "CgoGRHluYW1vEAISDQoJV29ya0JlbmNoEAMSCwoHS2l0Y2hlbhAEEg4KCkxh",
+            "Ym9yYXRvcnkQBRIRCg1NZWRpY2luZUNoZXN0EAYSDQoJV2FyZUhvdXNlEAci",
+            "MAoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUSDwoHZXZlbnRpZBgC",
+            "IAEoBSJ7CglUb3dlckRhdGESCgoCaWQYASABKAUSCwoDY2lkGAIgASgFEg4K",
+            "BmhlYWx0aBgDIAEoBRITCgt1cGdyYWRlVGltZRgEIAEoBRISCgpyZXBhaXJU",
+            "aW1lGAUgASgFEhwKCFBvc2l0aW9uGAYgASgLMgoucGIuVmVjdG9yIisKDENN",
+            "aXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIk8KDENN",
+            "aXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0GAIgAygLMhAucGIuQ01p",
+            "c3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -136,15 +143,15 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp", "Location" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position", "EquipedProps", "EquipedWeapons" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Items", "Time" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.RecordItem), global::Pb.RecordItem.Parser, new[]{ "Id", "Contents" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Builds", "Time", "Calendar", "Missions", "Player", "Ores", "Pickups" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Idstr", "Seq", "Record" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.OreData), global::Pb.OreData.Parser, new[]{ "Idstr", "Timing", "Health" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PickupData), global::Pb.PickupData.Parser, new[]{ "Id", "Timing" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Cid", "Btype", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, new[]{ typeof(global::Pb.BuildData.Types.BuildType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Eventid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "ActualID", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "Id", "Cid", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionItem), global::Pb.CMissionItem.Parser, new[]{ "Id", "Process" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionData), global::Pb.CMissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionList), global::Pb.CMissionList.Parser, new[]{ "List" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionData), global::Pb.CMissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null)
           }));
     }
     #endregion
@@ -6131,8 +6138,13 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MapRecord(MapRecord other) : this() {
       towers_ = other.towers_.Clone();
-      items_ = other.items_.Clone();
+      builds_ = other.builds_.Clone();
       time_ = other.time_;
+      Calendar = other.calendar_ != null ? other.Calendar.Clone() : null;
+      missions_ = other.missions_.Clone();
+      Player = other.player_ != null ? other.Player.Clone() : null;
+      ores_ = other.ores_.Clone();
+      pickups_ = other.pickups_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6142,33 +6154,103 @@ namespace Pb {
 
     /// <summary>Field number for the "towers" field.</summary>
     public const int TowersFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_towers_codec
-        = pb::FieldCodec.ForMessage(10, global::Pb.RecordItem.Parser);
-    private readonly pbc::RepeatedField<global::Pb.RecordItem> towers_ = new pbc::RepeatedField<global::Pb.RecordItem>();
+    private static readonly pb::FieldCodec<global::Pb.TowerData> _repeated_towers_codec
+        = pb::FieldCodec.ForMessage(10, global::Pb.TowerData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.TowerData> towers_ = new pbc::RepeatedField<global::Pb.TowerData>();
+    /// <summary>
+    ///  塔数据
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.RecordItem> Towers {
+    public pbc::RepeatedField<global::Pb.TowerData> Towers {
       get { return towers_; }
     }
 
-    /// <summary>Field number for the "items" field.</summary>
-    public const int ItemsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Pb.RecordItem> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(18, global::Pb.RecordItem.Parser);
-    private readonly pbc::RepeatedField<global::Pb.RecordItem> items_ = new pbc::RepeatedField<global::Pb.RecordItem>();
+    /// <summary>Field number for the "builds" field.</summary>
+    public const int BuildsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Pb.BuildData> _repeated_builds_codec
+        = pb::FieldCodec.ForMessage(18, global::Pb.BuildData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.BuildData> builds_ = new pbc::RepeatedField<global::Pb.BuildData>();
+    /// <summary>
+    /// 建筑数据
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.RecordItem> Items {
-      get { return items_; }
+    public pbc::RepeatedField<global::Pb.BuildData> Builds {
+      get { return builds_; }
     }
 
     /// <summary>Field number for the "time" field.</summary>
     public const int TimeFieldNumber = 3;
     private long time_;
+    /// <summary>
+    /// 时间
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public long Time {
       get { return time_; }
       set {
         time_ = value;
       }
+    }
+
+    /// <summary>Field number for the "calendar" field.</summary>
+    public const int CalendarFieldNumber = 4;
+    private global::Pb.CalendarData calendar_;
+    /// <summary>
+    /// 日历信息
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.CalendarData Calendar {
+      get { return calendar_; }
+      set {
+        calendar_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "missions" field.</summary>
+    public const int MissionsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::Pb.CMissionData> _repeated_missions_codec
+        = pb::FieldCodec.ForMessage(42, global::Pb.CMissionData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.CMissionData> missions_ = new pbc::RepeatedField<global::Pb.CMissionData>();
+    /// <summary>
+    /// 任务列表
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.CMissionData> Missions {
+      get { return missions_; }
+    }
+
+    /// <summary>Field number for the "player" field.</summary>
+    public const int PlayerFieldNumber = 6;
+    private global::Pb.PlayerData player_;
+    /// <summary>
+    /// 角色数据
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.PlayerData Player {
+      get { return player_; }
+      set {
+        player_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ores" field.</summary>
+    public const int OresFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::Pb.OreData> _repeated_ores_codec
+        = pb::FieldCodec.ForMessage(58, global::Pb.OreData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.OreData> ores_ = new pbc::RepeatedField<global::Pb.OreData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.OreData> Ores {
+      get { return ores_; }
+    }
+
+    /// <summary>Field number for the "pickups" field.</summary>
+    public const int PickupsFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::Pb.PickupData> _repeated_pickups_codec
+        = pb::FieldCodec.ForMessage(66, global::Pb.PickupData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.PickupData> pickups_ = new pbc::RepeatedField<global::Pb.PickupData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.PickupData> Pickups {
+      get { return pickups_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6185,8 +6267,13 @@ namespace Pb {
         return true;
       }
       if(!towers_.Equals(other.towers_)) return false;
-      if(!items_.Equals(other.items_)) return false;
+      if(!builds_.Equals(other.builds_)) return false;
       if (Time != other.Time) return false;
+      if (!object.Equals(Calendar, other.Calendar)) return false;
+      if(!missions_.Equals(other.missions_)) return false;
+      if (!object.Equals(Player, other.Player)) return false;
+      if(!ores_.Equals(other.ores_)) return false;
+      if(!pickups_.Equals(other.pickups_)) return false;
       return true;
     }
 
@@ -6194,8 +6281,13 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= towers_.GetHashCode();
-      hash ^= items_.GetHashCode();
+      hash ^= builds_.GetHashCode();
       if (Time != 0L) hash ^= Time.GetHashCode();
+      if (calendar_ != null) hash ^= Calendar.GetHashCode();
+      hash ^= missions_.GetHashCode();
+      if (player_ != null) hash ^= Player.GetHashCode();
+      hash ^= ores_.GetHashCode();
+      hash ^= pickups_.GetHashCode();
       return hash;
     }
 
@@ -6207,21 +6299,41 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       towers_.WriteTo(output, _repeated_towers_codec);
-      items_.WriteTo(output, _repeated_items_codec);
+      builds_.WriteTo(output, _repeated_builds_codec);
       if (Time != 0L) {
         output.WriteRawTag(24);
         output.WriteInt64(Time);
       }
+      if (calendar_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Calendar);
+      }
+      missions_.WriteTo(output, _repeated_missions_codec);
+      if (player_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Player);
+      }
+      ores_.WriteTo(output, _repeated_ores_codec);
+      pickups_.WriteTo(output, _repeated_pickups_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
       size += towers_.CalculateSize(_repeated_towers_codec);
-      size += items_.CalculateSize(_repeated_items_codec);
+      size += builds_.CalculateSize(_repeated_builds_codec);
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
+      if (calendar_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Calendar);
+      }
+      size += missions_.CalculateSize(_repeated_missions_codec);
+      if (player_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
+      }
+      size += ores_.CalculateSize(_repeated_ores_codec);
+      size += pickups_.CalculateSize(_repeated_pickups_codec);
       return size;
     }
 
@@ -6231,10 +6343,25 @@ namespace Pb {
         return;
       }
       towers_.Add(other.towers_);
-      items_.Add(other.items_);
+      builds_.Add(other.builds_);
       if (other.Time != 0L) {
         Time = other.Time;
       }
+      if (other.calendar_ != null) {
+        if (calendar_ == null) {
+          calendar_ = new global::Pb.CalendarData();
+        }
+        Calendar.MergeFrom(other.Calendar);
+      }
+      missions_.Add(other.missions_);
+      if (other.player_ != null) {
+        if (player_ == null) {
+          player_ = new global::Pb.PlayerData();
+        }
+        Player.MergeFrom(other.Player);
+      }
+      ores_.Add(other.ores_);
+      pickups_.Add(other.pickups_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6250,11 +6377,37 @@ namespace Pb {
             break;
           }
           case 18: {
-            items_.AddEntriesFrom(input, _repeated_items_codec);
+            builds_.AddEntriesFrom(input, _repeated_builds_codec);
             break;
           }
           case 24: {
             Time = input.ReadInt64();
+            break;
+          }
+          case 34: {
+            if (calendar_ == null) {
+              calendar_ = new global::Pb.CalendarData();
+            }
+            input.ReadMessage(calendar_);
+            break;
+          }
+          case 42: {
+            missions_.AddEntriesFrom(input, _repeated_missions_codec);
+            break;
+          }
+          case 50: {
+            if (player_ == null) {
+              player_ = new global::Pb.PlayerData();
+            }
+            input.ReadMessage(player_);
+            break;
+          }
+          case 58: {
+            ores_.AddEntriesFrom(input, _repeated_ores_codec);
+            break;
+          }
+          case 66: {
+            pickups_.AddEntriesFrom(input, _repeated_pickups_codec);
             break;
           }
         }
@@ -6263,6 +6416,9 @@ namespace Pb {
 
   }
 
+  /// <summary>
+  /// 保存数据命令
+  /// </summary>
   public sealed partial class MapRecordSave : pb::IMessage<MapRecordSave> {
     private static readonly pb::MessageParser<MapRecordSave> _parser = new pb::MessageParser<MapRecordSave>(() => new MapRecordSave());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6287,7 +6443,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MapRecordSave(MapRecordSave other) : this() {
-      id_ = other.id_;
+      idstr_ = other.idstr_;
       seq_ = other.seq_;
       record_ = other.record_;
     }
@@ -6297,14 +6453,14 @@ namespace Pb {
       return new MapRecordSave(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
+    /// <summary>Field number for the "idstr" field.</summary>
+    public const int IdstrFieldNumber = 1;
+    private string idstr_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
+    public string Idstr {
+      get { return idstr_; }
       set {
-        id_ = value;
+        idstr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -6343,7 +6499,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
+      if (Idstr != other.Idstr) return false;
       if (Seq != other.Seq) return false;
       if (Record != other.Record) return false;
       return true;
@@ -6352,7 +6508,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Idstr.Length != 0) hash ^= Idstr.GetHashCode();
       if (Seq != 0) hash ^= Seq.GetHashCode();
       if (Record.Length != 0) hash ^= Record.GetHashCode();
       return hash;
@@ -6365,9 +6521,9 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
+      if (Idstr.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Idstr);
       }
       if (Seq != 0) {
         output.WriteRawTag(16);
@@ -6382,8 +6538,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (Idstr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Idstr);
       }
       if (Seq != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seq);
@@ -6399,8 +6555,8 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.Idstr.Length != 0) {
+        Idstr = other.Idstr;
       }
       if (other.Seq != 0) {
         Seq = other.Seq;
@@ -6418,8 +6574,8 @@ namespace Pb {
           default:
             input.SkipLastField();
             break;
-          case 8: {
-            Id = input.ReadInt32();
+          case 10: {
+            Idstr = input.ReadString();
             break;
           }
           case 16: {
@@ -6437,12 +6593,12 @@ namespace Pb {
   }
 
   /// <summary>
-  /// id对应的数据
+  /// 矿产数据
   /// </summary>
-  public sealed partial class RecordItem : pb::IMessage<RecordItem> {
-    private static readonly pb::MessageParser<RecordItem> _parser = new pb::MessageParser<RecordItem>(() => new RecordItem());
+  public sealed partial class OreData : pb::IMessage<OreData> {
+    private static readonly pb::MessageParser<OreData> _parser = new pb::MessageParser<OreData>(() => new OreData());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RecordItem> Parser { get { return _parser; } }
+    public static pb::MessageParser<OreData> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -6455,21 +6611,197 @@ namespace Pb {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem() {
+    public OreData() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem(RecordItem other) : this() {
-      id_ = other.id_;
-      contents_ = other.contents_;
+    public OreData(OreData other) : this() {
+      idstr_ = other.idstr_;
+      timing_ = other.timing_;
+      health_ = other.health_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RecordItem Clone() {
-      return new RecordItem(this);
+    public OreData Clone() {
+      return new OreData(this);
+    }
+
+    /// <summary>Field number for the "idstr" field.</summary>
+    public const int IdstrFieldNumber = 1;
+    private string idstr_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Idstr {
+      get { return idstr_; }
+      set {
+        idstr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "timing" field.</summary>
+    public const int TimingFieldNumber = 2;
+    private float timing_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Timing {
+      get { return timing_; }
+      set {
+        timing_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "health" field.</summary>
+    public const int HealthFieldNumber = 3;
+    private int health_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Health {
+      get { return health_; }
+      set {
+        health_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as OreData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(OreData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Idstr != other.Idstr) return false;
+      if (Timing != other.Timing) return false;
+      if (Health != other.Health) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Idstr.Length != 0) hash ^= Idstr.GetHashCode();
+      if (Timing != 0F) hash ^= Timing.GetHashCode();
+      if (Health != 0) hash ^= Health.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Idstr.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Idstr);
+      }
+      if (Timing != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Timing);
+      }
+      if (Health != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Health);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Idstr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Idstr);
+      }
+      if (Timing != 0F) {
+        size += 1 + 4;
+      }
+      if (Health != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(OreData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Idstr.Length != 0) {
+        Idstr = other.Idstr;
+      }
+      if (other.Timing != 0F) {
+        Timing = other.Timing;
+      }
+      if (other.Health != 0) {
+        Health = other.Health;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            Idstr = input.ReadString();
+            break;
+          }
+          case 21: {
+            Timing = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            Health = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 拾取数据
+  /// </summary>
+  public sealed partial class PickupData : pb::IMessage<PickupData> {
+    private static readonly pb::MessageParser<PickupData> _parser = new pb::MessageParser<PickupData>(() => new PickupData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PickupData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PickupData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PickupData(PickupData other) : this() {
+      id_ = other.id_;
+      timing_ = other.timing_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PickupData Clone() {
+      return new PickupData(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -6483,24 +6815,24 @@ namespace Pb {
       }
     }
 
-    /// <summary>Field number for the "contents" field.</summary>
-    public const int ContentsFieldNumber = 2;
-    private pb::ByteString contents_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "timing" field.</summary>
+    public const int TimingFieldNumber = 2;
+    private float timing_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Contents {
-      get { return contents_; }
+    public float Timing {
+      get { return timing_; }
       set {
-        contents_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        timing_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as RecordItem);
+      return Equals(other as PickupData);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RecordItem other) {
+    public bool Equals(PickupData other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6508,7 +6840,7 @@ namespace Pb {
         return true;
       }
       if (Id != other.Id) return false;
-      if (Contents != other.Contents) return false;
+      if (Timing != other.Timing) return false;
       return true;
     }
 
@@ -6516,7 +6848,7 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Contents.Length != 0) hash ^= Contents.GetHashCode();
+      if (Timing != 0F) hash ^= Timing.GetHashCode();
       return hash;
     }
 
@@ -6531,9 +6863,9 @@ namespace Pb {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (Contents.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(Contents);
+      if (Timing != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Timing);
       }
     }
 
@@ -6543,22 +6875,22 @@ namespace Pb {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (Contents.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Contents);
+      if (Timing != 0F) {
+        size += 1 + 4;
       }
       return size;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RecordItem other) {
+    public void MergeFrom(PickupData other) {
       if (other == null) {
         return;
       }
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Contents.Length != 0) {
-        Contents = other.Contents;
+      if (other.Timing != 0F) {
+        Timing = other.Timing;
       }
     }
 
@@ -6574,8 +6906,8 @@ namespace Pb {
             Id = input.ReadInt32();
             break;
           }
-          case 18: {
-            Contents = input.ReadBytes();
+          case 21: {
+            Timing = input.ReadFloat();
             break;
           }
         }
@@ -6594,7 +6926,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6611,7 +6943,8 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public BuildData(BuildData other) : this() {
-      actualID_ = other.actualID_;
+      cid_ = other.cid_;
+      btype_ = other.btype_;
       health_ = other.health_;
       upgradeTime_ = other.upgradeTime_;
       repairTime_ = other.repairTime_;
@@ -6625,19 +6958,30 @@ namespace Pb {
       return new BuildData(this);
     }
 
-    /// <summary>Field number for the "actualID" field.</summary>
-    public const int ActualIDFieldNumber = 1;
-    private int actualID_;
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 1;
+    private int cid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ActualID {
-      get { return actualID_; }
+    public int Cid {
+      get { return cid_; }
       set {
-        actualID_ = value;
+        cid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "btype" field.</summary>
+    public const int BtypeFieldNumber = 2;
+    private global::Pb.BuildData.Types.BuildType btype_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.BuildData.Types.BuildType Btype {
+      get { return btype_; }
+      set {
+        btype_ = value;
       }
     }
 
     /// <summary>Field number for the "health" field.</summary>
-    public const int HealthFieldNumber = 2;
+    public const int HealthFieldNumber = 3;
     private int health_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Health {
@@ -6648,7 +6992,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "upgradeTime" field.</summary>
-    public const int UpgradeTimeFieldNumber = 3;
+    public const int UpgradeTimeFieldNumber = 4;
     private int upgradeTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int UpgradeTime {
@@ -6659,7 +7003,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "repairTime" field.</summary>
-    public const int RepairTimeFieldNumber = 4;
+    public const int RepairTimeFieldNumber = 5;
     private int repairTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RepairTime {
@@ -6670,9 +7014,9 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "composites" field.</summary>
-    public const int CompositesFieldNumber = 5;
+    public const int CompositesFieldNumber = 6;
     private static readonly pb::FieldCodec<global::Pb.CompositeItem> _repeated_composites_codec
-        = pb::FieldCodec.ForMessage(42, global::Pb.CompositeItem.Parser);
+        = pb::FieldCodec.ForMessage(50, global::Pb.CompositeItem.Parser);
     private readonly pbc::RepeatedField<global::Pb.CompositeItem> composites_ = new pbc::RepeatedField<global::Pb.CompositeItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Pb.CompositeItem> Composites {
@@ -6680,9 +7024,9 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "props" field.</summary>
-    public const int PropsFieldNumber = 6;
+    public const int PropsFieldNumber = 7;
     private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_props_codec
-        = pb::FieldCodec.ForMessage(50, global::Pb.ItemData.Parser);
+        = pb::FieldCodec.ForMessage(58, global::Pb.ItemData.Parser);
     private readonly pbc::RepeatedField<global::Pb.ItemData> props_ = new pbc::RepeatedField<global::Pb.ItemData>();
     /// <summary>
     /// 仓库中才使用
@@ -6693,9 +7037,9 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "weapons" field.</summary>
-    public const int WeaponsFieldNumber = 7;
+    public const int WeaponsFieldNumber = 8;
     private static readonly pb::FieldCodec<global::Pb.ItemData> _repeated_weapons_codec
-        = pb::FieldCodec.ForMessage(58, global::Pb.ItemData.Parser);
+        = pb::FieldCodec.ForMessage(66, global::Pb.ItemData.Parser);
     private readonly pbc::RepeatedField<global::Pb.ItemData> weapons_ = new pbc::RepeatedField<global::Pb.ItemData>();
     /// <summary>
     /// 仓库中才使用
@@ -6718,7 +7062,8 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ActualID != other.ActualID) return false;
+      if (Cid != other.Cid) return false;
+      if (Btype != other.Btype) return false;
       if (Health != other.Health) return false;
       if (UpgradeTime != other.UpgradeTime) return false;
       if (RepairTime != other.RepairTime) return false;
@@ -6731,7 +7076,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (ActualID != 0) hash ^= ActualID.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
+      if (Btype != 0) hash ^= Btype.GetHashCode();
       if (Health != 0) hash ^= Health.GetHashCode();
       if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
       if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
@@ -6748,20 +7094,24 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ActualID != 0) {
+      if (Cid != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(ActualID);
+        output.WriteInt32(Cid);
+      }
+      if (Btype != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Btype);
       }
       if (Health != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Health);
       }
       if (UpgradeTime != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(UpgradeTime);
       }
       if (RepairTime != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteInt32(RepairTime);
       }
       composites_.WriteTo(output, _repeated_composites_codec);
@@ -6772,8 +7122,11 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (ActualID != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ActualID);
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
+      }
+      if (Btype != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Btype);
       }
       if (Health != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
@@ -6795,8 +7148,11 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.ActualID != 0) {
-        ActualID = other.ActualID;
+      if (other.Cid != 0) {
+        Cid = other.Cid;
+      }
+      if (other.Btype != 0) {
+        Btype = other.Btype;
       }
       if (other.Health != 0) {
         Health = other.Health;
@@ -6821,36 +7177,79 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            ActualID = input.ReadInt32();
+            Cid = input.ReadInt32();
             break;
           }
           case 16: {
-            Health = input.ReadInt32();
+            btype_ = (global::Pb.BuildData.Types.BuildType) input.ReadEnum();
             break;
           }
           case 24: {
-            UpgradeTime = input.ReadInt32();
+            Health = input.ReadInt32();
             break;
           }
           case 32: {
+            UpgradeTime = input.ReadInt32();
+            break;
+          }
+          case 40: {
             RepairTime = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 50: {
             composites_.AddEntriesFrom(input, _repeated_composites_codec);
             break;
           }
-          case 50: {
+          case 58: {
             props_.AddEntriesFrom(input, _repeated_props_codec);
             break;
           }
-          case 58: {
+          case 66: {
             weapons_.AddEntriesFrom(input, _repeated_weapons_codec);
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the BuildData message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum BuildType {
+        [pbr::OriginalName("None")] None = 0,
+        /// <summary>
+        /// 床
+        /// </summary>
+        [pbr::OriginalName("Bed")] Bed = 1,
+        /// <summary>
+        /// 发电机
+        /// </summary>
+        [pbr::OriginalName("Dynamo")] Dynamo = 2,
+        /// <summary>
+        /// 工作台
+        /// </summary>
+        [pbr::OriginalName("WorkBench")] WorkBench = 3,
+        /// <summary>
+        /// 厨房
+        /// </summary>
+        [pbr::OriginalName("Kitchen")] Kitchen = 4,
+        /// <summary>
+        /// 实验室
+        /// </summary>
+        [pbr::OriginalName("Laboratory")] Laboratory = 5,
+        /// <summary>
+        /// 药箱
+        /// </summary>
+        [pbr::OriginalName("MedicineChest")] MedicineChest = 6,
+        /// <summary>
+        /// 仓库
+        /// </summary>
+        [pbr::OriginalName("WareHouse")] WareHouse = 7,
+      }
+
+    }
+    #endregion
 
   }
 
@@ -6864,7 +7263,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7018,7 +7417,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7035,7 +7434,8 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public TowerData(TowerData other) : this() {
-      actualID_ = other.actualID_;
+      id_ = other.id_;
+      cid_ = other.cid_;
       health_ = other.health_;
       upgradeTime_ = other.upgradeTime_;
       repairTime_ = other.repairTime_;
@@ -7047,19 +7447,33 @@ namespace Pb {
       return new TowerData(this);
     }
 
-    /// <summary>Field number for the "actualID" field.</summary>
-    public const int ActualIDFieldNumber = 1;
-    private int actualID_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    /// <summary>
+    /// 塔的唯一ID
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ActualID {
-      get { return actualID_; }
+    public int Id {
+      get { return id_; }
       set {
-        actualID_ = value;
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 2;
+    private int cid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
       }
     }
 
     /// <summary>Field number for the "health" field.</summary>
-    public const int HealthFieldNumber = 2;
+    public const int HealthFieldNumber = 3;
     private int health_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Health {
@@ -7070,7 +7484,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "upgradeTime" field.</summary>
-    public const int UpgradeTimeFieldNumber = 3;
+    public const int UpgradeTimeFieldNumber = 4;
     private int upgradeTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int UpgradeTime {
@@ -7081,7 +7495,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "repairTime" field.</summary>
-    public const int RepairTimeFieldNumber = 4;
+    public const int RepairTimeFieldNumber = 5;
     private int repairTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RepairTime {
@@ -7092,7 +7506,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "Position" field.</summary>
-    public const int PositionFieldNumber = 5;
+    public const int PositionFieldNumber = 6;
     private global::Pb.Vector position_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Pb.Vector Position {
@@ -7115,7 +7529,8 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ActualID != other.ActualID) return false;
+      if (Id != other.Id) return false;
+      if (Cid != other.Cid) return false;
       if (Health != other.Health) return false;
       if (UpgradeTime != other.UpgradeTime) return false;
       if (RepairTime != other.RepairTime) return false;
@@ -7126,7 +7541,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (ActualID != 0) hash ^= ActualID.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
       if (Health != 0) hash ^= Health.GetHashCode();
       if (UpgradeTime != 0) hash ^= UpgradeTime.GetHashCode();
       if (RepairTime != 0) hash ^= RepairTime.GetHashCode();
@@ -7141,24 +7557,28 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ActualID != 0) {
+      if (Id != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(ActualID);
+        output.WriteInt32(Id);
+      }
+      if (Cid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Cid);
       }
       if (Health != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Health);
       }
       if (UpgradeTime != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(UpgradeTime);
       }
       if (RepairTime != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteInt32(RepairTime);
       }
       if (position_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteMessage(Position);
       }
     }
@@ -7166,8 +7586,11 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (ActualID != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ActualID);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
       }
       if (Health != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
@@ -7189,8 +7612,11 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.ActualID != 0) {
-        ActualID = other.ActualID;
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
       }
       if (other.Health != 0) {
         Health = other.Health;
@@ -7218,22 +7644,26 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            ActualID = input.ReadInt32();
+            Id = input.ReadInt32();
             break;
           }
           case 16: {
-            Health = input.ReadInt32();
+            Cid = input.ReadInt32();
             break;
           }
           case 24: {
-            UpgradeTime = input.ReadInt32();
+            Health = input.ReadInt32();
             break;
           }
           case 32: {
+            UpgradeTime = input.ReadInt32();
+            break;
+          }
+          case 40: {
             RepairTime = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 50: {
             if (position_ == null) {
               position_ = new global::Pb.Vector();
             }
@@ -7256,7 +7686,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7404,7 +7834,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7554,118 +7984,6 @@ namespace Pb {
           }
           case 24: {
             RefreshTime = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// 任务列表
-  /// </summary>
-  public sealed partial class CMissionList : pb::IMessage<CMissionList> {
-    private static readonly pb::MessageParser<CMissionList> _parser = new pb::MessageParser<CMissionList>(() => new CMissionList());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<CMissionList> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CMissionList() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CMissionList(CMissionList other) : this() {
-      list_ = other.list_.Clone();
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CMissionList Clone() {
-      return new CMissionList(this);
-    }
-
-    /// <summary>Field number for the "list" field.</summary>
-    public const int ListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Pb.CMissionData> _repeated_list_codec
-        = pb::FieldCodec.ForMessage(10, global::Pb.CMissionData.Parser);
-    private readonly pbc::RepeatedField<global::Pb.CMissionData> list_ = new pbc::RepeatedField<global::Pb.CMissionData>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Pb.CMissionData> List {
-      get { return list_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as CMissionList);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(CMissionList other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!list_.Equals(other.list_)) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= list_.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      list_.WriteTo(output, _repeated_list_codec);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += list_.CalculateSize(_repeated_list_codec);
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(CMissionList other) {
-      if (other == null) {
-        return;
-      }
-      list_.Add(other.list_);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            list_.AddEntriesFrom(input, _repeated_list_codec);
             break;
           }
         }

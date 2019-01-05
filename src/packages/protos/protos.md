@@ -309,32 +309,57 @@ message PlayerData{
 
 //地图记录
 message MapRecord{
-	repeated RecordItem towers = 1;
-	repeated RecordItem items = 2;
-	int64 time = 3;
+	repeated TowerData towers = 1; // 塔数据
+	repeated BuildData builds = 2; //建筑数据
+	int64 time = 3; //时间
+	CalendarData calendar = 4; //日历信息
+	repeated CMissionData missions = 5; //任务列表
+	PlayerData player = 6; //角色数据
+	repeated OreData ores = 7;
+	repeated PickupData pickups = 8;
 }
 
+//保存数据命令
 message MapRecordSave{
-	int32 id = 1;
+	string idstr = 1;
 	int32 seq = 2;
 	bytes record = 3;
 }
 
-//id对应的数据
-message RecordItem{
+//矿产数据
+message OreData{
+	string idstr = 1;
+	float timing = 2;
+	int32 health = 3;
+}
+
+//拾取数据
+message PickupData{
 	int32 id = 1;
-	bytes contents = 2;
+	float timing = 2;
 }
 
 //建筑数据
 message BuildData{
-	int32 actualID = 1;
-	int32 health = 2;
-	int32 upgradeTime = 3;
-	int32 repairTime = 4;
-	repeated CompositeItem composites = 5;
-	repeated ItemData props = 6; //仓库中才使用
-	repeated ItemData weapons = 7; //仓库中才使用
+	enum BuildType{
+		None = 0;
+		Bed = 1; //床
+		Dynamo = 2; //发电机
+		WorkBench = 3; //工作台
+		Kitchen = 4; //厨房
+		Laboratory = 5; //实验室
+		MedicineChest = 6; //药箱
+		WareHouse = 7; //仓库
+	}
+
+	int32 cid = 1;
+	BuildType btype = 2;
+	int32 health = 3;
+	int32 upgradeTime = 4;
+	int32 repairTime = 5;
+	repeated CompositeItem composites = 6;
+	repeated ItemData props = 7; //仓库中才使用
+	repeated ItemData weapons = 8; //仓库中才使用
 }
 
 //日历数据
@@ -345,11 +370,12 @@ message CalendarData{
 
 //塔数据
 message TowerData{
-	int32 actualID = 1;
-	int32 health = 2;
-	int32 upgradeTime = 3;
-	int32 repairTime = 4;
-	Vector Position = 5;
+	int32 id = 1; //塔的唯一ID
+	int32 cid = 2;
+	int32 health = 3;
+	int32 upgradeTime = 4;
+	int32 repairTime = 5;
+	Vector Position = 6;
 }
 
 //任务数据
@@ -363,9 +389,4 @@ message CMissionData{
 	int32 id = 1;
 	repeated CMissionItem list = 2;
 	int32 refreshTime = 3;
-}
-
-//任务列表
-message CMissionList{
-	repeated CMissionData list = 1;
 }```

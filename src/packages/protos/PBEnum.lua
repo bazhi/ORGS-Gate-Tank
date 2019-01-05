@@ -48,5 +48,17 @@ local _M = {
 			MakeEquip = 13,
 		},
 	},
+	BuildData={
+		BuildType={
+			pe = 0,
+			Bed = 1,
+			Dynamo = 2,
+			WorkBench = 3,
+			Kitchen = 4,
+			Laboratory = 5,
+			MedicineChest = 6,
+			WareHouse = 7,
+		},
+	},
 }
 return table.readonly(_M)
