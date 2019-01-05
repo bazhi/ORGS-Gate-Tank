@@ -321,7 +321,7 @@ message MapRecord{
 
 //保存数据命令
 message MapRecordSave{
-	string idstr = 1;
+	int32 id = 1;
 	int32 seq = 2;
 	bytes record = 3;
 }
@@ -335,7 +335,7 @@ message OreData{
 
 //拾取数据
 message PickupData{
-	int32 id = 1;
+	string idstr = 1;
 	float timing = 2;
 }
 

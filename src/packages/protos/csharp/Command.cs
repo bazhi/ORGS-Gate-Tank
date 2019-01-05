@@ -86,10 +86,10 @@ namespace Pb {
             "IAEoAxIiCghjYWxlbmRhchgEIAEoCzIQLnBiLkNhbGVuZGFyRGF0YRIiCght",
             "aXNzaW9ucxgFIAMoCzIQLnBiLkNNaXNzaW9uRGF0YRIeCgZwbGF5ZXIYBiAB",
             "KAsyDi5wYi5QbGF5ZXJEYXRhEhkKBG9yZXMYByADKAsyCy5wYi5PcmVEYXRh",
-            "Eh8KB3BpY2t1cHMYCCADKAsyDi5wYi5QaWNrdXBEYXRhIjsKDU1hcFJlY29y",
-            "ZFNhdmUSDQoFaWRzdHIYASABKAkSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgD",
-            "IAEoDCI4CgdPcmVEYXRhEg0KBWlkc3RyGAEgASgJEg4KBnRpbWluZxgCIAEo",
-            "AhIOCgZoZWFsdGgYAyABKAUiKAoKUGlja3VwRGF0YRIKCgJpZBgBIAEoBRIO",
+            "Eh8KB3BpY2t1cHMYCCADKAsyDi5wYi5QaWNrdXBEYXRhIjgKDU1hcFJlY29y",
+            "ZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEo",
+            "DCI4CgdPcmVEYXRhEg0KBWlkc3RyGAEgASgJEg4KBnRpbWluZxgCIAEoAhIO",
+            "CgZoZWFsdGgYAyABKAUiKwoKUGlja3VwRGF0YRINCgVpZHN0chgBIAEoCRIO",
             "CgZ0aW1pbmcYAiABKAIi1gIKCUJ1aWxkRGF0YRILCgNjaWQYASABKAUSJgoF",
             "YnR5cGUYAiABKA4yFy5wYi5CdWlsZERhdGEuQnVpbGRUeXBlEg4KBmhlYWx0",
             "aBgDIAEoBRITCgt1cGdyYWRlVGltZRgEIAEoBRISCgpyZXBhaXJUaW1lGAUg",
@@ -144,9 +144,9 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp", "Location" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position", "EquipedProps", "EquipedWeapons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Builds", "Time", "Calendar", "Missions", "Player", "Ores", "Pickups" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Idstr", "Seq", "Record" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.OreData), global::Pb.OreData.Parser, new[]{ "Idstr", "Timing", "Health" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PickupData), global::Pb.PickupData.Parser, new[]{ "Id", "Timing" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PickupData), global::Pb.PickupData.Parser, new[]{ "Idstr", "Timing" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Cid", "Btype", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, new[]{ typeof(global::Pb.BuildData.Types.BuildType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Eventid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "Id", "Cid", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
@@ -6443,7 +6443,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MapRecordSave(MapRecordSave other) : this() {
-      idstr_ = other.idstr_;
+      id_ = other.id_;
       seq_ = other.seq_;
       record_ = other.record_;
     }
@@ -6453,14 +6453,14 @@ namespace Pb {
       return new MapRecordSave(this);
     }
 
-    /// <summary>Field number for the "idstr" field.</summary>
-    public const int IdstrFieldNumber = 1;
-    private string idstr_ = "";
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Idstr {
-      get { return idstr_; }
+    public int Id {
+      get { return id_; }
       set {
-        idstr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        id_ = value;
       }
     }
 
@@ -6499,7 +6499,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Idstr != other.Idstr) return false;
+      if (Id != other.Id) return false;
       if (Seq != other.Seq) return false;
       if (Record != other.Record) return false;
       return true;
@@ -6508,7 +6508,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Idstr.Length != 0) hash ^= Idstr.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (Seq != 0) hash ^= Seq.GetHashCode();
       if (Record.Length != 0) hash ^= Record.GetHashCode();
       return hash;
@@ -6521,9 +6521,9 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Idstr.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Idstr);
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
       }
       if (Seq != 0) {
         output.WriteRawTag(16);
@@ -6538,8 +6538,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Idstr.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Idstr);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
       if (Seq != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seq);
@@ -6555,8 +6555,8 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Idstr.Length != 0) {
-        Idstr = other.Idstr;
+      if (other.Id != 0) {
+        Id = other.Id;
       }
       if (other.Seq != 0) {
         Seq = other.Seq;
@@ -6574,8 +6574,8 @@ namespace Pb {
           default:
             input.SkipLastField();
             break;
-          case 10: {
-            Idstr = input.ReadString();
+          case 8: {
+            Id = input.ReadInt32();
             break;
           }
           case 16: {
@@ -6795,7 +6795,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PickupData(PickupData other) : this() {
-      id_ = other.id_;
+      idstr_ = other.idstr_;
       timing_ = other.timing_;
     }
 
@@ -6804,14 +6804,14 @@ namespace Pb {
       return new PickupData(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
+    /// <summary>Field number for the "idstr" field.</summary>
+    public const int IdstrFieldNumber = 1;
+    private string idstr_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
+    public string Idstr {
+      get { return idstr_; }
       set {
-        id_ = value;
+        idstr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -6839,7 +6839,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
+      if (Idstr != other.Idstr) return false;
       if (Timing != other.Timing) return false;
       return true;
     }
@@ -6847,7 +6847,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Idstr.Length != 0) hash ^= Idstr.GetHashCode();
       if (Timing != 0F) hash ^= Timing.GetHashCode();
       return hash;
     }
@@ -6859,9 +6859,9 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Id);
+      if (Idstr.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Idstr);
       }
       if (Timing != 0F) {
         output.WriteRawTag(21);
@@ -6872,8 +6872,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (Idstr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Idstr);
       }
       if (Timing != 0F) {
         size += 1 + 4;
@@ -6886,8 +6886,8 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.Idstr.Length != 0) {
+        Idstr = other.Idstr;
       }
       if (other.Timing != 0F) {
         Timing = other.Timing;
@@ -6902,8 +6902,8 @@ namespace Pb {
           default:
             input.SkipLastField();
             break;
-          case 8: {
-            Id = input.ReadInt32();
+          case 10: {
+            Idstr = input.ReadString();
             break;
           }
           case 21: {
