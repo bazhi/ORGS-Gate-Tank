@@ -43,5 +43,7 @@ _M.SIGQUIT = "_SIGQUIT"
 
 --登录列表
 _M.USERLIST = "_USERLIST"
+--玩家信息
+_M.USER = "_USER:"
 
 return table.readonly(_M)

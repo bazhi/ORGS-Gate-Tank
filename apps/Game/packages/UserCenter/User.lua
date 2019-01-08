@@ -14,6 +14,10 @@ local ngx_now = ngx.now
 local gbc = cc.import("#gbc")
 local Constants = gbc.Constants
 
+local netpack = cc.import("#netpack")
+local net_encode = netpack.encode
+-- local net_decode = netpack.decode
+
 function User:ctor(id)
     self.id = id
 end
@@ -86,6 +90,11 @@ function User:Login(db, instance)
     self:loadUser(db, instance, role:get("id"), role:get("loginTime"), ngx_now())
     role:set("loginTime", ngx_now())
     
+    --设置玩家信息缓存
+    if redis then
+        local data = role:get()
+        redis:set(Constants.USER..self.id, net_encode(data))
+    end
 end
 
 --保存玩家数据

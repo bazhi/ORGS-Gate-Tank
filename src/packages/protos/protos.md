@@ -312,11 +312,13 @@ message MapRecord{
 	repeated TowerData towers = 1; // 塔数据
 	repeated BuildData builds = 2; //建筑数据
 	int64 time = 3; //时间
-	CalendarData calendar = 4; //日历信息
-	repeated CMissionData missions = 5; //任务列表
-	PlayerData player = 6; //角色数据
-	repeated OreData ores = 7;
-	repeated PickupData pickups = 8;
+	int32 autoid = 4; //分配的序号id
+	CalendarData calendar = 5; //日历信息
+	repeated CMissionData missions = 6; //任务列表
+	PlayerData player = 7; //角色数据
+	repeated OreData ores = 8; //矿
+	repeated PickupData pickups = 9; //拾取
+	repeated EnemyData enemys = 10; //敌人
 }
 
 //保存数据命令
@@ -337,6 +339,25 @@ message OreData{
 message PickupData{
 	string idstr = 1;
 	float timing = 2;
+}
+
+//敌人数据
+message EnemyData{
+	int32 id = 1; //敌人id
+	int32 cid = 2; //配置表id
+	int32 health = 3; //剩余血量
+	int32 tid = 4; //目标id
+	Vector position = 5; //位置
+	Vector rotation = 6; // 方向
+	string router = 7; //路径
+	int32 routerIndex = 8; //路径序号
+	string spawner = 9; //产出主体
+}
+
+//游戏世界
+message SpawnerEvent{
+ 	int32 id = 1; //事件id
+ 	int32 count = 2; //怪物剩余数量
 }
 
 //建筑数据
@@ -365,7 +386,8 @@ message BuildData{
 //日历数据
 message CalendarData{
 	int32 minutes = 1; //当前时间进度
-	int32 eventid = 2; //当前事件进度
+	int32 nextwave = 2; //小一波到来的时间id
+	repeated SpawnerEvent events = 3; //事件
 }
 
 //塔数据
@@ -375,7 +397,7 @@ message TowerData{
 	int32 health = 3;
 	int32 upgradeTime = 4;
 	int32 repairTime = 5;
-	Vector Position = 6;
+	Vector position = 6;
 }
 
 //任务数据

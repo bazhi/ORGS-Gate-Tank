@@ -81,30 +81,37 @@ namespace Pb {
             "RGF0YRIdCgd3ZWFwb25zGAQgAygLMgwucGIuSXRlbURhdGESHAoIUG9zaXRp",
             "b24YBSABKAsyCi5wYi5WZWN0b3ISIgoMZXF1aXBlZFByb3BzGAYgAygLMgwu",
             "cGIuSXRlbURhdGESJAoOZXF1aXBlZFdlYXBvbnMYByADKAsyDC5wYi5JdGVt",
-            "RGF0YSL7AQoJTWFwUmVjb3JkEh0KBnRvd2VycxgBIAMoCzINLnBiLlRvd2Vy",
+            "RGF0YSKqAgoJTWFwUmVjb3JkEh0KBnRvd2VycxgBIAMoCzINLnBiLlRvd2Vy",
             "RGF0YRIdCgZidWlsZHMYAiADKAsyDS5wYi5CdWlsZERhdGESDAoEdGltZRgD",
-            "IAEoAxIiCghjYWxlbmRhchgEIAEoCzIQLnBiLkNhbGVuZGFyRGF0YRIiCght",
-            "aXNzaW9ucxgFIAMoCzIQLnBiLkNNaXNzaW9uRGF0YRIeCgZwbGF5ZXIYBiAB",
-            "KAsyDi5wYi5QbGF5ZXJEYXRhEhkKBG9yZXMYByADKAsyCy5wYi5PcmVEYXRh",
-            "Eh8KB3BpY2t1cHMYCCADKAsyDi5wYi5QaWNrdXBEYXRhIjgKDU1hcFJlY29y",
-            "ZFNhdmUSCgoCaWQYASABKAUSCwoDc2VxGAIgASgFEg4KBnJlY29yZBgDIAEo",
-            "DCI4CgdPcmVEYXRhEg0KBWlkc3RyGAEgASgJEg4KBnRpbWluZxgCIAEoAhIO",
-            "CgZoZWFsdGgYAyABKAUiKwoKUGlja3VwRGF0YRINCgVpZHN0chgBIAEoCRIO",
-            "CgZ0aW1pbmcYAiABKAIi1gIKCUJ1aWxkRGF0YRILCgNjaWQYASABKAUSJgoF",
-            "YnR5cGUYAiABKA4yFy5wYi5CdWlsZERhdGEuQnVpbGRUeXBlEg4KBmhlYWx0",
-            "aBgDIAEoBRITCgt1cGdyYWRlVGltZRgEIAEoBRISCgpyZXBhaXJUaW1lGAUg",
-            "ASgFEiUKCmNvbXBvc2l0ZXMYBiADKAsyES5wYi5Db21wb3NpdGVJdGVtEhsK",
-            "BXByb3BzGAcgAygLMgwucGIuSXRlbURhdGESHQoHd2VhcG9ucxgIIAMoCzIM",
-            "LnBiLkl0ZW1EYXRhIngKCUJ1aWxkVHlwZRIICgROb25lEAASBwoDQmVkEAES",
-            "CgoGRHluYW1vEAISDQoJV29ya0JlbmNoEAMSCwoHS2l0Y2hlbhAEEg4KCkxh",
-            "Ym9yYXRvcnkQBRIRCg1NZWRpY2luZUNoZXN0EAYSDQoJV2FyZUhvdXNlEAci",
-            "MAoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASABKAUSDwoHZXZlbnRpZBgC",
-            "IAEoBSJ7CglUb3dlckRhdGESCgoCaWQYASABKAUSCwoDY2lkGAIgASgFEg4K",
-            "BmhlYWx0aBgDIAEoBRITCgt1cGdyYWRlVGltZRgEIAEoBRISCgpyZXBhaXJU",
-            "aW1lGAUgASgFEhwKCFBvc2l0aW9uGAYgASgLMgoucGIuVmVjdG9yIisKDENN",
-            "aXNzaW9uSXRlbRIKCgJpZBgBIAEoBRIPCgdwcm9jZXNzGAIgASgFIk8KDENN",
-            "aXNzaW9uRGF0YRIKCgJpZBgBIAEoBRIeCgRsaXN0GAIgAygLMhAucGIuQ01p",
-            "c3Npb25JdGVtEhMKC3JlZnJlc2hUaW1lGAMgASgFYgZwcm90bzM="));
+            "IAEoAxIOCgZhdXRvaWQYBCABKAUSIgoIY2FsZW5kYXIYBSABKAsyEC5wYi5D",
+            "YWxlbmRhckRhdGESIgoIbWlzc2lvbnMYBiADKAsyEC5wYi5DTWlzc2lvbkRh",
+            "dGESHgoGcGxheWVyGAcgASgLMg4ucGIuUGxheWVyRGF0YRIZCgRvcmVzGAgg",
+            "AygLMgsucGIuT3JlRGF0YRIfCgdwaWNrdXBzGAkgAygLMg4ucGIuUGlja3Vw",
+            "RGF0YRIdCgZlbmVteXMYCiADKAsyDS5wYi5FbmVteURhdGEiOAoNTWFwUmVj",
+            "b3JkU2F2ZRIKCgJpZBgBIAEoBRILCgNzZXEYAiABKAUSDgoGcmVjb3JkGAMg",
+            "ASgMIjgKB09yZURhdGESDQoFaWRzdHIYASABKAkSDgoGdGltaW5nGAIgASgC",
+            "Eg4KBmhlYWx0aBgDIAEoBSIrCgpQaWNrdXBEYXRhEg0KBWlkc3RyGAEgASgJ",
+            "Eg4KBnRpbWluZxgCIAEoAiKzAQoJRW5lbXlEYXRhEgoKAmlkGAEgASgFEgsK",
+            "A2NpZBgCIAEoBRIOCgZoZWFsdGgYAyABKAUSCwoDdGlkGAQgASgFEhwKCHBv",
+            "c2l0aW9uGAUgASgLMgoucGIuVmVjdG9yEhwKCHJvdGF0aW9uGAYgASgLMgou",
+            "cGIuVmVjdG9yEg4KBnJvdXRlchgHIAEoCRITCgtyb3V0ZXJJbmRleBgIIAEo",
+            "BRIPCgdzcGF3bmVyGAkgASgJIikKDFNwYXduZXJFdmVudBIKCgJpZBgBIAEo",
+            "BRINCgVjb3VudBgCIAEoBSLWAgoJQnVpbGREYXRhEgsKA2NpZBgBIAEoBRIm",
+            "CgVidHlwZRgCIAEoDjIXLnBiLkJ1aWxkRGF0YS5CdWlsZFR5cGUSDgoGaGVh",
+            "bHRoGAMgASgFEhMKC3VwZ3JhZGVUaW1lGAQgASgFEhIKCnJlcGFpclRpbWUY",
+            "BSABKAUSJQoKY29tcG9zaXRlcxgGIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0S",
+            "GwoFcHJvcHMYByADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAggAygL",
+            "MgwucGIuSXRlbURhdGEieAoJQnVpbGRUeXBlEggKBE5vbmUQABIHCgNCZWQQ",
+            "ARIKCgZEeW5hbW8QAhINCglXb3JrQmVuY2gQAxILCgdLaXRjaGVuEAQSDgoK",
+            "TGFib3JhdG9yeRAFEhEKDU1lZGljaW5lQ2hlc3QQBhINCglXYXJlSG91c2UQ",
+            "ByJTCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBRIQCghuZXh0d2F2",
+            "ZRgCIAEoBRIgCgZldmVudHMYAyADKAsyEC5wYi5TcGF3bmVyRXZlbnQiewoJ",
+            "VG93ZXJEYXRhEgoKAmlkGAEgASgFEgsKA2NpZBgCIAEoBRIOCgZoZWFsdGgY",
+            "AyABKAUSEwoLdXBncmFkZVRpbWUYBCABKAUSEgoKcmVwYWlyVGltZRgFIAEo",
+            "BRIcCghwb3NpdGlvbhgGIAEoCzIKLnBiLlZlY3RvciIrCgxDTWlzc2lvbkl0",
+            "ZW0SCgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJPCgxDTWlzc2lvbkRh",
+            "dGESCgoCaWQYASABKAUSHgoEbGlzdBgCIAMoCzIQLnBiLkNNaXNzaW9uSXRl",
+            "bRITCgtyZWZyZXNoVGltZRgDIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -143,12 +150,14 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CompositeItem), global::Pb.CompositeItem.Parser, new[]{ "Id", "TimeEnd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.ItemData), global::Pb.ItemData.Parser, new[]{ "Id", "Count", "Hp", "Location" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PlayerData), global::Pb.PlayerData.Parser, new[]{ "Health", "Stamina", "Props", "Weapons", "Position", "EquipedProps", "EquipedWeapons" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Builds", "Time", "Calendar", "Missions", "Player", "Ores", "Pickups" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecord), global::Pb.MapRecord.Parser, new[]{ "Towers", "Builds", "Time", "Autoid", "Calendar", "Missions", "Player", "Ores", "Pickups", "Enemys" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.MapRecordSave), global::Pb.MapRecordSave.Parser, new[]{ "Id", "Seq", "Record" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.OreData), global::Pb.OreData.Parser, new[]{ "Idstr", "Timing", "Health" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.PickupData), global::Pb.PickupData.Parser, new[]{ "Idstr", "Timing" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.EnemyData), global::Pb.EnemyData.Parser, new[]{ "Id", "Cid", "Health", "Tid", "Position", "Rotation", "Router", "RouterIndex", "Spawner" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SpawnerEvent), global::Pb.SpawnerEvent.Parser, new[]{ "Id", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Cid", "Btype", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, new[]{ typeof(global::Pb.BuildData.Types.BuildType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Eventid" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Nextwave", "Events" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "Id", "Cid", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionItem), global::Pb.CMissionItem.Parser, new[]{ "Id", "Process" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionData), global::Pb.CMissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null)
@@ -6140,11 +6149,13 @@ namespace Pb {
       towers_ = other.towers_.Clone();
       builds_ = other.builds_.Clone();
       time_ = other.time_;
+      autoid_ = other.autoid_;
       Calendar = other.calendar_ != null ? other.Calendar.Clone() : null;
       missions_ = other.missions_.Clone();
       Player = other.player_ != null ? other.Player.Clone() : null;
       ores_ = other.ores_.Clone();
       pickups_ = other.pickups_.Clone();
+      enemys_ = other.enemys_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6192,8 +6203,22 @@ namespace Pb {
       }
     }
 
+    /// <summary>Field number for the "autoid" field.</summary>
+    public const int AutoidFieldNumber = 4;
+    private int autoid_;
+    /// <summary>
+    /// 分配的序号id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Autoid {
+      get { return autoid_; }
+      set {
+        autoid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "calendar" field.</summary>
-    public const int CalendarFieldNumber = 4;
+    public const int CalendarFieldNumber = 5;
     private global::Pb.CalendarData calendar_;
     /// <summary>
     /// 日历信息
@@ -6207,9 +6232,9 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "missions" field.</summary>
-    public const int MissionsFieldNumber = 5;
+    public const int MissionsFieldNumber = 6;
     private static readonly pb::FieldCodec<global::Pb.CMissionData> _repeated_missions_codec
-        = pb::FieldCodec.ForMessage(42, global::Pb.CMissionData.Parser);
+        = pb::FieldCodec.ForMessage(50, global::Pb.CMissionData.Parser);
     private readonly pbc::RepeatedField<global::Pb.CMissionData> missions_ = new pbc::RepeatedField<global::Pb.CMissionData>();
     /// <summary>
     /// 任务列表
@@ -6220,7 +6245,7 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "player" field.</summary>
-    public const int PlayerFieldNumber = 6;
+    public const int PlayerFieldNumber = 7;
     private global::Pb.PlayerData player_;
     /// <summary>
     /// 角色数据
@@ -6234,23 +6259,42 @@ namespace Pb {
     }
 
     /// <summary>Field number for the "ores" field.</summary>
-    public const int OresFieldNumber = 7;
+    public const int OresFieldNumber = 8;
     private static readonly pb::FieldCodec<global::Pb.OreData> _repeated_ores_codec
-        = pb::FieldCodec.ForMessage(58, global::Pb.OreData.Parser);
+        = pb::FieldCodec.ForMessage(66, global::Pb.OreData.Parser);
     private readonly pbc::RepeatedField<global::Pb.OreData> ores_ = new pbc::RepeatedField<global::Pb.OreData>();
+    /// <summary>
+    /// 矿
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Pb.OreData> Ores {
       get { return ores_; }
     }
 
     /// <summary>Field number for the "pickups" field.</summary>
-    public const int PickupsFieldNumber = 8;
+    public const int PickupsFieldNumber = 9;
     private static readonly pb::FieldCodec<global::Pb.PickupData> _repeated_pickups_codec
-        = pb::FieldCodec.ForMessage(66, global::Pb.PickupData.Parser);
+        = pb::FieldCodec.ForMessage(74, global::Pb.PickupData.Parser);
     private readonly pbc::RepeatedField<global::Pb.PickupData> pickups_ = new pbc::RepeatedField<global::Pb.PickupData>();
+    /// <summary>
+    /// 拾取
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Pb.PickupData> Pickups {
       get { return pickups_; }
+    }
+
+    /// <summary>Field number for the "enemys" field.</summary>
+    public const int EnemysFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::Pb.EnemyData> _repeated_enemys_codec
+        = pb::FieldCodec.ForMessage(82, global::Pb.EnemyData.Parser);
+    private readonly pbc::RepeatedField<global::Pb.EnemyData> enemys_ = new pbc::RepeatedField<global::Pb.EnemyData>();
+    /// <summary>
+    /// 敌人
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.EnemyData> Enemys {
+      get { return enemys_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6269,11 +6313,13 @@ namespace Pb {
       if(!towers_.Equals(other.towers_)) return false;
       if(!builds_.Equals(other.builds_)) return false;
       if (Time != other.Time) return false;
+      if (Autoid != other.Autoid) return false;
       if (!object.Equals(Calendar, other.Calendar)) return false;
       if(!missions_.Equals(other.missions_)) return false;
       if (!object.Equals(Player, other.Player)) return false;
       if(!ores_.Equals(other.ores_)) return false;
       if(!pickups_.Equals(other.pickups_)) return false;
+      if(!enemys_.Equals(other.enemys_)) return false;
       return true;
     }
 
@@ -6283,11 +6329,13 @@ namespace Pb {
       hash ^= towers_.GetHashCode();
       hash ^= builds_.GetHashCode();
       if (Time != 0L) hash ^= Time.GetHashCode();
+      if (Autoid != 0) hash ^= Autoid.GetHashCode();
       if (calendar_ != null) hash ^= Calendar.GetHashCode();
       hash ^= missions_.GetHashCode();
       if (player_ != null) hash ^= Player.GetHashCode();
       hash ^= ores_.GetHashCode();
       hash ^= pickups_.GetHashCode();
+      hash ^= enemys_.GetHashCode();
       return hash;
     }
 
@@ -6304,17 +6352,22 @@ namespace Pb {
         output.WriteRawTag(24);
         output.WriteInt64(Time);
       }
+      if (Autoid != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Autoid);
+      }
       if (calendar_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(Calendar);
       }
       missions_.WriteTo(output, _repeated_missions_codec);
       if (player_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Player);
       }
       ores_.WriteTo(output, _repeated_ores_codec);
       pickups_.WriteTo(output, _repeated_pickups_codec);
+      enemys_.WriteTo(output, _repeated_enemys_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6325,6 +6378,9 @@ namespace Pb {
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
+      if (Autoid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Autoid);
+      }
       if (calendar_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Calendar);
       }
@@ -6334,6 +6390,7 @@ namespace Pb {
       }
       size += ores_.CalculateSize(_repeated_ores_codec);
       size += pickups_.CalculateSize(_repeated_pickups_codec);
+      size += enemys_.CalculateSize(_repeated_enemys_codec);
       return size;
     }
 
@@ -6346,6 +6403,9 @@ namespace Pb {
       builds_.Add(other.builds_);
       if (other.Time != 0L) {
         Time = other.Time;
+      }
+      if (other.Autoid != 0) {
+        Autoid = other.Autoid;
       }
       if (other.calendar_ != null) {
         if (calendar_ == null) {
@@ -6362,6 +6422,7 @@ namespace Pb {
       }
       ores_.Add(other.ores_);
       pickups_.Add(other.pickups_);
+      enemys_.Add(other.enemys_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6384,30 +6445,38 @@ namespace Pb {
             Time = input.ReadInt64();
             break;
           }
-          case 34: {
+          case 32: {
+            Autoid = input.ReadInt32();
+            break;
+          }
+          case 42: {
             if (calendar_ == null) {
               calendar_ = new global::Pb.CalendarData();
             }
             input.ReadMessage(calendar_);
             break;
           }
-          case 42: {
+          case 50: {
             missions_.AddEntriesFrom(input, _repeated_missions_codec);
             break;
           }
-          case 50: {
+          case 58: {
             if (player_ == null) {
               player_ = new global::Pb.PlayerData();
             }
             input.ReadMessage(player_);
             break;
           }
-          case 58: {
+          case 66: {
             ores_.AddEntriesFrom(input, _repeated_ores_codec);
             break;
           }
-          case 66: {
+          case 74: {
             pickups_.AddEntriesFrom(input, _repeated_pickups_codec);
+            break;
+          }
+          case 82: {
+            enemys_.AddEntriesFrom(input, _repeated_enemys_codec);
             break;
           }
         }
@@ -6917,6 +6986,543 @@ namespace Pb {
   }
 
   /// <summary>
+  /// 敌人数据
+  /// </summary>
+  public sealed partial class EnemyData : pb::IMessage<EnemyData> {
+    private static readonly pb::MessageParser<EnemyData> _parser = new pb::MessageParser<EnemyData>(() => new EnemyData());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<EnemyData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EnemyData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EnemyData(EnemyData other) : this() {
+      id_ = other.id_;
+      cid_ = other.cid_;
+      health_ = other.health_;
+      tid_ = other.tid_;
+      Position = other.position_ != null ? other.Position.Clone() : null;
+      Rotation = other.rotation_ != null ? other.Rotation.Clone() : null;
+      router_ = other.router_;
+      routerIndex_ = other.routerIndex_;
+      spawner_ = other.spawner_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EnemyData Clone() {
+      return new EnemyData(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    /// <summary>
+    /// 敌人id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cid" field.</summary>
+    public const int CidFieldNumber = 2;
+    private int cid_;
+    /// <summary>
+    /// 配置表id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Cid {
+      get { return cid_; }
+      set {
+        cid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "health" field.</summary>
+    public const int HealthFieldNumber = 3;
+    private int health_;
+    /// <summary>
+    /// 剩余血量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Health {
+      get { return health_; }
+      set {
+        health_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tid" field.</summary>
+    public const int TidFieldNumber = 4;
+    private int tid_;
+    /// <summary>
+    /// 目标id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Tid {
+      get { return tid_; }
+      set {
+        tid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "position" field.</summary>
+    public const int PositionFieldNumber = 5;
+    private global::Pb.Vector position_;
+    /// <summary>
+    /// 位置
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.Vector Position {
+      get { return position_; }
+      set {
+        position_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rotation" field.</summary>
+    public const int RotationFieldNumber = 6;
+    private global::Pb.Vector rotation_;
+    /// <summary>
+    ///  方向
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pb.Vector Rotation {
+      get { return rotation_; }
+      set {
+        rotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "router" field.</summary>
+    public const int RouterFieldNumber = 7;
+    private string router_ = "";
+    /// <summary>
+    /// 路径
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Router {
+      get { return router_; }
+      set {
+        router_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "routerIndex" field.</summary>
+    public const int RouterIndexFieldNumber = 8;
+    private int routerIndex_;
+    /// <summary>
+    /// 路径序号
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RouterIndex {
+      get { return routerIndex_; }
+      set {
+        routerIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "spawner" field.</summary>
+    public const int SpawnerFieldNumber = 9;
+    private string spawner_ = "";
+    /// <summary>
+    /// 产出主体
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Spawner {
+      get { return spawner_; }
+      set {
+        spawner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as EnemyData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(EnemyData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Cid != other.Cid) return false;
+      if (Health != other.Health) return false;
+      if (Tid != other.Tid) return false;
+      if (!object.Equals(Position, other.Position)) return false;
+      if (!object.Equals(Rotation, other.Rotation)) return false;
+      if (Router != other.Router) return false;
+      if (RouterIndex != other.RouterIndex) return false;
+      if (Spawner != other.Spawner) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Cid != 0) hash ^= Cid.GetHashCode();
+      if (Health != 0) hash ^= Health.GetHashCode();
+      if (Tid != 0) hash ^= Tid.GetHashCode();
+      if (position_ != null) hash ^= Position.GetHashCode();
+      if (rotation_ != null) hash ^= Rotation.GetHashCode();
+      if (Router.Length != 0) hash ^= Router.GetHashCode();
+      if (RouterIndex != 0) hash ^= RouterIndex.GetHashCode();
+      if (Spawner.Length != 0) hash ^= Spawner.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Cid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Cid);
+      }
+      if (Health != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Health);
+      }
+      if (Tid != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Tid);
+      }
+      if (position_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Position);
+      }
+      if (rotation_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Rotation);
+      }
+      if (Router.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Router);
+      }
+      if (RouterIndex != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(RouterIndex);
+      }
+      if (Spawner.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(Spawner);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Cid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Cid);
+      }
+      if (Health != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Health);
+      }
+      if (Tid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tid);
+      }
+      if (position_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
+      }
+      if (rotation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rotation);
+      }
+      if (Router.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Router);
+      }
+      if (RouterIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RouterIndex);
+      }
+      if (Spawner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Spawner);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(EnemyData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Cid != 0) {
+        Cid = other.Cid;
+      }
+      if (other.Health != 0) {
+        Health = other.Health;
+      }
+      if (other.Tid != 0) {
+        Tid = other.Tid;
+      }
+      if (other.position_ != null) {
+        if (position_ == null) {
+          position_ = new global::Pb.Vector();
+        }
+        Position.MergeFrom(other.Position);
+      }
+      if (other.rotation_ != null) {
+        if (rotation_ == null) {
+          rotation_ = new global::Pb.Vector();
+        }
+        Rotation.MergeFrom(other.Rotation);
+      }
+      if (other.Router.Length != 0) {
+        Router = other.Router;
+      }
+      if (other.RouterIndex != 0) {
+        RouterIndex = other.RouterIndex;
+      }
+      if (other.Spawner.Length != 0) {
+        Spawner = other.Spawner;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Cid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Health = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            Tid = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            if (position_ == null) {
+              position_ = new global::Pb.Vector();
+            }
+            input.ReadMessage(position_);
+            break;
+          }
+          case 50: {
+            if (rotation_ == null) {
+              rotation_ = new global::Pb.Vector();
+            }
+            input.ReadMessage(rotation_);
+            break;
+          }
+          case 58: {
+            Router = input.ReadString();
+            break;
+          }
+          case 64: {
+            RouterIndex = input.ReadInt32();
+            break;
+          }
+          case 74: {
+            Spawner = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 游戏世界
+  /// </summary>
+  public sealed partial class SpawnerEvent : pb::IMessage<SpawnerEvent> {
+    private static readonly pb::MessageParser<SpawnerEvent> _parser = new pb::MessageParser<SpawnerEvent>(() => new SpawnerEvent());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SpawnerEvent> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpawnerEvent() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpawnerEvent(SpawnerEvent other) : this() {
+      id_ = other.id_;
+      count_ = other.count_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpawnerEvent Clone() {
+      return new SpawnerEvent(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    /// <summary>
+    /// 事件id
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 2;
+    private int count_;
+    /// <summary>
+    /// 怪物剩余数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SpawnerEvent);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SpawnerEvent other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Count != other.Count) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Count);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SpawnerEvent other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Count = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
   /// 建筑数据
   /// </summary>
   public sealed partial class BuildData : pb::IMessage<BuildData> {
@@ -6926,7 +7532,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7263,7 +7869,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[40]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7281,7 +7887,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CalendarData(CalendarData other) : this() {
       minutes_ = other.minutes_;
-      eventid_ = other.eventid_;
+      nextwave_ = other.nextwave_;
+      events_ = other.events_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7303,18 +7910,31 @@ namespace Pb {
       }
     }
 
-    /// <summary>Field number for the "eventid" field.</summary>
-    public const int EventidFieldNumber = 2;
-    private int eventid_;
+    /// <summary>Field number for the "nextwave" field.</summary>
+    public const int NextwaveFieldNumber = 2;
+    private int nextwave_;
     /// <summary>
-    /// 当前事件进度
+    /// 小一波到来的时间id
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Eventid {
-      get { return eventid_; }
+    public int Nextwave {
+      get { return nextwave_; }
       set {
-        eventid_ = value;
+        nextwave_ = value;
       }
+    }
+
+    /// <summary>Field number for the "events" field.</summary>
+    public const int EventsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Pb.SpawnerEvent> _repeated_events_codec
+        = pb::FieldCodec.ForMessage(26, global::Pb.SpawnerEvent.Parser);
+    private readonly pbc::RepeatedField<global::Pb.SpawnerEvent> events_ = new pbc::RepeatedField<global::Pb.SpawnerEvent>();
+    /// <summary>
+    /// 事件
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pb.SpawnerEvent> Events {
+      get { return events_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7331,7 +7951,8 @@ namespace Pb {
         return true;
       }
       if (Minutes != other.Minutes) return false;
-      if (Eventid != other.Eventid) return false;
+      if (Nextwave != other.Nextwave) return false;
+      if(!events_.Equals(other.events_)) return false;
       return true;
     }
 
@@ -7339,7 +7960,8 @@ namespace Pb {
     public override int GetHashCode() {
       int hash = 1;
       if (Minutes != 0) hash ^= Minutes.GetHashCode();
-      if (Eventid != 0) hash ^= Eventid.GetHashCode();
+      if (Nextwave != 0) hash ^= Nextwave.GetHashCode();
+      hash ^= events_.GetHashCode();
       return hash;
     }
 
@@ -7354,10 +7976,11 @@ namespace Pb {
         output.WriteRawTag(8);
         output.WriteInt32(Minutes);
       }
-      if (Eventid != 0) {
+      if (Nextwave != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Eventid);
+        output.WriteInt32(Nextwave);
       }
+      events_.WriteTo(output, _repeated_events_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7366,9 +7989,10 @@ namespace Pb {
       if (Minutes != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Minutes);
       }
-      if (Eventid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Eventid);
+      if (Nextwave != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Nextwave);
       }
+      size += events_.CalculateSize(_repeated_events_codec);
       return size;
     }
 
@@ -7380,9 +8004,10 @@ namespace Pb {
       if (other.Minutes != 0) {
         Minutes = other.Minutes;
       }
-      if (other.Eventid != 0) {
-        Eventid = other.Eventid;
+      if (other.Nextwave != 0) {
+        Nextwave = other.Nextwave;
       }
+      events_.Add(other.events_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7398,7 +8023,11 @@ namespace Pb {
             break;
           }
           case 16: {
-            Eventid = input.ReadInt32();
+            Nextwave = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            events_.AddEntriesFrom(input, _repeated_events_codec);
             break;
           }
         }
@@ -7417,7 +8046,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[41]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7505,7 +8134,7 @@ namespace Pb {
       }
     }
 
-    /// <summary>Field number for the "Position" field.</summary>
+    /// <summary>Field number for the "position" field.</summary>
     public const int PositionFieldNumber = 6;
     private global::Pb.Vector position_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7686,7 +8315,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[42]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[44]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7834,7 +8463,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[43]; }
+      get { return global::Pb.CommandReflection.Descriptor.MessageTypes[45]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
