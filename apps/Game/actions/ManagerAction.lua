@@ -20,7 +20,7 @@ function ManagerAction:ulistAction(arg, redis)
     if page <= 0 then
         page = 1
     end
-    local list = redis:zrange(Constants.USERLIST, pageCount * (page - 1), pageCount * page - 1)
+    local list = redis:zrevrange(Constants.USERLIST, pageCount * (page - 1), pageCount * page - 1)
     local result = {}
     for _, id in ipairs(list) do
         table.insert(result, net_decode(redis:get(Constants.USER..id)))
