@@ -1,3 +1,4 @@
+
 var GameApp = function (apphtml) {
     var self = this;
     self._apphtml  = apphtml;
@@ -22,7 +23,7 @@ GameApp.prototype.init = function() {
 
 function fmtDate(obj){
     var date =  new Date(obj*1000);
-    return date.toLocaleDateString() + " " +date.toLocaleTimeString();
+    return date.Format("yyyy-MM-dd hh:mm:ss");
 }
 
 GameApp.prototype.updateTable = function(list){
