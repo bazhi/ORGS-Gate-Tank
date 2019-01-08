@@ -20,7 +20,12 @@ function ManagerAction:ulistAction(arg, redis)
     if page <= 0 then
         page = 1
     end
-    return redis:zrange(Constants.USERLIST, pageCount * (page - 1), pageCount * page - 1, "WITHSCORES")
+    local list = redis:zrange(Constants.USERLIST, pageCount * (page - 1), pageCount * page - 1)
+    local result = {}
+    for _, id in ipairs(list) do
+        table.insert(result, net_decode(redis:get(Constants.USER..id)))
+    end
+    return result
 end
 
 function ManagerAction:ucountAction(_arg, redis)
