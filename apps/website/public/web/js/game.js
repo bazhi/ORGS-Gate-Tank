@@ -36,12 +36,16 @@ GameApp.prototype.updateTable = function(list){
 	for (var i = 0; i < list.length; i++) {
         var info = list[i]
 		var rowItem = '<tr>'
+        var time = Math.floor(new Date().getTime()/1000) - info.loginTime
+        var h = Math.floor(time/3600)
+        var m = Math.floor(time%3600/60)
         rowItem += '<td>'+info.pid+'</td>' ;
         rowItem += '<td>'+info.nickname+'</td>' ;
 		rowItem +='<td>'+fmtDate(info.loginTime)+'</td>';
         rowItem +='<td>'+fmtDate(info.createTime)+'</td>';
         rowItem += '<td>'+info.diamond+'</td>' ;
         rowItem += '<td>'+info.techPoint+'</td>' ;
+        rowItem += '<td>'+ h + '时  ' + m +'分</td>' ;
         rowItem += '</tr>'
 		tab.append(rowItem);
 	}
