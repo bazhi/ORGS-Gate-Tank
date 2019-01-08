@@ -8,8 +8,19 @@ local net_decode = netpack.decode
 
 ManagerAction.ACCEPTED_REQUEST_TYPE = "http"
 
-function ManagerAction:ulistAction(_arg, redis)
-    return redis:zrange(Constants.USERLIST, 0, -1, "WITHSCORES")
+local pageCount = 10
+
+function ManagerAction:ulistAction(arg, redis)
+    local page = arg.page
+    if page then
+        page = tonumber(page)
+    else
+        page = 1
+    end
+    if page <= 0 then
+        page = 1
+    end
+    return redis:zrange(Constants.USERLIST, pageCount * (page - 1), pageCount * page - 1, "WITHSCORES")
 end
 
 function ManagerAction:ucountAction(_arg, redis)
