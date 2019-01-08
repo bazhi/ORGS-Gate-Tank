@@ -36,7 +36,7 @@ GameApp.prototype.updateTable = function(list){
 		var rowItem = '<tr>'
         rowItem += '<td>'+list[i]+'</td>' ;
 		rowItem +='<td>'+fmtDate(list[i+1])+'</td>';
-        rowItem += '<tr>'
+        rowItem += '</tr>'
 		tab.append(rowItem);
 	}
 }
