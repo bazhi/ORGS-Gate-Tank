@@ -33,8 +33,10 @@ GameApp.prototype.updateTable = function(list){
 	}
 
 	for (var i = 0; i < list.length; i+=2) {
-		var rowItem = '<td>'+list[i]+'</td>' ;
+		var rowItem = '<tr>'
+        rowItem += '<td>'+list[i]+'</td>' ;
 		rowItem +='<td>'+fmtDate(list[i+1])+'</td>';
+        rowItem += '<tr>'
 		tab.append(rowItem);
 	}
 }
