@@ -7032,7 +7032,7 @@ namespace Pb {
     public const int IdFieldNumber = 1;
     private int id_;
     /// <summary>
-    /// 敌人id
+    /// 角色id
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Id {

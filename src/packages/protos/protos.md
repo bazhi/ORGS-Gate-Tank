@@ -343,7 +343,7 @@ message PickupData{
 
 //敌人数据
 message EnemyData{
-	int32 id = 1; //敌人id
+	int32 id = 1; //角色id
 	int32 cid = 2; //配置表id
 	int32 health = 3; //剩余血量
 	int32 tid = 4; //目标id
