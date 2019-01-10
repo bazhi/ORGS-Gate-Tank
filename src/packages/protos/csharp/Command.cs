@@ -96,22 +96,22 @@ namespace Pb {
             "c2l0aW9uGAUgASgLMgoucGIuVmVjdG9yEhwKCHJvdGF0aW9uGAYgASgLMgou",
             "cGIuVmVjdG9yEg4KBnJvdXRlchgHIAEoCRITCgtyb3V0ZXJJbmRleBgIIAEo",
             "BRIPCgdzcGF3bmVyGAkgASgJIikKDFNwYXduZXJFdmVudBIKCgJpZBgBIAEo",
-            "BRINCgVjb3VudBgCIAEoBSLWAgoJQnVpbGREYXRhEgsKA2NpZBgBIAEoBRIm",
+            "BRINCgVjb3VudBgCIAEoBSLjAgoJQnVpbGREYXRhEgsKA2NpZBgBIAEoBRIm",
             "CgVidHlwZRgCIAEoDjIXLnBiLkJ1aWxkRGF0YS5CdWlsZFR5cGUSDgoGaGVh",
             "bHRoGAMgASgFEhMKC3VwZ3JhZGVUaW1lGAQgASgFEhIKCnJlcGFpclRpbWUY",
             "BSABKAUSJQoKY29tcG9zaXRlcxgGIAMoCzIRLnBiLkNvbXBvc2l0ZUl0ZW0S",
             "GwoFcHJvcHMYByADKAsyDC5wYi5JdGVtRGF0YRIdCgd3ZWFwb25zGAggAygL",
-            "MgwucGIuSXRlbURhdGEieAoJQnVpbGRUeXBlEggKBE5vbmUQABIHCgNCZWQQ",
-            "ARIKCgZEeW5hbW8QAhINCglXb3JrQmVuY2gQAxILCgdLaXRjaGVuEAQSDgoK",
-            "TGFib3JhdG9yeRAFEhEKDU1lZGljaW5lQ2hlc3QQBhINCglXYXJlSG91c2UQ",
-            "ByJTCgxDYWxlbmRhckRhdGESDwoHbWludXRlcxgBIAEoBRIQCghuZXh0d2F2",
-            "ZRgCIAEoBRIgCgZldmVudHMYAyADKAsyEC5wYi5TcGF3bmVyRXZlbnQiewoJ",
-            "VG93ZXJEYXRhEgoKAmlkGAEgASgFEgsKA2NpZBgCIAEoBRIOCgZoZWFsdGgY",
-            "AyABKAUSEwoLdXBncmFkZVRpbWUYBCABKAUSEgoKcmVwYWlyVGltZRgFIAEo",
-            "BRIcCghwb3NpdGlvbhgGIAEoCzIKLnBiLlZlY3RvciIrCgxDTWlzc2lvbkl0",
-            "ZW0SCgoCaWQYASABKAUSDwoHcHJvY2VzcxgCIAEoBSJPCgxDTWlzc2lvbkRh",
-            "dGESCgoCaWQYASABKAUSHgoEbGlzdBgCIAMoCzIQLnBiLkNNaXNzaW9uSXRl",
-            "bRITCgtyZWZyZXNoVGltZRgDIAEoBWIGcHJvdG8z"));
+            "MgwucGIuSXRlbURhdGEihAEKCUJ1aWxkVHlwZRIICgROb25lEAASBwoDQmVk",
+            "EAESCgoGRHluYW1vEAISDQoJV29ya0JlbmNoEAMSCwoHS2l0Y2hlbhAEEg4K",
+            "CkxhYm9yYXRvcnkQBRIRCg1NZWRpY2luZUNoZXN0EAYSDQoJV2FyZUhvdXNl",
+            "EAcSCgoGQ29wdGVyEAgiUwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASAB",
+            "KAUSEAoIbmV4dHdhdmUYAiABKAUSIAoGZXZlbnRzGAMgAygLMhAucGIuU3Bh",
+            "d25lckV2ZW50InsKCVRvd2VyRGF0YRIKCgJpZBgBIAEoBRILCgNjaWQYAiAB",
+            "KAUSDgoGaGVhbHRoGAMgASgFEhMKC3VwZ3JhZGVUaW1lGAQgASgFEhIKCnJl",
+            "cGFpclRpbWUYBSABKAUSHAoIcG9zaXRpb24YBiABKAsyCi5wYi5WZWN0b3Ii",
+            "KwoMQ01pc3Npb25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUi",
+            "TwoMQ01pc3Npb25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QYAiADKAsyEC5w",
+            "Yi5DTWlzc2lvbkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -7852,6 +7852,10 @@ namespace Pb {
         /// 仓库
         /// </summary>
         [pbr::OriginalName("WareHouse")] WareHouse = 7,
+        /// <summary>
+        ///  直升机
+        /// </summary>
+        [pbr::OriginalName("Copter")] Copter = 8,
       }
 
     }

@@ -58,6 +58,7 @@ local _M = {
 			Laboratory = 5,
 			MedicineChest = 6,
 			WareHouse = 7,
+			Copter = 8,
 		},
 	},
 }

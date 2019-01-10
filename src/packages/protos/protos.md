@@ -371,6 +371,7 @@ message BuildData{
 		Laboratory = 5; //实验室
 		MedicineChest = 6; //药箱
 		WareHouse = 7; //仓库
+		Copter = 8; // 直升机
 	}
 
 	int32 cid = 1;
