@@ -383,7 +383,7 @@ message BuildData{
 
 //日历数据
 message CalendarData{
-	int32 minutes = 1; //当前时间进度
+	int32 time = 1; //当前时间进度
 	int32 nextwave = 2; //小一波到来的时间id
 	repeated SpawnerEvent events = 3; //事件
 }

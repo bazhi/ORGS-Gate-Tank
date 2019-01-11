@@ -104,14 +104,14 @@ namespace Pb {
             "MgwucGIuSXRlbURhdGEihAEKCUJ1aWxkVHlwZRIICgROb25lEAASBwoDQmVk",
             "EAESCgoGRHluYW1vEAISDQoJV29ya0JlbmNoEAMSCwoHS2l0Y2hlbhAEEg4K",
             "CkxhYm9yYXRvcnkQBRIRCg1NZWRpY2luZUNoZXN0EAYSDQoJV2FyZUhvdXNl",
-            "EAcSCgoGQ29wdGVyEAgiUwoMQ2FsZW5kYXJEYXRhEg8KB21pbnV0ZXMYASAB",
-            "KAUSEAoIbmV4dHdhdmUYAiABKAUSIAoGZXZlbnRzGAMgAygLMhAucGIuU3Bh",
-            "d25lckV2ZW50InsKCVRvd2VyRGF0YRIKCgJpZBgBIAEoBRILCgNjaWQYAiAB",
-            "KAUSDgoGaGVhbHRoGAMgASgFEhMKC3VwZ3JhZGVUaW1lGAQgASgFEhIKCnJl",
-            "cGFpclRpbWUYBSABKAUSHAoIcG9zaXRpb24YBiABKAsyCi5wYi5WZWN0b3Ii",
-            "KwoMQ01pc3Npb25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUi",
-            "TwoMQ01pc3Npb25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QYAiADKAsyEC5w",
-            "Yi5DTWlzc2lvbkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAViBnByb3RvMw=="));
+            "EAcSCgoGQ29wdGVyEAgiUAoMQ2FsZW5kYXJEYXRhEgwKBHRpbWUYASABKAUS",
+            "EAoIbmV4dHdhdmUYAiABKAUSIAoGZXZlbnRzGAMgAygLMhAucGIuU3Bhd25l",
+            "ckV2ZW50InsKCVRvd2VyRGF0YRIKCgJpZBgBIAEoBRILCgNjaWQYAiABKAUS",
+            "DgoGaGVhbHRoGAMgASgFEhMKC3VwZ3JhZGVUaW1lGAQgASgFEhIKCnJlcGFp",
+            "clRpbWUYBSABKAUSHAoIcG9zaXRpb24YBiABKAsyCi5wYi5WZWN0b3IiKwoM",
+            "Q01pc3Npb25JdGVtEgoKAmlkGAEgASgFEg8KB3Byb2Nlc3MYAiABKAUiTwoM",
+            "Q01pc3Npb25EYXRhEgoKAmlkGAEgASgFEh4KBGxpc3QYAiADKAsyEC5wYi5D",
+            "TWlzc2lvbkl0ZW0SEwoLcmVmcmVzaFRpbWUYAyABKAViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -157,7 +157,7 @@ namespace Pb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.EnemyData), global::Pb.EnemyData.Parser, new[]{ "Id", "Cid", "Health", "Tid", "Position", "Rotation", "Router", "RouterIndex", "Spawner" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.SpawnerEvent), global::Pb.SpawnerEvent.Parser, new[]{ "Id", "Count" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.BuildData), global::Pb.BuildData.Parser, new[]{ "Cid", "Btype", "Health", "UpgradeTime", "RepairTime", "Composites", "Props", "Weapons" }, null, new[]{ typeof(global::Pb.BuildData.Types.BuildType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Minutes", "Nextwave", "Events" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CalendarData), global::Pb.CalendarData.Parser, new[]{ "Time", "Nextwave", "Events" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.TowerData), global::Pb.TowerData.Parser, new[]{ "Id", "Cid", "Health", "UpgradeTime", "RepairTime", "Position" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionItem), global::Pb.CMissionItem.Parser, new[]{ "Id", "Process" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pb.CMissionData), global::Pb.CMissionData.Parser, new[]{ "Id", "List", "RefreshTime" }, null, null, null)
@@ -7890,7 +7890,7 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CalendarData(CalendarData other) : this() {
-      minutes_ = other.minutes_;
+      time_ = other.time_;
       nextwave_ = other.nextwave_;
       events_ = other.events_.Clone();
     }
@@ -7900,17 +7900,17 @@ namespace Pb {
       return new CalendarData(this);
     }
 
-    /// <summary>Field number for the "minutes" field.</summary>
-    public const int MinutesFieldNumber = 1;
-    private int minutes_;
+    /// <summary>Field number for the "time" field.</summary>
+    public const int TimeFieldNumber = 1;
+    private int time_;
     /// <summary>
     /// 当前时间进度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Minutes {
-      get { return minutes_; }
+    public int Time {
+      get { return time_; }
       set {
-        minutes_ = value;
+        time_ = value;
       }
     }
 
@@ -7954,7 +7954,7 @@ namespace Pb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Minutes != other.Minutes) return false;
+      if (Time != other.Time) return false;
       if (Nextwave != other.Nextwave) return false;
       if(!events_.Equals(other.events_)) return false;
       return true;
@@ -7963,7 +7963,7 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Minutes != 0) hash ^= Minutes.GetHashCode();
+      if (Time != 0) hash ^= Time.GetHashCode();
       if (Nextwave != 0) hash ^= Nextwave.GetHashCode();
       hash ^= events_.GetHashCode();
       return hash;
@@ -7976,9 +7976,9 @@ namespace Pb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Minutes != 0) {
+      if (Time != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Minutes);
+        output.WriteInt32(Time);
       }
       if (Nextwave != 0) {
         output.WriteRawTag(16);
@@ -7990,8 +7990,8 @@ namespace Pb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Minutes != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Minutes);
+      if (Time != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Time);
       }
       if (Nextwave != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Nextwave);
@@ -8005,8 +8005,8 @@ namespace Pb {
       if (other == null) {
         return;
       }
-      if (other.Minutes != 0) {
-        Minutes = other.Minutes;
+      if (other.Time != 0) {
+        Time = other.Time;
       }
       if (other.Nextwave != 0) {
         Nextwave = other.Nextwave;
@@ -8023,7 +8023,7 @@ namespace Pb {
             input.SkipLastField();
             break;
           case 8: {
-            Minutes = input.ReadInt32();
+            Time = input.ReadInt32();
             break;
           }
           case 16: {
