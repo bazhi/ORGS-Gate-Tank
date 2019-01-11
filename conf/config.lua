@@ -74,8 +74,7 @@ local config = {
                 name = "Gate1",
                 numOfWorkers = 2,
                 port = 8090,
-                --host = "cb2.funkiigame.com",
-                host = "127.0.0.1",
+                host = "cb2.funkiigame.com",
                 apps = {
                     Gate1 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
@@ -84,8 +83,7 @@ local config = {
                 name = "Gate2",
                 numOfWorkers = 2,
                 port = 8091,
-                --host = "cb2.funkiigame.com",
-                host = "127.0.0.1",
+                host = "cb2.funkiigame.com",
                 apps = {
                     Gate2 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
@@ -94,8 +92,7 @@ local config = {
                 name = "Gate3",
                 numOfWorkers = 2,
                 port = 8092,
-                --host = "cb2.funkiigame.com",
-                host = "127.0.0.1",
+                host = "cb2.funkiigame.com",
                 apps = {
                     Gate3 = "_GBC_CORE_ROOT_/apps/Gate",
                 },
