@@ -112,10 +112,10 @@ function UserAction:signupAction(args, redis)
     end
     
     if not username or #username < 5 then
-        cc.throw("not set argsument: \"username\"")
+        return "username is too short"
     end
     if not password or #password < 5 then
-        cc.throw("not set argsument: \"password\"")
+        return "password is too short"
     end
     
     local db = self:getInstance():getMysql()
@@ -126,7 +126,7 @@ function UserAction:signupAction(args, redis)
         createtime = ngx.now(),
     })
     if not user then
-        cc.throw("create account failded")
+        return "username is repeated"
     end
     local session = Session:new(redis)
     session:start()
