@@ -12,6 +12,8 @@ local skipmap = {
     
 }
 
+local MaxLength = 40
+
 local function pushSkip(str)
     local words = utf.splitall(str)
     for _, v in ipairs(words) do
@@ -57,7 +59,7 @@ function sensitive_tool:replace(input, char)
     
     local i = 1
     while i <= len do
-        stop = i + 20
+        stop = i + MaxLength
         if len < stop then
             stop = len
         end
@@ -98,7 +100,7 @@ function sensitive_tool:check(input)
     local len = #words
     local stop
     for i = 1, len do
-        stop = i + 20
+        stop = i + MaxLength
         if len < stop then
             stop = len
         end

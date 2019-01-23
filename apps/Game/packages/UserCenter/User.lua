@@ -16,7 +16,9 @@ local Constants = gbc.Constants
 
 local netpack = cc.import("#netpack")
 local net_encode = netpack.encode
--- local net_decode = netpack.decode
+
+local sensitive = cc.import("#sensitive")
+local sensitive_library = sensitive.library
 
 function User:ctor(id)
     self.id = id
@@ -166,6 +168,11 @@ end
 ]]--
 --创建角色
 function User:onCreateRole(db, msg, instance, msgid)
+    
+    if sensitive_library:check(msg.nickname) then
+        instance:sendError(self.id, "SensitiveWord")
+    end
+    
     local role = Role:new()
     local data, err = role:Create(db, self.id, msg.nickname, 100101)
     if err then

@@ -76,6 +76,8 @@ message Error{
 		OperationNotPermit = 2001; //操作不允许
 		NotBuy = 3001; //没有购买
 		DBError = 40001; //数据库错误
+
+		SensitiveWord = 50001; //包含敏感词
 	}
 	EType code = 1; //错误码
 }

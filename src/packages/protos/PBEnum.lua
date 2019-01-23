@@ -28,6 +28,7 @@ local _M = {
 			OperationNotPermit = 2001,
 			NotBuy = 3001,
 			DBError = 40001,
+			SensitiveWord = 50001,
 		},
 	},
 	MissionEvent={

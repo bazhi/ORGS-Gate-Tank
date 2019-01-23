@@ -29,6 +29,8 @@ local AccountManager = cc.import("#AccountManager", ...)
 local ServiceManager = cc.import("#ServiceManager", ...)
 local resty_md5 = require("resty.md5")
 local str = require ("resty.string")
+local sensitive = cc.import("#sensitive")
+local sensitive_library = sensitive.library
 
 local _opensession = function(redis, args)
     local sid = args.sid
@@ -52,9 +54,13 @@ function UserAction:signinAction(args, redis)
     local platform = args.platform or 0
     local logintime = args.logintime
     if not username then
-        --cc.throw("not set argsument: \"username\"")
         return "no username"
     end
+    
+    if sensitive_library:replace(username) then
+        return "username has sensitive"
+    end
+    
     if not password then
         --cc.throw("not set argsument: \"password\"")
         return "no password"
