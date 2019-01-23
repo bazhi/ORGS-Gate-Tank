@@ -53,8 +53,13 @@ function UserAction:signinAction(args, redis)
     local password = args.password
     local platform = args.platform or 0
     local logintime = args.logintime
+    
     if not username then
         return "no username"
+    end
+    
+    if sensitive_library:check(username) then
+        return "username has sensitive"
     end
     
     if not password then
