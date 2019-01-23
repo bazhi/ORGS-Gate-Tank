@@ -57,10 +57,6 @@ function UserAction:signinAction(args, redis)
         return "no username"
     end
     
-    if sensitive_library:replace(username) then
-        return "username has sensitive"
-    end
-    
     if not password then
         --cc.throw("not set argsument: \"password\"")
         return "no password"
@@ -110,6 +106,11 @@ function UserAction:signupAction(args, redis)
     local username = args.username
     local password = args.password
     local platform = args.platform or 0
+    
+    if sensitive_library:check(username) then
+        return "username has sensitive"
+    end
+    
     if not username or #username < 5 then
         cc.throw("not set argsument: \"username\"")
     end

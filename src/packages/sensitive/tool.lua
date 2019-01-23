@@ -21,7 +21,7 @@ local function pushSkip(str)
     end
 end
 
-pushSkip("~!@#$%^&*()_+`1234567890-=[];',./<>?:\\\"。、《》？；’：”【】｛｝、|～·！￥……（）＝-+——)")
+pushSkip("~!@#$%^&*()_+`1234567890-=[];',./<>?:\\\"。、《》？；’：”【】｛｝、|～·！￥……（）＝-+——) ")
 
 --根据词库创建
 function sensitive_tool:ctor(input, delimiter)
