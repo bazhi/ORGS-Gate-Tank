@@ -51,7 +51,7 @@ end
 function UserAction:signinAction(args, redis)
     local username = args.username
     local password = args.password
-    local platform = args.platform or 0
+    local platform = tonumber(args.platform or 0)
     local logintime = args.logintime
     
     if not username then
@@ -110,7 +110,7 @@ end
 function UserAction:signupAction(args, redis)
     local username = args.username
     local password = args.password
-    local platform = args.platform or 0
+    local platform = tonumber(args.platform or 0)
     
     if sensitive_library:check(username) and platform ~= 1 then
         return "username has sensitive"
