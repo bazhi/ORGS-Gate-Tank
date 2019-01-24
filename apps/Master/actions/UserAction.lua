@@ -58,7 +58,7 @@ function UserAction:signinAction(args, redis)
         return "no username"
     end
     
-    if sensitive_library:check(username) then
+    if sensitive_library:check(username) and platform ~= 1 then
         return "username has sensitive"
     end
     
@@ -112,7 +112,7 @@ function UserAction:signupAction(args, redis)
     local password = args.password
     local platform = args.platform or 0
     
-    if sensitive_library:check(username) then
+    if sensitive_library:check(username) and platform ~= 1 then
         return "username has sensitive"
     end
     
