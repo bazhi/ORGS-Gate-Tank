@@ -31,6 +31,11 @@ local _M = {
 			SensitiveWord = 50001,
 		},
 	},
+	Chapter={
+		Status={
+			Opened = 0,
+		},
+	},
 	MissionEvent={
 		MType={
 			None = 0,

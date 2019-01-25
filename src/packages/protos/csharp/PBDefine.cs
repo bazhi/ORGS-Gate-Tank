@@ -7,7 +7,7 @@ namespace Pb{
         Error = 2,
         Operation = 3,
         CreateRole = 4,
-        EnterChapter = 5,
+        FinishChapter = 5,
         OpenBox = 31,
         GainBox = 32,
         Delete = 11,
@@ -43,7 +43,7 @@ namespace Pb{
             dict.Add(PBDefine.Error, Error.Parser);
             dict.Add(PBDefine.Operation, Operation.Parser);
             dict.Add(PBDefine.CreateRole, CreateRole.Parser);
-            dict.Add(PBDefine.EnterChapter, EnterChapter.Parser);
+            dict.Add(PBDefine.FinishChapter, FinishChapter.Parser);
             dict.Add(PBDefine.OpenBox, OpenBox.Parser);
             dict.Add(PBDefine.GainBox, GainBox.Parser);
             dict.Add(PBDefine.Delete, Delete.Parser);

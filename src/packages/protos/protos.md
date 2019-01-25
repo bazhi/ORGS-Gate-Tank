@@ -9,7 +9,7 @@ package pb;
 	Error==2
 	Operation==3
 	CreateRole==4
-	EnterChapter==5
+	FinishChapter==5
 
 	Delete==11
 	SigninRecord==12
@@ -102,9 +102,10 @@ message CreateRole{
 	string nickname = 1; //昵称
 }
 
-//进入章节
-message EnterChapter{
-	int32 cid = 1; //进入章节
+//完成章节
+message FinishChapter{
+	int32 cid = 1; //章节ID
+	int32 star = 2; //星级
 }
 
 //打开箱子
@@ -153,6 +154,10 @@ message Props{
 }
 
 message Chapter{
+	enum Status{
+		Opened = 0; //此状态可以直接进入
+		//大于0的表示已经通过过的星级
+	}
 	int32 id = 1;
 	int32 rid = 2;
 	int32 cid = 3;

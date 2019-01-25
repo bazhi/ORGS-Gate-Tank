@@ -131,6 +131,7 @@ function User:Process(db, message, instance, action, msgid)
     end
 end
 
+--使用钻石
 function User:useDiamond(db, count, instance, msgid)
     if count <= 0 then
         return
@@ -147,6 +148,7 @@ function User:useDiamond(db, count, instance, msgid)
     }, instance, msgid)
 end
 
+--使用科技的
 function User:useTechPoint(db, count, instance, msgid)
     if count <= 0 then
         return
@@ -353,13 +355,29 @@ function User:onTalentUnlock(db, msg, instance, msgid)
 end
 
 --进入章节
-function User:onEnterChapter(db, msg, instance, msgid)
+function User:onFinishChapter(db, msg, instance, msgid)
     if not db or not msg or not instance then
         instance:sendError(self.id, "NoParam", msgid)
         return false
     end
-    if self._Chatpers then
-        
+    if not self._Chatpers then
+        instance:sendError(self.id, "OperationNotPermit", msgid)
+        return false
+    end
+    
+    local rid = self._Role:get("id")
+    
+    local data, err, addNew = self._Chatpers:ChangeStatus(msg.cid, msg.star)
+    if err then
+        instance:sendError(self.id, err, msgid)
+        return false
+    end
+    instance:sendPack(self.id, "Chapters", {items = {data}}, msgid)
+    if addNew then
+        local chapters_data = self._Chatpers:AddChapter(db, rid, msg.cid)
+        if chapters_data and #chapters_data > 0 then
+            instance:sendPack(self.id, "Chapters", {items = chapters_data}, msgid)
+        end
     end
 end
 
