@@ -41,6 +41,9 @@ _M.SIGINIT = "_SIGINIT"
 --退出信号
 _M.SIGQUIT = "_SIGQUIT"
 
+--网络信号
+_M.SIGNET = "_SIGNET"
+
 --登录列表
 _M.USERLIST = "_USERLIST"
 --玩家信息

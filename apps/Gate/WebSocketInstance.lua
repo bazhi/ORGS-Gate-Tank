@@ -4,6 +4,8 @@ local WebSocketInstance = cc.class("WebSocketInstance", gbc.WebSocketInstanceBas
 local Constants = gbc.Constants
 local MessageType = gbc.MessageType
 
+local sdSIG = ngx.shared.sdSIG
+
 local http = cc.import("#http")
 
 function WebSocketInstance:ctor(config)
@@ -13,6 +15,11 @@ function WebSocketInstance:ctor(config)
 end
 
 function WebSocketInstance:authConnect()
+    if not sdSIG:get(Constants.SIGNET) then
+        cc.printf("SIGNET is not set")
+        return nil, nil, "SIGNET is not set"
+    end
+    
     local master = self:GetConfig("Master")
     if not master then
         return nil, nil, "can not find master"

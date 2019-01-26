@@ -21,6 +21,14 @@ function SocketTimer:ctor(config, param, ...)
     SocketTimer.super.ctor(self, config, param, ...)
 end
 
+function SocketTimer:OnClosed(_redis)
+    -- body
+end
+
+function SocketTimer:OnConnected()
+    -- body
+end
+
 function SocketTimer:connect()
     if self._socket == nil then
         local socket = client:new()
@@ -36,9 +44,19 @@ function SocketTimer:connect()
         end
         cc.printf(string.format("%s is connect success", self.param.uri))
         self._socket = socket
+        self:OnConnected()
         return true
     end
     return true
+end
+
+function SocketTimer:closeSocket(redis)
+    if self._socket ~= nil then
+        local socket = self._socket
+        self._socket = nil
+        socket:set_keepalive()
+        self:OnClosed(redis)
+    end
 end
 
 function SocketTimer:ProcessMessage(frame, ftype)
@@ -63,14 +81,6 @@ function SocketTimer:ProcessMessage(frame, ftype)
     end)
 end
 
-function SocketTimer:closeSocket()
-    if self._socket ~= nil then
-        local socket = self._socket
-        self._socket = nil
-        socket:set_keepalive()
-    end
-end
-
 function SocketTimer:runEventLoop()
     local sub, _err = self:getRedis():makeSubscribeLoop(self.param.channel)
     if not sub then
@@ -78,12 +88,12 @@ function SocketTimer:runEventLoop()
         return false
     end
     local this = self
-    sub:start(function(_subRedis, _channel, msg)
+    sub:start(function(subRedis, _channel, msg)
         if this._socket ~= nil then
             local _, err = this._socket:send_binary(msg)
             if err then
                 cc.printf("sub close socket:"..err)
-                this:closeSocket()
+                this:closeSocket(subRedis)
             end
         else
             cc.printf("send_binary failed:"..msg)
@@ -104,7 +114,7 @@ function SocketTimer:runEventLoop()
                         break -- recv next message
                     end
                     cc.printf("close socket:"..err)
-                    self:closeSocket()
+                    self:closeSocket(self:getRedis())
                 end
                 
                 if #frames > 0 then
@@ -115,7 +125,7 @@ function SocketTimer:runEventLoop()
                 end
                 
                 if ftype == "close" then
-                    self:closeSocket()
+                    self:closeSocket(self:getRedis())
                     break
                 elseif ftype == "ping" then
                     if self._socket then

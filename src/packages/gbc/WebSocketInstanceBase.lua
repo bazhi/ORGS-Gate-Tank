@@ -213,14 +213,15 @@ function WebSocketInstanceBase:runEventLoop()
     end
     
     sub:start(function(subRedis, channel, msg)
-        if channel == controlChannel then
-            this:onControlMessage(msg, subRedis)
-            if msg == Constants.CLOSE_CONNECT then
-                closeReason = Constants.CLOSE_CONNECT
-                socket:send_close()
-            end
+        if msg == Constants.CLOSE_CONNECT then
+            closeReason = Constants.CLOSE_CONNECT
+            socket:send_close()
         else
-            socket:send_binary(msg)
+            if channel == controlChannel then
+                this:onControlMessage(msg, subRedis)
+            else
+                socket:send_binary(msg)
+            end
         end
     end, controlChannel, connectChannel, Constants.BROADCAST_ALL_CHANNEL)
     self._subloop = sub

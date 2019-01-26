@@ -51,6 +51,10 @@ function NgxTimerBase:runEventLoop()
     return true
 end
 
+function NgxTimerBase:sendMessageToAll(redis, message)
+    return redis:publish(Constants.BROADCAST_ALL_CHANNEL, message)
+end
+
 function NgxTimerBase:sendControlMessage(connectId, message)
     local redis = self._redis
     if not redis then
