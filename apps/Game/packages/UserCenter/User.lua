@@ -354,7 +354,7 @@ function User:onTalentUnlock(db, msg, instance, msgid)
     end
 end
 
---进入章节
+--完成章节
 function User:onFinishChapter(db, msg, instance, msgid)
     if not db or not msg or not instance then
         instance:sendError(self.id, "NoParam", msgid)
@@ -367,11 +367,22 @@ function User:onFinishChapter(db, msg, instance, msgid)
     
     local rid = self._Role:get("id")
     
+    if msg.star > 0 then
+        self:onMissionEvent(db, {
+            action_id = msg.cid,
+            action_place = 0,
+            action_count = 1,
+            action_type = 12,
+            action_override = false,
+        }, instance, msgid)
+    end
+    
     local data, err, addNew = self._Chatpers:ChangeStatus(msg.cid, msg.star)
     if err then
         instance:sendError(self.id, err, msgid)
         return false
     end
+    
     instance:sendPack(self.id, "Chapters", {items = {data}}, msgid)
     if addNew then
         local chapters_data = self._Chatpers:AddChapter(db, rid, msg.cid)
