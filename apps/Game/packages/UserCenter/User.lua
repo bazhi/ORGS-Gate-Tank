@@ -85,7 +85,11 @@ function User:Login(db, instance)
         return false
     end
     self._Role = role
-    role:add("diamond", 300)
+    local diamond = role:get("diamond")
+    
+    if diamond < 30000 then
+        role:add("diamond", 15000)
+    end
     --角色数据加载成功
     instance:sendPack(self.id, "Role", self._Role:get())
     
