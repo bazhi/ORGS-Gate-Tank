@@ -78,7 +78,6 @@ function sensitive_tool:replace(input, char)
 end
 
 function sensitive_tool:replacestep(words, start, stop)
-    words = string.lower(words)
     local cnode = self.root
     local endchar = -1
     for k = start, stop do
@@ -115,7 +114,6 @@ function sensitive_tool:check(input)
 end
 
 function sensitive_tool:checkstep(words, start, stop)
-    words = string.lower(words)
     local cnode = self.root
     local v
     for k = start, stop do
