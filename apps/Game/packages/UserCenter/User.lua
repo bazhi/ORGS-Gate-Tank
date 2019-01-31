@@ -177,6 +177,7 @@ function User:onCreateRole(db, msg, instance, msgid)
     
     if sensitive_library:check(msg.nickname) then
         instance:sendError(self.id, "SensitiveWord")
+        return false
     end
     
     local role = Role:new()
