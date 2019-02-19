@@ -17,14 +17,6 @@ function InitializeTimer:runEventLoop()
     end
     
     self:createTable(db, Table.Role)
-    self:createTable(db, Table.Prop)
-    self:createTable(db, Table.Chapter)
-    self:createTable(db, Table.Mission)
-    self:createTable(db, Table.Achv)
-    self:createTable(db, Table.Box)
-    self:createTable(db, Table.Signin)
-    self:createTable(db, Table.Shop)
-    self:createTable(db, Table.Talent)
     
     self:clearUserList()
     self:Initialized()

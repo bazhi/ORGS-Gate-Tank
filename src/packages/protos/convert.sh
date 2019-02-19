@@ -7,7 +7,7 @@ mkdir csharp
 lua getDefineMap.lua 
 lua getProtoEnum.lua 
 
-PROJECT_PATH=/Users/funkii/projects/CB2_TD/Assets/Game/GamePlugins/Network/Protos
+PROJECT_PATH=/Users/funkii/projects/Unity/TankBattleNet/Assets/GamePlugins/Network/Protos
 #/Users/funkii/projects/gitlab/CityBlockade25D/Assets/Game/GamePlugins/Network/Protos
 
 rm -rf $PROJECT_PATH
